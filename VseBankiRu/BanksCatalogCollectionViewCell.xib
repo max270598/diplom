@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BanksCatalogCollectionViewCell" id="gTV-IL-0wX" customClass="BanksCatalogCollectionViewCell" customModule="VseBankiRu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="302" height="88"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="302" height="88"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Credits_backView" translatesAutoresizingMaskIntoConstraints="NO" id="mpm-9X-xJi">
+                        <rect key="frame" x="0.0" y="0.0" width="302" height="88"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Вклады" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6k-LR-dqh">
+                        <rect key="frame" x="20" y="34" width="60" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="mpm-9X-xJi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="AIL-r5-DHg"/>
+                <constraint firstAttribute="bottom" secondItem="mpm-9X-xJi" secondAttribute="bottom" id="HZp-6f-fTV"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="F6k-LR-dqh" secondAttribute="trailing" constant="10" id="Q9i-xU-KNc"/>
+                <constraint firstAttribute="trailing" secondItem="mpm-9X-xJi" secondAttribute="trailing" id="Zyf-1k-6cz"/>
+                <constraint firstItem="mpm-9X-xJi" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aqr-jd-9tI"/>
+                <constraint firstItem="F6k-LR-dqh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="gLm-4U-xdw"/>
+                <constraint firstItem="F6k-LR-dqh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="qSe-Y3-qcc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="302" height="87"/>
+            <connections>
+                <outlet property="backImageView" destination="mpm-9X-xJi" id="LLl-Ut-S8F"/>
+                <outlet property="nameLabel" destination="F6k-LR-dqh" id="lU2-jL-9GW"/>
+            </connections>
+            <point key="canvasLocation" x="320.28985507246381" y="157.03125"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Credits_backView" width="640" height="417"/>
+    </resources>
+</document>
