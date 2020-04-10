@@ -32,6 +32,7 @@ class RegisterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
+        self.enableCreateButton()
 
     }
     
@@ -53,21 +54,8 @@ class RegisterViewController: UIViewController {
             return
         }
          
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self](user, error) in
-         
-            guard user != nil, error == nil else {
-                print(error?.localizedDescription)
-                return
-            }
-         
-            let userRef = self?.ref.child((user?.user.uid)!)
-            userRef?.setValue(["email": user?.user.email])
-            
-            
-            self?.sendEmailVerification()
-            
-            self?.performSegue(withIdentifier: "emailVerification", sender: nil)
-        }
+
+        self.createUser(email: email, password: password)
         
 
     }
@@ -100,5 +88,36 @@ extension RegisterViewController {
         Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
             callback?(error)
         })
+    }
+    
+    func createUser(email: String, password: String) {
+        
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self](user, error) in
+         
+            guard user != nil, error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+         
+            let userRef = self?.ref.child((user?.user.uid)!)
+            userRef?.setValue(["email": user?.user.email])
+            
+            
+            self?.sendEmailVerification()
+            
+            self?.disableCreateButton()
+            
+            self?.performSegue(withIdentifier: "emailVerification", sender: nil)
+        }
+    }
+    
+    func disableCreateButton() {
+        self.createAccountButton.alpha = 0.6
+        self.createAccountButton.isUserInteractionEnabled = false
+    }
+    
+    func enableCreateButton() {
+        self.createAccountButton.alpha = 1
+        self.createAccountButton.isUserInteractionEnabled = true
     }
 }

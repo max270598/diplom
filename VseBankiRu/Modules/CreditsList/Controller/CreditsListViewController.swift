@@ -25,6 +25,8 @@ class CreditsListViewController: UIViewController {
     
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
+    var Credits = Array<Credit>()
+    
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -59,12 +61,18 @@ class CreditsListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        CreditsListNetwork.shared.getCredits { (credits) in
+            print("Кредиты", credits)
+        }
+        
     }
     
     
 
 
 }
+
+//Datasourse Delegate
 
 extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,6 +99,8 @@ extension CreditsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     
 }
+
+//Infinite Scrolling
 
 extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
@@ -119,6 +129,12 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 //        //        self.output?.showMarketplace()
 //    }
 }
+
+
+
+
+
+//Functions
 
 extension CreditsListViewController {
     func setupCollection() {
@@ -149,12 +165,7 @@ extension CreditsListViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //ScrollView
-        
-//         let pageIndex = round(collectionView.contentOffset.x/view.frame.width)
-//            pageControll.currentPage = Int(pageIndex)
-
-        
+       
         //tableView
         if self.tableView.contentOffset.y <= -50 {
             self.showSlider()

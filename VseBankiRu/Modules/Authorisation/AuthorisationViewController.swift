@@ -23,6 +23,12 @@ class AuthorisationViewController: UIViewController {
 
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
 
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in // если пользователь зарегистрирован то переходит на сразу на другой экран
+            if user != nil && user!.isEmailVerified {
+                self?.performSegue(withIdentifier: "logged", sender: nil)
+            }
+        }
         // Do any additional setup after loading the view.
     }
     

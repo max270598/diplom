@@ -15,6 +15,9 @@
 		A742A22724328B060008AEEF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */; };
 		A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAE3244064BF009B5404 /* RegisterViewController.swift */; };
 		A744AAE624409469009B5404 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAE524409469009B5404 /* EmailVerificationViewController.swift */; };
+		A744AAEF2440F56B009B5404 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAEE2440F56B009B5404 /* User.swift */; };
+		A744AAF12440F57C009B5404 /* Credit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAF02440F57C009B5404 /* Credit.swift */; };
+		A744AAF32440FBCE009B5404 /* CreditsListNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAF22440FBCE009B5404 /* CreditsListNetwork.swift */; };
 		A75D758924092F0400A20824 /* QuotationNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758824092F0400A20824 /* QuotationNetworkService.swift */; };
 		A75D758C2409337300A20824 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758B2409337300A20824 /* NetworkService.swift */; };
 		A75D758F240933B500A20824 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758E240933B500A20824 /* NetworkError.swift */; };
@@ -72,6 +75,9 @@
 		A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A744AAE3244064BF009B5404 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A744AAE524409469009B5404 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
+		A744AAEE2440F56B009B5404 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A744AAF02440F57C009B5404 /* Credit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credit.swift; sourceTree = "<group>"; };
+		A744AAF22440FBCE009B5404 /* CreditsListNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListNetwork.swift; sourceTree = "<group>"; };
 		A75D758824092F0400A20824 /* QuotationNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationNetworkService.swift; sourceTree = "<group>"; };
 		A75D758B2409337300A20824 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A75D758E240933B500A20824 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 		A742A21B243286330008AEEF /* CreditsList */ = {
 			isa = PBXGroup;
 			children = (
+				A744AAF42440FBEA009B5404 /* CreditsListNetwork */,
 				A742A22324328AD60008AEEF /* Cells */,
 				A742A22224328A570008AEEF /* Controller */,
 				A742A22124328A500008AEEF /* View */,
@@ -199,6 +206,23 @@
 				A7C3CB8023FEDD7000F5DB01 /* Gradient.swift */,
 			);
 			path = Gradient;
+			sourceTree = "<group>";
+		};
+		A744AAED2440F54B009B5404 /* FirebaseModels */ = {
+			isa = PBXGroup;
+			children = (
+				A744AAEE2440F56B009B5404 /* User.swift */,
+				A744AAF02440F57C009B5404 /* Credit.swift */,
+			);
+			path = FirebaseModels;
+			sourceTree = "<group>";
+		};
+		A744AAF42440FBEA009B5404 /* CreditsListNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				A744AAF22440FBCE009B5404 /* CreditsListNetwork.swift */,
+			);
+			path = CreditsListNetwork;
 			sourceTree = "<group>";
 		};
 		A75D7582240929D000A20824 /* Model */ = {
@@ -254,6 +278,7 @@
 		A75D75902409378400A20824 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A744AAED2440F54B009B5404 /* FirebaseModels */,
 				A75D7592240937AE00A20824 /* Controller */,
 				A75D758D2409339A00A20824 /* NetworkError */,
 				A75D758A2409334D00A20824 /* NetworkService */,
@@ -583,6 +608,8 @@
 				A7CBA4252439132C009CB3E0 /* UIViewController+Extension.swift in Sources */,
 				A7C3CB8123FEDD7000F5DB01 /* Gradient.swift in Sources */,
 				A796783023ED812600CE4E94 /* VseBankiRu.xcdatamodeld in Sources */,
+				A744AAF32440FBCE009B5404 /* CreditsListNetwork.swift in Sources */,
+				A744AAEF2440F56B009B5404 /* User.swift in Sources */,
 				A7CBA4A1243FD834009CB3E0 /* UIView+Extensions.swift in Sources */,
 				A7CBA49B243FAEC7009CB3E0 /* VerificationCodeViewController.swift in Sources */,
 				A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */,
@@ -598,6 +625,7 @@
 				A72E09262433B35D00EC12A2 /* CreditTableViewCell.swift in Sources */,
 				A7CBA4A4243FDF68009CB3E0 /* AuthorisationViewController.swift in Sources */,
 				A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */,
+				A744AAF12440F57C009B5404 /* Credit.swift in Sources */,
 				A78DF57323FDACB80060F5A2 /* PrivateOfficeViewController.swift in Sources */,
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
