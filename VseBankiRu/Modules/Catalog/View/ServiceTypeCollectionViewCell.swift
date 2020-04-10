@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Kingfisher
 
-class BanksCatalogCollectionViewCell: UICollectionViewCell {
+class ServiceTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var backImageView: UIImageView!
+    @IBOutlet weak var iam: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
 }

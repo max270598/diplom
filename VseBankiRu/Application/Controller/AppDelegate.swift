@@ -8,14 +8,34 @@
 
 import UIKit
 import CoreData
+import Firebase
+import IQKeyboardManagerSwift
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  var window: UIWindow?
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+       
+        FirebaseApp.configure()
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
+
+        if #available(iOS 10, *) { //Регистрируем push уведомления
+            UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in }
+            application.registerForRemoteNotifications()
+        } else {
+            let notificationSettings = UIUserNotificationSettings(types: [.badge, .alert, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(notificationSettings)
+            UIApplication.shared.registerForRemoteNotifications()
+            
+        }
         
         return true
     }

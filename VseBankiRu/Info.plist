@@ -16,10 +16,35 @@
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.40978581957-grnc380rgur7sioc3mb11ucab8dcq58k</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSMainStoryboardFile</key>
+	<string>Main</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SF-Compact-Display-Regular.otf</string>
+		<string>SF-Compact-Text-Regular.otf</string>
+		<string>SF-Pro-Text-Light.otf</string>
+		<string>SF-Pro-Text-Bold.otf</string>
+		<string>SF-Pro-Text-Regular.otf</string>
+		<string>SF-Pro-Text-Medium.otf</string>
+		<string>SF-Pro-Display-Semibold.otf</string>
+		<string>SF-Pro-Display-Medium.otf</string>
+		<string>SF-Pro-Display-Bold.otf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -39,10 +64,12 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
