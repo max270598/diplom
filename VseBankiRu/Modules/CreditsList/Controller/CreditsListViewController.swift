@@ -165,7 +165,7 @@ extension CreditsListViewController {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-       
+        self.collectionView.scro
         //tableView
         if self.tableView.contentOffset.y <= -50 {
             self.showSlider()
