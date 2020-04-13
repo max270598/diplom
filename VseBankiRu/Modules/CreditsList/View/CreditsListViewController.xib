@@ -6,15 +6,21 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListViewController" customModule="VseBankiRu" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListViewController">
             <connections>
-                <outlet property="collectionView" destination="wYb-EO-fda" id="agL-Dw-oL4"/>
-                <outlet property="pageControl" destination="5RH-7p-k3U" id="CIi-vv-g5y"/>
-                <outlet property="sliderView" destination="Wzi-fv-pzC" id="Uzm-Ca-7WW"/>
-                <outlet property="tableView" destination="IDX-xg-2Y6" id="aBE-j9-Jw2"/>
-                <outlet property="tableViewTopConstrToSliderView" destination="lHq-ig-xLZ" id="5nY-tA-f7v"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="bannerCollectionView" destination="wYb-EO-fda" id="aQP-04-Wk0"/>
+                <outlet property="bestLabel" destination="JqE-0w-Y06" id="P1K-5N-b1g"/>
+                <outlet property="pageControl" destination="5RH-7p-k3U" id="LoP-Ra-QfD"/>
+                <outlet property="sliderView" destination="Wzi-fv-pzC" id="tDk-bT-1pj"/>
+                <outlet property="tableView" destination="IDX-xg-2Y6" id="Uo0-GL-hV8"/>
+                <outlet property="tableViewTopConstrToSliderView" destination="lHq-ig-xLZ" id="7wr-MB-HtP"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="rBD-Tu-o2q"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -23,10 +29,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-fv-pzC">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-EO-fda">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nc2-Da-bbF">
                                 <size key="itemSize" width="50" height="50"/>
@@ -36,24 +42,41 @@
                             </collectionViewFlowLayout>
                         </collectionView>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5RH-7p-k3U">
-                            <rect key="frame" x="168" y="288" width="39" height="37"/>
+                            <rect key="frame" x="168" y="213" width="39" height="37"/>
                         </pageControl>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшие предложения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-0w-Y06">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="dtN-Xf-7uG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
+                            <color key="textColor" red="0.7803921568627451" green="0.87058823529411766" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="1" green="0.41176470590000003" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstItem="JqE-0w-Y06" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="top" id="15j-yB-Iv3"/>
                         <constraint firstAttribute="trailing" secondItem="wYb-EO-fda" secondAttribute="trailing" id="6fn-jF-wi9"/>
                         <constraint firstItem="wYb-EO-fda" firstAttribute="leading" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="7Kc-M9-rIv"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5RH-7p-k3U" secondAttribute="trailing" id="AYT-bP-MOc"/>
-                        <constraint firstAttribute="height" constant="375" id="L9f-LD-HZc"/>
+                        <constraint firstAttribute="height" constant="300" id="L9f-LD-HZc"/>
                         <constraint firstItem="wYb-EO-fda" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="top" id="LAF-ZR-IPw"/>
                         <constraint firstAttribute="bottom" secondItem="wYb-EO-fda" secondAttribute="bottom" id="O5S-0o-mPF"/>
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="Pxc-ib-xii"/>
                         <constraint firstAttribute="bottom" secondItem="5RH-7p-k3U" secondAttribute="bottom" constant="50" id="S1H-yO-DKl"/>
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="fDC-VQ-7Ly"/>
+                        <constraint firstItem="JqE-0w-Y06" firstAttribute="leading" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="lr0-IU-aXH"/>
+                        <constraint firstAttribute="trailing" secondItem="JqE-0w-Y06" secondAttribute="trailing" id="zep-jf-Lcd"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDX-xg-2Y6">
-                    <rect key="frame" x="0.0" y="325" width="375" height="342"/>
+                    <rect key="frame" x="0.0" y="250" width="375" height="417"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>

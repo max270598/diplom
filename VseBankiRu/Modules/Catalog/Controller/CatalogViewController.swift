@@ -90,6 +90,7 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let secondVC = CreditsListViewController(coder: <#NSCoder#>)
         let secondVC = CreditsListViewController(nibName: "CreditsListViewController", bundle: nil)
          let cell = collectionView.cellForItem(at: indexPath) as? ServiceTypeCollectionViewCell
         if cell?.nameLabel.text == "Кредиты" {

@@ -16,8 +16,7 @@ extension UIView {
     }
 }
 
-@IBDesignable
-extension UIView {
+@IBDesignable extension UIView {
 
     class func colored(color: UIColor) -> UIView {
         let view = UIView()

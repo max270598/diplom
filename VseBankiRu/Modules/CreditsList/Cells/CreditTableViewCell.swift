@@ -9,7 +9,18 @@
 import UIKit
 
 class CreditTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var bankLogoImageView: UIImageView!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
+    
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var percentLabel: UILabel!
+    
+    @IBOutlet weak var sumLabel: UILabel!
+    
+    @IBOutlet weak var arrangeButton: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

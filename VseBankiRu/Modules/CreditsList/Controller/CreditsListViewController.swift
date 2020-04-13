@@ -15,13 +15,19 @@ import Kingfisher
 
 
 class CreditsListViewController: UIViewController {
-    @IBOutlet private weak var sliderView: UIView!
-    @IBOutlet private weak var iPhoneSliderAspectConstraint: NSLayoutConstraint!
-    @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var pageControl: UIPageControl!
-
+    
+    
+    
+    @IBOutlet weak var bestLabel: UILabel!
+    @IBOutlet weak var sliderView: UIView!
+   
+    @IBOutlet weak var bannerCollectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewTopConstrToSliderView: NSLayoutConstraint!
+    
+    
+    
     
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
@@ -68,6 +74,17 @@ class CreditsListViewController: UIViewController {
     }
     
     
+    
+    
+//    func commonInit() {
+//        Bundle(for: self.classForCoder).loadNibNamed("CreditsListViewController", owner: self, options: nil)
+//
+//        self.view.addSubview(contentView)
+//        contentView.frame = self.view.bounds
+//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+//    }
+    
+    
 
 
 }
@@ -100,6 +117,8 @@ extension CreditsListViewController: UITableViewDelegate, UITableViewDataSource 
     
 }
 
+//extension CreditsListViewController:
+
 //Infinite Scrolling
 
 extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
@@ -107,7 +126,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
     func configuredCell(forItemAtIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, forInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) -> UICollectionViewCell {
 
 
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
+        let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
 
         if let model = data as? BannersSubModuleBannerProtocol {
             cell.backImageView.kf.setImage(with: URL(string: model.backgroundImage))
@@ -117,7 +136,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
     }
     
     func didEndScrolling(inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
-        guard let currentPage = self.collectionView.visibleIndexPath?.row else { return }
+        guard let currentPage = self.bannerCollectionView.visibleIndexPath?.row else { return }
         if (self.currentPage != (currentPage - 1)) { self.currentPage = (currentPage - 1) }
     }
     //Mark: FIX когда будут готовы другие слайды
@@ -139,12 +158,12 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 extension CreditsListViewController {
     func setupCollection() {
       
-        self.collectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
+        self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
         
-        self.collectionView.isPagingEnabled = true
+        self.bannerCollectionView.isPagingEnabled = true
         
         let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
-        infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: collectionView, andData: bannersArray, delegate: self, configuration: configuration)
+        infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
     }
 
     func setupPageControl() {
@@ -158,14 +177,13 @@ extension CreditsListViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.register(UINib(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
-        
-        self.tableView.rowHeight = 148
+        tableView.separatorInset = UIEdgeInsets(top: 300, left: 100, bottom: 300, right: 100)
+        self.tableView.rowHeight = 138
         self.tableView.backgroundColor = UIColor.clear
         
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.collectionView.scro
         //tableView
         if self.tableView.contentOffset.y <= -50 {
             self.showSlider()

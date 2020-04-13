@@ -93,9 +93,13 @@ extension RegisterViewController {
     func createUser(email: String, password: String) {
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self](user, error) in
-         
+            
+            
             guard user != nil, error == nil else {
                 print(error?.localizedDescription)
+                if (error?.localizedDescription)! == "The email address is already in use by another account." {
+                    self?.showErrorLabel(with: "The email address is already exist")
+                }
                 return
             }
          
