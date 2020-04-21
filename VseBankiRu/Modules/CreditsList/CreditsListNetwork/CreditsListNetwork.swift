@@ -13,7 +13,7 @@ import Firebase
 class CreditsListNetwork {
     static let shared = CreditsListNetwork()
     
-    let ref = Database.database().reference(withPath: "services").child("credits").child("sberbank")
+    let ref = Database.database().reference(withPath: "credits").child("best_credits")
     
     
     func getCredits( completion: @escaping (_ creditsArray: [Credit]) -> Void ) {

@@ -23,9 +23,15 @@ class CreditsListViewController: UIViewController {
    
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var tableViewTopConstrToSliderView: NSLayoutConstraint!
+    @IBOutlet weak var mainCollectionView: UICollectionView!
+    @IBOutlet weak var mainCollectionViewTopConstr: NSLayoutConstraint!
     
+    
+    
+    
+//    @IBOutlet weak var tableView: UITableView!
+//    @IBOutlet weak var tableViewTopConstrToSliderView: NSLayoutConstraint!
+//
     
     
     
@@ -52,14 +58,17 @@ class CreditsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("load")
-        setupCollection()
+        setupBestLabel()
+        setupBannerCollection()
+        setupMainCollection()
         setupPageControl()
-        setupTableView()
+        
+//        setupTableView()
         
         self.addTableViewCorners()
 
 
-        self.defaultTopConstr = tableViewTopConstrToSliderView.constant
+        self.defaultTopConstr = mainCollectionViewTopConstr.constant
        
         // Do any additional setup after loading the view.
     }
@@ -69,20 +78,12 @@ class CreditsListViewController: UIViewController {
 
         CreditsListNetwork.shared.getCredits { (credits) in
             print("Кредиты", credits)
+            
+            self.Credits = credits
+            
         }
         
     }
-    
-    
-    
-    
-//    func commonInit() {
-//        Bundle(for: self.classForCoder).loadNibNamed("CreditsListViewController", owner: self, options: nil)
-//
-//        self.view.addSubview(contentView)
-//        contentView.frame = self.view.bounds
-//        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-//    }
     
     
 
@@ -93,29 +94,32 @@ class CreditsListViewController: UIViewController {
 
 extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        if collectionView == self.bannerCollectionView {
+            return 2
+
+        }
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
+        if collectionView == self.bannerCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
         return cell
+        }
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
+//        cell.stavkaLabel.text = self.Credits[indexPath.row].min_rate
+//        cell.sumLabel.text = self.Credits[indexPath.row].full_sum
+        cell.cornerRadius = 8
+        cell.borderWidth = 1
+        cell.borderColor = UIColor.systemIndigo
+        return cell
+        
     }
     
     
 }
 
-extension CreditsListViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CreditTableViewCell", for: indexPath) as! CreditTableViewCell
-        return cell
-    }
-    
-    
-}
 
 //extension CreditsListViewController:
 
@@ -156,14 +160,40 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 //Functions
 
 extension CreditsListViewController {
-    func setupCollection() {
+    
+    func setupBestLabel() {
+//        self.bestLabel.borderWidth = 1
+        self.bestLabel.borderColor = UIColor.black
+        
+        self.bestLabel.clipsToBounds = true
+        self.bestLabel.layer.cornerRadius = 20
+        self.bestLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
+    }
+    
+    func setupBannerCollection() {
       
+        
+        
         self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
         
         self.bannerCollectionView.isPagingEnabled = true
         
         let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
         infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
+    }
+    
+    func setupMainCollection() {
+        self.mainCollectionView.dataSource = self
+        self.mainCollectionView.delegate = self
+        self.mainCollectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
+        
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 355, height: 138)
+        layout.minimumLineSpacing = 20
+        layout.minimumInteritemSpacing = 20
+        self.mainCollectionView.collectionViewLayout = layout
     }
 
     func setupPageControl() {
@@ -173,32 +203,34 @@ extension CreditsListViewController {
                 self.pageControl.currentPage = 0
     }
     
-    func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
-        tableView.separatorInset = UIEdgeInsets(top: 300, left: 100, bottom: 300, right: 100)
-        self.tableView.rowHeight = 138
-        self.tableView.backgroundColor = UIColor.clear
-        
-    }
+//    func setupTableView() {
+//        self.tableView.delegate = self
+//        self.tableView.dataSource = self
+//        self.tableView.register(UINib(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
+//        tableView.separatorInset = UIEdgeInsets(top: 300, left: 100, bottom: 300, right: 100)
+//        self.tableView.rowHeight = 138
+//        self.tableView.backgroundColor = UIColor.clear
+//
+//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //tableView
-        if self.tableView.contentOffset.y <= -50 {
+        
+        if self.mainCollectionView.contentOffset.y <= -50 {
             self.showSlider()
-        } else if self.tableView.contentOffset.y >= 50 {
+        } else if self.mainCollectionView.contentOffset.y >= 50 {
             self.hideSlider()
+
         }
 
     }
     
     func hideSlider() {
-          self.tableViewTopConstrToSliderView.constant = (self.sliderView.frame.height) * -1
+          self.mainCollectionViewTopConstr.constant = (self.sliderView.frame.height) * -1
           UIView.animate(withDuration: 0.4) {
 
-            self.tableView.layer.cornerRadius = 0.0
-            self.tableView.transform = .identity
+            self.mainCollectionView.layer.cornerRadius = 0.0
+            self.mainCollectionView.transform = .identity
 
               self.view.layoutIfNeeded()
           }
@@ -209,7 +241,7 @@ extension CreditsListViewController {
         
         
         UIView.animate(withDuration: 0.4) {
-            self.tableView.transform = CGAffineTransform(translationX: 0, y: self.sliderView.frame.height + self.defaultTopConstr )
+            self.mainCollectionView.transform = CGAffineTransform(translationX: 0, y: self.sliderView.frame.height + self.defaultTopConstr )
 //                self.view.layoutIfNeeded()
 //            self.view.updateConstraints()
           }
@@ -218,11 +250,11 @@ extension CreditsListViewController {
       }
     
     func addTableViewCorners() {
-        self.tableView.clipsToBounds = true
-        self.tableView.layer.cornerRadius = 20
-        self.tableView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        self.mainCollectionView.clipsToBounds = true
+        self.mainCollectionView.layer.cornerRadius = 20
+        self.mainCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
- 
+    
     
 }

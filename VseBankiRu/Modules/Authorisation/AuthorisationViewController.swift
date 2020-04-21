@@ -88,6 +88,7 @@ class AuthorisationViewController: UIViewController {
 
 extension AuthorisationViewController {
     func showErrorLabel(with text: String) {
+        self.errorLabel.text = text
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
                        self?.errorLabel.alpha = 1
                    }, completion: nil)

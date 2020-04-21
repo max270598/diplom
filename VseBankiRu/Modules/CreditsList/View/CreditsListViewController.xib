@@ -16,10 +16,10 @@
             <connections>
                 <outlet property="bannerCollectionView" destination="wYb-EO-fda" id="aQP-04-Wk0"/>
                 <outlet property="bestLabel" destination="JqE-0w-Y06" id="P1K-5N-b1g"/>
+                <outlet property="mainCollectionView" destination="RMu-Za-Xe6" id="mpm-gP-HJJ"/>
+                <outlet property="mainCollectionViewTopConstr" destination="Wag-oB-XVY" id="7l3-fX-UjY"/>
                 <outlet property="pageControl" destination="5RH-7p-k3U" id="LoP-Ra-QfD"/>
                 <outlet property="sliderView" destination="Wzi-fv-pzC" id="tDk-bT-1pj"/>
-                <outlet property="tableView" destination="IDX-xg-2Y6" id="Uo0-GL-hV8"/>
-                <outlet property="tableViewTopConstrToSliderView" destination="lHq-ig-xLZ" id="7wr-MB-HtP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="rBD-Tu-o2q"/>
             </connections>
         </placeholder>
@@ -45,12 +45,14 @@
                             <rect key="frame" x="168" y="213" width="39" height="37"/>
                         </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшие предложения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-0w-Y06">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                            <rect key="frame" x="62.5" y="0.0" width="250" height="40"/>
+                            <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="width" constant="250" id="BMX-g0-dcf"/>
                                 <constraint firstAttribute="height" constant="40" id="dtN-Xf-7uG"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
-                            <color key="textColor" red="0.7803921568627451" green="0.87058823529411766" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -71,24 +73,29 @@
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="Pxc-ib-xii"/>
                         <constraint firstAttribute="bottom" secondItem="5RH-7p-k3U" secondAttribute="bottom" constant="50" id="S1H-yO-DKl"/>
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="fDC-VQ-7Ly"/>
-                        <constraint firstItem="JqE-0w-Y06" firstAttribute="leading" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="lr0-IU-aXH"/>
-                        <constraint firstAttribute="trailing" secondItem="JqE-0w-Y06" secondAttribute="trailing" id="zep-jf-Lcd"/>
+                        <constraint firstItem="JqE-0w-Y06" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="fuT-Fz-zoX"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IDX-xg-2Y6">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RMu-Za-Xe6">
                     <rect key="frame" x="0.0" y="250" width="375" height="417"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                </tableView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qRQ-HV-wML">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="IDX-xg-2Y6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Wzi-fv-pzC" secondAttribute="top" id="96S-bz-uIN"/>
+                <constraint firstAttribute="trailing" secondItem="RMu-Za-Xe6" secondAttribute="trailing" id="39l-Cy-1KE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wzi-fv-pzC" secondAttribute="trailing" id="G57-mO-J7d"/>
-                <constraint firstItem="IDX-xg-2Y6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ceI-0C-TqI"/>
-                <constraint firstItem="IDX-xg-2Y6" firstAttribute="top" secondItem="wYb-EO-fda" secondAttribute="bottom" constant="-50" id="lHq-ig-xLZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="IDX-xg-2Y6" secondAttribute="trailing" id="lUP-AF-b5o"/>
+                <constraint firstItem="RMu-Za-Xe6" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="bottom" constant="-50" id="Wag-oB-XVY"/>
+                <constraint firstAttribute="bottom" secondItem="RMu-Za-Xe6" secondAttribute="bottom" id="WhX-0Y-5zb"/>
+                <constraint firstItem="RMu-Za-Xe6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wYb-EO-fda" secondAttribute="top" id="cNe-jQ-W4c"/>
+                <constraint firstItem="RMu-Za-Xe6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j1k-6A-PEL"/>
                 <constraint firstItem="Wzi-fv-pzC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uHe-Pg-UYx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="IDX-xg-2Y6" secondAttribute="bottom" id="vZf-Tp-Nnd"/>
                 <constraint firstItem="Wzi-fv-pzC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xPx-xx-qVu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

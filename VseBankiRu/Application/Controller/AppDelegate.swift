@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
+        
+        UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 88.0/255.0, green: 86.0/255.0, blue: 214.0/255.0, alpha: 1)
+        
 
         if #available(iOS 10, *) { //Регистрируем push уведомления
             UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { (granted, error) in }

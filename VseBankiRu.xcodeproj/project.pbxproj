@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A72E09262433B35D00EC12A2 /* CreditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72E09242433B35D00EC12A2 /* CreditTableViewCell.swift */; };
-		A72E09272433B35D00EC12A2 /* CreditTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A72E09252433B35D00EC12A2 /* CreditTableViewCell.xib */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
 		A742A22624328B060008AEEF /* CreditsPromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */; };
 		A742A22724328B060008AEEF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */; };
+		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
+		A74480462444922800FD251C /* CreditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A74480442444922800FD251C /* CreditCollectionViewCell.xib */; };
+		A744804E244F4B7300FD251C /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744804C244F4B7300FD251C /* CreditViewController.swift */; };
+		A744804F244F4B7300FD251C /* CreditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A744804D244F4B7300FD251C /* CreditViewController.xib */; };
 		A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAE3244064BF009B5404 /* RegisterViewController.swift */; };
 		A744AAE624409469009B5404 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAE524409469009B5404 /* EmailVerificationViewController.swift */; };
 		A744AAEF2440F56B009B5404 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAEE2440F56B009B5404 /* User.swift */; };
@@ -67,12 +69,14 @@
 		299A7C7C20C649BB99026F55 /* Pods-VseBankiRu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.release.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.release.xcconfig"; sourceTree = "<group>"; };
 		4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VseBankiRu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		784D20937057BBD2AC0B4F01 /* Pods-VseBankiRu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.debug.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.debug.xcconfig"; sourceTree = "<group>"; };
-		A72E09242433B35D00EC12A2 /* CreditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditTableViewCell.swift; sourceTree = "<group>"; };
-		A72E09252433B35D00EC12A2 /* CreditTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditTableViewCell.xib; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
 		A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPromoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
+		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
+		A74480442444922800FD251C /* CreditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCollectionViewCell.xib; sourceTree = "<group>"; };
+		A744804C244F4B7300FD251C /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
+		A744804D244F4B7300FD251C /* CreditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditViewController.xib; sourceTree = "<group>"; };
 		A744AAE3244064BF009B5404 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		A744AAE524409469009B5404 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
 		A744AAEE2440F56B009B5404 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -169,6 +173,7 @@
 		A742A22024328A470008AEEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A744AAF02440F57C009B5404 /* Credit.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,10 +199,43 @@
 			children = (
 				A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */,
 				A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */,
-				A72E09242433B35D00EC12A2 /* CreditTableViewCell.swift */,
-				A72E09252433B35D00EC12A2 /* CreditTableViewCell.xib */,
+				A74480432444922800FD251C /* CreditCollectionViewCell.swift */,
+				A74480442444922800FD251C /* CreditCollectionViewCell.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		A7448050244F4EE700FD251C /* Credit */ = {
+			isa = PBXGroup;
+			children = (
+				A7448053244F4F0000FD251C /* View */,
+				A7448052244F4EFA00FD251C /* Model */,
+				A7448051244F4EF200FD251C /* Controller */,
+			);
+			path = Credit;
+			sourceTree = "<group>";
+		};
+		A7448051244F4EF200FD251C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A744804C244F4B7300FD251C /* CreditViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A7448052244F4EFA00FD251C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7448053244F4F0000FD251C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A744804D244F4B7300FD251C /* CreditViewController.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		A744AAE72440B0C4009B5404 /* Gradient */ = {
@@ -212,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				A744AAEE2440F56B009B5404 /* User.swift */,
-				A744AAF02440F57C009B5404 /* Credit.swift */,
 			);
 			path = FirebaseModels;
 			sourceTree = "<group>";
@@ -398,6 +435,7 @@
 		A7CBA41D2438D7B4009CB3E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A7448050244F4EE700FD251C /* Credit */,
 				A78DF57923FDB52D0060F5A2 /* Catalog */,
 				A742A21B243286330008AEEF /* CreditsList */,
 				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,
@@ -532,7 +570,7 @@
 				A7C3CB7623FEAEF500F5DB01 /* SF-Compact-Text-Regular.otf in Resources */,
 				A7C3CB7823FEAEF500F5DB01 /* SF-Pro-Text-Bold.otf in Resources */,
 				A7C3CB7423FEAEF500F5DB01 /* SF-Pro-Display-Semibold.otf in Resources */,
-				A72E09272433B35D00EC12A2 /* CreditTableViewCell.xib in Resources */,
+				A744804F244F4B7300FD251C /* CreditViewController.xib in Resources */,
 				A7C3CB7B23FEAEF500F5DB01 /* SF-Compact-Display-Regular.otf in Resources */,
 				A7CBA4212438DB5F009CB3E0 /* firstViewController.xib in Resources */,
 				A78DF57823FDACED0060F5A2 /* MainNavigationController.xib in Resources */,
@@ -548,6 +586,7 @@
 				A7CBA49F243FC846009CB3E0 /* GoogleService-Info.plist in Resources */,
 				A78DF57023FDAC140060F5A2 /* MainTabBarController.xib in Resources */,
 				A7C3CB7523FEAEF500F5DB01 /* SF-Pro-Text-Medium.otf in Resources */,
+				A74480462444922800FD251C /* CreditCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -615,6 +654,7 @@
 				A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */,
 				A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */,
 				A7CBA428243B4936009CB3E0 /* BannersSubModuleProtocol.swift in Sources */,
+				A744804E244F4B7300FD251C /* CreditViewController.swift in Sources */,
 				A7CBA49D243FAF0E009CB3E0 /* SendCodeViewController.swift in Sources */,
 				A78DF56F23FDAC140060F5A2 /* MainTabBarController.swift in Sources */,
 				A796783F23ED820400CE4E94 /* ServiceTypeModel.swift in Sources */,
@@ -622,11 +662,11 @@
 				A75D75942409386000A20824 /* QuotationModel.swift in Sources */,
 				A744AAE624409469009B5404 /* EmailVerificationViewController.swift in Sources */,
 				A796784223ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift in Sources */,
-				A72E09262433B35D00EC12A2 /* CreditTableViewCell.swift in Sources */,
 				A7CBA4A4243FDF68009CB3E0 /* AuthorisationViewController.swift in Sources */,
 				A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */,
 				A744AAF12440F57C009B5404 /* Credit.swift in Sources */,
 				A78DF57323FDACB80060F5A2 /* PrivateOfficeViewController.swift in Sources */,
+				A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */,
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
 				A796782823ED812600CE4E94 /* SceneDelegate.swift in Sources */,
