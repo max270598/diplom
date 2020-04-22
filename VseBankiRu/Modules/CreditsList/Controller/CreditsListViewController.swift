@@ -37,7 +37,7 @@ class CreditsListViewController: UIViewController {
     
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
-    var Credits = Array<Credit>()
+    var Credits = Array<CreditModel>()
     
     private var currentPage: Int = 0 {
           didSet {
@@ -57,31 +57,26 @@ class CreditsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("load")
+        setupNavigationBar()
         setupBestLabel()
         setupBannerCollection()
         setupMainCollection()
         setupPageControl()
         
-//        setupTableView()
+        downloadCredits()
+        
         
         self.addTableViewCorners()
 
 
         self.defaultTopConstr = mainCollectionViewTopConstr.constant
        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        CreditsListNetwork.shared.getCredits { (credits) in
-            print("Кредиты", credits)
-            
-            self.Credits = credits
-            
-        }
+        
         
     }
     
@@ -98,23 +93,25 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
             return 2
 
         }
-        return 30
+        return self.Credits.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.bannerCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
         return cell
-        }
+        } else {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
-//        cell.stavkaLabel.text = self.Credits[indexPath.row].min_rate
-//        cell.sumLabel.text = self.Credits[indexPath.row].full_sum
-        cell.cornerRadius = 8
-        cell.borderWidth = 1
-        cell.borderColor = UIColor.systemIndigo
-        return cell
+        guard !self.Credits.isEmpty else {
+         
+            return cell
+        }
+            cell.configure(with: Credits[indexPath.row])
+            cell.delegate = self
         
+        return cell
+        }
     }
     
     
@@ -157,61 +154,21 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
 
+extension CreditsListViewController: CreditsListCellDelegate {
+    func shareLink(url urlString: String, sender: UIView) {
+           var sourceView: UIView = self.mainCollectionView
+           if UIDevice.current.userInterfaceIdiom == .pad {
+               sourceView = sender
+           }
+           guard let activityController = self.shareLinkController(urlString: urlString, sourceView: sourceView) else { return }
+        print("toucheddddd")
+           self.present(activityController, animated: true, completion: nil)
+       }
+}
+
 //Functions
 
-extension CreditsListViewController {
-    
-    func setupBestLabel() {
-//        self.bestLabel.borderWidth = 1
-        self.bestLabel.borderColor = UIColor.black
-        
-        self.bestLabel.clipsToBounds = true
-        self.bestLabel.layer.cornerRadius = 20
-        self.bestLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        
-    }
-    
-    func setupBannerCollection() {
-      
-        
-        
-        self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
-        
-        self.bannerCollectionView.isPagingEnabled = true
-        
-        let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
-        infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
-    }
-    
-    func setupMainCollection() {
-        self.mainCollectionView.dataSource = self
-        self.mainCollectionView.delegate = self
-        self.mainCollectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
-        
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 355, height: 138)
-        layout.minimumLineSpacing = 20
-        layout.minimumInteritemSpacing = 20
-        self.mainCollectionView.collectionViewLayout = layout
-    }
-
-    func setupPageControl() {
-                self.pageControl.numberOfPages = bannersArray.count
-                self.pageControl.isUserInteractionEnabled = false
-                self.pageControl.hidesForSinglePage = true
-                self.pageControl.currentPage = 0
-    }
-    
-//    func setupTableView() {
-//        self.tableView.delegate = self
-//        self.tableView.dataSource = self
-//        self.tableView.register(UINib(nibName: "CreditTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditTableViewCell")
-//        tableView.separatorInset = UIEdgeInsets(top: 300, left: 100, bottom: 300, right: 100)
-//        self.tableView.rowHeight = 138
-//        self.tableView.backgroundColor = UIColor.clear
-//
-//    }
+ extension CreditsListViewController {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //tableView
@@ -242,19 +199,102 @@ extension CreditsListViewController {
         
         UIView.animate(withDuration: 0.4) {
             self.mainCollectionView.transform = CGAffineTransform(translationX: 0, y: self.sliderView.frame.height + self.defaultTopConstr )
-//                self.view.layoutIfNeeded()
-//            self.view.updateConstraints()
-          }
-//        self.tableViewTopConstrToSliderView.constant =  self.defaultTopConstr
 
+          }
       }
     
-    func addTableViewCorners() {
-        self.mainCollectionView.clipsToBounds = true
-        self.mainCollectionView.layer.cornerRadius = 20
-        self.mainCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+ 
+    
+    func downloadCredits() {
+        DispatchQueue.main.async {
+            CreditsListNetwork.shared.getCredits { (credits) in
+//                print("Кредиты", credits)
+                
+                self.Credits = credits
+                print("download Ended")
+                self.mainCollectionView.reloadData()
+                print("reload")
+            }
+        }
+        
+
     }
     
     
     
+}
+
+ private extension CreditsListViewController {
+    
+    func setupBestLabel() {
+    //        self.bestLabel.borderWidth = 1
+            self.bestLabel.borderColor = UIColor.black
+            
+            self.bestLabel.clipsToBounds = true
+            self.bestLabel.layer.cornerRadius = 20
+            self.bestLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            
+        }
+        
+        func setupBannerCollection() {
+          
+            self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
+            
+            self.bannerCollectionView.isPagingEnabled = true
+            
+            let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
+            infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
+        }
+        
+        func setupMainCollection() {
+            self.mainCollectionView.dataSource = self
+            self.mainCollectionView.delegate = self
+            self.mainCollectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
+            
+            
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: 355, height: 138)
+            layout.minimumLineSpacing = 20
+            layout.minimumInteritemSpacing = 20
+            self.mainCollectionView.collectionViewLayout = layout
+        }
+
+        func setupPageControl() {
+                    self.pageControl.numberOfPages = bannersArray.count
+                    self.pageControl.isUserInteractionEnabled = false
+                    self.pageControl.hidesForSinglePage = true
+                    self.pageControl.currentPage = 0
+        }
+    func addTableViewCorners() {
+         self.mainCollectionView.clipsToBounds = true
+         self.mainCollectionView.layer.cornerRadius = 20
+         self.mainCollectionView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+     }
+    
+    func setupNavigationBar() {
+        let favouriteButton = UIButton(type: .custom)
+        favouriteButton.setImage(UIImage(named: "favourite_icon_nav"), for: .normal)
+        favouriteButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        favouriteButton.addTarget(self, action: #selector(self.favouriteButtonTapped), for: .touchUpInside)
+        let item1 = UIBarButtonItem(customView: favouriteButton)
+
+        let sortingButton = UIButton(type: .custom)
+        sortingButton.setImage(UIImage(named: "sort_icon"), for: .normal)
+        sortingButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        sortingButton.addTarget(self, action: #selector(self.sortingButtonTapped), for: .touchUpInside)
+        let item2 = UIBarButtonItem(customView: sortingButton)
+
+        self.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
+        
+    }
+    
+    @objc func favouriteButtonTapped() {
+        let secondVC = CreditListFavouriteViewController(nibName: "CreditListFavouriteViewController", bundle: nil)
+        self.navigationController?.pushViewController(secondVC, animated: true)
+        print("tapped")
+    }
+    
+    @objc func sortingButtonTapped() {
+           print("tapped")
+       }
 }

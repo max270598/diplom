@@ -13,14 +13,14 @@ import Firebase
 class CreditsListNetwork {
     static let shared = CreditsListNetwork()
     
-    let ref = Database.database().reference(withPath: "credits").child("best_credits")
+    let ref = Database.database().reference(withPath: "credits").child("all_credits")
     
     
-    func getCredits( completion: @escaping (_ creditsArray: [Credit]) -> Void ) {
+    func getCredits( completion: @escaping (_ creditsArray: [CreditModel]) -> Void ) {
         ref.observe(.value) { (snapshot) in //получаем данные по ref
-            var credits = Array<Credit>()
+            var credits = Array<CreditModel>()
             for item in snapshot.children {
-                let credit = Credit(snapshot: item as! DataSnapshot)
+                let credit = CreditModel(snapshot: item as! DataSnapshot)
                 credits.append(credit)
                 completion(credits)
             }

@@ -9,9 +9,11 @@
 import Foundation
 import Firebase
 
-struct Credit {
+struct CreditModel {
     let id: String
-    let bank_url: String
+    let type: String
+    let bank_logo_url: String
+    let credit_url: String
     let sravni_url: String
     let short_sum: String
     let min_rate: String
@@ -30,8 +32,10 @@ struct Credit {
     init(snapshot: DataSnapshot) { //когда храним данные в базе и хотим получить их, то мы получаем некий snapshot. то есть снимок наших данных на этот момент и чтобы получить эти данные мы должны распотрошить этот snapshot. SnapShot это и есть JSON который мы получаем
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.id = snapshotValue["id"] as! String
-        self.bank_url = snapshotValue["bank_url"] as! String
-
+        self.type = snapshotValue["type"] as! String
+        self.bank_logo_url = snapshotValue["bank_logo_url"] as! String
+        self.credit_url = snapshotValue["credit_url"] as! String
+        
         self.sravni_url = snapshotValue["sravni_url"] as! String
 
         self.short_sum = snapshotValue["short_sum"] as! String
@@ -55,6 +59,15 @@ struct Credit {
 
     }
 }
+
+extension CreditModel {
+    
+    func inFavorite() -> Bool {
+//        return AutoMallFavouriteService.inFavorite(self.itemId)
+        return true
+    }
+}
+
 
 struct Rate {
     let sum: String
