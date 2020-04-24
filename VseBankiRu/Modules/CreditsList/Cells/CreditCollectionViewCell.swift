@@ -13,11 +13,20 @@ class CreditCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bankLogoImageView: UIImageView!
     
     @IBOutlet weak var creditTypeLabel: UILabel!
-    @IBOutlet weak var favouriteButton: UIButton!
+    @IBOutlet weak var favouriteButton: UIButton! {
+                    didSet {
+                        self.favouriteButton.setImage(UIImage(named: "icon_like_added"), for: .selected)
+                        }
+                    }
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
-    @IBOutlet weak var arrangeButton: UIButton!
+    @IBOutlet weak var arrangeButton: UIButton! {
+        didSet{
+            self.arrangeButton.clipsToBounds = true
+            self.arrangeButton.cornerRadius = 10
+        }
+    }
     
     // Item ID for Save in Favourite
     private var itemId: String?
@@ -25,15 +34,16 @@ class CreditCollectionViewCell: UICollectionViewCell {
     // Share Link
     private var itemLinkUrl: String?
     weak var delegate: CreditsListCellDelegate?
-//    private var deleteClosure: (()->Void)?
+    private var deleteClosure: (()->Void)?
     
     
+    private var shadowLayer: CAShapeLayer!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.setShadow()
-        self.setCorner()
+//        self.setCorner()
         // Initialization code
     }
    
@@ -49,13 +59,36 @@ class CreditCollectionViewCell: UICollectionViewCell {
             self.transformCell(self.isSelected)
         }
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+            if shadowLayer == nil {
+                shadowLayer = CAShapeLayer()
+                shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
+                shadowLayer.fillColor = UIColor.white.cgColor
+
+                shadowLayer.shadowColor = UIColor.darkGray.cgColor
+                shadowLayer.shadowPath = shadowLayer.path
+                shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+                shadowLayer.shadowOpacity = 0.8
+                shadowLayer.shadowRadius = 2
+
+                layer.insertSublayer(shadowLayer, at: 0)
+                //layer.insertSublayer(shadowLayer, below: nil) // also works
+            }
+        }
+    }
 
     
-}
+
 
 private extension CreditCollectionViewCell {
 
-    @IBAction func favouriteButtonTapped(_ sender: Any) {
+    @IBAction func favouriteButtonTapped(_ sender: UIButton) {
+                if sender.isSelected { self.deleteClosure?() }
+                guard let itemId = self.itemId else { return }
+                sender.favourite(itemId)
        }
 
        @IBAction func shareButtonTapped(_ sender: UIButton) {
@@ -64,23 +97,21 @@ private extension CreditCollectionViewCell {
        }
 
        @IBAction func arrangeButtonTapped(_ sender: Any) {
-//        if sender.isSelected { self.deleteClosure?() }
-//        guard let itemId = self.itemId else { return }
-//        sender.favourite(itemId)
+
        }
 }
 
 
 extension UIButton {
 
-    func inFavourite(_ itemId: Int) {
-//        let inFavourite = AutoMallFavouriteService.inFavorite(itemId)
-//        self.isSelected = inFavourite
+    func inFavourite(_ itemId: String) {
+        let inFavourite = CreditListFavouriteService.inFavorite(itemId)
+        self.isSelected = inFavourite
     }
 
-    func favourite(_ itemId: Int) {
+    func favourite(_ itemId: String) {
         self.isSelected.toggle()
-//        AutoMallFavouriteService.inFavorite(itemId) ? AutoMallFavouriteService.removeFavorite(itemId) : AutoMallFavouriteService.addFavorite(itemId)
+        CreditListFavouriteService.inFavorite(itemId) ? CreditListFavouriteService.removeFavorite(itemId) : CreditListFavouriteService.addFavorite(itemId)
     }
 }
 
@@ -98,9 +129,9 @@ extension CreditCollectionViewCell {
           self.itemLinkUrl = nil
       }
 
-//    func addDelete(_ closure: (()->Void)?) {
-//        self.deleteClosure = closure
-//    }
+    func addDelete(_ closure: (()->Void)?) {
+        self.deleteClosure = closure
+    }
 
     func configure(with model: CreditModel) {
 
@@ -118,10 +149,10 @@ extension CreditCollectionViewCell {
         }
     }
 
-    func setCorner() {
-        self.cornerRadius = 8
-        self.borderWidth = 1
-        self.borderColor = UIColor.systemIndigo
-    }
+//    func setCorner() {
+//        self.cornerRadius = 8
+//        self.borderWidth = 1
+//        self.borderColor = UIColor.systemIndigo
+//    }
 }
 

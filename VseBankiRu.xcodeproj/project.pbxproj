@@ -66,6 +66,8 @@
 		A7F134412450D4BD000FF164 /* ShareLinkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F134402450D4BD000FF164 /* ShareLinkDelegate.swift */; };
 		A7F134482450DBFD000FF164 /* CreditListFavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F134462450DBFD000FF164 /* CreditListFavouriteViewController.swift */; };
 		A7F134492450DBFD000FF164 /* CreditListFavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7F134472450DBFD000FF164 /* CreditListFavouriteViewController.xib */; };
+		A7F1344C24523604000FF164 /* CreditListFavouriteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1344B24523604000FF164 /* CreditListFavouriteService.swift */; };
+		A7F134542452504F000FF164 /* CreditListFavouriteNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F134532452504F000FF164 /* CreditListFavouriteNetwork.swift */; };
 		D6D1EE4E45C987A1B10AC360 /* Pods_VseBankiRu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,6 +137,8 @@
 		A7F134402450D4BD000FF164 /* ShareLinkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkDelegate.swift; sourceTree = "<group>"; };
 		A7F134462450DBFD000FF164 /* CreditListFavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditListFavouriteViewController.swift; sourceTree = "<group>"; };
 		A7F134472450DBFD000FF164 /* CreditListFavouriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditListFavouriteViewController.xib; sourceTree = "<group>"; };
+		A7F1344B24523604000FF164 /* CreditListFavouriteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditListFavouriteService.swift; sourceTree = "<group>"; };
+		A7F134532452504F000FF164 /* CreditListFavouriteNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditListFavouriteNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -542,10 +546,11 @@
 		A7F134422450DBB1000FF164 /* CreditListFavourite */ = {
 			isa = PBXGroup;
 			children = (
-				A7F1344A2451034F000FF164 /* Cells */,
+				A7F134522452501C000FF164 /* CreditListFavouriteNetwork */,
 				A7F134452450DBDC000FF164 /* Controller */,
 				A7F134442450DBD7000FF164 /* View */,
 				A7F134432450DBD1000FF164 /* Model */,
+				A7F1344B24523604000FF164 /* CreditListFavouriteService.swift */,
 			);
 			path = CreditListFavourite;
 			sourceTree = "<group>";
@@ -573,11 +578,12 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		A7F1344A2451034F000FF164 /* Cells */ = {
+		A7F134522452501C000FF164 /* CreditListFavouriteNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				A7F134532452504F000FF164 /* CreditListFavouriteNetwork.swift */,
 			);
-			path = Cells;
+			path = CreditListFavouriteNetwork;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -720,6 +726,7 @@
 				A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */,
 				A7CBA4A6243FDF7A009CB3E0 /* VerificationViewController.swift in Sources */,
 				A78DF57723FDACED0060F5A2 /* MainNavigationController.swift in Sources */,
+				A7F1344C24523604000FF164 /* CreditListFavouriteService.swift in Sources */,
 				A742A22624328B060008AEEF /* CreditsPromoCollectionViewCell.swift in Sources */,
 				A796783D23ED81D000CE4E94 /* CatalogViewController.swift in Sources */,
 				A7F1343C2450B8F5000FF164 /* UICollectionCell.swift in Sources */,
@@ -736,6 +743,7 @@
 				A7CBA428243B4936009CB3E0 /* BannersSubModuleProtocol.swift in Sources */,
 				A744804E244F4B7300FD251C /* CreditViewController.swift in Sources */,
 				A7CBA49D243FAF0E009CB3E0 /* SendCodeViewController.swift in Sources */,
+				A7F134542452504F000FF164 /* CreditListFavouriteNetwork.swift in Sources */,
 				A78DF56F23FDAC140060F5A2 /* MainTabBarController.swift in Sources */,
 				A796783F23ED820400CE4E94 /* ServiceTypeModel.swift in Sources */,
 				A75D758924092F0400A20824 /* QuotationNetworkService.swift in Sources */,

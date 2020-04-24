@@ -17,14 +17,15 @@ class CreditsListNetwork {
     
     
     func getCredits( completion: @escaping (_ creditsArray: [CreditModel]) -> Void ) {
+        var credits = Array<CreditModel>()
         ref.observe(.value) { (snapshot) in //получаем данные по ref
-            var credits = Array<CreditModel>()
             for item in snapshot.children {
                 let credit = CreditModel(snapshot: item as! DataSnapshot)
                 credits.append(credit)
-                completion(credits)
             }
-            
+            completion(credits)
+
         }
+
     }
 }

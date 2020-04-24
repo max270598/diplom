@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditListFavouriteViewController" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
+                <outlet property="collectionView" destination="xHv-DC-1XO" id="OZc-Cl-Ldt"/>
                 <outlet property="goToCreditsListButton" destination="Uet-96-p40" id="KUu-RT-mfp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -29,14 +30,32 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В Изранном пока ничего нет " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RH-PX-RIW">
-                    <rect key="frame" x="65.5" y="312" width="244" height="20"/>
-                    <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="izbrannoe" translatesAutoresizingMaskIntoConstraints="NO" id="SEY-CW-tBf">
+                    <rect key="frame" x="90" y="150" width="195" height="120"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="SEY-CW-tBf" secondAttribute="height" multiplier="13:8" id="WGb-gm-AEI"/>
+                        <constraint firstAttribute="width" constant="195" id="bE1-On-U2S"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lLf-oa-9Me">
+                    <rect key="frame" x="65.5" y="310" width="244" height="46"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В Изранном пока ничего нет " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RH-PX-RIW">
+                            <rect key="frame" x="0.0" y="0.0" width="244" height="19.5"/>
+                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте любой кредит из списка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-hp-p3A">
+                            <rect key="frame" x="20.5" y="31.5" width="203" height="14.5"/>
+                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                            <color key="textColor" red="0.2784313725" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uet-96-p40">
-                    <rect key="frame" x="85" y="381" width="205" height="50"/>
+                    <rect key="frame" x="85" y="396" width="205" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="6yP-ik-ofw"/>
                         <constraint firstAttribute="width" constant="205" id="igX-lo-YqQ"/>
@@ -49,12 +68,6 @@
                         <action selector="goToCreditsListButtonTapped:" destination="-1" eventType="touchUpInside" id="XFJ-hs-iKJ"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте любой кредит из списка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-hp-p3A">
-                    <rect key="frame" x="86" y="344" width="203" height="15"/>
-                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                    <color key="textColor" red="0.2784313725" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xHv-DC-1XO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -65,24 +78,19 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="izbrannoe" translatesAutoresizingMaskIntoConstraints="NO" id="SEY-CW-tBf">
-                    <rect key="frame" x="90" y="150" width="195" height="120"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FhH-hp-p3A" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1YU-wh-7f8"/>
                 <constraint firstItem="SEY-CW-tBf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="150" id="987-Mg-43Y"/>
-                <constraint firstItem="FhH-hp-p3A" firstAttribute="top" secondItem="1RH-PX-RIW" secondAttribute="bottom" constant="12" id="HO3-xl-T4T"/>
-                <constraint firstItem="1RH-PX-RIW" firstAttribute="top" secondItem="SEY-CW-tBf" secondAttribute="bottom" constant="42" id="HVa-I2-Jmm"/>
                 <constraint firstItem="SEY-CW-tBf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Neh-6w-aPN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xHv-DC-1XO" secondAttribute="bottom" id="QwJ-nx-Ijd"/>
-                <constraint firstItem="xHv-DC-1XO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="War-Ky-21B"/>
-                <constraint firstItem="xHv-DC-1XO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="X44-pD-Lqn"/>
-                <constraint firstItem="1RH-PX-RIW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dF3-Wl-0hP"/>
-                <constraint firstItem="Uet-96-p40" firstAttribute="top" secondItem="FhH-hp-p3A" secondAttribute="bottom" constant="22" id="hBd-xL-NlZ"/>
+                <constraint firstAttribute="bottom" secondItem="xHv-DC-1XO" secondAttribute="bottom" id="QwJ-nx-Ijd"/>
+                <constraint firstItem="xHv-DC-1XO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="War-Ky-21B"/>
+                <constraint firstItem="xHv-DC-1XO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X44-pD-Lqn"/>
+                <constraint firstItem="lLf-oa-9Me" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dDe-SL-gvY"/>
+                <constraint firstItem="Uet-96-p40" firstAttribute="top" secondItem="lLf-oa-9Me" secondAttribute="bottom" constant="40" id="hPN-dR-n89"/>
+                <constraint firstItem="lLf-oa-9Me" firstAttribute="top" secondItem="SEY-CW-tBf" secondAttribute="bottom" constant="40" id="rai-1G-EP3"/>
                 <constraint firstItem="Uet-96-p40" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tUN-Sx-HYB"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xHv-DC-1XO" secondAttribute="trailing" id="yL4-fk-Ouk"/>
+                <constraint firstAttribute="trailing" secondItem="xHv-DC-1XO" secondAttribute="trailing" id="yL4-fk-Ouk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="138.40000000000001" y="114.69265367316342"/>

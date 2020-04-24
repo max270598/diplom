@@ -38,7 +38,8 @@ class CreditsListViewController: UIViewController {
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var Credits = Array<CreditModel>()
-    
+    var bannersArray: [BannersSubModuleBanner] = [
+    BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", short_sum: "-", min_rate: "-", max_time: "-")]
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -50,10 +51,6 @@ class CreditsListViewController: UIViewController {
     
     var defaultTopConstr: CGFloat = 0.0
     
-    var bannersArray: [BannersSubModuleBanner] = [
-        BannersSubModuleBanner(id: 1, title: "title", subTitle: "subTitle", image: "https://yandex.ru/images/search?from=tabbar&text=superMan&pos=9&img_url=https%3A%2F%2Fwww.tokkoro.com%2Fpicsup%2F5538061-action-comics-wallpapers.jpg&rpt=simage", backgroundImage: "https://i.playground.ru/p/iFOaIK9he88T1McR70KmJQ.jpeg", productId: 1),
-        BannersSubModuleBanner(id: 2, title: "title", subTitle: "subtitle", image: "asd", backgroundImage: "https://kartinkinaden.ru/uploads/posts/2019-08/thumbs/1565934550_art-venom-72.jpg", productId: 2)
-        ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +73,7 @@ class CreditsListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        
+        self.mainCollectionView.reloadData()
         
     }
     
@@ -130,7 +127,11 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
 
         if let model = data as? BannersSubModuleBannerProtocol {
-            cell.backImageView.kf.setImage(with: URL(string: model.backgroundImage))
+            cell.backImageView.kf.setImage(with: URL(string: model.background_image))
+            cell.bankLogoImageView.kf.setImage(with: URL(string: model.bank_logo_url))
+            cell.rateLabel.text = model.min_rate
+            cell.sumLabel.text = model.short_sum
+            cell.timeLabel.text = model.max_time
         }
 
         return cell
@@ -155,13 +156,12 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
 extension CreditsListViewController: CreditsListCellDelegate {
-    func shareLink(url urlString: String, sender: UIView) {
+    func shareLink(url: String, sender: UIView) {
            var sourceView: UIView = self.mainCollectionView
            if UIDevice.current.userInterfaceIdiom == .pad {
                sourceView = sender
            }
-           guard let activityController = self.shareLinkController(urlString: urlString, sourceView: sourceView) else { return }
-        print("toucheddddd")
+           guard let activityController = self.shareLinkController(urlString: url, sourceView: sourceView) else { return }
            self.present(activityController, animated: true, completion: nil)
        }
 }
@@ -207,17 +207,27 @@ extension CreditsListViewController: CreditsListCellDelegate {
     
     func downloadCredits() {
         DispatchQueue.main.async {
-            CreditsListNetwork.shared.getCredits { (credits) in
+            CreditsListNetwork.shared.getCredits { [weak self](credits) in
 //                print("Кредиты", credits)
                 
-                self.Credits = credits
-                print("download Ended")
-                self.mainCollectionView.reloadData()
-                print("reload")
+                self?.Credits = credits
+                credits.forEach { [weak self] (item) in
+                    if item.is_best == true {
+                        print("best")
+                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: item.min_rate, max_time: item.max_time)
+                        self?.bannersArray.append(bestCredit)
+                    }
+                }
+             
+                self?.bannersArray.removeFirst()
+                print("count", self?.bannersArray.count)
+                self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
+                self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
+                self?.mainCollectionView.reloadData()
             }
         }
         
-
+        
     }
     
     
@@ -260,10 +270,11 @@ extension CreditsListViewController: CreditsListCellDelegate {
         }
 
         func setupPageControl() {
-                    self.pageControl.numberOfPages = bannersArray.count
+                    self.pageControl.numberOfPages = 2
                     self.pageControl.isUserInteractionEnabled = false
                     self.pageControl.hidesForSinglePage = true
                     self.pageControl.currentPage = 0
+                    self.pageControl.layer.zPosition = 100
         }
     func addTableViewCorners() {
          self.mainCollectionView.clipsToBounds = true
@@ -274,13 +285,13 @@ extension CreditsListViewController: CreditsListCellDelegate {
     func setupNavigationBar() {
         let favouriteButton = UIButton(type: .custom)
         favouriteButton.setImage(UIImage(named: "favourite_icon_nav"), for: .normal)
-        favouriteButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        favouriteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
         favouriteButton.addTarget(self, action: #selector(self.favouriteButtonTapped), for: .touchUpInside)
         let item1 = UIBarButtonItem(customView: favouriteButton)
 
         let sortingButton = UIButton(type: .custom)
         sortingButton.setImage(UIImage(named: "sort_icon"), for: .normal)
-        sortingButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        sortingButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
         sortingButton.addTarget(self, action: #selector(self.sortingButtonTapped), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: sortingButton)
 

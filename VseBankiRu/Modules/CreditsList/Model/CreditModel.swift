@@ -9,9 +9,16 @@
 import Foundation
 import Firebase
 
+
+import InfiniteScrolling
+
+
+
+
 struct CreditModel {
     let id: String
     let type: String
+    let background_image: String
     let bank_logo_url: String
     let credit_url: String
     let sravni_url: String
@@ -20,6 +27,7 @@ struct CreditModel {
     let full_sum: String
     let full_time: String
     let max_time: String
+    let is_best: Bool
     let description: String
     let rate_description: String
     var rates: [Rate]
@@ -33,6 +41,7 @@ struct CreditModel {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.id = snapshotValue["id"] as! String
         self.type = snapshotValue["type"] as! String
+        self.background_image = snapshotValue["background_image"] as! String
         self.bank_logo_url = snapshotValue["bank_logo_url"] as! String
         self.credit_url = snapshotValue["credit_url"] as! String
         
@@ -43,6 +52,7 @@ struct CreditModel {
         self.full_sum = snapshotValue["full_sum"] as! String
         self.full_time = snapshotValue["full_time"] as! String
         self.max_time = snapshotValue["max_time"] as! String
+        self.is_best = snapshotValue["is_best"] as! Bool
         self.description = snapshotValue["description"] as! String
         self.rate_description = snapshotValue["rate_description"] as! String
         self.rates = []
@@ -63,8 +73,7 @@ struct CreditModel {
 extension CreditModel {
     
     func inFavorite() -> Bool {
-//        return AutoMallFavouriteService.inFavorite(self.itemId)
-        return true
+        return CreditListFavouriteService.inFavorite(self.id )
     }
 }
 
