@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class CreditCollectionViewCell: UICollectionViewCell {
 
@@ -20,13 +21,18 @@ class CreditCollectionViewCell: UICollectionViewCell {
                     }
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var rateLabel: UILabel!
+    @IBOutlet weak var rateSkeletonLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
+    @IBOutlet weak var sumSkeletonLabel: UILabel!
+    @IBOutlet weak var separatorView: UIView!
     @IBOutlet weak var arrangeButton: UIButton! {
         didSet{
             self.arrangeButton.clipsToBounds = true
             self.arrangeButton.cornerRadius = 10
         }
     }
+    
+    var allViewsSkeleton: [UIView] = []
     
     // Item ID for Save in Favourite
     private var itemId: String?
@@ -41,9 +47,9 @@ class CreditCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.allViewsSkeleton = [bankLogoImageView, creditTypeLabel, favouriteButton, shareButton,rateLabel,rateSkeletonLabel,sumLabel,sumSkeletonLabel,separatorView,arrangeButton]
+        self.skeletonShow()
         self.setShadow()
-//        self.setCorner()
         // Initialization code
     }
    
@@ -96,8 +102,9 @@ private extension CreditCollectionViewCell {
         self.delegate?.shareLink(url: urlString, sender: sender)
        }
 
-       @IBAction func arrangeButtonTapped(_ sender: Any) {
-
+       @IBAction func arrangeButtonTapped(_ sender: UIButton) {
+        guard let urlString = self.itemLinkUrl else { return }
+        self.delegate?.openCredit(url: urlString, sender: sender)
        }
 }
 
@@ -148,11 +155,45 @@ extension CreditCollectionViewCell {
 
         }
     }
+    
+    func skeletonShow() {
+        
+        DispatchQueue.main.async {
+            let gradient = SkeletonGradient(baseColor: .clouds)
+            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
+        self.arrangeButton.titleLabel?.text = ""
+            self.allViewsSkeleton.forEach {
+                $0.isSkeletonable = true
+                $0.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
+            }
+    }
+    }
+    
+    func skeletonHide() {
+        DispatchQueue.main.async {
+            self.arrangeButton.titleLabel?.text = "Офрмить"
+            self.allViewsSkeleton.forEach {
+                $0.hideSkeleton(transition: .crossDissolve(0.5))
+            }
+            }
+        
+    }
+        
 
-//    func setCorner() {
-//        self.cornerRadius = 8
-//        self.borderWidth = 1
-//        self.borderColor = UIColor.systemIndigo
-//    }
 }
 
+//  func S() {
+//        DispatchQueue.main.async {
+//            let gradient = SkeletonGradient(baseColor: .clouds)
+//                     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
+//                     self.mainCollectionView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
+//        }
+//
+//      }
+//    func hideSkeleton() {
+//        DispatchQueue.main.async {
+//                    self.mainCollectionView.hideSkeleton(transition: .crossDissolve(0.5))
+//
+//        }
+//
+//    }

@@ -11,4 +11,5 @@ import UIKit
 
 protocol CreditsListCellDelegate: class {
     func shareLink(url: String, sender: UIView)
+    func openCredit(url: String, sender: UIView)
 }

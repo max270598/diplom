@@ -10,7 +10,8 @@ import UIKit
 import Foundation
 import InfiniteScrolling
 import Kingfisher
-
+import SafariServices
+import SkeletonView
 
 
 
@@ -37,7 +38,7 @@ class CreditsListViewController: UIViewController {
     
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
-    var Credits = Array<CreditModel>()
+    var Credits: [CreditModel]?
     var bannersArray: [BannersSubModuleBanner] = [
     BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", short_sum: "-", min_rate: "-", max_time: "-")]
     private var currentPage: Int = 0 {
@@ -72,7 +73,6 @@ class CreditsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
         self.mainCollectionView.reloadData()
         
     }
@@ -90,7 +90,7 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
             return 2
 
         }
-        return self.Credits.count
+        return self.Credits?.count ?? 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -100,13 +100,11 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
         } else {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
-        guard !self.Credits.isEmpty else {
-         
-            return cell
-        }
-            cell.configure(with: Credits[indexPath.row])
+            if self.Credits != nil {
+                cell.skeletonHide()
+                cell.configure(with: Credits![indexPath.row])
             cell.delegate = self
-        
+            }
         return cell
         }
     }
@@ -156,6 +154,11 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
 extension CreditsListViewController: CreditsListCellDelegate {
+    func openCredit(url: String, sender: UIView) {
+        let svc = SFSafariViewController(url: URL(string: url)!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
     func shareLink(url: String, sender: UIView) {
            var sourceView: UIView = self.mainCollectionView
            if UIDevice.current.userInterfaceIdiom == .pad {
@@ -208,19 +211,16 @@ extension CreditsListViewController: CreditsListCellDelegate {
     func downloadCredits() {
         DispatchQueue.main.async {
             CreditsListNetwork.shared.getCredits { [weak self](credits) in
-//                print("Кредиты", credits)
                 
                 self?.Credits = credits
                 credits.forEach { [weak self] (item) in
                     if item.is_best == true {
-                        print("best")
                         let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: item.min_rate, max_time: item.max_time)
                         self?.bannersArray.append(bestCredit)
                     }
                 }
              
                 self?.bannersArray.removeFirst()
-                print("count", self?.bannersArray.count)
                 self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
                 self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
                 self?.mainCollectionView.reloadData()
@@ -260,7 +260,8 @@ extension CreditsListViewController: CreditsListCellDelegate {
             self.mainCollectionView.dataSource = self
             self.mainCollectionView.delegate = self
             self.mainCollectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
-            
+
+            self.mainCollectionView.isSkeletonable = true
             
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 355, height: 138)
@@ -302,10 +303,11 @@ extension CreditsListViewController: CreditsListCellDelegate {
     @objc func favouriteButtonTapped() {
         let secondVC = CreditListFavouriteViewController(nibName: "CreditListFavouriteViewController", bundle: nil)
         self.navigationController?.pushViewController(secondVC, animated: true)
-        print("tapped")
     }
     
     @objc func sortingButtonTapped() {
            print("tapped")
        }
 }
+
+

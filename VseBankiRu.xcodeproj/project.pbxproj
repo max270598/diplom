@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7304D0324545F5100F0AECF /* CreditsPromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */; };
+		A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
-		A742A22624328B060008AEEF /* CreditsPromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */; };
-		A742A22724328B060008AEEF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */; };
 		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
 		A74480462444922800FD251C /* CreditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A74480442444922800FD251C /* CreditCollectionViewCell.xib */; };
 		A744804E244F4B7300FD251C /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744804C244F4B7300FD251C /* CreditViewController.swift */; };
@@ -75,10 +75,10 @@
 		299A7C7C20C649BB99026F55 /* Pods-VseBankiRu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.release.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.release.xcconfig"; sourceTree = "<group>"; };
 		4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VseBankiRu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		784D20937057BBD2AC0B4F01 /* Pods-VseBankiRu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.debug.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.debug.xcconfig"; sourceTree = "<group>"; };
+		A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPromoCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
-		A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPromoCollectionViewCell.swift; sourceTree = "<group>"; };
-		A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
 		A74480442444922800FD251C /* CreditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCollectionViewCell.xib; sourceTree = "<group>"; };
 		A744804C244F4B7300FD251C /* CreditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
@@ -170,11 +170,37 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A7304D052454DC9000F0AECF /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				A7304D072454DCAF00F0AECF /* BunnerCell */,
+				A7304D062454DCA100F0AECF /* CreditCell */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		A7304D062454DCA100F0AECF /* CreditCell */ = {
+			isa = PBXGroup;
+			children = (
+				A74480432444922800FD251C /* CreditCollectionViewCell.swift */,
+				A74480442444922800FD251C /* CreditCollectionViewCell.xib */,
+			);
+			path = CreditCell;
+			sourceTree = "<group>";
+		};
+		A7304D072454DCAF00F0AECF /* BunnerCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */,
+				A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */,
+			);
+			path = BunnerCell;
+			sourceTree = "<group>";
+		};
 		A742A21B243286330008AEEF /* CreditsList */ = {
 			isa = PBXGroup;
 			children = (
 				A744AAF42440FBEA009B5404 /* CreditsListNetwork */,
-				A742A22324328AD60008AEEF /* Cells */,
 				A742A22224328A570008AEEF /* Controller */,
 				A742A22124328A500008AEEF /* View */,
 				A742A22024328A470008AEEF /* Model */,
@@ -194,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				A742A21D243287750008AEEF /* CreditsListViewController.xib */,
+				A7304D052454DC9000F0AECF /* SubViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,17 +231,6 @@
 				A742A21C243287750008AEEF /* CreditsListViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		A742A22324328AD60008AEEF /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A742A22424328B060008AEEF /* CreditsPromoCollectionViewCell.swift */,
-				A742A22524328B060008AEEF /* CreditsPromoCollectionViewCell.xib */,
-				A74480432444922800FD251C /* CreditCollectionViewCell.swift */,
-				A74480442444922800FD251C /* CreditCollectionViewCell.xib */,
-			);
-			path = Cells;
 			sourceTree = "<group>";
 		};
 		A7448050244F4EE700FD251C /* Credit */ = {
@@ -647,7 +663,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7C3CB7723FEAEF500F5DB01 /* SF-Pro-Text-Regular.otf in Resources */,
-				A742A22724328B060008AEEF /* CreditsPromoCollectionViewCell.xib in Resources */,
 				A7C3CB7923FEAEF500F5DB01 /* SF-Pro-Display-Regular.otf in Resources */,
 				A7C3CB7623FEAEF500F5DB01 /* SF-Compact-Text-Regular.otf in Resources */,
 				A7C3CB7823FEAEF500F5DB01 /* SF-Pro-Text-Bold.otf in Resources */,
@@ -660,6 +675,7 @@
 				A796784323ED82A700CE4E94 /* ServiceTypeCollectionViewCell.xib in Resources */,
 				A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */,
 				A796783523ED812900CE4E94 /* LaunchScreen.storyboard in Resources */,
+				A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */,
 				A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */,
 				A796783223ED812900CE4E94 /* Assets.xcassets in Resources */,
 				A796782D23ED812600CE4E94 /* Main.storyboard in Resources */,
@@ -727,12 +743,12 @@
 				A7CBA4A6243FDF7A009CB3E0 /* VerificationViewController.swift in Sources */,
 				A78DF57723FDACED0060F5A2 /* MainNavigationController.swift in Sources */,
 				A7F1344C24523604000FF164 /* CreditListFavouriteService.swift in Sources */,
-				A742A22624328B060008AEEF /* CreditsPromoCollectionViewCell.swift in Sources */,
 				A796783D23ED81D000CE4E94 /* CatalogViewController.swift in Sources */,
 				A7F1343C2450B8F5000FF164 /* UICollectionCell.swift in Sources */,
 				A7CBA4252439132C009CB3E0 /* UIViewController+Extension.swift in Sources */,
 				A7C3CB8123FEDD7000F5DB01 /* Gradient.swift in Sources */,
 				A796783023ED812600CE4E94 /* VseBankiRu.xcdatamodeld in Sources */,
+				A7304D0324545F5100F0AECF /* CreditsPromoCollectionViewCell.swift in Sources */,
 				A744AAF32440FBCE009B5404 /* CreditsListNetwork.swift in Sources */,
 				A744AAEF2440F56B009B5404 /* User.swift in Sources */,
 				A7CBA4A1243FD834009CB3E0 /* UIView+Extensions.swift in Sources */,

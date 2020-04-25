@@ -39,6 +39,9 @@
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzk-uH-XlM">
                                 <rect key="frame" x="0.0" y="20.5" width="8.5" height="23"/>
@@ -59,12 +62,18 @@
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvk-1z-ahV">
                                 <rect key="frame" x="0.0" y="19.5" width="8" height="21.5"/>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="18"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                     </stackView>
@@ -76,18 +85,24 @@
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8K5-bT-Qhe">
-                        <rect key="frame" x="321" y="10" width="44" height="52"/>
+                        <rect key="frame" x="321" y="10" width="44" height="88"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGd-l3-M1x">
-                                <rect key="frame" x="0.0" y="0.0" width="44" height="22"/>
+                                <rect key="frame" x="0.0" y="0.0" width="44" height="40"/>
                                 <state key="normal" image="icon_like"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="favouriteButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="OOS-AS-9mX"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tet-gI-L5q">
-                                <rect key="frame" x="0.0" y="30" width="44" height="22"/>
+                                <rect key="frame" x="0.0" y="48" width="44" height="40"/>
                                 <state key="normal" image="icon_share"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="shareButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="5He-8o-okt"/>
                                 </connections>
@@ -154,14 +169,20 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="427" height="232"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="arrangeButton" destination="bG1-IV-psh" id="8hD-hl-Mms"/>
                 <outlet property="bankLogoImageView" destination="bcr-J5-DwN" id="We3-iW-FC4"/>
                 <outlet property="creditTypeLabel" destination="MUb-w9-TqF" id="oSX-t4-KtK"/>
                 <outlet property="favouriteButton" destination="bGd-l3-M1x" id="8Jx-rb-zsc"/>
                 <outlet property="rateLabel" destination="vzk-uH-XlM" id="gBI-Fy-6q4"/>
+                <outlet property="rateSkeletonLabel" destination="HsW-KE-NxA" id="mLa-58-q9w"/>
+                <outlet property="separatorView" destination="X6T-6f-9H2" id="4qz-ou-ZHs"/>
                 <outlet property="shareButton" destination="tet-gI-L5q" id="S7I-pt-D3n"/>
                 <outlet property="sumLabel" destination="Gvk-1z-ahV" id="DN4-gM-Eei"/>
+                <outlet property="sumSkeletonLabel" destination="mtc-9P-70R" id="ovl-Wd-egb"/>
             </connections>
             <point key="canvasLocation" x="329.71014492753625" y="102.45535714285714"/>
         </collectionViewCell>

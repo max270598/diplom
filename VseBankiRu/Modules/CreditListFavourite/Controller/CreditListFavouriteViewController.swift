@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class CreditListFavouriteViewController: UIViewController {
 
@@ -74,6 +75,11 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
 
 
 extension CreditListFavouriteViewController: CreditsListCellDelegate {
+    func openCredit(url: String, sender: UIView) {
+        let svc = SFSafariViewController(url: URL(string: url)!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
     func shareLink(url: String, sender: UIView) {
         var sourceView: UIView = self.collectionView
         if UIDevice.current.userInterfaceIdiom == .pad {
