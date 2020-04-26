@@ -14,6 +14,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListViewController">
             <connections>
+                <outlet property="bannerActivityIndicator" destination="yX9-39-kwt" id="YBJ-mn-ehh"/>
                 <outlet property="bannerCollectionView" destination="wYb-EO-fda" id="aQP-04-Wk0"/>
                 <outlet property="bestLabel" destination="JqE-0w-Y06" id="P1K-5N-b1g"/>
                 <outlet property="mainCollectionView" destination="RMu-Za-Xe6" id="mpm-gP-HJJ"/>
@@ -31,6 +32,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzi-fv-pzC">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                     <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yX9-39-kwt">
+                            <rect key="frame" x="169" y="131.5" width="37" height="37"/>
+                            <color key="color" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wYb-EO-fda">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -40,6 +45,9 @@
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            </userDefinedRuntimeAttributes>
                         </collectionView>
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="5RH-7p-k3U">
                             <rect key="frame" x="168" y="213" width="39" height="37"/>
@@ -67,9 +75,14 @@
                         <constraint firstAttribute="bottom" secondItem="wYb-EO-fda" secondAttribute="bottom" id="O5S-0o-mPF"/>
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="Pxc-ib-xii"/>
                         <constraint firstAttribute="bottom" secondItem="5RH-7p-k3U" secondAttribute="bottom" constant="50" id="S1H-yO-DKl"/>
+                        <constraint firstItem="yX9-39-kwt" firstAttribute="centerY" secondItem="Wzi-fv-pzC" secondAttribute="centerY" id="VD7-cP-CsG"/>
                         <constraint firstItem="5RH-7p-k3U" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="fDC-VQ-7Ly"/>
                         <constraint firstItem="JqE-0w-Y06" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="fuT-Fz-zoX"/>
+                        <constraint firstItem="yX9-39-kwt" firstAttribute="centerX" secondItem="Wzi-fv-pzC" secondAttribute="centerX" id="qWc-r1-kky"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="RMu-Za-Xe6">
                     <rect key="frame" x="0.0" y="250" width="375" height="417"/>
@@ -80,6 +93,9 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -94,6 +110,9 @@
                 <constraint firstItem="Wzi-fv-pzC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xPx-xx-qVu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="141" y="145"/>
         </view>
     </objects>

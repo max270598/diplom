@@ -27,18 +27,18 @@ class CreditsListViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     @IBOutlet weak var mainCollectionViewTopConstr: NSLayoutConstraint!
     
+    @IBOutlet weak var bannerActivityIndicator: UIActivityIndicatorView!
     
     
     
-//    @IBOutlet weak var tableView: UITableView!
-//    @IBOutlet weak var tableViewTopConstrToSliderView: NSLayoutConstraint!
-//
-    
-    
-    
+
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
-    var Credits: [CreditModel]?
+    var creditsArray: [CreditModel]? {
+        didSet {
+            
+        }
+    }
     var bannersArray: [BannersSubModuleBanner] = [
     BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", short_sum: "-", min_rate: "-", max_time: "-")]
     private var currentPage: Int = 0 {
@@ -61,7 +61,19 @@ class CreditsListViewController: UIViewController {
         setupMainCollection()
         setupPageControl()
         
-        downloadCredits()
+        skeletonShow()
+        
+        downloadCredits { [weak self] (credits, banners) in
+            self?.creditsArray = credits
+            self?.bannersArray = banners
+            
+            self?.bannersArray.removeFirst()
+                           self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
+            
+                           self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
+                           self?.mainCollectionView.reloadData()
+            self?.skeletonHide()
+        }
         
         
         self.addTableViewCorners()
@@ -74,12 +86,24 @@ class CreditsListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.mainCollectionView.reloadData()
-        
+        self.bannerCollectionView.reloadData()
     }
     
     
 
 
+}
+
+//Skeleton View
+extension CreditsListViewController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+       
+            
+        return "CreditSkeletonCollectionViewCell"
+        //CreditSkeletonCollectionViewCell
+            
+        }
+    
 }
 
 //Datasourse Delegate
@@ -90,23 +114,17 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
             return 2
 
         }
-        return self.Credits?.count ?? 10
+        return self.creditsArray?.count ?? 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.bannerCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
-        return cell
-        } else {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
-            if self.Credits != nil {
-                cell.skeletonHide()
-                cell.configure(with: Credits![indexPath.row])
+            if self.creditsArray != nil {
+                cell.configure(with: creditsArray![indexPath.row])
             cell.delegate = self
             }
         return cell
-        }
     }
     
     
@@ -125,22 +143,19 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
 
         if let model = data as? BannersSubModuleBannerProtocol {
-            cell.backImageView.kf.setImage(with: URL(string: model.background_image))
-            cell.bankLogoImageView.kf.setImage(with: URL(string: model.bank_logo_url))
-            cell.rateLabel.text = model.min_rate
-            cell.sumLabel.text = model.short_sum
-            cell.timeLabel.text = model.max_time
+            cell.configure(with: model)
+            
         }
 
         return cell
     }
-    
+
     func didEndScrolling(inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
         guard let currentPage = self.bannerCollectionView.visibleIndexPath?.row else { return }
         if (self.currentPage != (currentPage - 1)) { self.currentPage = (currentPage - 1) }
     }
     //Mark: FIX когда будут готовы другие слайды
-    
+
 //    func didSelectItem(atIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
 //        guard let bannerModel = self.banners[originalIndex] as? BannersSubModuleInputBannerProtocol else { return }
 //        self.output?.show(banner: bannerModel)
@@ -208,22 +223,19 @@ extension CreditsListViewController: CreditsListCellDelegate {
     
  
     
-    func downloadCredits() {
+    func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
         DispatchQueue.main.async {
             CreditsListNetwork.shared.getCredits { [weak self](credits) in
-                
-                self?.Credits = credits
-                credits.forEach { [weak self] (item) in
+                var banners = Array<BannersSubModuleBanner>()
+                credits.forEach {  (item) in
                     if item.is_best == true {
                         let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: item.min_rate, max_time: item.max_time)
-                        self?.bannersArray.append(bestCredit)
+                        banners.append(bestCredit)
                     }
                 }
              
-                self?.bannersArray.removeFirst()
-                self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
-                self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
-                self?.mainCollectionView.reloadData()
+                complition(credits, banners)
+               
             }
         }
         
@@ -248,19 +260,29 @@ extension CreditsListViewController: CreditsListCellDelegate {
         
         func setupBannerCollection() {
           
+            self.bannerCollectionView.delegate = self
+            self.bannerCollectionView.dataSource = self
             self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
             
             self.bannerCollectionView.isPagingEnabled = true
             
             let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
             infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
+            
+            let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            let blurEffectView = UIVisualEffectView(effect: blurEffect)
+            blurEffectView.tag = 1000
+            blurEffectView.frame = bannerCollectionView.bounds
+            blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            bannerCollectionView.addSubview(blurEffectView)
+            
         }
         
         func setupMainCollection() {
             self.mainCollectionView.dataSource = self
             self.mainCollectionView.delegate = self
             self.mainCollectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
-
+            self.mainCollectionView.register(UINib(nibName: "CreditSkeletonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditSkeletonCollectionViewCell")
             self.mainCollectionView.isSkeletonable = true
             
             let layout = UICollectionViewFlowLayout()
@@ -308,6 +330,34 @@ extension CreditsListViewController: CreditsListCellDelegate {
     @objc func sortingButtonTapped() {
            print("tapped")
        }
+    
+    func skeletonShow() {
+        
+        let gradient = SkeletonGradient(baseColor: .clouds)
+        let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+        mainCollectionView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
+        self.bannerCollectionView.isUserInteractionEnabled = false
+        
+        
+        self.bannerActivityIndicator.startAnimating()
+        self.bannerActivityIndicator.hidesWhenStopped = true
+        
+
+        bannerActivityIndicator.layer.zPosition = 200
+        
+    }
+    
+    func skeletonHide() {
+        self.bannerCollectionView.isUserInteractionEnabled = true
+
+        self.mainCollectionView.hideSkeleton(transition: .crossDissolve(0.5))
+        self.bannerActivityIndicator.stopAnimating()
+        UIView.animate(withDuration: 2) {
+            self.bannerCollectionView.viewWithTag(1000)?.alpha = 0
+        }
+        
+        
+    }
 }
 
 

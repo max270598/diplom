@@ -28,6 +28,7 @@ class CreditsPromoCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.viewsArray = [self.sumView, self.rateView, self.timeView, self.bankLogoImageView]
+        self.hideAllViews()
         // Initialization code
     }
 
@@ -44,5 +45,33 @@ extension CreditsPromoCollectionViewCell {
             view.clipsToBounds = true
             view.cornerRadius = 8
         }
+    }
+    
+    func configure(with model: BannersSubModuleBannerProtocol) {
+        
+        self.rateLabel.text = model.min_rate
+        self.sumLabel.text = model.short_sum
+        self.timeLabel.text = model.max_time
+        
+        if let photoUrl = URL(string: model.bank_logo_url) {
+            self.bankLogoImageView.kf.indicatorType = .activity
+            self.bankLogoImageView.kf.setImage(with: photoUrl)
+        }
+        
+        if let backPhotoUrl = URL(string: model.background_image) {
+            self.backImageView.kf.indicatorType = .activity
+            self.backImageView.kf.setImage(with: backPhotoUrl)
+        }
+        
+        self.showAllViews()
+    }
+    
+    func hideAllViews() {
+        viewsArray.forEach {$0.alpha = 0}
+    }
+    
+    func showAllViews() {
+                    self.viewsArray.forEach {$0.alpha = 1}
+        
     }
 }

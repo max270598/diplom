@@ -32,7 +32,6 @@ class CreditCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var allViewsSkeleton: [UIView] = []
     
     // Item ID for Save in Favourite
     private var itemId: String?
@@ -43,14 +42,9 @@ class CreditCollectionViewCell: UICollectionViewCell {
     private var deleteClosure: (()->Void)?
     
     
-    private var shadowLayer: CAShapeLayer!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.allViewsSkeleton = [bankLogoImageView, creditTypeLabel, favouriteButton, shareButton,rateLabel,rateSkeletonLabel,sumLabel,sumSkeletonLabel,separatorView,arrangeButton]
-        self.skeletonShow()
-        self.setShadow()
-        // Initialization code
+        
     }
    
     
@@ -68,22 +62,8 @@ class CreditCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-            if shadowLayer == nil {
-                shadowLayer = CAShapeLayer()
-                shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 8).cgPath
-                shadowLayer.fillColor = UIColor.white.cgColor
-
-                shadowLayer.shadowColor = UIColor.darkGray.cgColor
-                shadowLayer.shadowPath = shadowLayer.path
-                shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-                shadowLayer.shadowOpacity = 0.8
-                shadowLayer.shadowRadius = 2
-
-                layer.insertSublayer(shadowLayer, at: 0)
-                //layer.insertSublayer(shadowLayer, below: nil) // also works
-            }
-        }
+        self.setShadow()
+    }
     }
 
     
@@ -155,45 +135,10 @@ extension CreditCollectionViewCell {
 
         }
     }
+
     
-    func skeletonShow() {
-        
-        DispatchQueue.main.async {
-            let gradient = SkeletonGradient(baseColor: .clouds)
-            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
-        self.arrangeButton.titleLabel?.text = ""
-            self.allViewsSkeleton.forEach {
-                $0.isSkeletonable = true
-                $0.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
-            }
-    }
-    }
-    
-    func skeletonHide() {
-        DispatchQueue.main.async {
-            self.arrangeButton.titleLabel?.text = "Офрмить"
-            self.allViewsSkeleton.forEach {
-                $0.hideSkeleton(transition: .crossDissolve(0.5))
-            }
-            }
-        
-    }
         
 
 }
 
-//  func S() {
-//        DispatchQueue.main.async {
-//            let gradient = SkeletonGradient(baseColor: .clouds)
-//                     let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .bottomRightTopLeft)
-//                     self.mainCollectionView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
-//        }
-//
-//      }
-//    func hideSkeleton() {
-//        DispatchQueue.main.async {
-//                    self.mainCollectionView.hideSkeleton(transition: .crossDissolve(0.5))
-//
-//        }
-//
-//    }
+

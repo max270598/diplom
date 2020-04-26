@@ -122,7 +122,7 @@ extension CreditListFavouriteViewController {
     
     func loadFavouriteCredits() {
         CreditListFavouriteNetwork.shared.getFavouriteCredits(idArray: self.favoritesItems) { (favouriteCredits) in
-            guard !favouriteCredits.isEmpty else { self.collectionView.isHidden = true
+            guard !favouriteCredits.isEmpty else { self.collectionView.alpha = 0
                 return }
             self.Credits = favouriteCredits
             self.collectionView.reloadData()

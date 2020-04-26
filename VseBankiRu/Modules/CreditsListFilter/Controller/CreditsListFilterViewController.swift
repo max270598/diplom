@@ -1,15 +1,17 @@
 //
-//  CreditViewController.swift
+//  CreditsListFilterViewController.swift
 //  VseBankiRu
 //
-//  Created by Мах Ol on 4/21/20.
+//  Created by Мах Ol on 4/27/20.
 //  Copyright © 2020 Мах Ol. All rights reserved.
 //
 
 import UIKit
 
-class CreditViewController: UIViewController {
-
+class CreditsListFilterViewController: UIViewController {
+    @IBOutlet weak var resultButton: LoadingButton!
+    @IBOutlet weak var filerTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

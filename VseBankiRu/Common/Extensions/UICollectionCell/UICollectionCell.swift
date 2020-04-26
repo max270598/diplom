@@ -17,16 +17,21 @@ extension UICollectionViewCell {
     
     func setShadow() {
         // Set Border Radius
-        self.contentView.layer.cornerRadius     = 8
-        self.contentView.layer.masksToBounds    = true
-        // Set Shadow
-        self.layer.backgroundColor  = UIColor.clear.cgColor
-        self.layer.shadowColor      = #colorLiteral(red: 0.8980392157, green: 0.9137254902, blue: 0.9294117647, alpha: 1).cgColor
-        self.layer.shadowOffset     = CGSize(width: 0.0, height: 5.0)
-        self.layer.shadowRadius     = 10.0
-        self.layer.shadowOpacity    = 1.0
-        self.layer.masksToBounds    = false
-    }
+        var shadowLayer: CAShapeLayer!
+        if shadowLayer == nil {
+                 shadowLayer = CAShapeLayer()
+                 shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
+                 shadowLayer.fillColor = UIColor.white.cgColor
+            self.contentView.layer.masksToBounds = true
+                 shadowLayer.shadowColor = UIColor.darkGray.cgColor
+                 shadowLayer.shadowPath = shadowLayer.path
+                 shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+                 shadowLayer.shadowOpacity = 0.8
+                 shadowLayer.shadowRadius = 2
+            self.layer.masksToBounds = false
+                 layer.insertSublayer(shadowLayer, at: 0)
+                 //layer.insertSublayer(shadowLayer, below: nil) // also works
+             }    }
     
     // MARK: Active Cell Transform
     
