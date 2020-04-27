@@ -8,9 +8,16 @@
 
 import Foundation
 
-protocol AutoMallFilterItemCellDelegate: class {
+protocol CreditsListFilterItemCellDelegate: class {
     
     func removeItem(id paramId: String)
+    func switchChanged(statemant: Bool)
+
+}
+
+protocol CreditsListFilterSwitchCellDelegate {
+        func switchChanged(statemant: Bool)
+
 }
 
 //extension AutoMallFilterPresenter: AutoMallFilterItemCellDelegate {

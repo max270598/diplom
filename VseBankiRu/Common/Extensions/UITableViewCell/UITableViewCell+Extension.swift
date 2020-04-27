@@ -12,9 +12,9 @@ import UIKit
 // MARK: Set clear BG Color for selected state
 extension UITableViewCell {
     
-    func changeSelectedBG(_ color: UIColor? = R.color.selectedCell()) {
-        let bgColorView = UIView()
-        bgColorView.backgroundColor = color
-        self.selectedBackgroundView = bgColorView
-    }
+//    func changeSelectedBG(_ color: UIColor? = R.color.selectedCell()) {
+//        let bgColorView = UIView()
+//        bgColorView.backgroundColor = color
+//        self.selectedBackgroundView = bgColorView
+//    }
 }

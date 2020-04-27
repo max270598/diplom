@@ -17,7 +17,7 @@ class CreditsListFilterItemCell: UITableViewCell {
     
      private var checkedItems = [String: String]()
         
-        weak var delegate: AutoMallFilterItemCellDelegate?
+        weak var delegate: CreditsListFilterItemCellDelegate?
         
         override func awakeFromNib() {
             super.awakeFromNib()
@@ -25,7 +25,7 @@ class CreditsListFilterItemCell: UITableViewCell {
             self.selectedItemView.isHidden = true
             
             // MARK: Set Selected Cell Background Color
-            self.changeSelectedBG()
+//            self.changeSelectedBG()
         }
         
         override func prepareForReuse() {
@@ -61,20 +61,12 @@ class CreditsListFilterItemCell: UITableViewCell {
             self.titleLabel.isHidden    = false
         }
         
-        func set(selectedItems: [String: String]) {
+        func set(selectedItem: String) {
             
-            self.checkedItems = selectedItems
-            
-            switch selectedItems.count {
-            case 1:
-                self.selectedItemLabel.text         = self.checkedItems.first?.value
+            self.selectedItemLabel.text = selectedItem
                 self.selectedItemView.isHidden      = false
-            case let count where count > 1:
-                self.selectedItemLabel.text         = self.checkedItems.first?.value
-                self.selectedItemView.isHidden      = false
+//            self.titleLabel.isHidden = true
                 
-            default:
-                self.resetCell()
-            }
+            
         }
     }
