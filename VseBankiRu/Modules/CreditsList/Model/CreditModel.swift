@@ -16,24 +16,32 @@ import InfiniteScrolling
 
 
 struct CreditModel {
-    let id: String
+    let id: String!
     let type: String
+    let bank_name: String
     let background_image: String
     let bank_logo_url: String
     let credit_url: String
     let sravni_url: String
+    let min_rate: Double?
+    let min_sum_value: Int
+    let max_sum_value: Int
+    let goal: String
+    let min_time_value: Double
+    let max_time_value: Double
+    let noDeposit: Bool
+    let noIncomeProof: Bool
+    let noInsurance: Bool
+    let reviewUpThreeDays: Bool
     let short_sum: String
-    let min_rate: String
-    let full_sum: String
-    let full_time: String
-    let max_time: String
+    let short_time: String
     let is_best: Bool
-    let description: String
-    let rate_description: String
-    var rates: [Rate]
-    let documents: Documents
-    let requirements: Requirements
-    let conditions: Conditions
+//    let description: String
+//    let rate_description: String
+//    var rates: [Rate]
+//    let documents: Documents
+//    let requirements: Requirements
+//    let conditions: Conditions
     
     let ref: DatabaseReference? //все объекты имееют точно е расположение в бд и чтоыб к ним добрать нам нужен из референс, референс опциональный потому что мы создаем его локально, а появляется он тольк окогда попадает в базу данных
     
@@ -41,29 +49,37 @@ struct CreditModel {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         self.id = snapshotValue["id"] as! String
         self.type = snapshotValue["type"] as! String
+        self.bank_name = snapshotValue["bank_name"] as! String
         self.background_image = snapshotValue["background_image"] as! String
         self.bank_logo_url = snapshotValue["bank_logo_url"] as! String
         self.credit_url = snapshotValue["credit_url"] as! String
-        
         self.sravni_url = snapshotValue["sravni_url"] as! String
-
+        self.min_rate = snapshotValue["min_rate"] as? Double
+        self.min_sum_value = snapshotValue["min_sum_value"] as! Int
+        self.max_sum_value = snapshotValue["max_sum_value"] as! Int
+        self.goal = snapshotValue["goal"] as! String
+        self.min_time_value = snapshotValue["min_time_value"] as! Double
+        self.max_time_value = snapshotValue["max_time_value"] as! Double
+        self.noDeposit = snapshotValue["noDeposit"] as! Bool
+        self.noIncomeProof = snapshotValue["noIncomeProof"] as! Bool
+        self.noInsurance = snapshotValue["noInsurance"] as! Bool
+        self.reviewUpThreeDays = snapshotValue["reviewUpThreeDays"] as! Bool
         self.short_sum = snapshotValue["short_sum"] as! String
-        self.min_rate = snapshotValue["min_rate"] as! String
-        self.full_sum = snapshotValue["full_sum"] as! String
-        self.full_time = snapshotValue["full_time"] as! String
-        self.max_time = snapshotValue["max_time"] as! String
+        self.short_time = snapshotValue["short_time"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
-        self.description = snapshotValue["description"] as! String
-        self.rate_description = snapshotValue["rate_description"] as! String
-        self.rates = []
-        for item in snapshot.childSnapshot(forPath: "rates").children {
-                       let rate = Rate(snapshot: item as! DataSnapshot)
-                    self.rates.append(rate)
-                   }
-        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
-        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
-        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
-        
+
+//        self.is_best = snapshotValue["is_best"] as! Bool
+//        self.description = snapshotValue["description"] as! String
+//        self.rate_description = snapshotValue["rate_description"] as! String
+//        self.rates = []
+//        for item in snapshot.childSnapshot(forPath: "rates").children {
+//                       let rate = Rate(snapshot: item as! DataSnapshot)
+//                    self.rates.append(rate)
+//                   }
+//        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
+//        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
+//        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
+//
         self.ref = snapshot.ref
 
 

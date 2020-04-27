@@ -34,6 +34,8 @@ class CreditsListViewController: UIViewController {
 
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
+    var filteredArray: [CreditModel] = []
+//    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 0, minValue: 0, value: 1000, woInsurance: nil, woDeposit: nil, woIncomeProof: nil, woReviewUpThreeDays: nil)
     var creditsArray: [CreditModel]? {
         didSet {
             
@@ -67,7 +69,7 @@ class CreditsListViewController: UIViewController {
             self?.creditsArray = credits
             self?.bannersArray = banners
             
-            self?.bannersArray.removeFirst()
+//            self?.bannersArray.removeFirst()
                            self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
             
                            self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
@@ -122,6 +124,7 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
             if self.creditsArray != nil {
                 cell.configure(with: creditsArray![indexPath.row])
+                let a = creditsArray![indexPath.row].ref
             cell.delegate = self
             }
         return cell
@@ -229,9 +232,10 @@ extension CreditsListViewController: CreditsListCellDelegate {
                 var banners = Array<BannersSubModuleBanner>()
                 credits.forEach {  (item) in
                     if item.is_best == true {
-                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: item.min_rate, max_time: item.max_time)
+                            let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
                         banners.append(bestCredit)
-                    }
+                        }
+                    
                 }
              
                 complition(credits, banners)
@@ -320,6 +324,7 @@ extension CreditsListViewController: CreditsListCellDelegate {
 
         self.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
         
+        
     }
     
     @objc func favouriteButtonTapped() {
@@ -329,6 +334,8 @@ extension CreditsListViewController: CreditsListCellDelegate {
     
     @objc func sortingButtonTapped() {
            print("tapped")
+//        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
+        
        }
     
     func skeletonShow() {

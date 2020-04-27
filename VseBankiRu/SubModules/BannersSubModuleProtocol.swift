@@ -15,7 +15,7 @@ protocol BannersSubModuleBannerProtocol: InfiniteScollingData {
     var background_image: String { get set }
     var bank_logo_url: String { get set }
     var short_sum: String { get set }
-    var min_rate: String { get set }
+    var min_rate: String? { get set }
     var max_time: String { get set }
     
 }
@@ -25,10 +25,10 @@ protocol BannersSubModuleBannerProtocol: InfiniteScollingData {
         var background_image: String
         var bank_logo_url: String
         var short_sum: String
-        var min_rate: String
+        var min_rate: String?
         var max_time: String
         
-    init(id: String, background_image: String, bank_logo_url: String, short_sum: String, min_rate: String, max_time: String ) {
+    init(id: String, background_image: String, bank_logo_url: String, short_sum: String, min_rate: String?, max_time: String ) {
         self.id = id
         self.background_image = background_image
         self.bank_logo_url = bank_logo_url

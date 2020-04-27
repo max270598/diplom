@@ -27,6 +27,7 @@
 		A7304D3D2457304000F0AECF /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D3C2457304000F0AECF /* Numeric.swift */; };
 		A7304D432457400600F0AECF /* CreditsListFilterSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D412457400600F0AECF /* CreditsListFilterSwitchCell.swift */; };
 		A7304D442457400600F0AECF /* CreditsListFilterSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D422457400600F0AECF /* CreditsListFilterSwitchCell.xib */; };
+		A7304D4724578C2800F0AECF /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D4624578C2800F0AECF /* Double+Extension.swift */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
 		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
@@ -111,6 +112,7 @@
 		A7304D3C2457304000F0AECF /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
 		A7304D412457400600F0AECF /* CreditsListFilterSwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterSwitchCell.swift; sourceTree = "<group>"; };
 		A7304D422457400600F0AECF /* CreditsListFilterSwitchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListFilterSwitchCell.xib; sourceTree = "<group>"; };
+		A7304D4624578C2800F0AECF /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
 		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -341,6 +343,14 @@
 				A7304D422457400600F0AECF /* CreditsListFilterSwitchCell.xib */,
 			);
 			path = CreditsListFilterSwitchCell;
+			sourceTree = "<group>";
+		};
+		A7304D4524578C1200F0AECF /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				A7304D4624578C2800F0AECF /* Double+Extension.swift */,
+			);
+			path = Double;
 			sourceTree = "<group>";
 		};
 		A742A21B243286330008AEEF /* CreditsList */ = {
@@ -599,6 +609,7 @@
 		A7CBA4232439130B009CB3E0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A7304D4524578C1200F0AECF /* Double */,
 				A7304D3B2457302D00F0AECF /* Numeric */,
 				A7304D3824572FCC00F0AECF /* Formatter */,
 				A7304D28245647B900F0AECF /* UITableViewCell */,
@@ -910,6 +921,7 @@
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
 				A796782823ED812600CE4E94 /* SceneDelegate.swift in Sources */,
+				A7304D4724578C2800F0AECF /* Double+Extension.swift in Sources */,
 				A7CBA4202438DB5F009CB3E0 /* firstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

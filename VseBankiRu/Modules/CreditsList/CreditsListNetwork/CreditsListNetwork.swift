@@ -16,7 +16,10 @@ class CreditsListNetwork {
     let ref = Database.database().reference(withPath: "credits").child("all_credits")
     
     
+    
     func getCredits( completion: @escaping (_ creditsArray: [CreditModel]) -> Void ) {
+        print("ref", ref)
+
         var credits = Array<CreditModel>()
         ref.observe(.value) { (snapshot) in //получаем данные по ref
             for item in snapshot.children {

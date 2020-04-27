@@ -28,6 +28,7 @@ class CatalogViewController: UIViewController {
     @IBOutlet weak var serviceTypeCollectionView: UICollectionView!
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
