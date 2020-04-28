@@ -123,8 +123,6 @@ extension CreditCollectionViewCell {
     func configure(with model: CreditModel) {
         if let minRate = model.min_rate {
             self.rateLabel.text = String(minRate) + "%"
-        } else {
-            self.rateLabel.text = "Не указана"
         }
         self.creditTypeLabel.text            = model.type
         self.sumLabel.text = model.short_sum

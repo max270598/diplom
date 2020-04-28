@@ -24,7 +24,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="138"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sberbank" translatesAutoresizingMaskIntoConstraints="NO" id="bcr-J5-DwN">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bcr-J5-DwN">
                         <rect key="frame" x="20" y="10" width="100" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" id="hjV-6Q-5Se"/>
@@ -193,6 +193,5 @@
     <resources>
         <image name="icon_like" width="20" height="20"/>
         <image name="icon_share" width="20" height="20"/>
-        <image name="sberbank" width="1932" height="1345"/>
     </resources>
 </document>

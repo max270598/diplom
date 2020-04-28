@@ -34,7 +34,8 @@ class CreditsListViewController: UIViewController {
 
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
-    var filteredArray: [CreditModel] = []
+    var filteredArray: [CreditModel]? = []
+    var isFiltered: Bool = false
 //    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 0, minValue: 0, value: 1000, woInsurance: nil, woDeposit: nil, woIncomeProof: nil, woReviewUpThreeDays: nil)
     var creditsArray: [CreditModel]? {
         didSet {
@@ -253,8 +254,6 @@ extension CreditsListViewController: CreditsListCellDelegate {
  private extension CreditsListViewController {
     
     func setupBestLabel() {
-    //        self.bestLabel.borderWidth = 1
-            self.bestLabel.borderColor = UIColor.black
             
             self.bestLabel.clipsToBounds = true
             self.bestLabel.layer.cornerRadius = 20
@@ -333,9 +332,9 @@ extension CreditsListViewController: CreditsListCellDelegate {
     }
     
     @objc func sortingButtonTapped() {
-           print("tapped")
-//        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
-        
+        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
+        filterVC.allCreditsArray = self.isFiltered == false ? self.creditsArray ?? [] : self.filteredArray ?? []
+        self.navigationController?.pushViewController(filterVC, animated: true)
        }
     
     func skeletonShow() {

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListFilterDrawerViewController" customModule="VseBankiRu" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zbJ-6e-FTf">
+                    <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Svr-nj-E4e" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="465" width="375" height="202"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Svr-nj-E4e" secondAttribute="height" multiplier="375:202" id="CNk-bR-baT"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wxU-Uh-OmN">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="EC7-mU-CHg"/>
+                    </constraints>
+                    <items>
+                        <navigationItem id="otz-wE-fYf"/>
+                    </items>
+                </navigationBar>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="zbJ-6e-FTf" firstAttribute="top" secondItem="wxU-Uh-OmN" secondAttribute="bottom" id="4OS-Wr-ffT"/>
+                <constraint firstItem="wxU-Uh-OmN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="6hT-xu-vux"/>
+                <constraint firstItem="wxU-Uh-OmN" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="HOJ-5g-QqG"/>
+                <constraint firstItem="Svr-nj-E4e" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="MXk-uC-fQI"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Svr-nj-E4e" secondAttribute="trailing" id="PMp-PP-QrK"/>
+                <constraint firstItem="wxU-Uh-OmN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="PO5-43-6gQ"/>
+                <constraint firstItem="zbJ-6e-FTf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="QiY-AW-wFq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zbJ-6e-FTf" secondAttribute="bottom" id="gzk-ah-7cW"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zbJ-6e-FTf" secondAttribute="trailing" id="yFR-m2-yPg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Svr-nj-E4e" secondAttribute="bottom" id="ziP-Gh-3Sw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="141" y="95"/>
+        </view>
+    </objects>
+</document>

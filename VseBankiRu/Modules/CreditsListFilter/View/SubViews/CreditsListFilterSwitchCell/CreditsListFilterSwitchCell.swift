@@ -17,7 +17,7 @@ class CreditsListFilterSwitchCell: UITableViewCell {
     var delegate: CreditsListFilterItemCellDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        self.selectionStyle = .none
         self.switch.addTarget(self, action: #selector(switchChange), for: .valueChanged)
         // Initialization code
     }
@@ -54,10 +54,12 @@ extension CreditsListFilterSwitchCell {
         self.delegate?.switchChanged(statemant: self.switch.isOn)
     }
 
-func set(title: String) {
+    func set(title: String, state: Bool) {
     self.titleLabel.text = title
-    
+    self.switch.isOn = state
+        
     self.titleLabel.isHidden = false
     self.switch.isHidden = false
-}
+    }
+    
 }
