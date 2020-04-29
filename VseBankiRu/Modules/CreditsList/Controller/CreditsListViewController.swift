@@ -35,7 +35,7 @@ class CreditsListViewController: UIViewController {
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var filteredArray: [CreditModel]? = []
-    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 0, minValue: 0, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
+    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
     var creditsArray: [CreditModel]? {
         didSet {
             

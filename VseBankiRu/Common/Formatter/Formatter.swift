@@ -19,6 +19,7 @@ class Formatter {
     
     static func formatTimeStringToDouble(text: String ) -> Double {
         switch text {
+        case "Любой": return 0
         case "1 месяц": return 0.1
         case "3 месяца":return 0.3
         case "6 месяцев":return 0.6
@@ -37,7 +38,33 @@ class Formatter {
         case "25 лет":return 25
         case "30 лет":return 30
         default:
-            return 0
+            return -1
+        }
+    }
+    
+    static func formatTimeDoubleToString(num: Double) -> String {
+        switch num {
+        case 0: return "Любой"
+        case 0.1: return "1 месяц"
+        case 0.3: return "3 месяца"
+        case 0.6: return "6 месяцев"
+        case 0.9: return "9 месяцев"
+        case 1: return "1 год"
+        case 1.5: return "1,5 года"
+        case 2: return "2 года"
+       case 3: return "3 года"
+       case 4: return "4 года"
+       case 5: return "5 лет"
+       case 6: return "6 лет"
+       case 7: return "7 лет"
+       case 10: return "10 лет"
+       case 15: return "15 лет"
+       case 20: return "20 лет"
+       case 25: return "25 лет"
+        case 30: return "30 лет"
+            
+        default:
+            return ""
         }
     }
     

@@ -16,6 +16,8 @@ class CreditsListFilterDrawerViewController: UIViewController {
     var titleName: String?
     var itemsArray: [String]?
     
+    var selectedFilterIndexPath: IndexPath?
+    
      private(set) lazy var customNavgationItem = UINavigationItem()
     
      var delegate: CreditsListFilterDrawerDelegate?
@@ -29,6 +31,9 @@ class CreditsListFilterDrawerViewController: UIViewController {
         self.setHeaderTitle(self.titleName ?? "")
 
         }
+    
+    override func viewWillAppear(_ animated: Bool) {
+    }
         
        
         
@@ -44,31 +49,68 @@ extension CreditsListFilterDrawerViewController: UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterDrawerCell", for: indexPath) as! CreditsListFilterDrawerCell
         
         cell.titleLabel.text = itemsArray?[indexPath.row]
+        switch titleName {
+        case "Банк":
+            if filterItem?.bankName == itemsArray?[indexPath.row] {cell.tintColor = .systemIndigo
+                cell.accessoryType = .checkmark
+                self.selectedFilterIndexPath = indexPath  }
+            
+        case "Цель кредита":
+            if filterItem?.goal == itemsArray?[indexPath.row] { cell.tintColor = .systemIndigo
+            cell.accessoryType = .checkmark
+            self.selectedFilterIndexPath = indexPath }
+        
+        case "Срок":
+            if filterItem?.time == Formatter.formatTimeStringToDouble(text: itemsArray?[indexPath.row] ?? "") {cell.tintColor = .systemIndigo
+                cell.accessoryType = .checkmark
+                self.selectedFilterIndexPath = indexPath
+            }
+        default:
+            break
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    
+        if (self.selectedFilterIndexPath != indexPath) && (self.selectedFilterIndexPath != nil) {
+            tableView.cellForRow(at: self.selectedFilterIndexPath!)?.accessoryType = .none
+        }
+
         tableView.cellForRow(at: indexPath)?.tintColor = .systemIndigo
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            self.sendDelegate(with: nil)
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            self.sendDelegate(with: itemsArray?[indexPath.row])
+
+        }
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+                tableView.cellForRow(at: indexPath)?.accessoryType = .none
+
+    }
+    
+    func sendDelegate(with item: String?) {
         
         switch titleName {
         case "Банк":
-            self.filterItem?.bankName = itemsArray?[indexPath.row]
+            self.filterItem?.bankName = item
         case "Цель кредита":
-            self.filterItem?.goal = itemsArray?[indexPath.row]
+            self.filterItem?.goal = item
         case "Срок":
-            self.filterItem?.time = Formatter.formatTimeStringToDouble(text: itemsArray?[indexPath.row] ?? "")
+            self.filterItem?.time = Formatter.formatTimeStringToDouble(text: item ?? "")
 
         default:
             return
         }
         
         self.delegate?.updateFilterParametrs(filterItem: self.filterItem!)
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-                tableView.cellForRow(at: indexPath)?.accessoryType = .none
-
     }
 
 }
@@ -82,7 +124,10 @@ extension CreditsListFilterDrawerViewController: UITableViewDelegate, UITableVie
 
 //Setup
 extension CreditsListFilterDrawerViewController {
-    func setupListTableView() {
+    
+    
+    
+        func setupListTableView() {
         self.listTableView.delegate = self as! UITableViewDelegate
         self.listTableView.dataSource = self
         

@@ -38,7 +38,7 @@
                         </connections>
                     </slider>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="фыв" placeholder="100 000 Р" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-83-Ki6">
-                        <rect key="frame" x="270" y="13.5" width="89" height="24.5"/>
+                        <rect key="frame" x="270" y="15" width="89" height="23"/>
                         <color key="textColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="18"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -63,10 +63,10 @@
                     <constraint firstItem="kbd-83-Ki6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Pho-6p-Zp0" secondAttribute="trailing" constant="40" id="1dc-b9-AS0"/>
                     <constraint firstItem="rH2-8L-lPk" firstAttribute="leading" secondItem="Pho-6p-Zp0" secondAttribute="leading" id="2mX-rw-qky"/>
                     <constraint firstItem="rH2-8L-lPk" firstAttribute="centerY" secondItem="KvJ-8f-lW3" secondAttribute="centerY" id="7d5-8O-zMS"/>
+                    <constraint firstItem="kbd-83-Ki6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="88P-A6-cyz"/>
                     <constraint firstItem="c9h-xq-Vcr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Wkv-gu-Tqz"/>
                     <constraint firstAttribute="trailing" secondItem="c9h-xq-Vcr" secondAttribute="trailing" constant="20" id="ZrL-xW-FHr"/>
                     <constraint firstItem="Pho-6p-Zp0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="ZuY-X7-HHe"/>
-                    <constraint firstItem="kbd-83-Ki6" firstAttribute="firstBaseline" secondItem="Pho-6p-Zp0" secondAttribute="firstBaseline" id="aOi-vb-mFO"/>
                     <constraint firstItem="KvJ-8f-lW3" firstAttribute="trailing" secondItem="kbd-83-Ki6" secondAttribute="trailing" id="aU9-uA-Sjd"/>
                     <constraint firstItem="KvJ-8f-lW3" firstAttribute="top" secondItem="c9h-xq-Vcr" secondAttribute="bottom" constant="12" id="fNg-e7-gfz"/>
                     <constraint firstAttribute="trailing" secondItem="kbd-83-Ki6" secondAttribute="trailing" constant="20" id="iqm-cH-JhR"/>
@@ -77,8 +77,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="maxValueLabel" destination="KvJ-8f-lW3" id="KJT-Ea-oWQ"/>
-                <outlet property="minValueLabel" destination="rH2-8L-lPk" id="xdL-QG-0KY"/>
+                <outlet property="maxValueLabel" destination="KvJ-8f-lW3" id="mUx-Tt-nJU"/>
+                <outlet property="minValueLabel" destination="rH2-8L-lPk" id="5Rf-Cs-55f"/>
                 <outlet property="slider" destination="c9h-xq-Vcr" id="ko6-kc-qjm"/>
                 <outlet property="titleLabel" destination="Pho-6p-Zp0" id="BHk-Dg-0qe"/>
                 <outlet property="upperValueTextField" destination="kbd-83-Ki6" id="YBD-oh-0yF"/>

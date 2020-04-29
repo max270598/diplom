@@ -17,11 +17,9 @@
 		A7304D262456446700F0AECF /* CreditsListFilterItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D242456446700F0AECF /* CreditsListFilterItemCell.swift */; };
 		A7304D272456446700F0AECF /* CreditsListFilterItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D252456446700F0AECF /* CreditsListFilterItemCell.xib */; };
 		A7304D2A245647DC00F0AECF /* UITableViewCell+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D29245647DC00F0AECF /* UITableViewCell+Extension.swift */; };
-		A7304D2C2456491700F0AECF /* CreditsListFilterCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D2B2456491700F0AECF /* CreditsListFilterCellDelegate.swift */; };
 		A7304D2F245708C200F0AECF /* CreditsListSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D2D245708C200F0AECF /* CreditsListSliderCell.swift */; };
 		A7304D30245708C200F0AECF /* CreditsListSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D2E245708C200F0AECF /* CreditsListSliderCell.xib */; };
 		A7304D322457125F00F0AECF /* FilterItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D312457125F00F0AECF /* FilterItemModel.swift */; };
-		A7304D3424572BA400F0AECF /* CreditsListFilterDrawerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D3324572BA400F0AECF /* CreditsListFilterDrawerDelegate.swift */; };
 		A7304D3724572ECA00F0AECF /* CurrencySymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D3624572ECA00F0AECF /* CurrencySymbols.swift */; };
 		A7304D3A24572FD900F0AECF /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D3924572FD900F0AECF /* Formatter.swift */; };
 		A7304D3D2457304000F0AECF /* Numeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D3C2457304000F0AECF /* Numeric.swift */; };
@@ -98,11 +96,9 @@
 		A7304D242456446700F0AECF /* CreditsListFilterItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterItemCell.swift; sourceTree = "<group>"; };
 		A7304D252456446700F0AECF /* CreditsListFilterItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListFilterItemCell.xib; sourceTree = "<group>"; };
 		A7304D29245647DC00F0AECF /* UITableViewCell+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Extension.swift"; sourceTree = "<group>"; };
-		A7304D2B2456491700F0AECF /* CreditsListFilterCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterCellDelegate.swift; sourceTree = "<group>"; };
 		A7304D2D245708C200F0AECF /* CreditsListSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListSliderCell.swift; sourceTree = "<group>"; };
 		A7304D2E245708C200F0AECF /* CreditsListSliderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListSliderCell.xib; sourceTree = "<group>"; };
 		A7304D312457125F00F0AECF /* FilterItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemModel.swift; sourceTree = "<group>"; };
-		A7304D3324572BA400F0AECF /* CreditsListFilterDrawerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterDrawerDelegate.swift; sourceTree = "<group>"; };
 		A7304D3624572ECA00F0AECF /* CurrencySymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySymbols.swift; sourceTree = "<group>"; };
 		A7304D3924572FD900F0AECF /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 		A7304D3C2457304000F0AECF /* Numeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Numeric.swift; sourceTree = "<group>"; };
@@ -626,6 +622,7 @@
 		A7CBA42224391303009CB3E0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A7304D3824572FCC00F0AECF /* Formatter */,
 				A7304D502458974300F0AECF /* GlobalVar */,
 				A7304D3524572EAA00F0AECF /* Enums */,
 				A7CBA4232439130B009CB3E0 /* Extensions */,
@@ -638,7 +635,6 @@
 			children = (
 				A7304D4524578C1200F0AECF /* Double */,
 				A7304D3B2457302D00F0AECF /* Numeric */,
-				A7304D3824572FCC00F0AECF /* Formatter */,
 				A7304D28245647B900F0AECF /* UITableViewCell */,
 				A7F1343D2450B90C000FF164 /* UICollectionCell */,
 				A7CBA42C243BDAF9009CB3E0 /* UIViewController */,
@@ -711,8 +707,6 @@
 			isa = PBXGroup;
 			children = (
 				A7F134402450D4BD000FF164 /* ShareLinkDelegate.swift */,
-				A7304D2B2456491700F0AECF /* CreditsListFilterCellDelegate.swift */,
-				A7304D3324572BA400F0AECF /* CreditsListFilterDrawerDelegate.swift */,
 				A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */,
 			);
 			path = Delegates;
@@ -916,7 +910,6 @@
 				A744AAEF2440F56B009B5404 /* User.swift in Sources */,
 				A7CBA4A1243FD834009CB3E0 /* UIView+Extensions.swift in Sources */,
 				A7304D432457400600F0AECF /* CreditsListFilterSwitchCell.swift in Sources */,
-				A7304D2C2456491700F0AECF /* CreditsListFilterCellDelegate.swift in Sources */,
 				A7304D1E2456343700F0AECF /* CreditsListFilterViewController.swift in Sources */,
 				A7F134482450DBFD000FF164 /* CreditListFavouriteViewController.swift in Sources */,
 				A7304D3A24572FD900F0AECF /* Formatter.swift in Sources */,
@@ -931,7 +924,6 @@
 				A7304D262456446700F0AECF /* CreditsListFilterItemCell.swift in Sources */,
 				A7304D3724572ECA00F0AECF /* CurrencySymbols.swift in Sources */,
 				A75D758924092F0400A20824 /* QuotationNetworkService.swift in Sources */,
-				A7304D3424572BA400F0AECF /* CreditsListFilterDrawerDelegate.swift in Sources */,
 				A75D75942409386000A20824 /* QuotationModel.swift in Sources */,
 				A744AAE624409469009B5404 /* EmailVerificationViewController.swift in Sources */,
 				A796784223ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift in Sources */,

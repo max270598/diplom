@@ -16,3 +16,9 @@ protocol CreditsListFilterSwitchCellDelegate {
     func switchChanged(parametr: String, statemant: Bool)
 
 }
+
+protocol CreditsListFilterItemCellDelegate: class {
+
+    func removeItem(row: Int)
+
+}

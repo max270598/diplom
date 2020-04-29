@@ -16,8 +16,8 @@ class CreditsListFilterItemCell: UITableViewCell {
    @IBOutlet weak var selectedItemCloseButton: UIButton!
     
      private var checkedItems = [String: String]()
-        
-//        weak var delegate: CreditsListFilterItemCellDelegate?
+    var cellRow: Int?
+         var delegate: CreditsListFilterItemCellDelegate?
         
         override func awakeFromNib() {
             super.awakeFromNib()
@@ -49,8 +49,9 @@ class CreditsListFilterItemCell: UITableViewCell {
     private extension CreditsListFilterItemCell {
         
         @IBAction func clearSelectedItem(_ sender: UIButton) {
-            guard let checkedItem = self.checkedItems.first else { return }
-//            self.delegate?.removeItem(id: checkedItem.key)
+       
+            self.delegate?.removeItem(row: self.cellRow!)
+                
         }
     }
 
@@ -61,10 +62,11 @@ class CreditsListFilterItemCell: UITableViewCell {
             self.titleLabel.isHidden    = false
         }
         
-        func set(selectedItem: String) {
+        func set(selectedItem: String, indexPathRow: Int) {
             
             self.selectedItemLabel.text = selectedItem
                 self.selectedItemView.isHidden      = false
+            self.cellRow = indexPathRow
 //            self.titleLabel.isHidden = true
                 
             

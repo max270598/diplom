@@ -12,17 +12,18 @@ class CreditsListFilterViewController: UIViewController {
     @IBOutlet weak var resultButton: LoadingButton!
     @IBOutlet weak var filerTableView: UITableView!
     
-    let timeArrayString: [String] = ["Любой", "1 месяц", "3 месяца", "6 месяцев", "9 месяцев", "1 год", "1,5 года",  "2 года", "3 года", "4 года", "5 лет", "6 лет", "6 лет", "7 лет", "10 лет", "15 лет", "20 лет", "25 лет", "30 лет"]
-    let goalArrayString: [String] = [ "Любая", "Просто деньги", "Рефинансирование", "Образование", "Ремонт", "Другая"]
+    let timeArrayString: [String] = ["Любой", "1 месяц", "3 месяца", "6 месяцев", "9 месяцев", "1 год", "1,5 года",  "2 года", "3 года", "4 года", "5 лет", "6 лет", "7 лет", "10 лет", "15 лет", "20 лет", "25 лет", "30 лет"]
+   
     var creditListVC = CreditsListViewController()
+    
+    
     var allCreditsArray: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
-    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 1000000, minValue: 1, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 10000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFilerTableView()
-        
         // Do any additional setup after loading the view.
     }
 
@@ -110,23 +111,26 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
         let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
         let switchCell = tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterSwitchCell", for: indexPath) as? CreditsListFilterSwitchCell
         
+        sliderCell.delegate = self
+        itemCell.delegate = self
         switchCell?.delegate = self
-        
+
         
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
-                (self.filterItem.bankName != nil) ? itemCell.set(selectedItem: self.filterItem.bankName!) : itemCell.set(title: "Банк")
+                ((self.filterItem.bankName != nil) && self.filterItem.bankName != "") ? itemCell.set(selectedItem: self.filterItem.bankName!, indexPathRow: indexPath.row) : itemCell.set(title: "Банк")
                 return itemCell
             case 1:
-                (self.filterItem.goal != nil) ? itemCell.set(selectedItem: self.filterItem.goal!) : itemCell.set(title: "Цель кредита")
+                (self.filterItem.goal != nil) ? itemCell.set(selectedItem: self.filterItem.goal!, indexPathRow: indexPath.row) : itemCell.set(title: "Цель кредита")
                 return itemCell
             case 2:
-                (self.filterItem.time != nil) ? itemCell.set(selectedItem: String(self.filterItem.time!)) : itemCell.set(title: "Срок")
+                ((self.filterItem.time != nil) && Formatter.formatTimeDoubleToString(num:self.filterItem.time!) != "" ) ? itemCell.set(selectedItem: Formatter.formatTimeDoubleToString(num:self.filterItem.time!), indexPathRow: indexPath.row) : itemCell.set(title: "Срок")
                 return itemCell
             case 3:
-                sliderCell.configure(with: filterItem)
+                sliderCell.configure(with: self.filterItem)
+                
                 return sliderCell
             default:
                 return UITableViewCell()
@@ -194,8 +198,8 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
         case 1:
             drawerVC.titleName = "Цель кредита"
             drawerVC.itemsArray = self.filterGoal()
-            self.show(drawerVC, sender: nil)
-            print("openDrawe")
+            self.present(drawerVC, animated: true, completion: nil)
+
        
         case 2:
             drawerVC.titleName = "Срок"
@@ -228,6 +232,7 @@ private extension CreditsListFilterViewController {
                 newBanksArray.append(i.bank_name)
             }
         }
+        newBanksArray.insert("Любой", at: 0)
     return newBanksArray
     }
     
@@ -239,6 +244,7 @@ private extension CreditsListFilterViewController {
                     newGoalsArray.append(i.goal)
                 }
             }
+        newGoalsArray.insert("Любая", at: 0)
         return newGoalsArray
         }
     
@@ -248,8 +254,13 @@ private extension CreditsListFilterViewController {
 
 extension CreditsListFilterViewController: CreditsListFilterDrawerDelegate {
     func updateFilterParametrs(filterItem: FilterItemModel) {
+        
         self.filterItem = filterItem
         print(self.filterItem)
+        self.filerTableView.reloadData()
+        self.startFiltering()
+
+
     }
     
     
@@ -270,12 +281,96 @@ extension CreditsListFilterViewController: CreditsListFilterSwitchCellDelegate {
             break
         }
         
+        self.filerTableView.reloadData()
         print(filterItem)
+        self.startFiltering()
+
 //        updateData() P
         
     }
     
+}
+
+extension CreditsListFilterViewController: CreditsListFilterItemCellDelegate {
+    func removeItem(row: Int) {
+        switch row {
+        case 0:
+            self.filterItem.bankName = nil
+        case 1:
+            self.filterItem.goal = nil
+        default:
+            self.filterItem.time = nil
+        }
+        self.filerTableView.reloadData()
+        self.startFiltering()
+    }
     
     
     
+        
+}
+
+extension CreditsListFilterViewController {
+    func startFiltering() {
+        var filterArr: [CreditModel] = self.allCreditsArray
+//        if self.filterItem.bankName == "" || self.filterItem.bankName == nil {
+//            if self.filterItem.goal == "" || self.filterItem.goal == nil {
+//                filterArr = self.allCreditsArray.filter{
+//                    $0.max_time_value >= self.filterItem.time ?? -1 && $0.max_sum_value >= self.filterItem.value && $0.noInsurance == self.filterItem.noInsurance && $0.noDeposit == self.filterItem.noDeposit && $0.noIncomeProof == self.filterItem.noIncomeProof && $0.reviewUpThreeDays == self.filterItem.reviewUpThreeDays
+//
+//                }
+//
+//            }
+//        }
+        if self.filterItem.bankName != nil && self.filterItem.bankName != "Любой"   {
+            filterArr = filterArr.filter{
+                $0.bank_name.contains(self.filterItem.bankName!)
+            }
+        }
+        
+        if self.filterItem.goal != nil && self.filterItem.goal != "Любая" {
+            filterArr = filterArr.filter{
+                $0.goal.contains(self.filterItem.goal!)
+            }
+        }
+        
+        if self.filterItem.noInsurance {
+            filterArr = filterArr.filter{
+                $0.noInsurance == self.filterItem.noInsurance
+            }
+        }
+
+        if self.filterItem.noIncomeProof {
+                  filterArr = filterArr.filter{
+                      $0.noIncomeProof == self.filterItem.noIncomeProof
+                  }
+              }
+
+        if self.filterItem.noDeposit {
+                  filterArr = filterArr.filter{
+                      $0.noDeposit == self.filterItem.noDeposit
+                  }
+              }
+
+        if self.filterItem.reviewUpThreeDays {
+                  filterArr = filterArr.filter{
+                      $0.reviewUpThreeDays == self.filterItem.reviewUpThreeDays
+                  }
+              }
+
+        
+        let allFilterdArray = filterArr.filter{ $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
+        }
+        
+        
+        print("SOMEFINT")
+        
+        
+        
+        
+        
+
+        print("FILTEREDAr", allFilterdArray )
+        
+    }
 }

@@ -11,9 +11,7 @@ import Foundation
 struct FilterItemModel {
     var bankName: String? //банк
     var goal: String? //цель
-    var time: Double? //срок
-    var maxValue: Int //максимальная сумма
-    var minValue: Int //минимальная сумма
+    var time: Double?//срок
     var value: Int //сумма
     var noInsurance: Bool //страховка //wo = with out
     var noDeposit: Bool //Залог

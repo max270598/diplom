@@ -12,21 +12,27 @@ class CreditsListSliderCell: UITableViewCell {
 
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var minValueLabel: UILabel!
    
-    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var maxValueLabel: UILabel!
+    @IBOutlet weak var minValueLabel: UILabel!
+    @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var upperValueTextField: UITextField!
     
+    private var filterItem: FilterItemModel?
     /// Таймер чтобы запросы не улетали сразу
        private var timer: Timer?
-//     private weak var delegate: CreditsListFilterDrawerDelegate?
+    var delegate: CreditsListFilterDrawerDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
 
+        
         self.upperValueTextField.delegate = self
+        
+        self.maxValueLabel.text = self.formattedValue(value: 100000000)
+        self.minValueLabel.text = self.formattedValue(value: 0)
+
         
         // Initialization code
     }
@@ -59,7 +65,7 @@ class CreditsListSliderCell: UITableViewCell {
         self.timer?.invalidate()
         
         self.timer = Timer.scheduledTimer(
-            timeInterval: 0.5,
+            timeInterval: 0.2,
             target: self,
             selector: #selector(updateRequest),
             userInfo: nil,
@@ -67,7 +73,11 @@ class CreditsListSliderCell: UITableViewCell {
         )
     }
     
-    @objc func updateRequest(){} 
+    @objc func updateRequest(){
+        print("UPDATEREqust")
+        self.filterItem?.value = Int(self.slider.value)
+        self.delegate?.updateFilterParametrs(filterItem: self.filterItem!)
+    }
     
     func configure(with model: FilterItemModel, delegate: CreditsListFilterDrawerDelegate? = nil) {
         
@@ -80,15 +90,15 @@ class CreditsListSliderCell: UITableViewCell {
 //                self.rangeSliderView.isEnabled = false
 //                return
 //        }
-        self.slider.maximumValue = Float(model.maxValue)
-        self.slider.minimumValue = Float(model.minValue)
+        self.slider.maximumValue = 100000000.0
+        self.slider.minimumValue = 0.0
         
         if model.value != nil {
             self.upperValueTextField.text = self.formattedValue(value: Int(model.value))
-
+            self.slider.value = Float(model.value)
+            self.filterItem = model
         }
-        self.maxValueLabel.text = self.formattedValue(value: Int(model.maxValue))
-        self.minValueLabel.text = self.formattedValue(value: Int(model.minValue))
+        
     }
 
     
@@ -124,6 +134,7 @@ extension CreditsListSliderCell: UITextFieldDelegate {
         }
         self.slider.value = newValue
         textField.text = self.formattedValue(value: Int(newValue))
+        updateRequest()
 
     }
     
