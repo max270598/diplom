@@ -34,6 +34,7 @@
 		A7304D562458D3F600F0AECF /* CreditsListFilterDrawerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D542458D3F600F0AECF /* CreditsListFilterDrawerCell.swift */; };
 		A7304D572458D3F600F0AECF /* CreditsListFilterDrawerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D552458D3F600F0AECF /* CreditsListFilterDrawerCell.xib */; };
 		A7304D592458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */; };
+		A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D7D245901F300F0AECF /* SceneDelegate.swift */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
 		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
@@ -114,6 +115,7 @@
 		A7304D542458D3F600F0AECF /* CreditsListFilterDrawerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterDrawerCell.swift; sourceTree = "<group>"; };
 		A7304D552458D3F600F0AECF /* CreditsListFilterDrawerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListFilterDrawerCell.xib; sourceTree = "<group>"; };
 		A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterDrawerViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A7304D7D245901F300F0AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
 		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -519,6 +521,7 @@
 			isa = PBXGroup;
 			children = (
 				A796782523ED812600CE4E94 /* AppDelegate.swift */,
+				A7304D7D245901F300F0AECF /* SceneDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -919,6 +922,7 @@
 				A7304D3A24572FD900F0AECF /* Formatter.swift in Sources */,
 				A7304D2F245708C200F0AECF /* CreditsListSliderCell.swift in Sources */,
 				A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */,
+				A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */,
 				A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */,
 				A7CBA428243B4936009CB3E0 /* BannersSubModuleProtocol.swift in Sources */,
 				A7304D592458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift in Sources */,
