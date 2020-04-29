@@ -17,6 +17,30 @@ class Formatter {
         return formatter
     }()
     
+    static func formatTimeStringToDouble(text: String ) -> Double {
+        switch text {
+        case "1 месяц": return 0.1
+        case "3 месяца":return 0.3
+        case "6 месяцев":return 0.6
+        case "9 месяцев": return 0.9
+        case "1 год":return 1
+        case "1,5 года":return 1.5
+        case "2 года":return 2
+        case "3 года":return 3
+        case "4 года":return 4
+        case "5 лет":return 5
+        case "6 лет":return 6
+        case "7 лет":return 7
+        case "10 лет":return 10
+        case "15 лет":return 15
+        case "20 лет":return 20
+        case "25 лет":return 25
+        case "30 лет":return 30
+        default:
+            return 0
+        }
+    }
+    
     static func formatPoints(num: Double) ->String{
         var thousandNum = num/1000
         var millionNum = num/1000000

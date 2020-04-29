@@ -9,6 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListFilterDrawerViewController" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
+                <outlet property="headerNavigationBar" destination="wxU-Uh-OmN" id="AmH-6J-1dL"/>
+                <outlet property="listTableView" destination="zbJ-6e-FTf" id="88L-xn-dau"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,7 +23,7 @@
                     <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
-                <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Svr-nj-E4e" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
+                <view userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Svr-nj-E4e" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="465" width="375" height="202"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>

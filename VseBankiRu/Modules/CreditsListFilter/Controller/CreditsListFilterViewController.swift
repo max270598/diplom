@@ -12,14 +12,17 @@ class CreditsListFilterViewController: UIViewController {
     @IBOutlet weak var resultButton: LoadingButton!
     @IBOutlet weak var filerTableView: UITableView!
     
-    
-    var allCreditsArray = Array<CreditModel>()
+    let timeArrayString: [String] = ["Любой", "1 месяц", "3 месяца", "6 месяцев", "9 месяцев", "1 год", "1,5 года",  "2 года", "3 года", "4 года", "5 лет", "6 лет", "6 лет", "7 лет", "10 лет", "15 лет", "20 лет", "25 лет", "30 лет"]
+    let goalArrayString: [String] = [ "Любая", "Просто деньги", "Рефинансирование", "Образование", "Ремонт", "Другая"]
+    var creditListVC = CreditsListViewController()
+    var allCreditsArray: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
     var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 1000000, minValue: 1, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupFilerTableView()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -107,6 +110,9 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
         let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
         let switchCell = tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterSwitchCell", for: indexPath) as? CreditsListFilterSwitchCell
         
+        switchCell?.delegate = self
+        
+        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -127,6 +133,7 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
 
             }
         case 1:
+            
             switch indexPath.row {
             case 0:
                 switchCell?.set(title: "Без страховки", state: self.filterItem.noInsurance)
@@ -135,7 +142,7 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
                 switchCell?.set(title: "Без залога", state: self.filterItem.noDeposit)
                 return switchCell!
             case 2:
-            switchCell?.set(title: "Без подверждения дохода", state: self.filterItem.noIncomeProof)
+            switchCell?.set(title: "Без подтверждения дохода", state: self.filterItem.noIncomeProof)
             return switchCell!
             case 3:
                 switchCell?.set(title: "Рассмотрение до 3-х дней", state: self.filterItem.reviewUpThreeDays)
@@ -174,12 +181,30 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
         guard indexPath.section == 0 else {
             return
         }
-        
+        let drawerVC = CreditsListFilterDrawerViewController(nibName: "CreditsListFilterDrawerViewController", bundle: nil)
+        drawerVC.delegate = self as! CreditsListFilterDrawerDelegate
+        drawerVC.filterItem = self.filterItem
         switch indexPath.row {
         case 0:
+            drawerVC.titleName = "Банк"
+            
+            drawerVC.itemsArray = self.filterBanks()
+            self.present(drawerVC, animated: true, completion: nil)
+        
+        case 1:
+            drawerVC.titleName = "Цель кредита"
+            drawerVC.itemsArray = self.filterGoal()
+            self.show(drawerVC, sender: nil)
             print("openDrawe")
+       
+        case 2:
+            drawerVC.titleName = "Срок"
+            
+            drawerVC.itemsArray = self.timeArrayString
+            self.present(drawerVC, animated: true, completion: nil)
+        
         default:
-            print("asd")
+            break
         }
     }
 }
@@ -194,4 +219,63 @@ private extension CreditsListFilterViewController {
         self.filerTableView.register(UINib(nibName: "CreditsListFilterSwitchCell", bundle: nil), forCellReuseIdentifier: "CreditsListFilterSwitchCell")
         self.filerTableView.register(UINib(nibName: "CreditsListSliderCell", bundle: nil), forCellReuseIdentifier: "CreditsListSliderCell")
     }
+    
+    func filterBanks() -> [String] {
+        let credits = self.allCreditsArray
+        var newBanksArray: [String] = []
+        for i in credits {
+            if !newBanksArray.contains(i.bank_name) {
+                newBanksArray.append(i.bank_name)
+            }
+        }
+    return newBanksArray
+    }
+    
+    func filterGoal() -> [String] {
+        let credits = self.allCreditsArray
+            var newGoalsArray: [String] = []
+            for i in credits {
+                if !newGoalsArray.contains(i.goal) {
+                    newGoalsArray.append(i.goal)
+                }
+            }
+        return newGoalsArray
+        }
+    
+    
+    
+}
+
+extension CreditsListFilterViewController: CreditsListFilterDrawerDelegate {
+    func updateFilterParametrs(filterItem: FilterItemModel) {
+        self.filterItem = filterItem
+        print(self.filterItem)
+    }
+    
+    
+}
+
+extension CreditsListFilterViewController: CreditsListFilterSwitchCellDelegate {
+    func switchChanged(parametr: String, statemant: Bool) {
+        switch parametr {
+        case "Без страховки":
+            self.filterItem.noInsurance = statemant
+        case "Без залога" :
+            self.filterItem.noDeposit = statemant
+        case "Без подтверждения дохода":
+            self.filterItem.noIncomeProof = statemant
+        case "Рассмотрение до 3-х дней":
+            self.filterItem.reviewUpThreeDays = statemant
+        default:
+            break
+        }
+        
+        print(filterItem)
+//        updateData() P
+        
+    }
+    
+    
+    
+    
 }

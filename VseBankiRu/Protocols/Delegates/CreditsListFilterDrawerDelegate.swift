@@ -9,7 +9,7 @@
 
 import Foundation
 
-protocol CreditsListFilterDrawerDelegate: class {
-    
-    func updateFilterParams(with params: [String: String])
-}
+//protocol CreditsListFilterDrawerDelegate: class {
+//    
+//    func updateFilterParams(with params: [String: String])
+//}

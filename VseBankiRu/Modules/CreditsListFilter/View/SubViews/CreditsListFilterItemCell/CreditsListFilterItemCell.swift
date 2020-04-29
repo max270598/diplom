@@ -17,7 +17,7 @@ class CreditsListFilterItemCell: UITableViewCell {
     
      private var checkedItems = [String: String]()
         
-        weak var delegate: CreditsListFilterItemCellDelegate?
+//        weak var delegate: CreditsListFilterItemCellDelegate?
         
         override func awakeFromNib() {
             super.awakeFromNib()
@@ -50,7 +50,7 @@ class CreditsListFilterItemCell: UITableViewCell {
         
         @IBAction func clearSelectedItem(_ sender: UIButton) {
             guard let checkedItem = self.checkedItems.first else { return }
-            self.delegate?.removeItem(id: checkedItem.key)
+//            self.delegate?.removeItem(id: checkedItem.key)
         }
     }
 

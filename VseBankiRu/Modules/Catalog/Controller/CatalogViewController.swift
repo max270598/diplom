@@ -32,21 +32,9 @@ class CatalogViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        serviceTypeCollectionView.delegate = self
-        serviceTypeCollectionView.dataSource = self
-        self.serviceTypeCollectionView.register(UINib(nibName: "ServiceTypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ServiceTypeCollectionViewCell")
-        
-        let service = QuotationNetworkService.shared
-        service.getData(urlString: "https://quotes.instaforex.com/api/quotesTick?q=usdrur,eurrur") { result in
-            DispatchQueue.main.async {
-                self.usdLabel.text = String(result[0].ask)
-                self.eurLabel.text = String(result[1].ask)
-                
-            }
-            
-            
-        }
+        self.setupCollectionView()
+        self.downloadQuotation()
+   
         
         // Do any additional setup after loading the view.
     }
@@ -102,6 +90,7 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
         } else {
             print("Другое")
         }
+        secondVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
@@ -124,5 +113,26 @@ extension CatalogViewController: UICollectionViewDelegateFlowLayout {
 
         return layout as UICollectionViewLayout
 
+    }
+}
+
+extension CatalogViewController {
+    func downloadQuotation() {
+        
+        let service = QuotationNetworkService.shared
+           service.getData(urlString: "https://quotes.instaforex.com/api/quotesTick?q=usdrur,eurrur") { result in
+               DispatchQueue.main.async {
+                   self.usdLabel.text = String(result[0].ask)
+                   self.eurLabel.text = String(result[1].ask)
+                   
+               }
+           }
+    }
+    
+    
+    func setupCollectionView () {
+        serviceTypeCollectionView.delegate = self
+        serviceTypeCollectionView.dataSource = self
+        self.serviceTypeCollectionView.register(UINib(nibName: "ServiceTypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ServiceTypeCollectionViewCell")
     }
 }

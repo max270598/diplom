@@ -35,8 +35,7 @@ class CreditsListViewController: UIViewController {
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var filteredArray: [CreditModel]? = []
-    var isFiltered: Bool = false
-//    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 0, minValue: 0, value: 1000, woInsurance: nil, woDeposit: nil, woIncomeProof: nil, woReviewUpThreeDays: nil)
+    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, maxValue: 0, minValue: 0, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
     var creditsArray: [CreditModel]? {
         didSet {
             
@@ -58,6 +57,9 @@ class CreditsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         setupNavigationBar()
         setupBestLabel()
         setupBannerCollection()
@@ -66,20 +68,10 @@ class CreditsListViewController: UIViewController {
         
         skeletonShow()
         
-        downloadCredits { [weak self] (credits, banners) in
-            self?.creditsArray = credits
-            self?.bannersArray = banners
-            
-//            self?.bannersArray.removeFirst()
-                           self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
-            
-                           self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
-                           self?.mainCollectionView.reloadData()
-            self?.skeletonHide()
-        }
+        startDownloading()
+     
         
         
-        self.addTableViewCorners()
 
 
         self.defaultTopConstr = mainCollectionViewTopConstr.constant
@@ -88,25 +80,33 @@ class CreditsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+  
         self.mainCollectionView.reloadData()
         self.bannerCollectionView.reloadData()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        isFilteredGlobl = false 
+    }
     
-
-
 }
+
+
+
+
+
+
+
+
+
 
 //Skeleton View
 extension CreditsListViewController: SkeletonCollectionViewDataSource, SkeletonCollectionViewDelegate {
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-       
-            
+        
         return "CreditSkeletonCollectionViewCell"
-        //CreditSkeletonCollectionViewCell
-            
         }
-    
 }
 
 //Datasourse Delegate
@@ -123,15 +123,35 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
-            if self.creditsArray != nil {
+      
+        if self.creditsArray != nil {
                 cell.configure(with: creditsArray![indexPath.row])
-                let a = creditsArray![indexPath.row].ref
-            cell.delegate = self
-            }
+//          && isFilteredGlobl == false {  } else {
+//                cell.configure(with: filteredArray![indexPath.row])
+//        }
+        cell.delegate = self
+        }
+
         return cell
     }
     
     
+}
+
+extension CreditsListViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        //tableView
+        
+        if self.mainCollectionView.contentOffset.y <= -50 {
+            self.showSlider()
+        } else if self.mainCollectionView.contentOffset.y >= 50 {
+            self.hideSlider()
+
+        }
+
+    }
+
 }
 
 
@@ -172,6 +192,14 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
 
+
+
+
+
+
+
+
+
 extension CreditsListViewController: CreditsListCellDelegate {
     func openCredit(url: String, sender: UIView) {
         let svc = SFSafariViewController(url: URL(string: url)!)
@@ -188,43 +216,23 @@ extension CreditsListViewController: CreditsListCellDelegate {
        }
 }
 
-//Functions
+//Network
 
- extension CreditsListViewController {
+ private extension CreditsListViewController {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        //tableView
+    func startDownloading() {
         
-        if self.mainCollectionView.contentOffset.y <= -50 {
-            self.showSlider()
-        } else if self.mainCollectionView.contentOffset.y >= 50 {
-            self.hideSlider()
-
-        }
-
+           downloadCredits { [weak self] (credits, banners) in
+                    self?.creditsArray = credits
+                    self?.bannersArray = banners
+                    self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
+                    
+                    self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
+                    self?.mainCollectionView.reloadData()
+                    self?.skeletonHide()
+                }
+        
     }
-    
-    func hideSlider() {
-          self.mainCollectionViewTopConstr.constant = (self.sliderView.frame.height) * -1
-          UIView.animate(withDuration: 0.4) {
-
-            self.mainCollectionView.layer.cornerRadius = 0.0
-            self.mainCollectionView.transform = .identity
-
-              self.view.layoutIfNeeded()
-          }
-      }
-      
-      func showSlider() {
-        self.addTableViewCorners()
-        
-        
-        UIView.animate(withDuration: 0.4) {
-            self.mainCollectionView.transform = CGAffineTransform(translationX: 0, y: self.sliderView.frame.height + self.defaultTopConstr )
-
-          }
-      }
-    
  
     
     func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
@@ -251,6 +259,7 @@ extension CreditsListViewController: CreditsListCellDelegate {
     
 }
 
+//Setup
  private extension CreditsListViewController {
     
     func setupBestLabel() {
@@ -288,11 +297,16 @@ extension CreditsListViewController: CreditsListCellDelegate {
             self.mainCollectionView.register(UINib(nibName: "CreditSkeletonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditSkeletonCollectionViewCell")
             self.mainCollectionView.isSkeletonable = true
             
+
+            
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 355, height: 138)
             layout.minimumLineSpacing = 20
             layout.minimumInteritemSpacing = 20
             self.mainCollectionView.collectionViewLayout = layout
+            
+            self.addTableViewCorners()
+
         }
 
         func setupPageControl() {
@@ -326,16 +340,41 @@ extension CreditsListViewController: CreditsListCellDelegate {
         
     }
     
-    @objc func favouriteButtonTapped() {
-        let secondVC = CreditListFavouriteViewController(nibName: "CreditListFavouriteViewController", bundle: nil)
-        self.navigationController?.pushViewController(secondVC, animated: true)
-    }
     
-    @objc func sortingButtonTapped() {
-        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
-        filterVC.allCreditsArray = self.isFiltered == false ? self.creditsArray ?? [] : self.filteredArray ?? []
-        self.navigationController?.pushViewController(filterVC, animated: true)
-       }
+    
+    
+    
+}
+
+//UI
+private extension CreditsListViewController {
+    
+    
+    func hideSlider() {
+          self.mainCollectionViewTopConstr.constant = (self.sliderView.frame.height) * -1
+          UIView.animate(withDuration: 0.4) {
+
+            self.mainCollectionView.layer.cornerRadius = 0.0
+            self.mainCollectionView.transform = .identity
+
+              self.view.layoutIfNeeded()
+          }
+      }
+      
+      func showSlider() {
+        self.addTableViewCorners()
+        
+        
+        UIView.animate(withDuration: 0.4) {
+            self.mainCollectionView.transform = CGAffineTransform(translationX: 0, y: self.sliderView.frame.height + self.defaultTopConstr )
+
+          }
+      }
+    
+    
+    
+    
+    
     
     func skeletonShow() {
         
@@ -358,12 +397,44 @@ extension CreditsListViewController: CreditsListCellDelegate {
 
         self.mainCollectionView.hideSkeleton(transition: .crossDissolve(0.5))
         self.bannerActivityIndicator.stopAnimating()
-        UIView.animate(withDuration: 2) {
+        UIView.animate(withDuration: 1) {
             self.bannerCollectionView.viewWithTag(1000)?.alpha = 0
         }
         
         
     }
+    
 }
 
 
+//Functions
+extension CreditsListViewController {
+ 
+    func setFilteredArray(filteredArray: [CreditModel], filterItem: FilterItemModel) {
+        self.filteredArray = filteredArray
+        self.filterItem = filterItem
+        isFilteredGlobl = true
+        
+    }
+    
+    @objc func favouriteButtonTapped() {
+        let secondVC = CreditListFavouriteViewController(nibName: "CreditListFavouriteViewController", bundle: nil)
+        
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
+    
+    
+    
+    @objc func sortingButtonTapped() {
+        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
+        guard let creditArr = self.creditsArray else {
+            return
+        }
+        
+        filterVC.allCreditsArray = creditArr
+        filterVC.filteredCredits = self.filteredArray ?? []
+        filterVC.filterItem = self.filterItem
+        self.navigationController?.pushViewController(filterVC, animated: true)
+       }
+    
+}

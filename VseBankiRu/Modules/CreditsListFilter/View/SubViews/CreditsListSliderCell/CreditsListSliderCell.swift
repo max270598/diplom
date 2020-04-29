@@ -20,7 +20,7 @@ class CreditsListSliderCell: UITableViewCell {
     
     /// Таймер чтобы запросы не улетали сразу
        private var timer: Timer?
-     private weak var delegate: CreditsListFilterDrawerDelegate?
+//     private weak var delegate: CreditsListFilterDrawerDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -71,7 +71,7 @@ class CreditsListSliderCell: UITableViewCell {
     
     func configure(with model: FilterItemModel, delegate: CreditsListFilterDrawerDelegate? = nil) {
         
-        self.delegate = delegate
+//        self.delegate = delegate
         
         
 //        guard model.values.count == 2,
