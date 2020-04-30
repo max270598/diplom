@@ -65,7 +65,7 @@ class CreditsListSliderCell: UITableViewCell {
         self.timer?.invalidate()
         
         self.timer = Timer.scheduledTimer(
-            timeInterval: 0.2,
+            timeInterval: 0.5,
             target: self,
             selector: #selector(updateRequest),
             userInfo: nil,

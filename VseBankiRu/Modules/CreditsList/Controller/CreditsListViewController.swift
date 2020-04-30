@@ -34,11 +34,11 @@ class CreditsListViewController: UIViewController {
 
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
-    var filteredArray: [CreditModel]? = []
+    var filteredCredits: [CreditModel]? = []
     var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
-    var creditsArray: [CreditModel]? {
+    var allCredits: [CreditModel]? {
         didSet {
-            
+            self.filteredCredits = self.allCredits
         }
     }
     var bannersArray: [BannersSubModuleBanner] = [
@@ -59,19 +59,18 @@ class CreditsListViewController: UIViewController {
         super.viewDidLoad()
         
         
-        
         setupNavigationBar()
         setupBestLabel()
         setupBannerCollection()
         setupMainCollection()
         setupPageControl()
         
-        skeletonShow()
         
         startDownloading()
      
         
         
+        skeletonShow()
 
 
         self.defaultTopConstr = mainCollectionViewTopConstr.constant
@@ -80,9 +79,15 @@ class CreditsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-  
-        self.mainCollectionView.reloadData()
-        self.bannerCollectionView.reloadData()
+print("ВСЕ КРЕДИТЫ", allCredits)
+        print("FILTERITEM", filterItem)
+        print("ОТФИЛЬТРОВАННЫЕ КРЕДИТЫ", filteredCredits)
+
+
+        updateData()
+//        updateData()
+//        self.mainCollectionView.reloadData()
+//        self.bannerCollectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,17 +122,17 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
             return 2
 
         }
-        return self.creditsArray?.count ?? 10
+        return self.filteredCredits?.count ?? 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
       
-        if self.creditsArray != nil {
-                cell.configure(with: creditsArray![indexPath.row])
+        if self.filteredCredits != nil {
+                cell.configure(with: filteredCredits![indexPath.row])
 //          && isFilteredGlobl == false {  } else {
-//                cell.configure(with: filteredArray![indexPath.row])
+//                cell.configure(with: filteredCredits![indexPath.row])
 //        }
         cell.delegate = self
         }
@@ -216,48 +221,6 @@ extension CreditsListViewController: CreditsListCellDelegate {
        }
 }
 
-//Network
-
- private extension CreditsListViewController {
-    
-    func startDownloading() {
-        
-           downloadCredits { [weak self] (credits, banners) in
-                    self?.creditsArray = credits
-                    self?.bannersArray = banners
-                    self?.infiniteScrollingBehaviour.reload(withData: self!.bannersArray)
-                    
-                    self?.pageControl.numberOfPages = self?.bannersArray.count ?? 0
-                    self?.mainCollectionView.reloadData()
-                    self?.skeletonHide()
-                }
-        
-    }
- 
-    
-    func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
-        DispatchQueue.main.async {
-            CreditsListNetwork.shared.getCredits { [weak self](credits) in
-                var banners = Array<BannersSubModuleBanner>()
-                credits.forEach {  (item) in
-                    if item.is_best == true {
-                            let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
-                        banners.append(bestCredit)
-                        }
-                    
-                }
-             
-                complition(credits, banners)
-               
-            }
-        }
-        
-        
-    }
-    
-    
-    
-}
 
 //Setup
  private extension CreditsListViewController {
@@ -327,6 +290,9 @@ extension CreditsListViewController: CreditsListCellDelegate {
         favouriteButton.setImage(UIImage(named: "favourite_icon_nav"), for: .normal)
         favouriteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
         favouriteButton.addTarget(self, action: #selector(self.favouriteButtonTapped), for: .touchUpInside)
+        let pinView = UIView(frame: CGRect(x: 100, y: 0, width: 2, height: 2))
+        pinView.backgroundColor = UIColor
+        favouriteButton.addSubview(<#T##view: UIView##UIView#>)
         let item1 = UIBarButtonItem(customView: favouriteButton)
 
         let sortingButton = UIButton(type: .custom)
@@ -349,6 +315,15 @@ extension CreditsListViewController: CreditsListCellDelegate {
 //UI
 private extension CreditsListViewController {
     
+    func updateData() {
+        
+        self.infiniteScrollingBehaviour.reload(withData: self.bannersArray)
+        
+        self.pageControl.numberOfPages = self.bannersArray.count ?? 0
+        self.mainCollectionView.reloadData()
+        
+    }
+    
     
     func hideSlider() {
           self.mainCollectionViewTopConstr.constant = (self.sliderView.frame.height) * -1
@@ -356,7 +331,6 @@ private extension CreditsListViewController {
 
             self.mainCollectionView.layer.cornerRadius = 0.0
             self.mainCollectionView.transform = .identity
-
               self.view.layoutIfNeeded()
           }
       }
@@ -377,13 +351,14 @@ private extension CreditsListViewController {
     
     
     func skeletonShow() {
-        
+        print("showSKELETON")
+
         let gradient = SkeletonGradient(baseColor: .clouds)
         let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
         mainCollectionView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation)
         self.bannerCollectionView.isUserInteractionEnabled = false
         
-        
+        self.bannerCollectionView.viewWithTag(1000)?.alpha = 1
         self.bannerActivityIndicator.startAnimating()
         self.bannerActivityIndicator.hidesWhenStopped = true
         
@@ -393,6 +368,8 @@ private extension CreditsListViewController {
     }
     
     func skeletonHide() {
+        print("hideSKELETON")
+
         self.bannerCollectionView.isUserInteractionEnabled = true
 
         self.mainCollectionView.hideSkeleton(transition: .crossDissolve(0.5))
@@ -406,18 +383,29 @@ private extension CreditsListViewController {
     
 }
 
+extension CreditsListViewController: PassDataFromFilterToListDelegate {
+    func setFilterdData(filteredCredits: [CreditModel], filterItem: FilterItemModel) {
+        self.filteredCredits = filteredCredits
+        self.filterItem = filterItem
+    }
+    
+    
+}
 
 //Functions
 extension CreditsListViewController {
  
-    func setFilteredArray(filteredArray: [CreditModel], filterItem: FilterItemModel) {
-        self.filteredArray = filteredArray
-        self.filterItem = filterItem
-        isFilteredGlobl = true
-        
-    }
+//    func setfilteredCredits(filteredCredits: [CreditModel], filterItem: FilterItemModel) {
+//        self.filteredCredits = filteredCredits
+//        self.filterItem = filterItem
+//        isFilteredGlobl = true
+//
+//    }
     
     @objc func favouriteButtonTapped() {
+        guard let creditArr = self.allCredits else {
+                   return
+               }
         let secondVC = CreditListFavouriteViewController(nibName: "CreditListFavouriteViewController", bundle: nil)
         
         self.navigationController?.pushViewController(secondVC, animated: true)
@@ -427,14 +415,58 @@ extension CreditsListViewController {
     
     @objc func sortingButtonTapped() {
         let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
-        guard let creditArr = self.creditsArray else {
+        filterVC.delegate = self
+        guard let creditArr = self.allCredits else {
             return
         }
         
-        filterVC.allCreditsArray = creditArr
-        filterVC.filteredCredits = self.filteredArray ?? []
+        filterVC.allCredits = creditArr
+//        filterVC.filteredCredits = self.filteredCredits ?? []
         filterVC.filterItem = self.filterItem
         self.navigationController?.pushViewController(filterVC, animated: true)
        }
+    
+}
+
+
+//Network
+
+ private extension CreditsListViewController {
+    
+    func startDownloading() {
+        
+           downloadCredits { [weak self] (credits, banners) in
+                    self?.allCredits = credits
+                    self?.bannersArray = banners
+            
+            self?.updateData()
+            self?.skeletonHide()
+
+                }
+        
+    }
+ 
+    
+    func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
+        DispatchQueue.main.async {
+            CreditsListNetwork.shared.getCredits { [weak self](credits) in
+                var banners = Array<BannersSubModuleBanner>()
+                credits.forEach {  (item) in
+                    if item.is_best == true {
+                            let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
+                        banners.append(bestCredit)
+                        }
+                    
+                }
+             
+                complition(credits, banners)
+               
+            }
+        }
+        
+        
+    }
+    
+    
     
 }

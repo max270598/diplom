@@ -87,4 +87,40 @@ extension UIView {
 //        layer.shouldRasterize = true
 //        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
 //    }
+    
+//    func addShadowCorner(cornerRadius: CGFloat, backgoundColor: UIColor = UIColor.white, shadowColor: CGColor = UIColor.black.cgColor,
+//    shadowOffset: CGSize = CGSize(width: 1.0, height: 2.0),
+//    shadowOpacity: Float = 0.4,
+//    shadowRadius: CGFloat = 3.0 ) {
+//
+//       let shadowLayer = CAShapeLayer()
+//
+//          shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath
+//          shadowLayer.fillColor = backgoundColor.cgColor
+////        contentView.layer.masksToBounds = true
+//          shadowLayer.shadowColor = shadowColor
+//          shadowLayer.shadowPath = shadowLayer.path
+//          shadowLayer.shadowOffset = shadowOffset
+//          shadowLayer.shadowOpacity = shadowOpacity
+//          shadowLayer.shadowRadius = shadowRadius
+//        layer.masksToBounds = false
+//          layer.insertSublayer(shadowLayer, at: 0)
+//    }
+    
+    
+    func addShadowCorner(cornerRadius: CGFloat, offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        clipsToBounds = true
+        layer.cornerRadius = cornerRadius
+        
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
+    }
 }
+

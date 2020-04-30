@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
         
-//        UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
 //        
 //        UINavigationBar.appearance().barTintColor = UIColor.systemIndigo
 //        UINavigationBar.appearance().backgroundColor = UIColor.systemIndigo

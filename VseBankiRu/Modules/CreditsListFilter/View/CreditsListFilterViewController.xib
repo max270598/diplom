@@ -6,6 +6,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListFilterViewController" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
@@ -19,22 +24,29 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSd-JU-M31" customClass="LoadingButton" customModule="VseBankiRu" customModuleProvider="target">
-                    <rect key="frame" x="87.5" y="573" width="200" height="44"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="MAj-Ik-vpm"/>
-                        <constraint firstAttribute="width" constant="200" id="nbi-hh-giO"/>
-                    </constraints>
-                    <state key="normal" title="Button"/>
-                </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EpI-aE-vU1">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uSd-JU-M31" customClass="LoadingButton" customModule="VseBankiRu" customModuleProvider="target">
+                    <rect key="frame" x="87.5" y="613" width="200" height="44"/>
+                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="MAj-Ik-vpm"/>
+                        <constraint firstAttribute="width" constant="200" id="nbi-hh-giO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="15"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="resultButtonTapped:" destination="-1" eventType="touchUpInside" id="v0h-IL-bpx"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uSd-JU-M31" secondAttribute="bottom" constant="50" id="bTA-jO-LCy"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="uSd-JU-M31" secondAttribute="bottom" constant="10" id="bTA-jO-LCy"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="EpI-aE-vU1" secondAttribute="bottom" id="bo6-tv-22O"/>
                 <constraint firstItem="uSd-JU-M31" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="gF7-P6-I26"/>
                 <constraint firstItem="EpI-aE-vU1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kaf-kj-36Y"/>

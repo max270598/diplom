@@ -12,22 +12,38 @@ class CreditsListFilterViewController: UIViewController {
     @IBOutlet weak var resultButton: LoadingButton!
     @IBOutlet weak var filerTableView: UITableView!
     
-    let timeArrayString: [String] = ["Любой", "1 месяц", "3 месяца", "6 месяцев", "9 месяцев", "1 год", "1,5 года",  "2 года", "3 года", "4 года", "5 лет", "6 лет", "7 лет", "10 лет", "15 лет", "20 лет", "25 лет", "30 лет"]
-   
-    var creditListVC = CreditsListViewController()
-    
-    
-    var allCreditsArray: [CreditModel] = []
+    let timeArrayString: [String] = ["Любой", "1 месяц", "3 месяца", "6 месяцев", "9 месяцев", "1 год", "1,5 года", "2 года", "3 года", "4 года", "5 лет", "6 лет", "7 лет", "10 лет", "15 лет", "20 лет", "25 лет", "30 лет"]
+       
+    var allCredits: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
     var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 10000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
+    
+    var delegate: PassDataFromFilterToListDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setupNavigationBar()
         setupFilerTableView()
+        
+        
+        self.startFiltering()
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.delegate?.setFilterdData(filteredCredits: self.filteredCredits, filterItem: self.filterItem)
 
+    }
 
+    @IBAction func resultButtonTapped(_ sender: Any) {
+//        self.creditListVC = self.filteredCredits
+//        self.delegate?.setFilterdData(filteredCredits: self.filteredCredits, filterItem: self.filterItem)
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -152,31 +168,16 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
                 switchCell?.set(title: "Рассмотрение до 3-х дней", state: self.filterItem.reviewUpThreeDays)
                 return switchCell!
             default:
-                return UITableViewCell()
+                UITableViewCell()
             }
             
         default:
             print("VSE")
         }
-//        guard let cellModel = self.interactor.automallFilterModel?.filterItems[indexPath.section][indexPath.row] else { return UITableViewCell() }
-//
-//        switch cellModel.displayType {
-//        case "B":
-//            let listPriceCell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autoMallFilterPriceCell, for: indexPath)!
-//            listPriceCell.configure(with: cellModel, delegate: self)
-//            return listPriceCell
-//        default:
-//            let listItemCell        = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autoMallFilterItemCell, for: indexPath)!
-//            let selectedItems       = self.getSelectedItems(cellModel)
-//            (selectedItems.count > 0) ? listItemCell.set(selectedItems: selectedItems) : listItemCell.set(title: cellModel.name)
-//            listItemCell.delegate   = self
-//            return listItemCell
-//
-//    }
-//        }
-//    }
-//
-        return UITableViewCell()
+
+        let addableCell = UITableViewCell()
+        addableCell.isUserInteractionEnabled = false
+        return addableCell
     }
     
     
@@ -224,8 +225,35 @@ private extension CreditsListFilterViewController {
         self.filerTableView.register(UINib(nibName: "CreditsListSliderCell", bundle: nil), forCellReuseIdentifier: "CreditsListSliderCell")
     }
     
+    func setupUI() {
+       
+        
+        self.addResultButtonShadow()
+        self.resultButton.layer.zPosition = 100
+    }
+    
+    func setupNavigationBar() {
+        self.title = "Фильтр"
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        
+        let resetButton = UIButton(type: .custom)
+        resetButton.setTitle("Сбросить", for: .normal)
+        resetButton.setTitleColor(.systemIndigo, for: .normal)
+        resetButton.titleLabel?.font = UIFont(name: "SFProDisplay-Medium", size: 14)
+        resetButton.addTarget(self, action: #selector(self.resetButton), for: .touchUpInside)
+        let item = UIBarButtonItem(customView: resetButton)
+
+        self.navigationItem.setRightBarButtonItems([item], animated: true)
+    }
+    
+    @objc func resetButton() {
+        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 10000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+               self.reloadWithFilter()
+
+    }
+    
     func filterBanks() -> [String] {
-        let credits = self.allCreditsArray
+        let credits = self.allCredits
         var newBanksArray: [String] = []
         for i in credits {
             if !newBanksArray.contains(i.bank_name) {
@@ -237,7 +265,7 @@ private extension CreditsListFilterViewController {
     }
     
     func filterGoal() -> [String] {
-        let credits = self.allCreditsArray
+        let credits = self.allCredits
             var newGoalsArray: [String] = []
             for i in credits {
                 if !newGoalsArray.contains(i.goal) {
@@ -248,6 +276,26 @@ private extension CreditsListFilterViewController {
         return newGoalsArray
         }
     
+    func addResultButtonShadow() {
+        self.resultButton.backgroundColor = UIColor.systemGreen
+
+        self.resultButton.addShadowCorner(cornerRadius: self.resultButton.frame.height / 2, offset: CGSize(width: 0, height: 3), color: .black, radius: 10, opacity: 0.7)
+            
+            
+         
+  
+    }
+    
+    func set(itemsCount: String) {
+        self.resultButton.hideLoading()
+        self.resultButton.setTitle("Найдено: \(itemsCount)", for: .normal)
+    }
+    
+    func reloadWithFilter() {
+        self.filerTableView.reloadData()
+        self.startFiltering()
+    }
+    
     
     
 }
@@ -256,9 +304,7 @@ extension CreditsListFilterViewController: CreditsListFilterDrawerDelegate {
     func updateFilterParametrs(filterItem: FilterItemModel) {
         
         self.filterItem = filterItem
-        print(self.filterItem)
-        self.filerTableView.reloadData()
-        self.startFiltering()
+        self.reloadWithFilter()
 
 
     }
@@ -281,11 +327,8 @@ extension CreditsListFilterViewController: CreditsListFilterSwitchCellDelegate {
             break
         }
         
-        self.filerTableView.reloadData()
-        print(filterItem)
-        self.startFiltering()
+                self.reloadWithFilter()
 
-//        updateData() P
         
     }
     
@@ -301,8 +344,8 @@ extension CreditsListFilterViewController: CreditsListFilterItemCellDelegate {
         default:
             self.filterItem.time = nil
         }
-        self.filerTableView.reloadData()
-        self.startFiltering()
+                self.reloadWithFilter()
+
     }
     
     
@@ -312,16 +355,18 @@ extension CreditsListFilterViewController: CreditsListFilterItemCellDelegate {
 
 extension CreditsListFilterViewController {
     func startFiltering() {
-        var filterArr: [CreditModel] = self.allCreditsArray
+        var filterArr: [CreditModel] = self.allCredits
 //        if self.filterItem.bankName == "" || self.filterItem.bankName == nil {
 //            if self.filterItem.goal == "" || self.filterItem.goal == nil {
-//                filterArr = self.allCreditsArray.filter{
+//                filterArr = self.allCredits.filter{
 //                    $0.max_time_value >= self.filterItem.time ?? -1 && $0.max_sum_value >= self.filterItem.value && $0.noInsurance == self.filterItem.noInsurance && $0.noDeposit == self.filterItem.noDeposit && $0.noIncomeProof == self.filterItem.noIncomeProof && $0.reviewUpThreeDays == self.filterItem.reviewUpThreeDays
 //
 //                }
 //
 //            }
 //        }
+        
+        self.resultButton.showLoading()
         if self.filterItem.bankName != nil && self.filterItem.bankName != "Любой"   {
             filterArr = filterArr.filter{
                 $0.bank_name.contains(self.filterItem.bankName!)
@@ -359,18 +404,12 @@ extension CreditsListFilterViewController {
               }
 
         
-        let allFilterdArray = filterArr.filter{ $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
+        self.filteredCredits = filterArr.filter{ $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
         }
         
+        self.set(itemsCount: String(self.filteredCredits.count))
         
-        print("SOMEFINT")
-        
-        
-        
-        
-        
-
-        print("FILTEREDAr", allFilterdArray )
+       
         
     }
 }
