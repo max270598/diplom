@@ -34,7 +34,7 @@ class CreditsListFilterViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.delegate?.setFilterdData(filteredCredits: self.filteredCredits, filterItem: self.filterItem)
+        self.delegate?.setFilterdData(filteredCredits: self.filteredCredits, filterItem: self.filterItem, isFiltered: self.filteredCredits.count == self.allCredits.count ? false : true)
 
     }
 

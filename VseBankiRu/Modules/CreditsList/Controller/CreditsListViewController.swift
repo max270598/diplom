@@ -29,6 +29,7 @@ class CreditsListViewController: UIViewController {
     
     @IBOutlet weak var bannerActivityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var filterButton: UIButton!
     
     
 
@@ -36,6 +37,8 @@ class CreditsListViewController: UIViewController {
     
     var filteredCredits: [CreditModel]? = []
     var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
+    var isFiltered: Bool = false
+    
     var allCredits: [CreditModel]? {
         didSet {
             self.filteredCredits = self.allCredits
@@ -55,6 +58,8 @@ class CreditsListViewController: UIViewController {
     var defaultTopConstr: CGFloat = 0.0
     
 
+     let pinViewLike = UIView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,11 +84,12 @@ class CreditsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-print("ВСЕ КРЕДИТЫ", allCredits)
-        print("FILTERITEM", filterItem)
-        print("ОТФИЛЬТРОВАННЫЕ КРЕДИТЫ", filteredCredits)
-
-
+//print("ВСЕ КРЕДИТЫ", allCredits)
+//        print("FILTERITEM", filterItem)
+//        print("ОТФИЛЬТРОВАННЫЕ КРЕДИТЫ", filteredCredits)
+        
+        setupPinView()
+        
         updateData()
 //        updateData()
 //        self.mainCollectionView.reloadData()
@@ -95,6 +101,25 @@ print("ВСЕ КРЕДИТЫ", allCredits)
         isFilteredGlobl = false 
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+       
+        
+    }
+    
+    @IBAction func filterButtonTapped(_ sender: Any) {
+        
+          let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
+                filterVC.delegate = self
+                guard let creditArr = self.allCredits else {
+                    return
+                }
+                
+                filterVC.allCredits = creditArr
+                filterVC.filterItem = self.filterItem
+                self.navigationController?.pushViewController(filterVC, animated: true)
+    }
 }
 
 
@@ -286,13 +311,14 @@ extension CreditsListViewController: CreditsListCellDelegate {
      }
     
     func setupNavigationBar() {
+        self.title = "Кредиты"
         let favouriteButton = UIButton(type: .custom)
         favouriteButton.setImage(UIImage(named: "favourite_icon_nav"), for: .normal)
         favouriteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
         favouriteButton.addTarget(self, action: #selector(self.favouriteButtonTapped), for: .touchUpInside)
-        let pinView = UIView(frame: CGRect(x: 100, y: 0, width: 2, height: 2))
-        pinView.backgroundColor = UIColor
-        favouriteButton.addSubview(<#T##view: UIView##UIView#>)
+        self.addPinView(button: favouriteButton, pinView: self.pinViewLike)
+
+
         let item1 = UIBarButtonItem(customView: favouriteButton)
 
         let sortingButton = UIButton(type: .custom)
@@ -300,11 +326,53 @@ extension CreditsListViewController: CreditsListCellDelegate {
         sortingButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
         sortingButton.addTarget(self, action: #selector(self.sortingButtonTapped), for: .touchUpInside)
         let item2 = UIBarButtonItem(customView: sortingButton)
-
+//        self.addPinView(button: item2)
         self.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
         
         
     }
+    
+    func addPinView(button: UIButton, pinView: UIView) {
+       
+       
+        button.addSubview(pinView)
+        pinView.backgroundColor = UIColor(red: 255.0/255.0, green: 137.0/255.0, blue: 12.0/255.0, alpha: 1.0)
+              
+        pinView.translatesAutoresizingMaskIntoConstraints = false
+               
+        pinView.clipsToBounds = true
+        pinView.layer.cornerRadius = 4
+        let topConstraint = NSLayoutConstraint(item: pinView, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: button, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+        let trailingConstraint = NSLayoutConstraint(item: pinView, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: button, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+        let widthConstraint = NSLayoutConstraint(item: pinView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 8)
+        let heightConstraint = NSLayoutConstraint(item: pinView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 8)
+        NSLayoutConstraint.activate([trailingConstraint, topConstraint, widthConstraint, heightConstraint])
+               
+        }
+    
+    func setupPinView() {
+        
+        
+        if CreditListFavouriteService.favourites.count > 0 {
+                   self.pinViewLike.alpha = 1
+               } else {
+                   pinViewLike.alpha = 0
+               }
+        
+        print(self.isFiltered, "ISFILTERED")
+        if self.isFiltered == true {
+            self.filterButton.setImage(UIImage(named: "filter_pin_icon"), for: .normal)
+        } else {
+            self.filterButton.setImage(UIImage(named: "filter_icon"), for: .normal)
+        }
+        
+        self.filterButton.clipsToBounds = true
+        self.filterButton.layer.cornerRadius = self.filterButton.frame.height / 2
+
+
+        
+    }
+    
     
     
     
@@ -384,9 +452,10 @@ private extension CreditsListViewController {
 }
 
 extension CreditsListViewController: PassDataFromFilterToListDelegate {
-    func setFilterdData(filteredCredits: [CreditModel], filterItem: FilterItemModel) {
+    func setFilterdData(filteredCredits: [CreditModel], filterItem: FilterItemModel, isFiltered: Bool) {
         self.filteredCredits = filteredCredits
         self.filterItem = filterItem
+        self.isFiltered = isFiltered
     }
     
     
@@ -414,16 +483,7 @@ extension CreditsListViewController {
     
     
     @objc func sortingButtonTapped() {
-        let filterVC = CreditsListFilterViewController(nibName: "CreditsListFilterViewController", bundle: nil)
-        filterVC.delegate = self
-        guard let creditArr = self.allCredits else {
-            return
-        }
-        
-        filterVC.allCredits = creditArr
-//        filterVC.filteredCredits = self.filteredCredits ?? []
-        filterVC.filterItem = self.filterItem
-        self.navigationController?.pushViewController(filterVC, animated: true)
+      
        }
     
 }

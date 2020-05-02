@@ -10,6 +10,9 @@
         <array key="SF-Pro-Display-Medium.otf">
             <string>SFProDisplay-Medium</string>
         </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditsListViewController">
@@ -17,6 +20,7 @@
                 <outlet property="bannerActivityIndicator" destination="yX9-39-kwt" id="YBJ-mn-ehh"/>
                 <outlet property="bannerCollectionView" destination="wYb-EO-fda" id="aQP-04-Wk0"/>
                 <outlet property="bestLabel" destination="JqE-0w-Y06" id="P1K-5N-b1g"/>
+                <outlet property="filterButton" destination="yeh-gk-G2h" id="VhN-pC-WnJ"/>
                 <outlet property="mainCollectionView" destination="RMu-Za-Xe6" id="mpm-gP-HJJ"/>
                 <outlet property="mainCollectionViewTopConstr" destination="Wag-oB-XVY" id="7l3-fX-UjY"/>
                 <outlet property="pageControl" destination="5RH-7p-k3U" id="LoP-Ra-QfD"/>
@@ -97,16 +101,31 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
                     </userDefinedRuntimeAttributes>
                 </collectionView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-gk-G2h">
+                    <rect key="frame" x="67.5" y="583" width="240" height="44"/>
+                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="G14-dB-2rp"/>
+                        <constraint firstAttribute="height" constant="44" id="sLa-DO-p8m"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                    <state key="normal" title="   Укажите параметры" image="filter"/>
+                    <connections>
+                        <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="gJX-zB-wAa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="RMu-Za-Xe6" secondAttribute="trailing" id="39l-Cy-1KE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wzi-fv-pzC" secondAttribute="trailing" id="G57-mO-J7d"/>
+                <constraint firstItem="yeh-gk-G2h" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="S1K-mA-WTg"/>
                 <constraint firstItem="RMu-Za-Xe6" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="bottom" constant="-50" id="Wag-oB-XVY"/>
                 <constraint firstAttribute="bottom" secondItem="RMu-Za-Xe6" secondAttribute="bottom" id="WhX-0Y-5zb"/>
                 <constraint firstItem="RMu-Za-Xe6" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wYb-EO-fda" secondAttribute="top" id="cNe-jQ-W4c"/>
                 <constraint firstItem="RMu-Za-Xe6" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="j1k-6A-PEL"/>
                 <constraint firstItem="Wzi-fv-pzC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uHe-Pg-UYx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yeh-gk-G2h" secondAttribute="bottom" constant="40" id="uMW-G5-E11"/>
                 <constraint firstItem="Wzi-fv-pzC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xPx-xx-qVu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
@@ -116,4 +135,7 @@
             <point key="canvasLocation" x="141" y="145"/>
         </view>
     </objects>
+    <resources>
+        <image name="filter" width="20" height="20"/>
+    </resources>
 </document>

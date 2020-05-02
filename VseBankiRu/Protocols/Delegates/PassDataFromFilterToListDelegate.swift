@@ -9,5 +9,5 @@
 import Foundation
 
 protocol PassDataFromFilterToListDelegate: class {
-    func setFilterdData(filteredCredits: [CreditModel], filterItem: FilterItemModel)
+    func setFilterdData(filteredCredits: [CreditModel], filterItem: FilterItemModel, isFiltered: Bool)
 }
