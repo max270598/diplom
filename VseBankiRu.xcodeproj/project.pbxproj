@@ -34,6 +34,16 @@
 		A7304D592458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */; };
 		A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D7D245901F300F0AECF /* SceneDelegate.swift */; };
 		A7304D80245B76AE00F0AECF /* PassDataFromFilterToListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D7F245B76AD00F0AECF /* PassDataFromFilterToListDelegate.swift */; };
+		A7359E4F245F1CBD0091E673 /* CreditsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E4D245F1CBD0091E673 /* CreditsListDetailViewController.swift */; };
+		A7359E50245F1CBD0091E673 /* CreditsListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E4E245F1CBD0091E673 /* CreditsListDetailViewController.xib */; };
+		A7359E54245F27250091E673 /* LogoNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E52245F27250091E673 /* LogoNameTableViewCell.swift */; };
+		A7359E55245F27250091E673 /* LogoNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E53245F27250091E673 /* LogoNameTableViewCell.xib */; };
+		A7359E58245F27380091E673 /* TitleTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E56245F27380091E673 /* TitleTitleTableViewCell.swift */; };
+		A7359E59245F27380091E673 /* TitleTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E57245F27380091E673 /* TitleTitleTableViewCell.xib */; };
+		A7359E5E245F73460091E673 /* DescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E5C245F73460091E673 /* DescriptionCell.swift */; };
+		A7359E5F245F73460091E673 /* DescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E5D245F73460091E673 /* DescriptionCell.xib */; };
+		A7359E68245F833E0091E673 /* SegmentControllTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E66245F833E0091E673 /* SegmentControllTableViewCell.swift */; };
+		A7359E69245F833E0091E673 /* SegmentControllTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E67245F833E0091E673 /* SegmentControllTableViewCell.xib */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
 		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
@@ -114,6 +124,16 @@
 		A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterDrawerViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A7304D7D245901F300F0AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A7304D7F245B76AD00F0AECF /* PassDataFromFilterToListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassDataFromFilterToListDelegate.swift; sourceTree = "<group>"; };
+		A7359E4D245F1CBD0091E673 /* CreditsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListDetailViewController.swift; sourceTree = "<group>"; };
+		A7359E4E245F1CBD0091E673 /* CreditsListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListDetailViewController.xib; sourceTree = "<group>"; };
+		A7359E52245F27250091E673 /* LogoNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoNameTableViewCell.swift; sourceTree = "<group>"; };
+		A7359E53245F27250091E673 /* LogoNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogoNameTableViewCell.xib; sourceTree = "<group>"; };
+		A7359E56245F27380091E673 /* TitleTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTitleTableViewCell.swift; sourceTree = "<group>"; };
+		A7359E57245F27380091E673 /* TitleTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TitleTitleTableViewCell.xib; sourceTree = "<group>"; };
+		A7359E5C245F73460091E673 /* DescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCell.swift; sourceTree = "<group>"; };
+		A7359E5D245F73460091E673 /* DescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionCell.xib; sourceTree = "<group>"; };
+		A7359E66245F833E0091E673 /* SegmentControllTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentControllTableViewCell.swift; sourceTree = "<group>"; };
+		A7359E67245F833E0091E673 /* SegmentControllTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentControllTableViewCell.xib; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
 		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -394,6 +414,87 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		A7359E49245F0FEC0091E673 /* CreditsListDetail */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E4C245F10100091E673 /* Controller */,
+				A7359E4B245F100B0091E673 /* View */,
+				A7359E4A245F10060091E673 /* Model */,
+			);
+			path = CreditsListDetail;
+			sourceTree = "<group>";
+		};
+		A7359E4A245F10060091E673 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A7359E4B245F100B0091E673 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E51245F1D170091E673 /* SubViews */,
+				A7359E4E245F1CBD0091E673 /* CreditsListDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A7359E4C245F10100091E673 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E4D245F1CBD0091E673 /* CreditsListDetailViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A7359E51245F1D170091E673 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E5A245F273D0091E673 /* LogoNameCell */,
+				A7359E5B245F27520091E673 /* TitleTitleCell */,
+				A7359E60245F734C0091E673 /* DescriptionCell */,
+				A7359E65245F7E880091E673 /* SegmentControllCell */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		A7359E5A245F273D0091E673 /* LogoNameCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E52245F27250091E673 /* LogoNameTableViewCell.swift */,
+				A7359E53245F27250091E673 /* LogoNameTableViewCell.xib */,
+			);
+			path = LogoNameCell;
+			sourceTree = "<group>";
+		};
+		A7359E5B245F27520091E673 /* TitleTitleCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E56245F27380091E673 /* TitleTitleTableViewCell.swift */,
+				A7359E57245F27380091E673 /* TitleTitleTableViewCell.xib */,
+			);
+			path = TitleTitleCell;
+			sourceTree = "<group>";
+		};
+		A7359E60245F734C0091E673 /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E5C245F73460091E673 /* DescriptionCell.swift */,
+				A7359E5D245F73460091E673 /* DescriptionCell.xib */,
+			);
+			path = DescriptionCell;
+			sourceTree = "<group>";
+		};
+		A7359E65245F7E880091E673 /* SegmentControllCell */ = {
+			isa = PBXGroup;
+			children = (
+				A7359E66245F833E0091E673 /* SegmentControllTableViewCell.swift */,
+				A7359E67245F833E0091E673 /* SegmentControllTableViewCell.xib */,
+			);
+			path = SegmentControllCell;
+			sourceTree = "<group>";
+		};
 		A742A21B243286330008AEEF /* CreditsList */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,6 +717,7 @@
 				A7304D18245633E600F0AECF /* CreditsListFilter */,
 				A7304D48245889BC00F0AECF /* CreditsListFilterDrawer */,
 				A7F134422450DBB1000FF164 /* CreditsListFavourite */,
+				A7359E49245F0FEC0091E673 /* CreditsListDetail */,
 				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,
 			);
 			path = Modules;
@@ -821,9 +923,11 @@
 				A7C3CB7723FEAEF500F5DB01 /* SF-Pro-Text-Regular.otf in Resources */,
 				A7304D1F2456343700F0AECF /* CreditsListFilterViewController.xib in Resources */,
 				A7304D30245708C200F0AECF /* CreditsListSliderCell.xib in Resources */,
+				A7359E55245F27250091E673 /* LogoNameTableViewCell.xib in Resources */,
 				A7C3CB7923FEAEF500F5DB01 /* SF-Pro-Display-Regular.otf in Resources */,
 				A7C3CB7623FEAEF500F5DB01 /* SF-Compact-Text-Regular.otf in Resources */,
 				A7304D572458D3F600F0AECF /* CreditsListFilterDrawerCell.xib in Resources */,
+				A7359E59245F27380091E673 /* TitleTitleTableViewCell.xib in Resources */,
 				A7C3CB7823FEAEF500F5DB01 /* SF-Pro-Text-Bold.otf in Resources */,
 				A7C3CB7423FEAEF500F5DB01 /* SF-Pro-Display-Semibold.otf in Resources */,
 				A7C3CB7B23FEAEF500F5DB01 /* SF-Compact-Display-Regular.otf in Resources */,
@@ -832,11 +936,14 @@
 				A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */,
 				A796783523ED812900CE4E94 /* LaunchScreen.storyboard in Resources */,
 				A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */,
+				A7359E5F245F73460091E673 /* DescriptionCell.xib in Resources */,
 				A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */,
 				A796783223ED812900CE4E94 /* Assets.xcassets in Resources */,
+				A7359E69245F833E0091E673 /* SegmentControllTableViewCell.xib in Resources */,
 				A796782D23ED812600CE4E94 /* Main.storyboard in Resources */,
 				A7F134492450DBFD000FF164 /* CreditListFavouriteViewController.xib in Resources */,
 				A7C3CB7E23FECFB600F5DB01 /* SF-Pro-Display-Bold.otf in Resources */,
+				A7359E50245F1CBD0091E673 /* CreditsListDetailViewController.xib in Resources */,
 				A7304D4C245889DF00F0AECF /* CreditsListFilterDrawerViewController.xib in Resources */,
 				A7CBA49F243FC846009CB3E0 /* GoogleService-Info.plist in Resources */,
 				A7304D442457400600F0AECF /* CreditsListFilterSwitchCell.xib in Resources */,
@@ -898,7 +1005,9 @@
 			files = (
 				A7304D2224563FC900F0AECF /* LoadingButton.swift in Sources */,
 				A7F134412450D4BD000FF164 /* ShareLinkDelegate.swift in Sources */,
+				A7359E5E245F73460091E673 /* DescriptionCell.swift in Sources */,
 				A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */,
+				A7359E68245F833E0091E673 /* SegmentControllTableViewCell.swift in Sources */,
 				A7304D562458D3F600F0AECF /* CreditsListFilterDrawerCell.swift in Sources */,
 				A7CBA4A6243FDF7A009CB3E0 /* VerificationViewController.swift in Sources */,
 				A7F1344C24523604000FF164 /* CreditListFavouriteService.swift in Sources */,
@@ -919,9 +1028,11 @@
 				A7304D3A24572FD900F0AECF /* Formatter.swift in Sources */,
 				A7304D2F245708C200F0AECF /* CreditsListSliderCell.swift in Sources */,
 				A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */,
+				A7359E58245F27380091E673 /* TitleTitleTableViewCell.swift in Sources */,
 				A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */,
 				A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */,
 				A7CBA428243B4936009CB3E0 /* BannersSubModuleProtocol.swift in Sources */,
+				A7359E54245F27250091E673 /* LogoNameTableViewCell.swift in Sources */,
 				A7304D592458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift in Sources */,
 				A7F134542452504F000FF164 /* CreditListFavouriteNetwork.swift in Sources */,
 				A796783F23ED820400CE4E94 /* ServiceTypeModel.swift in Sources */,
@@ -940,6 +1051,7 @@
 				A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */,
 				A7304D2A245647DC00F0AECF /* UITableViewCell+Extension.swift in Sources */,
 				A7304D3D2457304000F0AECF /* Numeric.swift in Sources */,
+				A7359E4F245F1CBD0091E673 /* CreditsListDetailViewController.swift in Sources */,
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
 				A7304D4724578C2800F0AECF /* Double+Extension.swift in Sources */,

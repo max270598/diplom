@@ -45,7 +45,7 @@ class CreditsListViewController: UIViewController {
         }
     }
     var bannersArray: [BannersSubModuleBanner] = [
-    BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", short_sum: "-", min_rate: "-", max_time: "-")]
+        BannersSubModuleBanner(id: "", background_image: "", type: "", bank_logo_url: "", short_sum: "", min_rate: "", max_time: "")]
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -142,6 +142,8 @@ extension CreditsListViewController: SkeletonCollectionViewDataSource, SkeletonC
 //Datasourse Delegate
 
 extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bannerCollectionView {
             return 2
@@ -163,6 +165,12 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
         }
 
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = CreditsListDetailViewController(nibName: "CreditsListDetailViewController", bundle: nil)
+        detailVC.detailCredit = self.allCredits![indexPath.row]
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     
@@ -513,7 +521,7 @@ extension CreditsListViewController {
                 var banners = Array<BannersSubModuleBanner>()
                 credits.forEach {  (item) in
                     if item.is_best == true {
-                            let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
+                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image,type: item.type, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
                         banners.append(bestCredit)
                         }
                     

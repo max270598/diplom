@@ -19,6 +19,7 @@ struct CreditModel {
     let id: String!
     let type: String
     let bank_name: String
+    let bank_id: String
     let background_image: String
     let bank_logo_url: String
     let credit_url: String
@@ -36,12 +37,12 @@ struct CreditModel {
     let short_sum: String
     let short_time: String
     let is_best: Bool
-//    let description: String
-//    let rate_description: String
-//    var rates: [Rate]
-//    let documents: Documents
-//    let requirements: Requirements
-//    let conditions: Conditions
+    let description: String
+    let rate_description: String
+    var rates: [Rate]
+    let documents: Documents
+    let requirements: Requirements
+    let conditions: Conditions
     
     let ref: DatabaseReference? //все объекты имееют точно е расположение в бд и чтоыб к ним добрать нам нужен из референс, референс опциональный потому что мы создаем его локально, а появляется он тольк окогда попадает в базу данных
     
@@ -50,6 +51,7 @@ struct CreditModel {
         self.id = snapshotValue["id"] as! String
         self.type = snapshotValue["type"] as! String
         self.bank_name = snapshotValue["bank_name"] as! String
+        self.bank_id = snapshotValue["bank_id"] as! String
         self.background_image = snapshotValue["background_image"] as! String
         self.bank_logo_url = snapshotValue["bank_logo_url"] as! String
         self.credit_url = snapshotValue["credit_url"] as! String
@@ -68,17 +70,16 @@ struct CreditModel {
         self.short_time = snapshotValue["short_time"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
 
-//        self.is_best = snapshotValue["is_best"] as! Bool
-//        self.description = snapshotValue["description"] as! String
-//        self.rate_description = snapshotValue["rate_description"] as! String
-//        self.rates = []
-//        for item in snapshot.childSnapshot(forPath: "rates").children {
-//                       let rate = Rate(snapshot: item as! DataSnapshot)
-//                    self.rates.append(rate)
-//                   }
-//        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
-//        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
-//        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
+        self.description = snapshotValue["description"] as! String
+        self.rate_description = snapshotValue["rate_description"] as! String
+        self.rates = []
+        for item in snapshot.childSnapshot(forPath: "rates").children {
+                       let rate = Rate(snapshot: item as! DataSnapshot)
+                    self.rates.append(rate)
+                   }
+        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
+        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
+        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
 //
         self.ref = snapshot.ref
 
@@ -144,6 +145,7 @@ struct Conditions {
     let getting_method: String
     let request_consideration: String
     let additional_condition: String
+    let time: String
     
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
@@ -153,6 +155,7 @@ struct Conditions {
         self.getting_method = snapshotValue["getting_method"] as! String
         self.request_consideration = snapshotValue["request_consideration"] as! String
         self.additional_condition = snapshotValue["additional_condition"] as! String
+        self.time = snapshotValue["time"] as! String
 
     }
 }
