@@ -36,6 +36,7 @@ struct CreditModel {
     let short_sum: String
     let short_time: String
     let is_best: Bool
+    let best_title: String?
 //    let description: String
 //    let rate_description: String
 //    var rates: [Rate]
@@ -67,6 +68,7 @@ struct CreditModel {
         self.short_sum = snapshotValue["short_sum"] as! String
         self.short_time = snapshotValue["short_time"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
+        self.best_title = snapshotValue["best_title"] as? String
 
 //        self.is_best = snapshotValue["is_best"] as! Bool
 //        self.description = snapshotValue["description"] as! String

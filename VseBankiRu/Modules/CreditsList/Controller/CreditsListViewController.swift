@@ -45,7 +45,7 @@ class CreditsListViewController: UIViewController {
         }
     }
     var bannersArray: [BannersSubModuleBanner] = [
-    BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", short_sum: "-", min_rate: "-", max_time: "-")]
+        BannersSubModuleBanner(id: "-", background_image: "-", bank_logo_url: "-", title: "-", credit_url: "", short_sum: "-", min_rate: "-", max_time: "-")]
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -195,6 +195,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
+        cell.delegate = self
 
         if let model = data as? BannersSubModuleBannerProtocol {
             cell.configure(with: model)
@@ -513,7 +514,7 @@ extension CreditsListViewController {
                 var banners = Array<BannersSubModuleBanner>()
                 credits.forEach {  (item) in
                     if item.is_best == true {
-                            let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
+                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image, bank_logo_url: item.bank_logo_url, title: item.best_title ?? "", credit_url: item.credit_url,  short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
                         banners.append(bestCredit)
                         }
                     
