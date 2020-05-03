@@ -38,6 +38,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         let logoCell = tableView.dequeueReusableCell(withIdentifier: "LogoNameTableViewCell", for: indexPath) as? LogoNameTableViewCell
         let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as? TitleTitleTableViewCell
         let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as? DescriptionCell
+        let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as? SegmentControllTableViewCell
         
         switch indexPath.row {
         case 0:
@@ -63,7 +64,8 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         case 6:
             descriptionCell?.configure(text: credit.description)
             return descriptionCell!
-            
+        case 7:
+            return segmentControllCell!
         default:
             print("")
         }
@@ -78,6 +80,8 @@ extension CreditsListDetailViewController {
         self.listTableView.register(UINib(nibName: "LogoNameTableViewCell", bundle: nil), forCellReuseIdentifier: "LogoNameTableViewCell")
         self.listTableView.register(UINib(nibName: "TitleTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTitleTableViewCell")
         self.listTableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
+        self.listTableView.register(UINib(nibName: "SegmentControllTableViewCell", bundle: nil), forCellReuseIdentifier: "SegmentControllTableViewCell")
+        
         
         self.listTableView.dataSource = self
         self.listTableView.delegate = self
