@@ -11,7 +11,6 @@ import CoreData
 import Firebase
 import IQKeyboardManagerSwift
 import UserNotifications
-import ScrollableSegmentedControl
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,12 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
         
-        let segmentedControlAppearance = ScrollableSegmentedControl.appearance()
-        segmentedControlAppearance.segmentContentColor = UIColor.white
-        segmentedControlAppearance.selectedSegmentContentColor = UIColor.yellow
-        segmentedControlAppearance.backgroundColor = UIColor.black
-
-//        
+        
 //        UINavigationBar.appearance().barTintColor = UIColor.systemIndigo
 //        UINavigationBar.appearance().backgroundColor = UIColor.systemIndigo
         //102 100 210 цвет бара настоящий

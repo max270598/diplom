@@ -23,6 +23,11 @@ class TitleTitleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    override func prepareForReuse() {
+        self.titleLabel.text = ""
+        self.valueLabel.text = ""
+    }
+    
     func configure(title: String, value: String) {
         self.titleLabel.text = title
         self.valueLabel.text = value
