@@ -55,14 +55,14 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             titleTitleCell.configure(title: "Ставка", value: String(credit.min_rate!) + "%")
                        return titleTitleCell
         case 3:
-            titleTitleCell.configure(title: "Срок", value: credit.conditions.time)
+            titleTitleCell.configure(title: "Срок", value: credit.full_time)
                        return titleTitleCell
         case 4:
             titleTitleCell.configure(title: "Цель", value: credit.goal)
            return titleTitleCell
 
         case 5:
-            titleTitleCell.configure(title: "Возраст заемщика", value: credit.requirements.age)
+            titleTitleCell.configure(title: "Возраст заемщика", value: credit.debtor_age)
             return titleTitleCell
             
         case 6:
@@ -71,7 +71,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         case 7:
             return segmentControllCell
         case 8:
-            documentsCell.configure(model: credit, type: .rates)
+            documentsCell.configure(model: credit, type: .requiroments)
             return documentsCell
         default:
             print("")

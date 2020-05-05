@@ -36,6 +36,8 @@ struct CreditModel {
     let reviewUpThreeDays: Bool
     let short_sum: String
     let short_time: String
+    let full_time: String
+    let debtor_age: String
     let is_best: Bool
     let description: String
     let rate_description: String
@@ -48,6 +50,7 @@ struct CreditModel {
     var conditionsTitle: [String] = []
     var conditionsValue: [String] = []
 
+    let additional_condition: String?
 //    let documents: Documents
 //    let requirements: Requirements
 //    let conditions: Conditions
@@ -78,38 +81,39 @@ struct CreditModel {
         self.reviewUpThreeDays = snapshotValue["reviewUpThreeDays"] as! Bool
         self.short_sum = snapshotValue["short_sum"] as! String
         self.short_time = snapshotValue["short_time"] as! String
+        self.full_time = snapshotValue["full_time"] as! String
+        self.debtor_age = snapshotValue["debtor_age"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
-
+        self.additional_condition = snapshotValue["additional_condition"] as? String
         self.description = snapshotValue["description"] as! String
         self.rate_description = snapshotValue["rate_description"] as! String
-        self.ratesTitle = []
-        self.ratesValue = []
+       
         
         for item in snapshot.childSnapshot(forPath: "rates").children {
                        let rate = Rate(snapshot: item as! DataSnapshot)
-            self.ratesTitle.append(rate.sum)
-            self.ratesValue.append(rate.su)
+            self.ratesTitle.append(rate.rate)
+            self.ratesValue.append(rate.sum)
                    }
     
         for item in snapshot.childSnapshot(forPath: "documents").children {
-            let doc = SomeDocs(snapshot: item as! DataSnapshot)
-            self.some_docs.append(doc)
-            self.someDocsString.append(doc.value)
+            let doc = Documents(snapshot: item as! DataSnapshot)
+            self.documentsTitle.append(doc.title)
+            self.documentsValue.append(doc.value)
         }
-        for item in snapshot.childSnapshot(forPath: "some_doc").children {
-            let doc = SomeDocs(snapshot: item as! DataSnapshot)
-            self.some_docs.append(doc)
-            self.someDocsString.append(doc.value)
+        for item in snapshot.childSnapshot(forPath: "requirements").children {
+            let doc = Requirements(snapshot: item as! DataSnapshot)
+            self.requirementsTitle.append(doc.title)
+            self.requirementsValue.append(doc.value)
         }
-        for item in snapshot.childSnapshot(forPath: "some_doc").children {
-            let doc = SomeDocs(snapshot: item as! DataSnapshot)
-            self.some_docs.append(doc)
-            self.someDocsString.append(doc.value)
+        for item in snapshot.childSnapshot(forPath: "conditions").children {
+            let doc = Conditions(snapshot: item as! DataSnapshot)
+            self.conditionsTitle.append(doc.title)
+            self.conditionsValue.append(doc.value)
         }
-        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
-        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
-        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
-//
+//        self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
+//        self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
+//        self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
+////
         self.ref = snapshot.ref
 
 
@@ -123,15 +127,7 @@ extension CreditModel {
     }
 }
 
-struct SomeDocs {
-    let value: String
-    
-    init(snapshot: DataSnapshot) {
-         let snapshotValue = snapshot.value as! [String: AnyObject]
-        
-        self.value = snapshotValue["value"] as! String
-    }
-}
+
 struct Rate {
     let sum: String
     let rate: String

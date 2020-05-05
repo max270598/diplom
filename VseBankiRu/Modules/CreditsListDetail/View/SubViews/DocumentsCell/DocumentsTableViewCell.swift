@@ -14,7 +14,8 @@ class DocumentsTableViewCell: UITableViewCell {
      @IBOutlet weak var itemTableView: UITableView!
     
     
-    var cellItems:[Any] = []
+    var cellTitle:[String] = []
+    var cellValue:[String] = []
     var cellNumber = 1
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -38,17 +39,30 @@ class DocumentsTableViewCell: UITableViewCell {
     func configure(model: CreditModel, type: DocumentType) {
         switch type {
         case .rates:
-            self.cellNumber = model.someDocsString.count
-            self.cellItems = model.rates
-            self.descriptionTextView.isScrollEnabled = false
-            self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-            self.descriptionTextView.text = "shdvbckjsdhfbvkhsdbfhjkvbdsfjkbvkdjhfbvkjdhfbsvjkhdsbfkjhvbsdfjkhbvjkhsdfbvjsdbfkjvhbsdkfvhbksdjfhbvkjhsdfbhjkvsdbfkhvbsdfjhvbjsdhfblvjhsdbfvhbeiprvuweiprhviuewprbnivpuwerbviwbeibv"
-            self.descriptionTextView.sizeToFit()
-            self.itemTableView.reloadData()
-            
+            self.cellNumber = model.ratesTitle.count
+            self.cellTitle = model.ratesTitle
+            self.cellValue = model.ratesValue
+        case .documents:
+            self.cellNumber = model.documentsTitle.count
+            self.cellTitle = model.documentsTitle
+            self.cellValue = model.documentsValue
+        case .requiroments:
+            self.cellNumber = model.requirementsTitle.count
+            self.cellTitle = model.requirementsTitle
+            self.cellValue = model.requirementsValue
+        case .conditions:
+            self.cellNumber = model.conditionsTitle.count
+            self.cellTitle = model.conditionsTitle
+            self.cellValue = model.conditionsValue
         default:
             print("default")
         }
+        
+        self.descriptionTextView.isScrollEnabled = false
+                   self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+                   self.descriptionTextView.text = "shdvbckjsdhfbvkhsdbfhjkvbdsfjkbvkdjhfbvkjdhfbsvjkhdsbfkjhvbsdfjkhbvjkhsdfbvjsdbfkjvhbsdkfvhbksdjfhbvkjhsdfbhjkvsdbfkhvbsdfjhvbjsdhfblvjhsdbfvhbeiprvuweiprhviuewprbnivpuwerbviwbeibv"
+                   self.descriptionTextView.sizeToFit()
+                   self.itemTableView.reloadData()
     }
     
 }
@@ -65,7 +79,7 @@ extension DocumentsTableViewCell: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentsItemTableViewCell", for: indexPath) as! DocumentsItemTableViewCell
-        cell.configure(title: self.cellItems[indexPath.row]., image: nil, value: "")
+        cell.configure(title: self.cellTitle[indexPath.row], image: nil, value: self.cellValue[indexPath.row])
         return cell
     }
 

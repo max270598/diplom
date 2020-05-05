@@ -53,7 +53,6 @@
             <connections>
                 <outlet property="descriptionTextView" destination="aPH-d9-XRC" id="RKb-vD-wec"/>
                 <outlet property="itemTableView" destination="XUX-UG-rIs" id="UAW-Xo-DBd"/>
-                <outlet property="tableViewHeightContsr" destination="KTs-j7-188" id="4OX-XE-pug"/>
             </connections>
             <point key="canvasLocation" x="140.57971014492756" y="389.73214285714283"/>
         </tableViewCell>
