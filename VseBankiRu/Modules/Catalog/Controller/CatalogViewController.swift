@@ -30,6 +30,8 @@ class CatalogViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
+    
+    
     @IBAction func getCreditsButtonTapped(_ sender: Any) {
  let secondVC = CreditsListViewController(nibName: "CreditsListViewController", bundle: nil)
         secondVC.hidesBottomBarWhenPushed = true
@@ -47,8 +49,11 @@ class CatalogViewController: UIViewController {
             } catch {
                 print(error.localizedDescription)
             }
-        self.navigatio
-            dismiss(animated: true, completion: nil)
+//        let storyB = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
+//        
+//        self.show(vc, sender: nil)
+        //            dismiss(animated: true, completion: nil)
         }
      
      

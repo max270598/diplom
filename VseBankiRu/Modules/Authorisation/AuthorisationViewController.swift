@@ -21,6 +21,7 @@ class AuthorisationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
 
         
