@@ -15,15 +15,25 @@ class CatalogViewController: UIViewController {
     @IBOutlet weak var eurLabel: UILabel!
     @IBOutlet weak var funtLabel: UILabel!
     
+    @IBOutlet weak var descriptionLabel: UILabel!
     
+    @IBOutlet weak var getCreditsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Главная"
+        
         self.downloadQuotation()
-   
+        self.getCreditsButton.clipsToBounds = true
+        self.getCreditsButton.layer.cornerRadius = self.getCreditsButton.frame.height / 2
         
         // Do any additional setup after loading the view.
+    }
+    @IBAction func getCreditsButtonTapped(_ sender: Any) {
+ let secondVC = CreditsListViewController(nibName: "CreditsListViewController", bundle: nil)
+        secondVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,6 +47,7 @@ class CatalogViewController: UIViewController {
             } catch {
                 print(error.localizedDescription)
             }
+        self.navigatio
             dismiss(animated: true, completion: nil)
         }
      
@@ -46,23 +57,12 @@ class CatalogViewController: UIViewController {
 
 
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let secondVC = CreditsListViewController(coder: <#NSCoder#>)
-        let secondVC = CreditsListViewController(nibName: "CreditsListViewController", bundle: nil)
-         let cell = collectionView.cellForItem(at: indexPath) as? ServiceTypeCollectionViewCell
-        if cell?.nameLabel.text == "Кредиты" {
-            print("кредиты")
-        } else {
-            print("Другое")
-        }
-        secondVC.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(secondVC, animated: true)
-    }
+
     
   
     
     
-}
+
 
 
 extension CatalogViewController {

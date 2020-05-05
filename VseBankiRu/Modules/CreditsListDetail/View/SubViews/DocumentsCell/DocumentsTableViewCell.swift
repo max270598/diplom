@@ -64,11 +64,24 @@ class DocumentsTableViewCell: UITableViewCell {
             self.cellNumber = model.conditionsTitle.count
             self.cellTitle = model.conditionsTitle
             self.cellValue = model.conditionsValue
+            
             self.descriptionTextView.text = model.condition_description
 
         default:
             print("default")
         }
+        print("text",self.descriptionTextView.text)
+        
+        self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+        let topConstr = NSLayoutConstraint(item: self.descriptionTextView, attribute: .top, relatedBy: .equal, toItem: self.itemTableView, attribute: .bottom, multiplier: 1, constant: 20)
+        let trailing = NSLayoutConstraint(item: self.descriptionTextView, attribute: .trailing, relatedBy: .equal, toItem: self.contentView, attribute: .trailing, multiplier: 1, constant: 20)
+        let leapConstr = NSLayoutConstraint(item: self.descriptionTextView, attribute: .leading, relatedBy: .equal, toItem: self.contentView, attribute: .leading, multiplier: 1, constant: 20)
+         let botcon = NSLayoutConstraint(item: self.descriptionTextView, attribute: .bottom, relatedBy: .equal, toItem: self.contentView, attribute: .bottom, multiplier: 1, constant: 20)
+        
+        self.addConstraints([topConstr, trailing, leapConstr, botcon])
+        
+        
+        
         self.descriptionTextView.text = Formatter.repalceWithStringSpace(text: self.descriptionTextView.text)
         self.descriptionTextView.isScrollEnabled = false
         self.descriptionTextView.isEditable = false 

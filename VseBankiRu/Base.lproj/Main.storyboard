@@ -25,6 +25,9 @@
         <array key="SF-Pro-Text-Medium.otf">
             <string>SFProText-Medium</string>
         </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Item-->
@@ -159,17 +162,22 @@
                                     <constraint firstItem="lZj-Ol-JRv" firstAttribute="top" secondItem="wcN-ar-hGT" secondAttribute="top" constant="4" id="vAu-Y7-ha1"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-bD-M3v">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KlR-U1-hLR">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Данный сервис предоставляет пользователям возможность в удобной форме подобрать кредит на основе заданных параметров." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfY-lJ-zl7">
+                                <rect key="frame" x="40" y="178" width="295" height="81.5"/>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-yu-67e">
+                                <rect key="frame" x="82.5" y="379.5" width="210" height="30"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title=" Перейти к подбору кредита ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="getCreditsButtonTapped:" destination="eV9-f7-kx7" eventType="touchUpInside" id="dpf-ma-W3n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -177,10 +185,12 @@
                             <constraint firstItem="wcN-ar-hGT" firstAttribute="top" secondItem="ESb-xn-C1i" secondAttribute="top" id="KFu-ct-8mg"/>
                             <constraint firstItem="ESb-xn-C1i" firstAttribute="trailing" secondItem="wcN-ar-hGT" secondAttribute="trailing" id="Qx8-Di-ppB"/>
                             <constraint firstItem="wcN-ar-hGT" firstAttribute="centerX" secondItem="6Ks-6Z-G4m" secondAttribute="centerX" id="UN3-6a-n2A"/>
-                            <constraint firstItem="ESb-xn-C1i" firstAttribute="bottom" secondItem="EI7-bD-M3v" secondAttribute="bottom" id="V3R-Lx-IvH"/>
-                            <constraint firstItem="EI7-bD-M3v" firstAttribute="leading" secondItem="ESb-xn-C1i" secondAttribute="leading" id="Xq8-FE-QZ3"/>
-                            <constraint firstItem="EI7-bD-M3v" firstAttribute="top" secondItem="wcN-ar-hGT" secondAttribute="bottom" constant="10" id="gs5-rT-vRw"/>
-                            <constraint firstItem="ESb-xn-C1i" firstAttribute="trailing" secondItem="EI7-bD-M3v" secondAttribute="trailing" id="nn1-m6-fmD"/>
+                            <constraint firstItem="qfY-lJ-zl7" firstAttribute="centerX" secondItem="6Ks-6Z-G4m" secondAttribute="centerX" id="XUm-JV-b7m"/>
+                            <constraint firstItem="0w5-yu-67e" firstAttribute="centerX" secondItem="6Ks-6Z-G4m" secondAttribute="centerX" id="Z8c-Vw-ROK"/>
+                            <constraint firstItem="0w5-yu-67e" firstAttribute="top" secondItem="qfY-lJ-zl7" secondAttribute="bottom" constant="120" id="ZmQ-HL-wo6"/>
+                            <constraint firstItem="qfY-lJ-zl7" firstAttribute="leading" secondItem="6Ks-6Z-G4m" secondAttribute="leading" constant="40" id="dTu-37-JyL"/>
+                            <constraint firstItem="qfY-lJ-zl7" firstAttribute="top" secondItem="wcN-ar-hGT" secondAttribute="bottom" constant="80" id="gvs-M9-hsI"/>
+                            <constraint firstAttribute="trailing" secondItem="qfY-lJ-zl7" secondAttribute="trailing" constant="40" id="xSc-JT-M2g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ESb-xn-C1i"/>
                         <userDefinedRuntimeAttributes>
@@ -188,7 +198,7 @@
                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                <color key="value" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="value" red="0.90588235289999997" green="0.92941176469999998" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -196,15 +206,16 @@
                         <color key="badgeColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" id="ntS-oh-nvY">
-                        <barButtonItem key="leftBarButtonItem" title="Sign Out" id="Es5-3o-GLf">
+                        <barButtonItem key="leftBarButtonItem" title="Выйти" id="Es5-3o-GLf">
                             <connections>
                                 <action selector="signOutButtonTapped:" destination="eV9-f7-kx7" id="Aov-Qj-rjc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="descriptionLabel" destination="qfY-lJ-zl7" id="NPx-Yp-KsG"/>
                         <outlet property="eurLabel" destination="TvF-9X-Wph" id="FMQ-gJ-ne3"/>
-                        <outlet property="serviceTypeCollectionView" destination="EI7-bD-M3v" id="WfM-HX-Yfb"/>
+                        <outlet property="getCreditsButton" destination="0w5-yu-67e" id="udh-8p-Lc1"/>
                         <outlet property="usdLabel" destination="OIE-AX-yHZ" id="wHY-UL-2Vw"/>
                     </connections>
                 </viewController>
@@ -329,11 +340,11 @@
             </objects>
             <point key="canvasLocation" x="-74" y="-1185"/>
         </scene>
-        <!--Authorisation View Controller-->
+        <!--Авторизация-->
         <scene sceneID="rQD-PS-vwk">
             <objects>
                 <viewController id="6Hn-uy-ETI" customClass="AuthorisationViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="swE-jd-qSD">
+                    <view key="view" contentMode="scaleToFill" id="swE-jd-qSD" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -441,7 +452,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Uqd-FI-oYz" secondAttribute="trailing" constant="20" id="12E-C5-Cuz"/>
                                     <constraint firstItem="Uqd-FI-oYz" firstAttribute="centerX" secondItem="NKd-S1-APg" secondAttribute="centerX" id="C6R-9E-Q1B"/>
@@ -464,8 +475,16 @@
                             <constraint firstItem="6IM-hE-Oyz" firstAttribute="bottom" secondItem="6gV-6p-nCj" secondAttribute="bottom" constant="76" id="oXJ-9G-Ih9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6IM-hE-Oyz"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.90588235289999997" green="0.92941176469999998" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="HnV-Jd-Vdg"/>
+                    <navigationItem key="navigationItem" title="Авторизация" id="HnV-Jd-Vdg"/>
                     <connections>
                         <outlet property="emailTextField" destination="pPw-1s-qvT" id="pwQ-SH-OCW"/>
                         <outlet property="errorLabel" destination="Uqd-FI-oYz" id="v2x-g9-dT0"/>
@@ -496,11 +515,11 @@
             </objects>
             <point key="canvasLocation" x="-4018" y="-477"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Регистрация-->
         <scene sceneID="bh1-NF-7Xf">
             <objects>
                 <viewController id="67z-ib-b69" customClass="RegisterViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="OX1-8b-N9h">
+                    <view key="view" contentMode="scaleToFill" id="OX1-8b-N9h" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -619,7 +638,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rB0-6L-afL" firstAttribute="centerX" secondItem="rm9-nH-Ibz" secondAttribute="centerX" id="Eyi-Vi-n5h"/>
                                     <constraint firstItem="d7R-Ls-k2l" firstAttribute="leading" secondItem="rm9-nH-Ibz" secondAttribute="leading" constant="20" id="V3P-rL-PIS"/>
@@ -661,8 +680,16 @@
                             <constraint firstItem="rm9-nH-Ibz" firstAttribute="top" secondItem="X5b-3F-gTN" secondAttribute="bottom" id="wpZ-J5-6Tv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fgb-oL-8Ce"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.90588235289999997" green="0.92941176469999998" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="XfM-f0-qRy"/>
+                    <navigationItem key="navigationItem" title="Регистрация" id="XfM-f0-qRy"/>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="FJY-7X-iPQ" id="MMk-EG-ENe"/>
                         <outlet property="createAccountButton" destination="wtS-6c-aE9" id="nb2-GB-W6h"/>
@@ -677,11 +704,11 @@
             </objects>
             <point key="canvasLocation" x="-2863.1999999999998" y="365.66716641679164"/>
         </scene>
-        <!--Email Verification View Controller-->
+        <!--Регистрация-->
         <scene sceneID="6Z1-31-qBh">
             <objects>
                 <viewController id="yRg-4V-X66" customClass="EmailVerificationViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="N4j-4j-U8s">
+                    <view key="view" contentMode="scaleToFill" id="N4j-4j-U8s" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -727,8 +754,16 @@
                             <constraint firstItem="YIz-Mo-3vo" firstAttribute="centerX" secondItem="N4j-4j-U8s" secondAttribute="centerX" id="qPK-N6-xE9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yxA-ev-rfw"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.90588235289999997" green="0.92941176469999998" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="q8J-An-P3S"/>
+                    <navigationItem key="navigationItem" title="Регистрация" id="q8J-An-P3S"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Y9j-cH-GYB" id="szq-7d-M6M"/>
                         <segue destination="wGS-b1-hbM" kind="presentation" identifier="emailVerified" modalPresentationStyle="fullScreen" id="ffJ-Z0-6hr"/>
@@ -855,6 +890,6 @@
         <image name="icon_share" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="chI-oZ-Dxb"/>
+        <segue reference="ffJ-Z0-6hr"/>
     </inferredMetricsTieBreakers>
 </document>

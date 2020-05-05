@@ -23,14 +23,14 @@
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-UG-rIs">
                         <rect key="frame" x="20" y="0.0" width="280" height="150"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="150" id="KTs-j7-188"/>
                         </constraints>
                     </tableView>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aPH-d9-XRC">
-                        <rect key="frame" x="36" y="170" width="248" height="754"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <rect key="frame" x="20" y="170" width="280" height="766"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
@@ -38,14 +38,13 @@
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aPH-d9-XRC" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="13o-4b-1fi"/>
                     <constraint firstItem="XUX-UG-rIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2xj-Tg-YXQ"/>
-                    <constraint firstItem="aPH-d9-XRC" firstAttribute="top" secondItem="XUX-UG-rIs" secondAttribute="bottom" constant="20" id="9qL-tN-YyO"/>
+                    <constraint firstAttribute="bottom" secondItem="aPH-d9-XRC" secondAttribute="bottom" id="3Lr-tQ-wZD"/>
+                    <constraint firstItem="aPH-d9-XRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6CB-f2-PXW"/>
+                    <constraint firstItem="aPH-d9-XRC" firstAttribute="top" secondItem="XUX-UG-rIs" secondAttribute="bottom" constant="20" id="MMX-C8-gFy"/>
+                    <constraint firstAttribute="trailing" secondItem="aPH-d9-XRC" secondAttribute="trailing" constant="20" id="Tkf-y1-sR0"/>
                     <constraint firstItem="XUX-UG-rIs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kuQ-uW-AJf"/>
                     <constraint firstItem="XUX-UG-rIs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lbr-vy-5j6"/>
-                    <constraint firstItem="aPH-d9-XRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="mn4-go-jlv"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="aPH-d9-XRC" secondAttribute="bottom" constant="1" id="qQ4-aL-QcA"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aPH-d9-XRC" secondAttribute="trailing" constant="20" id="rZQ-Vl-Qh5"/>
                     <constraint firstAttribute="trailing" secondItem="XUX-UG-rIs" secondAttribute="trailing" constant="20" id="vV6-7w-89s"/>
                 </constraints>
             </tableViewCellContentView>

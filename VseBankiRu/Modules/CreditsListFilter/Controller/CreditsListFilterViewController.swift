@@ -279,7 +279,7 @@ private extension CreditsListFilterViewController {
     func addResultButtonShadow() {
         self.resultButton.backgroundColor = UIColor.systemGreen
 
-        self.resultButton.addShadowCorner(cornerRadius: self.resultButton.frame.height / 2, offset: CGSize(width: 0, height: 3), color: .black, radius: 10, opacity: 0.7)
+        self.resultButton.addShadowCorner(cornerRadius: self.resultButton.frame.height / 2, offset: CGSize(width: 0, height: 3), color: .black, radius: 10, opacity: 0.3)
             
             
          

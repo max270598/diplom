@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class CreditsListDetailViewController: UIViewController {
 
@@ -33,20 +34,25 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 9
+        return 12
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let credit = self.detailCredit else {
             return UITableViewCell()
         }
+        
+        let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+        
         let logoCell = tableView.dequeueReusableCell(withIdentifier: "LogoNameTableViewCell", for: indexPath) as! LogoNameTableViewCell
         let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
         let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCell
         let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
         segmentControllCell.delegate = self
-        let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
         
+        let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
+        let buttonCell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
+        buttonCell.delegate = self
         
         switch indexPath.row {
         case 0:
@@ -77,9 +83,15 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             return segmentControllCell
         case 8:
             documentsCell.configure(model: credit, type: self.documentType)
-            print("DOCS Conf")
-            
             return documentsCell
+        case 9:
+            return emptyCell
+        case 10:
+            buttonCell.configure(url: credit.credit_url)
+            return buttonCell
+        case 11:
+            return emptyCell
+        
         default:
             print("")
         }
@@ -96,11 +108,15 @@ extension CreditsListDetailViewController {
         self.listTableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         self.listTableView.register(UINib(nibName: "SegmentControllTableViewCell", bundle: nil), forCellReuseIdentifier: "SegmentControllTableViewCell")
         self.listTableView.register(UINib(nibName: "DocumentsTableViewCell", bundle: nil), forCellReuseIdentifier: "DocumentsTableViewCell")
+        self.listTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonTableViewCell")
+        self.listTableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyTableViewCell")
+        
         
         self.listTableView.dataSource = self
         self.listTableView.delegate = self
         
         self.listTableView.separatorStyle = .none
+        self.listTableView.allowsSelection = false
     }
 }
 
@@ -138,6 +154,17 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
     
     
 }
+
+
+extension CreditsListDetailViewController: CreditsListDetailDelegate {
+    func openCredit(url: String, sender: UIView) {
+        let svc = SFSafariViewController(url: URL(string: url)!)
+        self.present(svc, animated: true, completion: nil)
+    }
+    
+    
+}
+
 
 extension CreditsListDetailViewController {
     func formattedValue<N: Numeric>(value: N) -> String {

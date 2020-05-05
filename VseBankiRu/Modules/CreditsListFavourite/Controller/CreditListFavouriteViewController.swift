@@ -69,6 +69,15 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
         return cell
     }
     
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+            let detailVC = CreditsListDetailViewController(nibName: "CreditsListDetailViewController", bundle: nil)
+            detailVC.detailCredit = self.Credits[indexPath.row]
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+        
+    
     
     
 }

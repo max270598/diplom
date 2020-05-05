@@ -17,7 +17,8 @@ class SegmentControllTableViewCell: UITableViewCell {
    
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupSegmentControll()
+//        setupSegmentControll()
+//        print("AWAKE")
         // Initialization code
     }
 
@@ -28,7 +29,7 @@ class SegmentControllTableViewCell: UITableViewCell {
     }
     
     func configure() {
-        
+        setupSegmentControll()
     }
     
     func setupSegmentControll() {
@@ -38,8 +39,8 @@ class SegmentControllTableViewCell: UITableViewCell {
 //        self.segmentControll.heightAnchor.constraint(equalToConstant: 30).isActive = true
         self.segmentControll.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20).isActive = true
         self.segmentControll.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20).isActive = true
-        self.segmentControll.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 7).isActive = true
-        self.segmentControll.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 7).isActive = true
+        self.segmentControll.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
+        self.segmentControll.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 6).isActive = true
         self.segmentControll.underlineSelected = true
 
         self.segmentControll.segmentStyle = .textOnly
