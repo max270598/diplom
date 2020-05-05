@@ -15,10 +15,14 @@ class CreditsListDetailViewController: UIViewController {
     var documentType: DocumentType = .rates
     var lastDocumentIndex = 0
     
+    
+    
     @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        setupNavigationBar()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -131,10 +135,8 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
         switch index {
         case 0:
             self.documentType = .rates
-            print("rates")
         case 1:
             self.documentType = .requiroments
-            print("documents")
         case 2:
             self.documentType = .conditions
         case 3:
@@ -170,5 +172,52 @@ extension CreditsListDetailViewController {
     func formattedValue<N: Numeric>(value: N) -> String {
         return value.formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
     }
+    
+   
+    func setupNavigationBar() {
+        let favouriteButton = UIButton(type: .custom)
+        favouriteButton.isSelected = (detailCredit?.inFavorite())!
+        print("inFavour", detailCredit?.inFavorite())
+        favouriteButton.setImage(UIImage(named: "icon_like_added"), for: .selected)
+
+        favouriteButton.setImage(UIImage(named: "icon_like"), for: .normal)
+        favouriteButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
+        favouriteButton.addTarget(self, action: #selector(self.favouriteButtonTapped), for: .touchUpInside)
+
+
+                let item1 = UIBarButtonItem(customView: favouriteButton)
+
+                let shareButton = UIButton(type: .custom)
+                shareButton.setImage(UIImage(named: "icon_share"), for: .normal)
+        
+                shareButton.frame = CGRect(x: 0, y: 0, width: 30, height: 44)
+                shareButton.addTarget(self, action: #selector(self.shareButtonTapped), for: .touchUpInside)
+                let item2 = UIBarButtonItem(customView: shareButton)
+        //        self.addPinView(button: item2)
+                self.navigationItem.setRightBarButtonItems([item1,item2], animated: true)
+    }
+    
+    @objc func favouriteButtonTapped(sender: UIButton) {
+
+        guard let itemId = self.detailCredit?.id else { return }
+        sender.favourite(itemId)
+        
+    }
+    
+    
+    
+   @objc func shareButtonTapped() {
+    guard let urlString = self.detailCredit?.credit_url else {
+        return
+    }
+        var sourceView: UIView = self.listTableView
+        if UIDevice.current.userInterfaceIdiom == .pad {
+//            sourceView = sender
+        }
+    guard let activityController = self.shareLinkController(urlString: urlString, sourceView: sourceView) else { return }
+        self.present(activityController, animated: true, completion: nil)
+
+    }
 }
+
 

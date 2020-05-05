@@ -343,7 +343,7 @@
         <!--Авторизация-->
         <scene sceneID="rQD-PS-vwk">
             <objects>
-                <viewController id="6Hn-uy-ETI" customClass="AuthorisationViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AuthorisationViewController" id="6Hn-uy-ETI" customClass="AuthorisationViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="swE-jd-qSD" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -376,7 +376,7 @@
                                             <constraint firstAttribute="width" constant="200" id="D3f-3K-KK5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="21"/>
-                                        <state key="normal" title="Login">
+                                        <state key="normal" title="Войти">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -389,9 +389,9 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyL-4H-WFD">
-                                        <rect key="frame" x="66.5" y="65" width="67" height="33"/>
+                                        <rect key="frame" x="11.5" y="65" width="177" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
-                                        <state key="normal" title="Register">
+                                        <state key="normal" title="Зарегистрироваться">
                                             <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -426,7 +426,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AGp-0b-4OT">
                                                 <rect key="frame" x="0.0" y="69" width="250" height="29"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vg-aV-PzQ">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vg-aV-PzQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -484,7 +484,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Авторизация" id="HnV-Jd-Vdg"/>
+                    <navigationItem key="navigationItem" title="Авторизация" id="HnV-Jd-Vdg">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="L9M-Gw-Frc"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="pPw-1s-qvT" id="pwQ-SH-OCW"/>
                         <outlet property="errorLabel" destination="Uqd-FI-oYz" id="v2x-g9-dT0"/>
@@ -553,7 +555,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JM9-aN-0Dw">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="29"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-SZ-VnU">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-SZ-VnU">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
@@ -587,7 +589,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aQh-zf-jay">
                                                 <rect key="frame" x="0.0" y="98" width="250" height="29"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itd-cG-sQ5">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itd-cG-sQ5">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="tel"/>
@@ -604,7 +606,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rrq-rH-9IA">
                                                 <rect key="frame" x="0.0" y="147" width="250" height="29"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJY-7X-iPQ">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Подтвердите пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJY-7X-iPQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="tel"/>
@@ -689,7 +691,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" title="Регистрация" id="XfM-f0-qRy"/>
+                    <navigationItem key="navigationItem" title="Регистрация" id="XfM-f0-qRy">
+                        <barButtonItem key="backBarButtonItem" title="Назад" id="oB8-h2-LQz"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="confirmPasswordTextField" destination="FJY-7X-iPQ" id="MMk-EG-ENe"/>
                         <outlet property="createAccountButton" destination="wtS-6c-aE9" id="nb2-GB-W6h"/>
@@ -890,6 +894,6 @@
         <image name="icon_share" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ffJ-Z0-6hr"/>
+        <segue reference="chI-oZ-Dxb"/>
     </inferredMetricsTieBreakers>
 </document>

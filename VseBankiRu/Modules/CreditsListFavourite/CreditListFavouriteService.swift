@@ -64,7 +64,6 @@ struct CreditListFavouriteService {
     
     // Remove Item ID from Favourite
     static func removeFavorite(_ itemId: String) {
-        
         // Debug Info
 //        debugPrint("AutoMallFavouriteService")
 //        debugPrint("Remove Item in Favourite: \(itemId)")

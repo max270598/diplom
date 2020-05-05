@@ -20,7 +20,7 @@ class AuthorisationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
 
         
@@ -35,7 +35,7 @@ class AuthorisationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-
+        self.tabBarController?.tabBar.isHidden = true
         self.errorLabel.alpha = 0
     }
     

@@ -38,6 +38,7 @@ class CatalogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
     }
 
  
@@ -47,8 +48,12 @@ class CatalogViewController: UIViewController {
             } catch {
                 print(error.localizedDescription)
             }
-        self.navigatio
-            dismiss(animated: true, completion: nil)
+        
+        let storyB = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
         }
      
      

@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController {
     var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Регистрация"
         self.errorLabel.alpha = 0
 
         ref = Database.database().reference(withPath: "users")
@@ -39,6 +40,7 @@ class RegisterViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "verify" else {return}
         guard let secondVC = segue.destination as? VerificationViewController  else {return}
+       
         secondVC.email = self.emailTextField.text
         secondVC.password = self.passwordTextField.text
     }

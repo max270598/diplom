@@ -89,18 +89,7 @@ private extension CreditCollectionViewCell {
 }
 
 
-extension UIButton {
 
-    func inFavourite(_ itemId: String) {
-        let inFavourite = CreditListFavouriteService.inFavorite(itemId)
-        self.isSelected = inFavourite
-    }
-
-    func favourite(_ itemId: String) {
-        self.isSelected.toggle()
-        CreditListFavouriteService.inFavorite(itemId) ? CreditListFavouriteService.removeFavorite(itemId) : CreditListFavouriteService.addFavorite(itemId)
-    }
-}
 
 extension CreditCollectionViewCell {
 

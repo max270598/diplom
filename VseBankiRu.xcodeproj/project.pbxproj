@@ -69,6 +69,7 @@
 		A75D758C2409337300A20824 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758B2409337300A20824 /* NetworkService.swift */; };
 		A75D758F240933B500A20824 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758E240933B500A20824 /* NetworkError.swift */; };
 		A75D75942409386000A20824 /* QuotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D75932409386000A20824 /* QuotationModel.swift */; };
+		A779D82824621363001B6647 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A779D82724621363001B6647 /* UIButton+Extension.swift */; };
 		A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796782523ED812600CE4E94 /* AppDelegate.swift */; };
 		A796782D23ED812600CE4E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A796782B23ED812600CE4E94 /* Main.storyboard */; };
 		A796783023ED812600CE4E94 /* VseBankiRu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A796782E23ED812600CE4E94 /* VseBankiRu.xcdatamodeld */; };
@@ -171,6 +172,7 @@
 		A75D758B2409337300A20824 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A75D758E240933B500A20824 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A75D75932409386000A20824 /* QuotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationModel.swift; sourceTree = "<group>"; };
+		A779D82724621363001B6647 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		A796782223ED812600CE4E94 /* VseBankiRu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VseBankiRu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A796782523ED812600CE4E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A796782C23ED812600CE4E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -689,6 +691,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		A779D8262462133F001B6647 /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				A779D82724621363001B6647 /* UIButton+Extension.swift */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		A78DF57923FDB52D0060F5A2 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -803,6 +813,7 @@
 		A7CBA4232439130B009CB3E0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A779D8262462133F001B6647 /* UIButton */,
 				A7304D4524578C1200F0AECF /* Double */,
 				A7304D3B2457302D00F0AECF /* Numeric */,
 				A7304D28245647B900F0AECF /* UITableViewCell */,
@@ -1123,6 +1134,7 @@
 				A796784223ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift in Sources */,
 				A7CBA4A4243FDF68009CB3E0 /* AuthorisationViewController.swift in Sources */,
 				A7304D4B245889DF00F0AECF /* CreditsListFilterDrawerViewController.swift in Sources */,
+				A779D82824621363001B6647 /* UIButton+Extension.swift in Sources */,
 				A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */,
 				A744AAF12440F57C009B5404 /* CreditModel.swift in Sources */,
 				A7304D322457125F00F0AECF /* FilterItemModel.swift in Sources */,

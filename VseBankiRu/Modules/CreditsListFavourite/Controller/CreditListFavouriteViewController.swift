@@ -14,7 +14,7 @@ class CreditListFavouriteViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var goToCreditsListButton: UIButton!
     
-    private var favoritesItems = CreditListFavouriteService.favourites
+    private var favoritesItems:[String] = []//CreditListFavouriteService.favourites
           
     private var Credits: Array<CreditModel> = []
     
@@ -23,10 +23,17 @@ class CreditListFavouriteViewController: UIViewController {
         self.setupUI()
         self.setupGoButton()
         self.setupCollectionView()
-        self.loadFavouriteCredits()
         // Do any additional    setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoritesItems = CreditListFavouriteService.favourites
+        self.loadFavouriteCredits()
+
+        
+        self.collectionView.reloadData()
+    }
 
     @IBAction func goToCreditsListButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -50,6 +57,7 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
                   return cell
               }
                   cell.configure(with: Credits[indexPath.row])
+        
         cell.addDelete {
             self.Credits.remove(at: indexPath.row)
             
@@ -135,6 +143,8 @@ extension CreditListFavouriteViewController {
                 return }
             self.Credits = favouriteCredits
             self.collectionView.reloadData()
+            print("LOADFAVORUTE", self.Credits.count)
+            
             
         }
     }

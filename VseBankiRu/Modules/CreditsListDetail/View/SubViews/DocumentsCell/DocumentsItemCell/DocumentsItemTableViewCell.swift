@@ -34,7 +34,6 @@ class DocumentsItemTableViewCell: UITableViewCell {
         self.textView.text = value
         self.textView.sizeToFit()
         
-        print("TITLE", title)
       
     }
     
