@@ -1,5 +1,5 @@
 //
-//  CreditsDetailDelegate.swift
+//  DocumentsType.swift
 //  VseBankiRu
 //
 //  Created by Мах Ol on 5/4/20.
@@ -8,6 +8,9 @@
 
 import Foundation
 
-protocol CreditsDetailDelegate {
-    func segmentDidChange(index: Int)
+enum DocumentType {
+    case rates
+    case requiroments
+    case conditions
+    case documents
 }

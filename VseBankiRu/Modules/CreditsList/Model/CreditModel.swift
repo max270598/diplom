@@ -39,10 +39,20 @@ struct CreditModel {
     let is_best: Bool
     let description: String
     let rate_description: String
-    var rates: [Rate]
-    let documents: Documents
-    let requirements: Requirements
-    let conditions: Conditions
+    var ratesTitle: [String] = []
+    var ratesValue: [String] = []
+    var documentsTitle: [String] = []
+    var documentsValue: [String] = []
+    var requirementsTitle: [String] = []
+    var requirementsValue: [String] = []
+    var conditionsTitle: [String] = []
+    var conditionsValue: [String] = []
+
+//    let documents: Documents
+//    let requirements: Requirements
+//    let conditions: Conditions
+//    var some_docs: [SomeDocs]
+//    var someDocsString: [String]
     
     let ref: DatabaseReference? //все объекты имееют точно е расположение в бд и чтоыб к ним добрать нам нужен из референс, референс опциональный потому что мы создаем его локально, а появляется он тольк окогда попадает в базу данных
     
@@ -72,11 +82,30 @@ struct CreditModel {
 
         self.description = snapshotValue["description"] as! String
         self.rate_description = snapshotValue["rate_description"] as! String
-        self.rates = []
+        self.ratesTitle = []
+        self.ratesValue = []
+        
         for item in snapshot.childSnapshot(forPath: "rates").children {
                        let rate = Rate(snapshot: item as! DataSnapshot)
-                    self.rates.append(rate)
+            self.ratesTitle.append(rate.sum)
+            self.ratesValue.append(rate.su)
                    }
+    
+        for item in snapshot.childSnapshot(forPath: "documents").children {
+            let doc = SomeDocs(snapshot: item as! DataSnapshot)
+            self.some_docs.append(doc)
+            self.someDocsString.append(doc.value)
+        }
+        for item in snapshot.childSnapshot(forPath: "some_doc").children {
+            let doc = SomeDocs(snapshot: item as! DataSnapshot)
+            self.some_docs.append(doc)
+            self.someDocsString.append(doc.value)
+        }
+        for item in snapshot.childSnapshot(forPath: "some_doc").children {
+            let doc = SomeDocs(snapshot: item as! DataSnapshot)
+            self.some_docs.append(doc)
+            self.someDocsString.append(doc.value)
+        }
         self.documents = Documents(snapshot: snapshot.childSnapshot(forPath: "documents"))
         self.requirements = Requirements(snapshot: snapshot.childSnapshot(forPath: "requirements"))
         self.conditions = Conditions(snapshot: snapshot.childSnapshot(forPath: "conditions"))
@@ -94,7 +123,15 @@ extension CreditModel {
     }
 }
 
-
+struct SomeDocs {
+    let value: String
+    
+    init(snapshot: DataSnapshot) {
+         let snapshotValue = snapshot.value as! [String: AnyObject]
+        
+        self.value = snapshotValue["value"] as! String
+    }
+}
 struct Rate {
     let sum: String
     let rate: String
@@ -110,52 +147,89 @@ struct Rate {
 }
 
 struct Documents {
-    let mandatoring_documents: String
-    let income_confirmation: String
-    let optional_documents: String
+    let title: String
+    let value: String
     
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         
-        self.mandatoring_documents = snapshotValue["mandatoring_documents"] as! String
-        self.income_confirmation = snapshotValue["income_confirmation"] as! String
-        self.optional_documents = snapshotValue["optional_documents"] as! String
-
-
+        self.title = snapshotValue["title"] as! String
+        self.value = snapshotValue["value"] as! String
     }
 }
 
 struct Requirements {
-    let age: String
-    let submitting_requirements: String
+    let title: String
+    let value: String
     
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         
-        self.age = snapshotValue["age"] as! String
-        self.submitting_requirements = snapshotValue["submitting_requirements"] as! String
-
-
+        self.title = snapshotValue["title"] as! String
+        self.value = snapshotValue["value"] as! String
     }
 }
 
 struct Conditions {
-    let payment_type: String
-    let payment_period: String
-    let getting_method: String
-    let request_consideration: String
-    let additional_condition: String
-    let time: String
+    let title: String
+    let value: String
     
     init(snapshot: DataSnapshot) {
         let snapshotValue = snapshot.value as! [String: AnyObject]
         
-        self.payment_type = snapshotValue["payment_type"] as! String
-        self.payment_period = snapshotValue["payment_period"] as! String
-        self.getting_method = snapshotValue["getting_method"] as! String
-        self.request_consideration = snapshotValue["request_consideration"] as! String
-        self.additional_condition = snapshotValue["additional_condition"] as! String
-        self.time = snapshotValue["time"] as! String
-
+        self.title = snapshotValue["title"] as! String
+        self.value = snapshotValue["value"] as! String
     }
 }
+
+
+//struct Documents {
+//    let mandatoring_documents: String
+//    let income_confirmation: String
+//    let optional_documents: String
+//
+//    init(snapshot: DataSnapshot) {
+//        let snapshotValue = snapshot.value as! [String: AnyObject]
+//
+//        self.mandatoring_documents = snapshotValue["mandatoring_documents"] as! String
+//        self.income_confirmation = snapshotValue["income_confirmation"] as! String
+//        self.optional_documents = snapshotValue["optional_documents"] as! String
+//
+//
+//    }
+//}
+//
+//struct Requirements {
+//    let age: String
+//    let submitting_requirements: String
+//
+//    init(snapshot: DataSnapshot) {
+//        let snapshotValue = snapshot.value as! [String: AnyObject]
+//
+//        self.age = snapshotValue["age"] as! String
+//        self.submitting_requirements = snapshotValue["submitting_requirements"] as! String
+//
+//
+//    }
+//}
+//
+//struct Conditions {
+//    let payment_type: String
+//    let payment_period: String
+//    let getting_method: String
+//    let request_consideration: String
+//    let additional_condition: String
+//    let time: String
+//
+//    init(snapshot: DataSnapshot) {
+//        let snapshotValue = snapshot.value as! [String: AnyObject]
+//
+//        self.payment_type = snapshotValue["payment_type"] as! String
+//        self.payment_period = snapshotValue["payment_period"] as! String
+//        self.getting_method = snapshotValue["getting_method"] as! String
+//        self.request_consideration = snapshotValue["request_consideration"] as! String
+//        self.additional_condition = snapshotValue["additional_condition"] as! String
+//        self.time = snapshotValue["time"] as! String
+//
+//    }
+//}

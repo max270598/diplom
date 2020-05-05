@@ -24,14 +24,14 @@ class CreditsListDetailViewController: UIViewController {
 }
 
 extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        guard indexPath.row != 7 else {
-////            return 300
-////        }
-//        return 300//UITableView.automaticDimension
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+
+    return UITableView.automaticDimension
+        
+        
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return 9
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -42,6 +42,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
         let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCell
         let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
+        let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
         
         switch indexPath.row {
         case 0:
@@ -69,6 +70,9 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             return descriptionCell
         case 7:
             return segmentControllCell
+        case 8:
+            documentsCell.configure(model: credit, type: .rates)
+            return documentsCell
         default:
             print("")
         }
@@ -84,7 +88,7 @@ extension CreditsListDetailViewController {
         self.listTableView.register(UINib(nibName: "TitleTitleTableViewCell", bundle: nil), forCellReuseIdentifier: "TitleTitleTableViewCell")
         self.listTableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         self.listTableView.register(UINib(nibName: "SegmentControllTableViewCell", bundle: nil), forCellReuseIdentifier: "SegmentControllTableViewCell")
-        
+        self.listTableView.register(UINib(nibName: "DocumentsTableViewCell", bundle: nil), forCellReuseIdentifier: "DocumentsTableViewCell")
         
         self.listTableView.dataSource = self
         self.listTableView.delegate = self
@@ -96,8 +100,12 @@ extension CreditsListDetailViewController {
 
 
 extension CreditsListDetailViewController: CreditsDetailDelegate {
+    func reloadTableView() {
+        self.listTableView.reloadData()
+    }
+    
     func segmentDidChange(index: Int) {
-        <#code#>
+        print("SegmentChange")
     }
     
     
