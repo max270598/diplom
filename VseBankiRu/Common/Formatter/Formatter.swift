@@ -17,6 +17,13 @@ class Formatter {
         return formatter
     }()
     
+    static func repalceWithStringSpace(text: String?) -> String {
+        var i = text?.replacingOccurrences(of: "*", with: "\n\n- ") ?? ""
+        i = i.replacingOccurrences(of: "|", with: "\n\n")
+        return i
+
+    }
+    
     static func formatTimeStringToDouble(text: String ) -> Double {
         switch text {
         case "Любой": return 0

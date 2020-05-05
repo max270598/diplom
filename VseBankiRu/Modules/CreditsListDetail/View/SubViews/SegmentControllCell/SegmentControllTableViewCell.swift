@@ -27,6 +27,10 @@ class SegmentControllTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configure() {
+        
+    }
+    
     func setupSegmentControll() {
         
         self.contentView.addSubview(segmentControll)
@@ -51,23 +55,23 @@ class SegmentControllTableViewCell: UITableViewCell {
         self.segmentSelected(sender: self.segmentControll)
 //        self.segmentControll.tintAdjustmentMode
 //        self.segmentControll.underlineHeight = 3.0
-        
+        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
+
+          let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 16), NSAttributedString.Key.foregroundColor: UIColor.gray]
+          let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProDisplay-Bold", size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.systemIndigo] //NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.red] as [NSAttributedString.Key : Any]
+
+         self.segmentControll.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
+        self.segmentControll.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
+          self.segmentControll.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
         
         self.segmentControll.addTarget(self, action: #selector(segmentSelected(sender:)), for: .valueChanged)
 
-        let largerRedTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.black]
-
-        let largerRedTextHighlightAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 16), NSAttributedString.Key.foregroundColor: UIColor.gray]
-        let largerRedTextSelectAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 16)!, NSAttributedString.Key.foregroundColor: UIColor.systemIndigo] //NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue, NSAttributedString.Key.underlineColor: UIColor.red] as [NSAttributedString.Key : Any]
-
-       self.segmentControll.setTitleTextAttributes(largerRedTextAttributes, for: .normal)
-      self.segmentControll.setTitleTextAttributes(largerRedTextHighlightAttributes, for: .highlighted)
-        self.segmentControll.setTitleTextAttributes(largerRedTextSelectAttributes, for: .selected)
+        
     }
     
     @objc func segmentSelected(sender:ScrollableSegmentedControl) {
         self.delegate?.segmentDidChange(index: sender.selectedSegmentIndex)
-        print("Segment at index \(sender.selectedSegmentIndex)  selected")
+        print("Segment at index \(sender.selectedSegmentIndex)  selec")
     }
     
 }

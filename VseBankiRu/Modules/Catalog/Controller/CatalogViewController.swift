@@ -15,24 +15,11 @@ class CatalogViewController: UIViewController {
     @IBOutlet weak var eurLabel: UILabel!
     @IBOutlet weak var funtLabel: UILabel!
     
-    var catalogArr: [ServiceTypeModel] = [
-        ServiceTypeModel(name: "Кредиты", image: UIImage(named: "Credits_backView")!),
-        ServiceTypeModel(name: "Вклады", image: UIImage(named: "Credits_backView")!),
-        ServiceTypeModel(name: "Карты", image: UIImage(named: "Credits_backView")!),
-        ServiceTypeModel(name: "Ипотека", image: UIImage(named: "Credits_backView")!),
-        ServiceTypeModel(name: "Страхование", image: UIImage(named: "Credits_backView")!),
-    ]
-    
-    
-    
-    @IBOutlet weak var serviceTypeCollectionView: UICollectionView!
-    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupCollectionView()
         self.downloadQuotation()
    
         
@@ -41,7 +28,6 @@ class CatalogViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.serviceTypeCollectionView!.collectionViewLayout = self.getLayout()
     }
 
  
@@ -58,28 +44,7 @@ class CatalogViewController: UIViewController {
 
 }
 
-extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.catalogArr.count
-    }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceTypeCollectionViewCell", for: indexPath) as! ServiceTypeCollectionViewCell
-        cell.nameLabel.text = catalogArr[indexPath.row].name
 
-        cell.backgroundColor = UIColor.white
-        cell.layer.cornerRadius = 10
-//        cell.layer.masksToBounds = false
-        cell.layer.shadowColor = UIColor.black.cgColor
-        cell.layer.shadowRadius = 5
-        cell.layer.shadowOpacity = 0.1
-        
-        return cell
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let secondVC = CreditsListViewController(coder: <#NSCoder#>)
@@ -99,22 +64,6 @@ extension CatalogViewController: UICollectionViewDelegate, UICollectionViewDataS
     
 }
 
-extension CatalogViewController: UICollectionViewDelegateFlowLayout {
-    
-    
-    
-    func getLayout() -> UICollectionViewLayout
-    {
-        let layout:UICollectionViewFlowLayout =  UICollectionViewFlowLayout()
-
-        layout.itemSize = CGSize(width: self.serviceTypeCollectionView.frame.width - 40, height: 88)
-        layout.minimumLineSpacing = 50
-//        layout.sectionInset = UIEdgeInsets(top: 25, left: 25, bottom: 25, right: 25)
-
-        return layout as UICollectionViewLayout
-
-    }
-}
 
 extension CatalogViewController {
     func downloadQuotation() {
@@ -130,9 +79,5 @@ extension CatalogViewController {
     }
     
     
-    func setupCollectionView () {
-        serviceTypeCollectionView.delegate = self
-        serviceTypeCollectionView.dataSource = self
-        self.serviceTypeCollectionView.register(UINib(nibName: "ServiceTypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ServiceTypeCollectionViewCell")
-    }
+    
 }

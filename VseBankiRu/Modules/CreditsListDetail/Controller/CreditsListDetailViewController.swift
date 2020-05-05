@@ -11,6 +11,8 @@ import UIKit
 class CreditsListDetailViewController: UIViewController {
 
     var detailCredit: CreditModel?
+    var documentType: DocumentType = .rates
+    var lastDocumentIndex = 0
     
     @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
@@ -42,7 +44,9 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
         let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCell
         let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
+        segmentControllCell.delegate = self
         let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
+        
         
         switch indexPath.row {
         case 0:
@@ -69,9 +73,12 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             descriptionCell.configure(text: credit.description)
             return descriptionCell
         case 7:
+            segmentControllCell.configure()
             return segmentControllCell
         case 8:
-            documentsCell.configure(model: credit, type: .requiroments)
+            documentsCell.configure(model: credit, type: self.documentType)
+            print("DOCS Conf")
+            
             return documentsCell
         default:
             print("")
@@ -103,9 +110,30 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
     func reloadTableView() {
         self.listTableView.reloadData()
     }
-    
     func segmentDidChange(index: Int) {
-        print("SegmentChange")
+    
+        switch index {
+        case 0:
+            self.documentType = .rates
+            print("rates")
+        case 1:
+            self.documentType = .requiroments
+            print("documents")
+        case 2:
+            self.documentType = .conditions
+        case 3:
+            self.documentType = .documents
+        default:
+            print("")
+        }
+        
+        if index > lastDocumentIndex {
+            self.lastDocumentIndex = index
+            self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0)], with: .left)
+        } else {
+            self.lastDocumentIndex = index
+        self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0)], with: .right)
+        }
     }
     
     

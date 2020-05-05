@@ -13,6 +13,7 @@ class DescriptionCell: UITableViewCell {
     @IBOutlet weak var textView: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.textView.isEditable = false 
         self.textView.isScrollEnabled = false
         // Initialization code
     }
@@ -24,7 +25,7 @@ class DescriptionCell: UITableViewCell {
     }
     
     func configure(text: String) {
-        self.textView.text = text.replacingOccurrences(of: "*", with: "\n\n")
+        self.textView.text = Formatter.repalceWithStringSpace(text: text)
         self.textView.translatesAutoresizingMaskIntoConstraints = false
         self.textView.sizeToFit()
     }

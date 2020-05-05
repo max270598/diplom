@@ -40,7 +40,6 @@ struct CreditModel {
     let debtor_age: String
     let is_best: Bool
     let description: String
-    let rate_description: String
     var ratesTitle: [String] = []
     var ratesValue: [String] = []
     var documentsTitle: [String] = []
@@ -49,8 +48,11 @@ struct CreditModel {
     var requirementsValue: [String] = []
     var conditionsTitle: [String] = []
     var conditionsValue: [String] = []
-
-    let additional_condition: String?
+    
+    let rate_description: String?
+    let condition_description: String?
+    let requirement_description: String?
+    let document_description: String?
 //    let documents: Documents
 //    let requirements: Requirements
 //    let conditions: Conditions
@@ -84,9 +86,12 @@ struct CreditModel {
         self.full_time = snapshotValue["full_time"] as! String
         self.debtor_age = snapshotValue["debtor_age"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
-        self.additional_condition = snapshotValue["additional_condition"] as? String
         self.description = snapshotValue["description"] as! String
-        self.rate_description = snapshotValue["rate_description"] as! String
+        self.rate_description = snapshotValue["rate_description"] as? String
+        self.condition_description = snapshotValue["condition_description"] as? String
+        self.requirement_description = snapshotValue["requirement_description"] as? String
+        self.document_description = snapshotValue["document_description"] as? String
+
        
         
         for item in snapshot.childSnapshot(forPath: "rates").children {
