@@ -30,7 +30,7 @@ class CreditsListSliderCell: UITableViewCell {
         
         self.upperValueTextField.delegate = self
         
-        self.maxValueLabel.text = self.formattedValue(value: 100000000)
+        self.maxValueLabel.text = self.formattedValue(value: 20000000)
         self.minValueLabel.text = self.formattedValue(value: 0)
 
         
@@ -90,7 +90,7 @@ class CreditsListSliderCell: UITableViewCell {
 //                self.rangeSliderView.isEnabled = false
 //                return
 //        }
-        self.slider.maximumValue = 100000000.0
+        self.slider.maximumValue = 20000000.0
         self.slider.minimumValue = 0.0
         
         if model.value != nil {

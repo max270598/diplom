@@ -866,11 +866,11 @@
 		A7CBA41D2438D7B4009CB3E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A779D8292462F762001B6647 /* CreditsListSorting */,
 				A78DF57923FDB52D0060F5A2 /* Catalog */,
 				A742A21B243286330008AEEF /* CreditsList */,
 				A7304D18245633E600F0AECF /* CreditsListFilter */,
 				A7304D48245889BC00F0AECF /* CreditsListFilterDrawer */,
+				A779D8292462F762001B6647 /* CreditsListSorting */,
 				A7F134422450DBB1000FF164 /* CreditsListFavourite */,
 				A7359E49245F0FEC0091E673 /* CreditsListDetail */,
 				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,

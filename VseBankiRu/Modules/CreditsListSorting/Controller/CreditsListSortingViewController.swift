@@ -8,16 +8,31 @@
 
 import UIKit
 
+enum SortingType: String {
+    case increaseSum = "Возрастанию суммы"
+    case decreaseSum = "Убыванию суммы"
+    case increaseRate = "Возрастанию ставки"
+    case decreaseRate = "Убыванию ставки"
+    case defa
+}
+
 class CreditsListSortingViewController: UIViewController {
 
     @IBOutlet weak var listTableView: UITableView!
     @IBOutlet weak var headerNavigationBar: UINavigationBar!
     
     private(set) lazy var customNavgationItem = UINavigationItem()
-
-    let sortingItems:[String] = ["Возрастанию суммы", "Убыванию суммы", "Возрастанию ставки", "Убыванию ставки"]
+    
+    var selectedSortItemIndexPath: IndexPath?
+    var selectedSortItem: SortingType?
+    let sortingItems:[SortingType] = [.increaseSum, .decreaseSum, .increaseRate, .decreaseRate]
+    
+    var delegate: SortingDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(self.selectedSortItem, "SELECTEDSORTITem")
+        self.setupUI()
         self.setupListTableView()
         self.setupNavBar()
         self.setHeaderTitle("Сортировать по:")
@@ -36,10 +51,39 @@ extension CreditsListSortingViewController: UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CreditsListSortingTableViewCell", for: indexPath) as! CreditsListSortingTableViewCell
-        
-        cell.configure(title: self.sortingItems[indexPath.row])
+        cell.configure(title: self.sortingItems[indexPath.row].rawValue)
+        guard let sortedItem = self.selectedSortItem else {
+            return cell
+        }
+        if self.sortingItems[indexPath.row] == sortedItem {
+            self.selectedSortItemIndexPath = indexPath
+            cell.accessoryType = .checkmark
+            cell.tintColor = .systemIndigo
+        }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (self.selectedSortItemIndexPath != indexPath) && (self.selectedSortItemIndexPath != nil) {
+            tableView.cellForRow(at: self.selectedSortItemIndexPath!)?.accessoryType = .none
+        }
+        print("selfctROEAT", indexPath)
+
+        tableView.cellForRow(at: indexPath)?.tintColor = .systemIndigo
+        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .none
+            self.selectedSortItem = nil
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            self.selectedSortItem = self.sortingItems[indexPath.row]
+            self.dismissSelf()
+
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
     
     
@@ -47,11 +91,20 @@ extension CreditsListSortingViewController: UITableViewDelegate, UITableViewData
 
 extension CreditsListSortingViewController {
     
+    func setupUI() {
+
+        self.view.clipsToBounds = true
+        self.view.layer.cornerRadius = 20
+        self.view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+    }
     func setupListTableView() {
         self.listTableView.delegate = self as! UITableViewDelegate
         self.listTableView.dataSource = self
         
              self.listTableView.tableFooterView  = UIView()
+        self.listTableView.rowHeight = 44
+        self.listTableView.separatorStyle = .none
         self.listTableView.register(UINib(nibName: "CreditsListSortingTableViewCell", bundle: nil), forCellReuseIdentifier: "CreditsListSortingTableViewCell")
 
     }
@@ -95,7 +148,11 @@ extension CreditsListSortingViewController {
            }
     
     @objc func dismissSelf() {
-        
+        DispatchQueue.main.async {
+
+         self.delegate?.setSortingParams(sortingItem: self.selectedSortItem ?? nil )
+        }
         self.dismiss(animated: true)
+
     }
 }

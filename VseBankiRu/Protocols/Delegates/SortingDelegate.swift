@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SortingDelegate {
-    func setSortingParams()
+    func setSortingParams(sortingItem: SortingType?)
 }

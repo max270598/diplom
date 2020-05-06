@@ -40,6 +40,8 @@ class CreditsListViewController: UIViewController {
     var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
     var isFiltered: Bool = false
     
+    var sortedItem: SortingType? = nil
+    
     var allCredits: [CreditModel]? {
         didSet {
             self.filteredCredits = self.allCredits
@@ -105,7 +107,7 @@ class CreditsListViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-       
+       print("UNsORTEDDCREDITS", self.filteredCredits)
         
     }
     
@@ -368,7 +370,6 @@ extension CreditsListViewController: CreditsListCellDelegate {
                    pinViewLike.alpha = 0
                }
         
-        print(self.isFiltered, "ISFILTERED")
         if self.isFiltered == true {
             self.filterButton.setImage(UIImage(named: "filter_pin_icon"), for: .normal)
         } else {
@@ -500,11 +501,48 @@ extension CreditsListViewController {
         slideInTransitioningDelegate = SlideInPresentationManager(presentedViewController: self, presenting: sortVC)
         sortVC.transitioningDelegate = slideInTransitioningDelegate
         sortVC.modalPresentationStyle = .custom
+        sortVC.delegate = self
+        sortVC.selectedSortItem = self.sortedItem
         self.present(sortVC, animated: true, completion: nil)
 //        self.show(sortVC, sender: nil)
        }
     
 }
+
+extension CreditsListViewController: SortingDelegate {
+    func setSortingParams(sortingItem: SortingType?) {
+        self.sortedItem = sortingItem
+        switch sortingItem {
+        case .increaseSum:
+            self.filteredCredits = self.filteredCredits?.sorted(by: { (credit1, credit2) -> Bool in
+              return credit1.max_sum_value < credit2.max_sum_value
+                
+            })
+        case .decreaseSum:
+        self.filteredCredits = self.filteredCredits?.sorted(by: { (credit1, credit2) -> Bool in
+          return credit1.max_sum_value > credit2.max_sum_value
+            
+        })
+        case .increaseRate:
+        self.filteredCredits = self.filteredCredits?.sorted(by: { (credit1, credit2) -> Bool in
+            return credit1.min_rate! < credit2.min_rate!
+            
+        })
+        case .decreaseRate:
+        self.filteredCredits = self.filteredCredits?.sorted(by: { (credit1, credit2) -> Bool in
+          return credit1.min_rate! > credit2.min_rate!
+            
+        })
+        
+        default:
+            print("")
+        }
+        self.mainCollectionView.reloadData()
+    }
+    
+    
+}
+
 
 
 //Network

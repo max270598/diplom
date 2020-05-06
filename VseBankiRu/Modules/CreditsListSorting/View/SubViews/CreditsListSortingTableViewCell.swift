@@ -14,6 +14,7 @@ class CreditsListSortingTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
         // Initialization code
     }
 
