@@ -109,7 +109,7 @@
                         <constraint firstAttribute="height" constant="44" id="sLa-DO-p8m"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
-                    <state key="normal" title="   Укажите параметры" image="filter"/>
+                    <state key="normal" title="   Укажите параметры" image="filter_icon"/>
                     <connections>
                         <action selector="filterButtonTapped:" destination="-1" eventType="touchUpInside" id="gJX-zB-wAa"/>
                     </connections>
@@ -136,6 +136,6 @@
         </view>
     </objects>
     <resources>
-        <image name="filter" width="20" height="20"/>
+        <image name="filter_icon" width="20" height="20"/>
     </resources>
 </document>

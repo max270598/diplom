@@ -32,6 +32,7 @@ class CreditsListViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     
     
+    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
 
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
@@ -169,7 +170,7 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailVC = CreditsListDetailViewController(nibName: "CreditsListDetailViewController", bundle: nil)
-        detailVC.detailCredit = self.allCredits![indexPath.row]
+        detailVC.detailCredit = self.filteredCredits![indexPath.row]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -491,7 +492,15 @@ extension CreditsListViewController {
     
     
     @objc func sortingButtonTapped() {
-      
+      guard let creditArr = self.allCredits else { return }
+        
+        let sortVC = UIViewController() as! CreditsListSortingViewController
+        slideInTransitioningDelegate.direction = .bottom
+        slideInTransitioningDelegate = SlideInPresentationManager().presentationController(forPresented: self, presenting: nil, source: self)
+        sortVC.delegate = self as! UIAdaptivePresentationControllerDelegate
+        sortVC.
+        
+        
        }
     
 }
