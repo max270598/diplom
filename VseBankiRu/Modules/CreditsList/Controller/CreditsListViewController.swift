@@ -32,7 +32,7 @@ class CreditsListViewController: UIViewController {
     @IBOutlet weak var filterButton: UIButton!
     
     
-    lazy var slideInTransitioningDelegate = SlideInPresentationManager()
+    var slideInTransitioningDelegate: SlideInPresentationManager!
 
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
@@ -494,13 +494,14 @@ extension CreditsListViewController {
     @objc func sortingButtonTapped() {
       guard let creditArr = self.allCredits else { return }
         
-        let sortVC = UIViewController() as! CreditsListSortingViewController
-        slideInTransitioningDelegate.direction = .bottom
-        slideInTransitioningDelegate = SlideInPresentationManager().presentationController(forPresented: self, presenting: nil, source: self)
-        sortVC.delegate = self as! UIAdaptivePresentationControllerDelegate
-        sortVC.
-        
-        
+        let sortVC = CreditsListSortingViewController(nibName: "CreditsListSortingViewController", bundle: nil)
+
+
+        slideInTransitioningDelegate = SlideInPresentationManager(presentedViewController: self, presenting: sortVC)
+        sortVC.transitioningDelegate = slideInTransitioningDelegate
+        sortVC.modalPresentationStyle = .custom
+        self.present(sortVC, animated: true, completion: nil)
+//        self.show(sortVC, sender: nil)
        }
     
 }

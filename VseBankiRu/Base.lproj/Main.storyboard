@@ -223,116 +223,6 @@
             </objects>
             <point key="canvasLocation" x="390" y="-477"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="dMi-0S-QSX">
-            <objects>
-                <viewController id="uio-zX-4tl" sceneMemberID="viewController">
-                    <view key="view" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="jTL-c9-dx1">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TAD-IA-ZPr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="R7G-ST-wFW">
-                                        <rect key="frame" x="169" y="131.5" width="37" height="37"/>
-                                        <color key="color" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </activityIndicatorView>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mzB-al-0ze">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="300"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rF2-ee-cVG">
-                                            <size key="itemSize" width="50" height="50"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </collectionView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pq7-8x-9LP">
-                                        <rect key="frame" x="168" y="213" width="39" height="37"/>
-                                    </pageControl>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшие предложения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iz1-1z-PhP">
-                                        <rect key="frame" x="62.5" y="0.0" width="250" height="40"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="PVH-8R-yzt"/>
-                                            <constraint firstAttribute="height" constant="40" id="d67-fe-VJu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstItem="pq7-8x-9LP" firstAttribute="centerX" secondItem="TAD-IA-ZPr" secondAttribute="centerX" id="4Ak-4j-avt"/>
-                                    <constraint firstItem="Iz1-1z-PhP" firstAttribute="top" secondItem="TAD-IA-ZPr" secondAttribute="top" id="Lxy-hy-ACl"/>
-                                    <constraint firstItem="pq7-8x-9LP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="TAD-IA-ZPr" secondAttribute="leading" id="OLJ-XX-kJS"/>
-                                    <constraint firstAttribute="bottom" secondItem="pq7-8x-9LP" secondAttribute="bottom" constant="50" id="ONp-kd-FeM"/>
-                                    <constraint firstItem="Iz1-1z-PhP" firstAttribute="centerX" secondItem="TAD-IA-ZPr" secondAttribute="centerX" id="RMv-8E-r0K"/>
-                                    <constraint firstItem="R7G-ST-wFW" firstAttribute="centerX" secondItem="TAD-IA-ZPr" secondAttribute="centerX" id="TWy-qO-o8s"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pq7-8x-9LP" secondAttribute="trailing" id="Vzb-Da-GJE"/>
-                                    <constraint firstItem="R7G-ST-wFW" firstAttribute="centerY" secondItem="TAD-IA-ZPr" secondAttribute="centerY" id="d44-Yd-nT2"/>
-                                    <constraint firstItem="mzB-al-0ze" firstAttribute="top" secondItem="TAD-IA-ZPr" secondAttribute="top" id="dDp-Nc-JxF"/>
-                                    <constraint firstItem="mzB-al-0ze" firstAttribute="leading" secondItem="TAD-IA-ZPr" secondAttribute="leading" id="iKi-Ut-Pfk"/>
-                                    <constraint firstAttribute="bottom" secondItem="mzB-al-0ze" secondAttribute="bottom" id="mde-iJ-EwS"/>
-                                    <constraint firstAttribute="height" constant="300" id="rlt-uV-2VM"/>
-                                    <constraint firstAttribute="trailing" secondItem="mzB-al-0ze" secondAttribute="trailing" id="u03-om-c1f"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Sjw-pw-oPo">
-                                <rect key="frame" x="0.0" y="250" width="375" height="417"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kI3-vD-1Bs">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                            </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTQ-pB-3cD">
-                                <rect key="frame" x="67.5" y="583" width="240" height="44"/>
-                                <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="2KD-OD-PKE"/>
-                                    <constraint firstAttribute="width" constant="240" id="u3W-4u-fKO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
-                                <state key="normal" title="   Укажите параметры" image="filter_icon"/>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="TAD-IA-ZPr" firstAttribute="leading" secondItem="9WV-LN-7Y5" secondAttribute="leading" id="2j3-qN-6DG"/>
-                            <constraint firstItem="LTQ-pB-3cD" firstAttribute="centerX" secondItem="jTL-c9-dx1" secondAttribute="centerX" id="4Ee-hy-Fl4"/>
-                            <constraint firstItem="9WV-LN-7Y5" firstAttribute="trailing" secondItem="TAD-IA-ZPr" secondAttribute="trailing" id="4mq-Me-cBC"/>
-                            <constraint firstAttribute="trailing" secondItem="Sjw-pw-oPo" secondAttribute="trailing" id="AET-3j-slD"/>
-                            <constraint firstItem="9WV-LN-7Y5" firstAttribute="bottom" secondItem="LTQ-pB-3cD" secondAttribute="bottom" constant="40" id="B9u-Bu-M3Q"/>
-                            <constraint firstAttribute="bottom" secondItem="Sjw-pw-oPo" secondAttribute="bottom" id="NWv-LJ-Yq7"/>
-                            <constraint firstItem="Sjw-pw-oPo" firstAttribute="top" secondItem="TAD-IA-ZPr" secondAttribute="bottom" constant="-50" id="OJP-Wd-iri"/>
-                            <constraint firstItem="TAD-IA-ZPr" firstAttribute="top" secondItem="9WV-LN-7Y5" secondAttribute="top" id="T1n-4O-Y11"/>
-                            <constraint firstItem="Sjw-pw-oPo" firstAttribute="leading" secondItem="jTL-c9-dx1" secondAttribute="leading" id="fzT-36-xeQ"/>
-                            <constraint firstItem="Sjw-pw-oPo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mzB-al-0ze" secondAttribute="top" id="yvO-yF-lLA"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="9WV-LN-7Y5"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JD2-ro-Cuk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1696" y="-476"/>
-        </scene>
         <!--Verification Code View Controller-->
         <scene sceneID="tKq-Dc-si8">
             <objects>
@@ -459,17 +349,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-k8-I4h">
-                                <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="159"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8h9-JV-od3">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="2Cm-9h-pzO"/>
                                             <constraint firstAttribute="height" constant="120" id="fLZ-Ag-HD3"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Авторизация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-Mz-x5k">
-                                        <rect key="frame" x="23" y="140" width="104.5" height="19.5"/>
+                                        <rect key="frame" x="26.5" y="140" width="97.5" height="19"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -477,10 +367,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6gV-6p-nCj">
-                                <rect key="frame" x="87.5" y="491" width="200" height="100"/>
+                                <rect key="frame" x="87.5" y="493" width="200" height="98"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB6-Md-6Ld">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="D3f-3K-KK5"/>
@@ -499,7 +389,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyL-4H-WFD">
-                                        <rect key="frame" x="17" y="66" width="166" height="34"/>
+                                        <rect key="frame" x="11.5" y="65" width="177" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                         <state key="normal" title="Зарегистрироваться">
                                             <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -511,10 +401,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-S1-APg">
-                                <rect key="frame" x="0.0" y="223.5" width="375" height="267.5"/>
+                                <rect key="frame" x="0.0" y="223" width="375" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dBg-MC-ZK6">
-                                        <rect key="frame" x="62.5" y="85" width="250" height="98"/>
+                                        <rect key="frame" x="62.5" y="86" width="250" height="98"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AmF-BF-Wh7">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="29"/>
@@ -556,7 +446,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-FI-oYz">
-                                        <rect key="frame" x="20" y="203" width="335" height="0.0"/>
+                                        <rect key="frame" x="20" y="204" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -639,14 +529,14 @@
                                 <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="6pJ-0i-ZXq">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="0vb-mH-tIa"/>
                                             <constraint firstAttribute="width" constant="150" id="TAB-Gb-dfZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h0-oR-l88">
-                                        <rect key="frame" x="23.5" y="140" width="103" height="19.5"/>
+                                        <rect key="frame" x="27" y="140" width="96" height="19.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -827,26 +717,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-Mo-3vo">
-                                <rect key="frame" x="112.5" y="64" width="150" height="120.00000000000011"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7gr-sg-a5g"/>
                                     <constraint firstAttribute="height" constant="120" id="mAi-dv-06w"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На указанный Вами адрес элетронной почты было отправлено письмо" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLL-bS-M6c">
-                                <rect key="frame" x="20" y="244" width="335" height="38.5"/>
+                                <rect key="frame" x="20" y="244" width="335" height="37.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8C-eg-tVl">
-                                <rect key="frame" x="58.5" y="362.5" width="258.5" height="21"/>
+                                <rect key="frame" x="71.5" y="361.5" width="232" height="21"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y9j-cH-GYB">
-                                <rect key="frame" x="157.5" y="443.5" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="442.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="DDH-yT-ftK"/>
                                     <constraint firstAttribute="height" constant="60" id="LJz-Bm-TaQ"/>
@@ -1001,7 +891,6 @@
     </scenes>
     <resources>
         <image name="VseBankRu_Logo" width="486" height="506"/>
-        <image name="filter_icon" width="20" height="20"/>
         <image name="icon_share" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
