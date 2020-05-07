@@ -259,14 +259,15 @@ extension CreditsListViewController: CreditsListCellDelegate {
             self.bannerCollectionView.dataSource = self
             self.bannerCollectionView.register(UINib(nibName: "CreditBannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditBannerCollectionViewCell")
             
+            self.bannerCollectionView.backgroundColor = .systemIndigo
             self.bannerCollectionView.isPagingEnabled = false
             
             let layout = UICollectionViewFlowLayout()
                        layout.itemSize = CGSize(width: 355, height: 138)
-//                       layout.minimumLineSpacing = 20
-            layout.scrollDirection = .horizontal
-                       layout.minimumInteritemSpacing = 20
-                       self.mainCollectionView.collectionViewLayout = layout
+//                       layout.minimumLineSpacing = 100
+                        layout.scrollDirection = .horizontal
+                       layout.minimumInteritemSpacing = 100
+                       self.bannerCollectionView.collectionViewLayout = layout
             
             let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
