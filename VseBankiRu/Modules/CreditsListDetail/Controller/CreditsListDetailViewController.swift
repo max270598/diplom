@@ -38,7 +38,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 12
+        return 13
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,6 +55,8 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
         segmentControllCell.delegate = self
         
         let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
+        let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
+        
         let buttonCell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
         buttonCell.delegate = self
         
@@ -86,14 +88,17 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             segmentControllCell.configure()
             return segmentControllCell
         case 8:
-            documentsCell.configure(model: credit, type: self.documentType)
+            documentsCell.configure(model: credit, type: self.documentType, height: 20)
             return documentsCell
         case 9:
-            return emptyCell
+            documentsDescriptionCell.configure(model: credit, type: self.documentType)
+            return documentsDescriptionCell
         case 10:
+            return emptyCell
+        case 11:
             buttonCell.configure(url: credit.credit_url)
             return buttonCell
-        case 11:
+        case 12:
             return emptyCell
         
         default:
@@ -112,6 +117,7 @@ extension CreditsListDetailViewController {
         self.listTableView.register(UINib(nibName: "DescriptionCell", bundle: nil), forCellReuseIdentifier: "DescriptionCell")
         self.listTableView.register(UINib(nibName: "SegmentControllTableViewCell", bundle: nil), forCellReuseIdentifier: "SegmentControllTableViewCell")
         self.listTableView.register(UINib(nibName: "DocumentsTableViewCell", bundle: nil), forCellReuseIdentifier: "DocumentsTableViewCell")
+        self.listTableView.register(UINib(nibName: "DocumentsDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "DocumentsDescriptionTableViewCell")
         self.listTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonTableViewCell")
         self.listTableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyTableViewCell")
         
@@ -147,10 +153,10 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
         
         if index > lastDocumentIndex {
             self.lastDocumentIndex = index
-            self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0)], with: .left)
+            self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0), IndexPath(row: 9, section: 0)], with: .left)
         } else {
             self.lastDocumentIndex = index
-        self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0)], with: .right)
+        self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0), IndexPath(row: 9, section: 0)], with: .right)
         }
     }
     

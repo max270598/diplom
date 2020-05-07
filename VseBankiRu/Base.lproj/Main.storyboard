@@ -47,10 +47,10 @@
             </objects>
             <point key="canvasLocation" x="-482" y="294"/>
         </scene>
-        <!--Item 2-->
+        <!--Калькулятор-->
         <scene sceneID="aPl-MB-SKT">
             <objects>
-                <viewController id="zwc-Fx-ui8" sceneMemberID="viewController">
+                <viewController id="zwc-Fx-ui8" customClass="CalculatorViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mZ2-VB-4mK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Y6-aW-67y"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="cjV-Rb-SqP"/>
+                    <tabBarItem key="tabBarItem" title="Калькулятор" id="cjV-Rb-SqP"/>
                     <navigationItem key="navigationItem" id="pp9-sI-KtZ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccX-0m-MUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

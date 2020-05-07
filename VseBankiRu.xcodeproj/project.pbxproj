@@ -34,6 +34,7 @@
 		A7304D592458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */; };
 		A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D7D245901F300F0AECF /* SceneDelegate.swift */; };
 		A7304D80245B76AE00F0AECF /* PassDataFromFilterToListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D7F245B76AD00F0AECF /* PassDataFromFilterToListDelegate.swift */; };
+		A731A7F22464CFB500E53265 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A731A7F02464CFB500E53265 /* CalculatorViewController.swift */; };
 		A7359E4F245F1CBD0091E673 /* CreditsListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E4D245F1CBD0091E673 /* CreditsListDetailViewController.swift */; };
 		A7359E50245F1CBD0091E673 /* CreditsListDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E4E245F1CBD0091E673 /* CreditsListDetailViewController.xib */; };
 		A7359E54245F27250091E673 /* LogoNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7359E52245F27250091E673 /* LogoNameTableViewCell.swift */; };
@@ -58,6 +59,8 @@
 		A7359E842461E80D0091E673 /* EmptyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7359E822461E80D0091E673 /* EmptyTableViewCell.xib */; };
 		A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A742A21C243287750008AEEF /* CreditsListViewController.swift */; };
 		A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A742A21D243287750008AEEF /* CreditsListViewController.xib */; };
+		A743BE9E24649E72005DF287 /* DocumentsDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A743BE9C24649E72005DF287 /* DocumentsDescriptionTableViewCell.swift */; };
+		A743BE9F24649E72005DF287 /* DocumentsDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A743BE9D24649E72005DF287 /* DocumentsDescriptionTableViewCell.xib */; };
 		A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74480432444922800FD251C /* CreditCollectionViewCell.swift */; };
 		A74480462444922800FD251C /* CreditCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A74480442444922800FD251C /* CreditCollectionViewCell.xib */; };
 		A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A744AAE3244064BF009B5404 /* RegisterViewController.swift */; };
@@ -145,6 +148,7 @@
 		A7304D582458D63400F0AECF /* CreditsListFilterDrawerViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterDrawerViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A7304D7D245901F300F0AECF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A7304D7F245B76AD00F0AECF /* PassDataFromFilterToListDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassDataFromFilterToListDelegate.swift; sourceTree = "<group>"; };
+		A731A7F02464CFB500E53265 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
 		A7359E4D245F1CBD0091E673 /* CreditsListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListDetailViewController.swift; sourceTree = "<group>"; };
 		A7359E4E245F1CBD0091E673 /* CreditsListDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListDetailViewController.xib; sourceTree = "<group>"; };
 		A7359E52245F27250091E673 /* LogoNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -169,6 +173,8 @@
 		A7359E822461E80D0091E673 /* EmptyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyTableViewCell.xib; sourceTree = "<group>"; };
 		A742A21C243287750008AEEF /* CreditsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListViewController.swift; sourceTree = "<group>"; };
 		A742A21D243287750008AEEF /* CreditsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListViewController.xib; sourceTree = "<group>"; };
+		A743BE9C24649E72005DF287 /* DocumentsDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		A743BE9D24649E72005DF287 /* DocumentsDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DocumentsDescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		A74480432444922800FD251C /* CreditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCollectionViewCell.swift; sourceTree = "<group>"; };
 		A74480442444922800FD251C /* CreditCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditCollectionViewCell.xib; sourceTree = "<group>"; };
 		A744AAE3244064BF009B5404 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -457,6 +463,38 @@
 			path = SubViews;
 			sourceTree = "<group>";
 		};
+		A731A7F42464CFBD00E53265 /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				A731A7F72464CFD800E53265 /* Controller */,
+				A731A7F62464CFD300E53265 /* View */,
+				A731A7F52464CFCE00E53265 /* Model */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		A731A7F52464CFCE00E53265 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A731A7F62464CFD300E53265 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A731A7F72464CFD800E53265 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A731A7F02464CFB500E53265 /* CalculatorViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A7359E49245F0FEC0091E673 /* CreditsListDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +537,7 @@
 				A7359E60245F734C0091E673 /* DescriptionCell */,
 				A7359E65245F7E880091E673 /* SegmentControllCell */,
 				A7359E6E246059D60091E673 /* DocumentsCell */,
+				A743BEA024649E78005DF287 /* DocumentsDescriptionCell */,
 				A7359E802461DB420091E673 /* ButtonCell */,
 			);
 			path = SubViews;
@@ -611,6 +650,15 @@
 				A742A21C243287750008AEEF /* CreditsListViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		A743BEA024649E78005DF287 /* DocumentsDescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				A743BE9C24649E72005DF287 /* DocumentsDescriptionTableViewCell.swift */,
+				A743BE9D24649E72005DF287 /* DocumentsDescriptionTableViewCell.xib */,
+			);
+			path = DocumentsDescriptionCell;
 			sourceTree = "<group>";
 		};
 		A744AAE72440B0C4009B5404 /* Gradient */ = {
@@ -874,6 +922,7 @@
 				A7F134422450DBB1000FF164 /* CreditsListFavourite */,
 				A7359E49245F0FEC0091E673 /* CreditsListDetail */,
 				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,
+				A731A7F42464CFBD00E53265 /* Calculator */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1100,6 +1149,7 @@
 				A779D843246337C9001B6647 /* CreditsListSortingTableViewCell.xib in Resources */,
 				A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */,
 				A7359E5F245F73460091E673 /* DescriptionCell.xib in Resources */,
+				A743BE9F24649E72005DF287 /* DocumentsDescriptionTableViewCell.xib in Resources */,
 				A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */,
 				A796783223ED812900CE4E94 /* Assets.xcassets in Resources */,
 				A7359E842461E80D0091E673 /* EmptyTableViewCell.xib in Resources */,
@@ -1219,6 +1269,7 @@
 				A796784223ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift in Sources */,
 				A7CBA4A4243FDF68009CB3E0 /* AuthorisationViewController.swift in Sources */,
 				A7304D4B245889DF00F0AECF /* CreditsListFilterDrawerViewController.swift in Sources */,
+				A743BE9E24649E72005DF287 /* DocumentsDescriptionTableViewCell.swift in Sources */,
 				A779D82824621363001B6647 /* UIButton+Extension.swift in Sources */,
 				A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */,
 				A744AAF12440F57C009B5404 /* CreditModel.swift in Sources */,
@@ -1234,6 +1285,7 @@
 				A7359E4F245F1CBD0091E673 /* CreditsListDetailViewController.swift in Sources */,
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
+				A731A7F22464CFB500E53265 /* CalculatorViewController.swift in Sources */,
 				A7304D4724578C2800F0AECF /* Double+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

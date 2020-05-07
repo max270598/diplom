@@ -6,47 +6,34 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="SF-Pro-Text-Medium.otf">
-            <string>SFProText-Medium</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentsTableViewCell" rowHeight="936" id="KGk-i7-Jjw" customClass="DocumentsTableViewCell" customModule="VseBankiRu" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentsTableViewCell" rowHeight="260" id="KGk-i7-Jjw" customClass="DocumentsTableViewCell" customModule="VseBankiRu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="936"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XUX-UG-rIs">
-                        <rect key="frame" x="20" y="0.0" width="280" height="150"/>
+                        <rect key="frame" x="20" y="10" width="280" height="240"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="150" id="KTs-j7-188"/>
-                        </constraints>
                     </tableView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aPH-d9-XRC">
-                        <rect key="frame" x="20" y="170" width="280" height="766"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="280" id="Bya-SB-NeX"/>
-                        </constraints>
-                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
-                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Labelasdasd" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ujy-kQ-1ao">
+                        <rect key="frame" x="88" y="120" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="XUX-UG-rIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2xj-Tg-YXQ"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aPH-d9-XRC" secondAttribute="bottom" id="3Lr-tQ-wZD"/>
-                    <constraint firstItem="aPH-d9-XRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6CB-f2-PXW"/>
-                    <constraint firstItem="aPH-d9-XRC" firstAttribute="top" secondItem="XUX-UG-rIs" secondAttribute="bottom" constant="20" id="MMX-C8-gFy"/>
-                    <constraint firstAttribute="trailing" secondItem="aPH-d9-XRC" secondAttribute="trailing" constant="20" id="Tkf-y1-sR0"/>
-                    <constraint firstItem="XUX-UG-rIs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="kuQ-uW-AJf"/>
+                    <constraint firstItem="XUX-UG-rIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2xj-Tg-YXQ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ujy-kQ-1ao" secondAttribute="bottom" constant="10" id="51b-3g-9no"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ujy-kQ-1ao" secondAttribute="trailing" constant="20" id="5m4-yB-SA7"/>
+                    <constraint firstItem="Ujy-kQ-1ao" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="J8l-yo-R8G"/>
+                    <constraint firstAttribute="bottom" secondItem="XUX-UG-rIs" secondAttribute="bottom" constant="10" id="SrP-2n-IAs"/>
+                    <constraint firstItem="Ujy-kQ-1ao" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="g6B-qa-Iud"/>
                     <constraint firstItem="XUX-UG-rIs" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="lbr-vy-5j6"/>
                     <constraint firstAttribute="trailing" secondItem="XUX-UG-rIs" secondAttribute="trailing" constant="20" id="vV6-7w-89s"/>
                 </constraints>
@@ -54,10 +41,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="descriptionTextView" destination="aPH-d9-XRC" id="RKb-vD-wec"/>
+                <outlet property="hiddenLabel" destination="Ujy-kQ-1ao" id="ebZ-3k-oV4"/>
                 <outlet property="itemTableView" destination="XUX-UG-rIs" id="UAW-Xo-DBd"/>
             </connections>
-            <point key="canvasLocation" x="140.57971014492756" y="389.73214285714283"/>
+            <point key="canvasLocation" x="140.57971014492756" y="163.39285714285714"/>
         </tableViewCell>
     </objects>
 </document>

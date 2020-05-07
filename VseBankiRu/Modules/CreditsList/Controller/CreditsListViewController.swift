@@ -396,7 +396,7 @@ private extension CreditsListViewController {
     
     func updateData() {
         
-        self.infiniteScrollingBehaviour.reload(withData: self.bannersArray)
+//        self.infiniteScrollingBehaviour.reload(withData: self.bannersArray)
         
         self.pageControl.numberOfPages = self.bannersArray.count ?? 0
         self.mainCollectionView.reloadData()
@@ -558,6 +558,7 @@ extension CreditsListViewController: SortingDelegate {
                     self?.bannersArray = banners
             
             self?.updateData()
+            self?.infiniteScrollingBehaviour.reload(withData: banners)
             self?.skeletonHide()
 
                 }
