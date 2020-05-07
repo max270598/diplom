@@ -15,7 +15,7 @@ import InfiniteScrolling
 
 
 
-struct CreditModel {
+struct CreditModel: InfiniteScollingData {
     let id: String!
     let type: String
     let bank_name: String
@@ -39,7 +39,7 @@ struct CreditModel {
     let full_time: String
     let debtor_age: String
     let is_best: Bool
-    let description: String
+    let description: String?
     var ratesTitle: [String] = []
     var ratesValue: [String] = []
     var documentsTitle: [String] = []
@@ -86,7 +86,7 @@ struct CreditModel {
         self.full_time = snapshotValue["full_time"] as! String
         self.debtor_age = snapshotValue["debtor_age"] as! String
         self.is_best = snapshotValue["is_best"] as! Bool
-        self.description = snapshotValue["description"] as! String
+        self.description = snapshotValue["description"] as? String
         self.rate_description = snapshotValue["rate_description"] as? String
         self.condition_description = snapshotValue["condition_description"] as? String
         self.requirement_description = snapshotValue["requirement_description"] as? String
@@ -122,6 +122,38 @@ struct CreditModel {
         self.ref = snapshot.ref
 
 
+    }
+    init() {
+        self.id = "-"
+        self.type = "-"
+        self.bank_name = "-"
+        self.bank_id = "-"
+        self.background_image = "-"
+        self.bank_logo_url = "-"
+        self.credit_url = "-"
+        self.sravni_url = "-"
+        self.min_rate = 0
+        self.min_sum_value = 0
+        self.max_sum_value = 0
+        self.goal = "-"
+        self.min_time_value = 0
+        self.max_time_value = 0
+        self.noDeposit = false
+        self.noIncomeProof = false
+        self.noInsurance = false
+        self.reviewUpThreeDays = false
+        self.short_sum = "-"
+        self.short_time = "-"
+        self.full_time = "-"
+        self.debtor_age = "-"
+        self.is_best = true
+        self.description = "-"
+        self.rate_description = "-"
+        self.condition_description = "-"
+        self.requirement_description = "-"
+        self.document_description = "-"
+        
+        self.ref = nil
     }
 }
 

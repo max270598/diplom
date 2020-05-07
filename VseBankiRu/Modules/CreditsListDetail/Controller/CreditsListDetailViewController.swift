@@ -80,7 +80,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             return titleTitleCell
             
         case 6:
-            descriptionCell.configure(text: credit.description)
+            descriptionCell.configure(text: credit.description ?? "")
             return descriptionCell
         case 7:
             segmentControllCell.configure()

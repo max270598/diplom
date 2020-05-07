@@ -13,6 +13,7 @@ class DocumentsTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionTextView: UITextView!
      @IBOutlet weak var itemTableView: UITableView!
     
+    @IBOutlet weak var descriptionWidthConstraint: NSLayoutConstraint!
     
     var cellTitle:[String] = []
     var cellValue:[String] = []
@@ -85,9 +86,14 @@ class DocumentsTableViewCell: UITableViewCell {
         self.descriptionTextView.text = Formatter.repalceWithStringSpace(text: self.descriptionTextView.text)
         self.descriptionTextView.isScrollEnabled = false
         self.descriptionTextView.isEditable = false 
-                   self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-//                   self.descriptionTextView.text = "shdvbckjsdhfbvkhsdbfhjkvbdsfjkbvkdjhfbvkjdhfbsvjkhdsbfkjhvbsdfjkhbvjkhsdfbvjsdbfkjvhbsdkfvhbksdjfhbvkjhsdfbhjkvsdbfkhvbsdfjhvbjsdhfblvjhsdbfvhbeiprvuweiprhviuewprbnivpuwerbviwbeibv"
-                   self.descriptionTextView.sizeToFit()
+                   
+//        self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
+//
+//                   self.descriptionTextView.sizeToFit()
+//        self.descriptionTextView.sizeThatFits(CGSize(width: 60, height: 60))
+//        self.descriptionWidthConstraint.constant = 60
+//        self.descriptionTextView.needsUpdateConstraints()
+//        self.descriptionTextView.layoutIfNeeded()
         
                    self.itemTableView.reloadData()
     }

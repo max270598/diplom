@@ -7,6 +7,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SF-Compact-Text-Regular.otf">
+            <string>SFCompactText-Regular</string>
+        </array>
         <array key="SF-Pro-Display-Bold.otf">
             <string>SFProDisplay-Bold</string>
         </array>
@@ -81,7 +84,7 @@
                         </constraints>
                     </stackView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6T-6f-9H2" userLabel="separatorView">
-                        <rect key="frame" x="20" y="70" width="335" height="1"/>
+                        <rect key="frame" x="20" y="70" width="281" height="1"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="fJB-Hl-fjf"/>
@@ -135,10 +138,10 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bG1-IV-psh">
-                        <rect key="frame" x="265" y="82" width="90" height="44"/>
+                        <rect key="frame" x="265" y="86" width="90" height="44"/>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="44" id="DYA-zb-B57"/>
+                            <constraint firstAttribute="height" constant="44" id="buT-kZ-A18"/>
                             <constraint firstAttribute="width" constant="90" id="wuX-Zw-882"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
@@ -148,6 +151,12 @@
                             <action selector="arrangeButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="4eP-2S-DVk"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лиц: 1333" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWh-ST-XX9">
+                        <rect key="frame" x="305" y="66" width="50" height="13.5"/>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="11"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -158,17 +167,19 @@
                 <constraint firstItem="Sbz-x4-34b" firstAttribute="bottom" secondItem="bcr-J5-DwN" secondAttribute="bottom" id="MaW-fJ-QrH"/>
                 <constraint firstAttribute="trailing" secondItem="8K5-bT-Qhe" secondAttribute="trailing" constant="10" id="OBj-dY-xmN"/>
                 <constraint firstItem="bcr-J5-DwN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Vut-WO-0hW"/>
+                <constraint firstItem="X6T-6f-9H2" firstAttribute="trailing" secondItem="UWh-ST-XX9" secondAttribute="leading" constant="-4" id="Xyz-ei-n6P"/>
                 <constraint firstItem="8K5-bT-Qhe" firstAttribute="leading" secondItem="Sbz-x4-34b" secondAttribute="trailing" id="Z3q-4N-CMV"/>
                 <constraint firstItem="nUK-Mj-Uy8" firstAttribute="leading" secondItem="viO-BH-9d8" secondAttribute="trailing" constant="30" id="byY-7k-RBj"/>
                 <constraint firstItem="bG1-IV-psh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nUK-Mj-Uy8" secondAttribute="trailing" constant="4" id="e0o-Lu-EVV"/>
+                <constraint firstAttribute="trailing" secondItem="bG1-IV-psh" secondAttribute="trailing" constant="20" id="ey1-Xa-acQ"/>
+                <constraint firstItem="UWh-ST-XX9" firstAttribute="top" secondItem="8K5-bT-Qhe" secondAttribute="bottom" constant="4" id="jSg-A0-YYZ"/>
+                <constraint firstAttribute="trailing" secondItem="UWh-ST-XX9" secondAttribute="trailing" constant="20" id="kMe-VO-Z57"/>
                 <constraint firstItem="viO-BH-9d8" firstAttribute="top" secondItem="X6T-6f-9H2" secondAttribute="bottom" constant="12" id="kht-TG-mcF"/>
-                <constraint firstAttribute="trailing" secondItem="X6T-6f-9H2" secondAttribute="trailing" constant="20" id="lYN-7b-Sly"/>
-                <constraint firstItem="bG1-IV-psh" firstAttribute="top" secondItem="X6T-6f-9H2" secondAttribute="bottom" constant="11" id="maU-5c-jSb"/>
                 <constraint firstItem="8K5-bT-Qhe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="oWt-Tf-eQe"/>
+                <constraint firstAttribute="bottom" secondItem="bG1-IV-psh" secondAttribute="bottom" constant="8" id="oj7-J3-MlW"/>
                 <constraint firstItem="Sbz-x4-34b" firstAttribute="leading" secondItem="bcr-J5-DwN" secondAttribute="trailing" id="pRK-CT-XWy"/>
                 <constraint firstItem="viO-BH-9d8" firstAttribute="leading" secondItem="X6T-6f-9H2" secondAttribute="leading" id="qf7-LC-Tif"/>
                 <constraint firstItem="Sbz-x4-34b" firstAttribute="top" secondItem="bcr-J5-DwN" secondAttribute="top" id="z9S-yj-hEi"/>
-                <constraint firstItem="bG1-IV-psh" firstAttribute="trailing" secondItem="X6T-6f-9H2" secondAttribute="trailing" id="zqZ-cd-xto"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="427" height="232"/>
@@ -177,6 +188,7 @@
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="arrangeButton" destination="bG1-IV-psh" id="8hD-hl-Mms"/>
+                <outlet property="bankFaceNumberLabel" destination="UWh-ST-XX9" id="hIW-c0-SwT"/>
                 <outlet property="bankLogoImageView" destination="bcr-J5-DwN" id="We3-iW-FC4"/>
                 <outlet property="creditTypeLabel" destination="MUb-w9-TqF" id="oSX-t4-KtK"/>
                 <outlet property="favouriteButton" destination="bGd-l3-M1x" id="8Jx-rb-zsc"/>

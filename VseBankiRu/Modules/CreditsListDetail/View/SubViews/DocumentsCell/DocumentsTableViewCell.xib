@@ -28,9 +28,12 @@
                             <constraint firstAttribute="height" constant="150" id="KTs-j7-188"/>
                         </constraints>
                     </tableView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aPH-d9-XRC">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aPH-d9-XRC">
                         <rect key="frame" x="20" y="170" width="280" height="766"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="280" id="Bya-SB-NeX"/>
+                        </constraints>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="14"/>
@@ -39,7 +42,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="XUX-UG-rIs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2xj-Tg-YXQ"/>
-                    <constraint firstAttribute="bottom" secondItem="aPH-d9-XRC" secondAttribute="bottom" id="3Lr-tQ-wZD"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aPH-d9-XRC" secondAttribute="bottom" id="3Lr-tQ-wZD"/>
                     <constraint firstItem="aPH-d9-XRC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="6CB-f2-PXW"/>
                     <constraint firstItem="aPH-d9-XRC" firstAttribute="top" secondItem="XUX-UG-rIs" secondAttribute="bottom" constant="20" id="MMX-C8-gFy"/>
                     <constraint firstAttribute="trailing" secondItem="aPH-d9-XRC" secondAttribute="trailing" constant="20" id="Tkf-y1-sR0"/>

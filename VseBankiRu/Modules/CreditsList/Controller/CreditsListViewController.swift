@@ -47,8 +47,7 @@ class CreditsListViewController: UIViewController {
             self.filteredCredits = self.allCredits
         }
     }
-    var bannersArray: [BannersSubModuleBanner] = [
-        BannersSubModuleBanner(id: "", background_image: "", type: "", bank_logo_url: "", short_sum: "", min_rate: "", max_time: "")]
+    var bannersArray: [CreditModel] = [CreditModel()]
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -207,7 +206,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
 
-        if let model = data as? BannersSubModuleBannerProtocol {
+        if let model = data as? CreditModel {
             cell.configure(with: model)
             
         }
@@ -221,12 +220,13 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
     }
     //Mark: FIX когда будут готовы другие слайды
 
-//    func didSelectItem(atIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
-//        guard let bannerModel = self.banners[originalIndex] as? BannersSubModuleInputBannerProtocol else { return }
-//        self.output?.show(banner: bannerModel)
-//        //        self.newPresenter?.routeBannerScreen(with: bannerModel)
-//        //        self.output?.showMarketplace()
-//    }
+    func didSelectItem(atIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
+        guard let bannerModel = self.bannersArray[originalIndex] as? CreditModel else { return }
+      
+        let detailVC = CreditsListDetailViewController(nibName: "CreditsListDetailViewController", bundle: nil)
+        detailVC.detailCredit = self.filteredCredits![indexPath.row - 1]
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 
@@ -243,6 +243,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 extension CreditsListViewController: CreditsListCellDelegate {
     func openCredit(url: String, sender: UIView) {
+        
         let svc = SFSafariViewController(url: URL(string: url)!)
         self.present(svc, animated: true, completion: nil)
     }
@@ -553,6 +554,7 @@ extension CreditsListViewController: SortingDelegate {
         
            downloadCredits { [weak self] (credits, banners) in
                     self?.allCredits = credits
+            self?.bannersArray.removeAll()
                     self?.bannersArray = banners
             
             self?.updateData()
@@ -563,14 +565,14 @@ extension CreditsListViewController: SortingDelegate {
     }
  
     
-    func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
+    func downloadCredits(complition: @escaping ([CreditModel], [CreditModel]) -> Void ) {
         DispatchQueue.main.async {
             CreditsListNetwork.shared.getCredits { [weak self](credits) in
-                var banners = Array<BannersSubModuleBanner>()
+                var banners = Array<CreditModel>()
                 credits.forEach {  (item) in
                     if item.is_best == true {
-                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image,type: item.type, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
-                        banners.append(bestCredit)
+                    
+                        banners.append(item)
                         }
                     
                 }

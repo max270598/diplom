@@ -26,8 +26,8 @@ extension UICollectionViewCell {
                  shadowLayer.shadowColor = UIColor.darkGray.cgColor
                  shadowLayer.shadowPath = shadowLayer.path
                  shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-                 shadowLayer.shadowOpacity = 0.8
-                 shadowLayer.shadowRadius = 2
+                 shadowLayer.shadowOpacity = 0.6
+                 shadowLayer.shadowRadius = 3
             self.layer.masksToBounds = false
                  layer.insertSublayer(shadowLayer, at: 0)
                  //layer.insertSublayer(shadowLayer, below: nil) // also works

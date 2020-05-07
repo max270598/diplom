@@ -15,26 +15,41 @@ class CreditsPromoCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var bankLogoImageView: UIImageView!
-    @IBOutlet weak var rateView: TwoGradientView!
-    @IBOutlet weak var timeView: TwoGradientView!
-    @IBOutlet weak var sumView: TwoGradientView!
+   
+    @IBOutlet weak var typeLabel: UILabel!
     
+    @IBOutlet weak var faceNumberLabel: UILabel!
     @IBOutlet weak var rateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sumLabel: UILabel!
     
-    var viewsArray: [UIView] = []
+    @IBOutlet weak var arrangeButton: UIButton!
     
+    @IBOutlet weak var creditView: UIView!
+    
+    weak var delegate: CreditsListCellDelegate?
+    
+    var creditURL: String?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.viewsArray = [self.sumView, self.rateView, self.timeView, self.bankLogoImageView]
+        
+        self.arrangeButton.clipsToBounds = true
+        self.arrangeButton.layer.cornerRadius = 8
+        
+        self.creditView.clipsToBounds = true
+        self.creditView.layer.cornerRadius = 10
         self.hideAllViews()
         // Initialization code
     }
 
+    @IBAction func arrangeButtonTapped(_ sender: Any) {
+        guard self.creditURL != nil else {
+            return
+        }
+        self.delegate?.openCredit(url: creditURL!, sender: self)
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        cornerView(views: self.viewsArray)
         
     }
 }
@@ -47,31 +62,33 @@ extension CreditsPromoCollectionViewCell {
         }
     }
     
-    func configure(with model: BannersSubModuleBannerProtocol) {
-        
-        self.rateLabel.text = model.min_rate
+    func configure(with model: CreditModel) {
+        self.creditURL = model.credit_url
+        self.faceNumberLabel.text = model.bank_id
+        self.typeLabel.text = model.type
+        self.rateLabel.text = String(model.min_rate!) + "%"
         self.sumLabel.text = model.short_sum
-        self.timeLabel.text = model.max_time
+        self.timeLabel.text = model.short_time
         
         if let photoUrl = URL(string: model.bank_logo_url) {
             self.bankLogoImageView.kf.indicatorType = .activity
             self.bankLogoImageView.kf.setImage(with: photoUrl)
         }
         
-        if let backPhotoUrl = URL(string: model.background_image) {
-            self.backImageView.kf.indicatorType = .activity
-            self.backImageView.kf.setImage(with: backPhotoUrl)
-        }
+//        if let backPhotoUrl = URL(string: model.background_image) {
+//            self.backImageView.kf.indicatorType = .activity
+//            self.backImageView.kf.setImage(with: backPhotoUrl)
+//        }
         
         self.showAllViews()
     }
     
     func hideAllViews() {
-        viewsArray.forEach {$0.alpha = 0}
+        self.creditView.alpha = 0
     }
     
     func showAllViews() {
-                    self.viewsArray.forEach {$0.alpha = 1}
+        self.creditView.alpha = 1
         
     }
 }

@@ -13,6 +13,7 @@ class CreditCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var bankLogoImageView: UIImageView!
     
+    @IBOutlet weak var bankFaceNumberLabel: UILabel!
     @IBOutlet weak var creditTypeLabel: UILabel!
     @IBOutlet weak var favouriteButton: UIButton! {
                     didSet {
@@ -28,7 +29,7 @@ class CreditCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var arrangeButton: UIButton! {
         didSet{
             self.arrangeButton.clipsToBounds = true
-            self.arrangeButton.cornerRadius = 10
+            self.arrangeButton.layer.cornerRadius = 8
         }
     }
     
@@ -113,6 +114,7 @@ extension CreditCollectionViewCell {
         if let minRate = model.min_rate {
             self.rateLabel.text = String(minRate) + "%"
         }
+        self.bankFaceNumberLabel.text = model.bank_id
         self.creditTypeLabel.text            = model.type
         self.sumLabel.text = model.short_sum
         self.itemId        = model.id
