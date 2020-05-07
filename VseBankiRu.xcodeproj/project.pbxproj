@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A7304D0324545F5100F0AECF /* CreditsPromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */; };
-		A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */; };
+		A7304D0324545F5100F0AECF /* CreditBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D0124545F5100F0AECF /* CreditBannerCollectionViewCell.swift */; };
+		A7304D0424545F5100F0AECF /* CreditBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D0224545F5100F0AECF /* CreditBannerCollectionViewCell.xib */; };
 		A7304D122455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D102455CF6C00F0AECF /* CreditSkeletonCollectionViewCell.swift */; };
 		A7304D132455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D112455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.xib */; };
 		A7304D1E2456343700F0AECF /* CreditsListFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D1C2456343700F0AECF /* CreditsListFilterViewController.swift */; };
@@ -118,8 +118,8 @@
 		299A7C7C20C649BB99026F55 /* Pods-VseBankiRu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.release.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.release.xcconfig"; sourceTree = "<group>"; };
 		4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VseBankiRu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		784D20937057BBD2AC0B4F01 /* Pods-VseBankiRu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.debug.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.debug.xcconfig"; sourceTree = "<group>"; };
-		A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPromoCollectionViewCell.swift; sourceTree = "<group>"; };
-		A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
+		A7304D0124545F5100F0AECF /* CreditBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		A7304D0224545F5100F0AECF /* CreditBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditBannerCollectionViewCell.xib; sourceTree = "<group>"; };
 		A7304D102455CF6C00F0AECF /* CreditSkeletonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditSkeletonCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7304D112455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditSkeletonCollectionViewCell.xib; sourceTree = "<group>"; };
 		A7304D1C2456343700F0AECF /* CreditsListFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListFilterViewController.swift; sourceTree = "<group>"; };
@@ -279,8 +279,8 @@
 		A7304D072454DCAF00F0AECF /* BunnerCell */ = {
 			isa = PBXGroup;
 			children = (
-				A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */,
-				A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */,
+				A7304D0124545F5100F0AECF /* CreditBannerCollectionViewCell.swift */,
+				A7304D0224545F5100F0AECF /* CreditBannerCollectionViewCell.xib */,
 			);
 			path = BunnerCell;
 			sourceTree = "<group>";
@@ -1098,7 +1098,7 @@
 				A742A21F243287750008AEEF /* CreditsListViewController.xib in Resources */,
 				A796783523ED812900CE4E94 /* LaunchScreen.storyboard in Resources */,
 				A779D843246337C9001B6647 /* CreditsListSortingTableViewCell.xib in Resources */,
-				A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */,
+				A7304D0424545F5100F0AECF /* CreditBannerCollectionViewCell.xib in Resources */,
 				A7359E5F245F73460091E673 /* DescriptionCell.xib in Resources */,
 				A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */,
 				A796783223ED812900CE4E94 /* Assets.xcassets in Resources */,
@@ -1185,7 +1185,7 @@
 				A796783023ED812600CE4E94 /* VseBankiRu.xcdatamodeld in Sources */,
 				A7304D80245B76AE00F0AECF /* PassDataFromFilterToListDelegate.swift in Sources */,
 				A7359E6D24604F460091E673 /* CreditsDetailDelegate.swift in Sources */,
-				A7304D0324545F5100F0AECF /* CreditsPromoCollectionViewCell.swift in Sources */,
+				A7304D0324545F5100F0AECF /* CreditBannerCollectionViewCell.swift in Sources */,
 				A7304D522458975400F0AECF /* GlobalVar.swift in Sources */,
 				A744AAF32440FBCE009B5404 /* CreditsListNetwork.swift in Sources */,
 				A779D8392463353E001B6647 /* SortingDelegate.swift in Sources */,

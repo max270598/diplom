@@ -8,7 +8,6 @@
 
 import UIKit
 import Foundation
-import InfiniteScrolling
 import Kingfisher
 import SafariServices
 import SkeletonView
@@ -34,7 +33,6 @@ class CreditsListViewController: UIViewController {
     
     var slideInTransitioningDelegate: SlideInPresentationManager!
 
-    private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var filteredCredits: [CreditModel]? = []
     var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
@@ -47,11 +45,10 @@ class CreditsListViewController: UIViewController {
             self.filteredCredits = self.allCredits
         }
     }
-    var bannersArray: [BannersSubModuleBanner] = [
-        BannersSubModuleBanner(id: "", background_image: "", type: "", bank_logo_url: "", short_sum: "", min_rate: "", max_time: "")]
+    var bannersArray: [CreditModel]? = []
     private var currentPage: Int = 0 {
           didSet {
-              if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
+            if self.currentPage >= 0 && self.currentPage <= self.bannersArray?.count ?? 0  {
                   self.pageControl.currentPage = self.currentPage
               }
           }
@@ -149,7 +146,7 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.bannerCollectionView {
-            return 2
+            return self.bannersArray?.count ?? 2
 
         }
         return self.filteredCredits?.count ?? 10
@@ -157,17 +154,32 @@ extension CreditsListViewController: UICollectionViewDelegate, UICollectionViewD
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
-      
-        if self.filteredCredits != nil {
-                cell.configure(with: filteredCredits![indexPath.row])
-//          && isFilteredGlobl == false {  } else {
-//                cell.configure(with: filteredCredits![indexPath.row])
-//        }
-        cell.delegate = self
-        }
+        if collectionView == mainCollectionView {
+            let cell = mainCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditCollectionViewCell", for: indexPath) as! CreditCollectionViewCell
+            
+              cell.delegate = self
+            
+            if self.filteredCredits != nil {
+                    cell.configure(with: filteredCredits![indexPath.row])
+                }
 
-        return cell
+            return cell
+        }
+        
+        if collectionView == bannerCollectionView {
+            let bannerCell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditBannerCollectionViewCell", for: indexPath) as! CreditBannerCollectionViewCell
+            
+            bannerCell.delegate = self
+            
+            if self.bannersArray != nil {
+                    bannerCell.configure(with: bannersArray![indexPath.row])
+                }
+
+            return bannerCell
+        }
+        
+        
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -200,34 +212,6 @@ extension CreditsListViewController: UIScrollViewDelegate {
 
 //Infinite Scrolling
 
-extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
-
-    func configuredCell(forItemAtIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, forInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) -> UICollectionViewCell {
-
-
-        let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
-
-        if let model = data as? BannersSubModuleBannerProtocol {
-            cell.configure(with: model)
-            
-        }
-
-        return cell
-    }
-
-    func didEndScrolling(inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
-        guard let currentPage = self.bannerCollectionView.visibleIndexPath?.row else { return }
-        if (self.currentPage != (currentPage - 1)) { self.currentPage = (currentPage - 1) }
-    }
-    //Mark: FIX когда будут готовы другие слайды
-
-//    func didSelectItem(atIndexPath indexPath: IndexPath, originalIndex: Int, andData data: InfiniteScollingData, inInfiniteScrollingBehaviour behaviour: InfiniteScrollingBehaviour) {
-//        guard let bannerModel = self.banners[originalIndex] as? BannersSubModuleInputBannerProtocol else { return }
-//        self.output?.show(banner: bannerModel)
-//        //        self.newPresenter?.routeBannerScreen(with: bannerModel)
-//        //        self.output?.showMarketplace()
-//    }
-}
 
 
 
@@ -273,12 +257,16 @@ extension CreditsListViewController: CreditsListCellDelegate {
           
             self.bannerCollectionView.delegate = self
             self.bannerCollectionView.dataSource = self
-            self.bannerCollectionView.register(UINib(nibName: "CreditsPromoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditsPromoCollectionViewCell")
+            self.bannerCollectionView.register(UINib(nibName: "CreditBannerCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditBannerCollectionViewCell")
             
-            self.bannerCollectionView.isPagingEnabled = true
+            self.bannerCollectionView.isPagingEnabled = false
             
-            let configuration = CollectionViewConfiguration(layoutType: .numberOfCellOnScreen(1), scrollingDirection: .horizontal)
-            infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: bannerCollectionView, andData: bannersArray, delegate: self, configuration: configuration)
+            let layout = UICollectionViewFlowLayout()
+                       layout.itemSize = CGSize(width: 355, height: 138)
+//                       layout.minimumLineSpacing = 20
+            layout.scrollDirection = .horizontal
+                       layout.minimumInteritemSpacing = 20
+                       self.mainCollectionView.collectionViewLayout = layout
             
             let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
             let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -395,9 +383,8 @@ private extension CreditsListViewController {
     
     func updateData() {
         
-        self.infiniteScrollingBehaviour.reload(withData: self.bannersArray)
-        
-        self.pageControl.numberOfPages = self.bannersArray.count ?? 0
+        self.bannerCollectionView.reloadData()
+        self.pageControl.numberOfPages = self.bannersArray?.count ?? 0
         self.mainCollectionView.reloadData()
         
     }
@@ -563,14 +550,14 @@ extension CreditsListViewController: SortingDelegate {
     }
  
     
-    func downloadCredits(complition: @escaping ([CreditModel], [BannersSubModuleBanner]) -> Void ) {
+    func downloadCredits(complition: @escaping ([CreditModel], [CreditModel]) -> Void ) {
         DispatchQueue.main.async {
             CreditsListNetwork.shared.getCredits { [weak self](credits) in
-                var banners = Array<BannersSubModuleBanner>()
+                var banners = Array<CreditModel>()
                 credits.forEach {  (item) in
                     if item.is_best == true {
-                        let bestCredit = BannersSubModuleBanner(id: item.id, background_image: item.background_image,type: item.type, bank_logo_url: item.bank_logo_url, short_sum: item.short_sum, min_rate: String(item.min_rate ?? 1) + "%", max_time: item.short_time)
-                        banners.append(bestCredit)
+                        
+                        banners.append(item)
                         }
                     
                 }
