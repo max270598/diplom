@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol CreditsListCellDelegate: class {
+protocol ShareOpenLinkDelegate: class {
     func shareLink(url: String, sender: UIView)
     func openCredit(url: String, sender: UIView)
 }

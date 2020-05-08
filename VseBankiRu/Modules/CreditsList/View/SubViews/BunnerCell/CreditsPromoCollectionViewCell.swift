@@ -27,7 +27,7 @@ class CreditsPromoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var creditView: UIView!
     
-    weak var delegate: CreditsListCellDelegate?
+    weak var delegate: ShareOpenLinkDelegate?
     
     var creditURL: String?
     override func awakeFromNib() {

@@ -39,7 +39,7 @@ class CreditCollectionViewCell: UICollectionViewCell {
     
     // Share Link
     private var itemLinkUrl: String?
-    weak var delegate: CreditsListCellDelegate?
+    weak var delegate: ShareOpenLinkDelegate?
     private var deleteClosure: (()->Void)?
     
     

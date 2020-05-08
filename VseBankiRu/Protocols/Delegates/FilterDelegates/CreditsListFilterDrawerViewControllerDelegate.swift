@@ -22,3 +22,5 @@ protocol CreditsListFilterItemCellDelegate: class {
     func removeItem(row: Int)
 
 }
+
+

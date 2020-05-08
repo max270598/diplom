@@ -55,24 +55,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A3x-RG-COa">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="l5K-oA-Ch6">
                                 <rect key="frame" x="0.0" y="44" width="375" height="574"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="7Y6-aW-67y" firstAttribute="trailing" secondItem="A3x-RG-COa" secondAttribute="trailing" id="CoL-x9-ujZ"/>
-                            <constraint firstItem="A3x-RG-COa" firstAttribute="leading" secondItem="7Y6-aW-67y" secondAttribute="leading" id="IQB-3H-jIU"/>
-                            <constraint firstItem="A3x-RG-COa" firstAttribute="top" secondItem="7Y6-aW-67y" secondAttribute="top" id="RvO-z0-uXt"/>
-                            <constraint firstItem="7Y6-aW-67y" firstAttribute="bottom" secondItem="A3x-RG-COa" secondAttribute="bottom" id="rcV-aM-qwn"/>
+                            <constraint firstItem="l5K-oA-Ch6" firstAttribute="leading" secondItem="7Y6-aW-67y" secondAttribute="leading" id="CkX-pe-5Rf"/>
+                            <constraint firstItem="7Y6-aW-67y" firstAttribute="bottom" secondItem="l5K-oA-Ch6" secondAttribute="bottom" id="Lge-rf-Het"/>
+                            <constraint firstItem="7Y6-aW-67y" firstAttribute="trailing" secondItem="l5K-oA-Ch6" secondAttribute="trailing" id="ccI-eF-Vi1"/>
+                            <constraint firstItem="l5K-oA-Ch6" firstAttribute="top" secondItem="7Y6-aW-67y" secondAttribute="top" id="mhc-EJ-hZn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Y6-aW-67y"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Калькулятор" id="cjV-Rb-SqP"/>
                     <navigationItem key="navigationItem" id="pp9-sI-KtZ"/>
+                    <connections>
+                        <outlet property="listTableView" destination="l5K-oA-Ch6" id="JDB-g8-mwN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ccX-0m-MUk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

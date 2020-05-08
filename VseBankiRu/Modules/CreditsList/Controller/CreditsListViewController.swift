@@ -241,7 +241,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
 
-extension CreditsListViewController: CreditsListCellDelegate {
+extension CreditsListViewController: ShareOpenLinkDelegate {
     func openCredit(url: String, sender: UIView) {
         
         let svc = SFSafariViewController(url: URL(string: url)!)

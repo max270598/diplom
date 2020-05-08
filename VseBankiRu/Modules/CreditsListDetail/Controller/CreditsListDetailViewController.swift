@@ -164,7 +164,11 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
 }
 
 
-extension CreditsListDetailViewController: CreditsListDetailDelegate {
+extension CreditsListDetailViewController: ShareOpenLinkDelegate {
+    func shareLink(url: String, sender: UIView) {
+        
+    }
+    
     func openCredit(url: String, sender: UIView) {
         let svc = SFSafariViewController(url: URL(string: url)!)
         self.present(svc, animated: true, completion: nil)

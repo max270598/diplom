@@ -91,7 +91,7 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
 }
 
 
-extension CreditListFavouriteViewController: CreditsListCellDelegate {
+extension CreditListFavouriteViewController: ShareOpenLinkDelegate {
     func openCredit(url: String, sender: UIView) {
         let svc = SFSafariViewController(url: URL(string: url)!)
         self.present(svc, animated: true, completion: nil)

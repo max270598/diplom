@@ -11,7 +11,7 @@ import UIKit
 class ButtonTableViewCell: UITableViewCell {
 
     var url: String = ""
-    var delegate: CreditsListDetailDelegate?
+    var delegate: ShareOpenLinkDelegate?
     @IBOutlet weak var arrangeButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
