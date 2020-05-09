@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class DetailCalculatorHeaderSection: UIView {
+final class CalculatorHeaderSection: UIView {
     @IBOutlet private weak var contentView: UIView!
     @IBOutlet private weak var shadowView: UIView!
     @IBOutlet private weak var cornerRadiusView: UIView!
@@ -85,19 +85,27 @@ final class DetailCalculatorHeaderSection: UIView {
     }
 }
 
-private extension DetailCalculatorHeaderSection {
+private extension CalculatorHeaderSection {
     
     func commonInit() {
         
+
+            
         self.backgroundColor = .clear
         
-        self.contentView = UINib(nibName: "DetailCalculatorHeaderSection", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
+        self.contentView = UINib(nibName: "CalculatorHeaderSection", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.contentView.translatesAutoresizingMaskIntoConstraints = true
         
         self.addSubview(self.contentView)
-        
+
+        let date = Date()
+        let components = Calendar.current.date(byAdding: .month, value: 24, to: date )
+        self.dateEndLabel.text = Formatter.dateFormatter(date: components!)
+                if let defaultDate = components {
+                    self.dateEndLabel.text = Formatter.dateFormatter(date: defaultDate)
+                }
         self.setupShadow()
     }
     

@@ -57,36 +57,38 @@ class CalculatorSliderTableViewCell: UITableViewCell {
     }
    
     
-    func configure(sliderType: SliderType) {
+    func configure(sliderType: SliderType, value: Float) {
         
         switch sliderType {
         case .sumSilder:
             self.titleLabel.text = "Сумма кредита"
             self.sliderType = .sumSilder
             self.slider.maximumValue = 20000000.0
-            self.upperValueTextField.text = self.formattedValue(value: 5000000)
-            self.slider.value = Float(5000000)
+            self.upperValueTextField.text = self.formattedValue(value: value)
+            self.slider.value = value
             self.maxValueLabel.text = self.formattedValue(value: 20000000)
             self.minValueLabel.text = self.formattedValue(value: 0)
 
 
         case .rateSlider:
             self.titleLabel.text = "Процентная ставка"
-
+            self.upperValueTextField.keyboardType = .decimalPad
+            self.upperValueTextField.placeholder = "7.5 %"
             self.sliderType = .rateSlider
             self.slider.maximumValue = 30
-            self.upperValueTextField.text = self.formattedValue(value: 7.5)
-            self.slider.value = Float(7.5)
+            self.upperValueTextField.text = self.formattedValue(value: value)
+            self.slider.value = value
             self.maxValueLabel.text = self.formattedValue(value: 30)
             self.minValueLabel.text = self.formattedValue(value: 0)
 
         case .timeSlider:
             self.titleLabel.text = "Срок кредита"
-
+            
+            self.upperValueTextField.placeholder = "24 мес"
             self.sliderType = .timeSlider
             self.slider.maximumValue = 96
-            self.upperValueTextField.text = self.formattedValue(value: 24)
-            self.slider.value = Float(24)
+            self.upperValueTextField.text = self.formattedValue(value: value)
+            self.slider.value = value
             self.maxValueLabel.text = self.formattedValue(value: 96)
             self.minValueLabel.text = self.formattedValue(value: 0)
         default:
@@ -145,15 +147,14 @@ extension CalculatorSliderTableViewCell: UITextFieldDelegate {
             print("guard")
             
             
-                upperValueTextField.text = self.formattedValue(value: self.slider.maximumValue)
-            
+            upperValueTextField.text = self.formattedValue(value: self.slider.value)
             
             return
         }
         self.slider.value = newValue
         
         
-            textField.text = self.formattedValue(value: (newValue))
+        textField.text = self.formattedValue(value: (self.slider.value))
         
         
         

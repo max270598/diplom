@@ -404,7 +404,7 @@ extension CreditsListFilterViewController {
               }
 
         
-        self.filteredCredits = filterArr.filter{ $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
+        self.filteredCredits = filterArr.filter{  $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
         }
         
         self.set(itemsCount: String(self.filteredCredits.count))

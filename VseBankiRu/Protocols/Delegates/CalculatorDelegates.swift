@@ -11,3 +11,7 @@ import Foundation
 protocol CalculatorSliderDelegate: class {
     func sliderValueDidChange(sliderType: SliderType, value: Float)
 }
+
+protocol CalculatorDateDelegate: class {
+    func startDateDidChange(startDate: Date)
+}

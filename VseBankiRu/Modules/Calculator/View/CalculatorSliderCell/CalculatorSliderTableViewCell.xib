@@ -37,8 +37,8 @@
                             <action selector="sliderValueChange:" destination="ivS-4W-4nd" eventType="valueChanged" id="u3C-3b-eCN"/>
                         </connections>
                     </slider>
-                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="фыв" placeholder="100 000 Р" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-hf-BPg">
-                        <rect key="frame" x="270" y="15" width="89" height="23"/>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="фыв" placeholder="5 000 000 Р" textAlignment="right" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Oi-hf-BPg">
+                        <rect key="frame" x="250.5" y="15" width="108.5" height="23"/>
                         <color key="textColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="18"/>
                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -58,23 +58,34 @@
                         <color key="textColor" red="0.4549019608" green="0.47450980390000003" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AIT-SU-QmW">
+                        <rect key="frame" x="20" y="125" width="339" height="1"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.47450980390000003" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="YWc-1t-gN2"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Gry-YE-QyW" firstAttribute="leading" secondItem="xCK-H9-9dL" secondAttribute="leading" constant="20" id="1Gw-4V-xjA"/>
                     <constraint firstItem="8Oi-hf-BPg" firstAttribute="top" secondItem="xCK-H9-9dL" secondAttribute="top" constant="15" id="9a7-M3-MAY"/>
                     <constraint firstItem="8Oi-hf-BPg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gry-YE-QyW" secondAttribute="trailing" constant="40" id="Eyg-sr-7E1"/>
                     <constraint firstItem="G9Q-f4-wdF" firstAttribute="centerY" secondItem="WwZ-Gb-B7i" secondAttribute="centerY" id="IP7-sN-F2W"/>
+                    <constraint firstAttribute="trailing" secondItem="AIT-SU-QmW" secondAttribute="trailing" constant="20" id="Ph1-T0-uM4"/>
                     <constraint firstItem="G9Q-f4-wdF" firstAttribute="leading" secondItem="Gry-YE-QyW" secondAttribute="leading" id="Rsa-i2-FOB"/>
+                    <constraint firstAttribute="bottom" secondItem="AIT-SU-QmW" secondAttribute="bottom" id="XOs-g5-suh"/>
+                    <constraint firstItem="AIT-SU-QmW" firstAttribute="top" secondItem="WwZ-Gb-B7i" secondAttribute="bottom" constant="16" id="XxL-hF-AiL"/>
                     <constraint firstItem="F2Y-mc-myE" firstAttribute="leading" secondItem="xCK-H9-9dL" secondAttribute="leading" constant="20" id="dfb-vP-Bdv"/>
+                    <constraint firstItem="AIT-SU-QmW" firstAttribute="leading" secondItem="xCK-H9-9dL" secondAttribute="leading" constant="20" id="esQ-28-lFK"/>
                     <constraint firstItem="WwZ-Gb-B7i" firstAttribute="top" secondItem="F2Y-mc-myE" secondAttribute="bottom" constant="12" id="kDL-fx-tlf"/>
                     <constraint firstItem="WwZ-Gb-B7i" firstAttribute="trailing" secondItem="8Oi-hf-BPg" secondAttribute="trailing" id="mrh-0o-xyw"/>
                     <constraint firstAttribute="trailing" secondItem="8Oi-hf-BPg" secondAttribute="trailing" constant="20" id="nUM-ug-K27"/>
                     <constraint firstItem="F2Y-mc-myE" firstAttribute="top" secondItem="8Oi-hf-BPg" secondAttribute="bottom" constant="12" id="tL2-VY-MEz"/>
                     <constraint firstItem="Gry-YE-QyW" firstAttribute="top" secondItem="xCK-H9-9dL" secondAttribute="top" constant="16" id="tQM-nq-Z3W"/>
                     <constraint firstAttribute="trailing" secondItem="F2Y-mc-myE" secondAttribute="trailing" constant="20" id="vEs-Za-2US"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="WwZ-Gb-B7i" secondAttribute="bottom" constant="6" id="vva-8U-h6U"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="S77-Ll-JX3"/>
             <connections>
                 <outlet property="maxValueLabel" destination="WwZ-Gb-B7i" id="oli-Q5-IKA"/>

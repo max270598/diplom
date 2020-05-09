@@ -14,6 +14,6 @@ struct CreditCalculatorParams {
     var sum: Double          = 5000000
     var ratePercent: Double      = 7.5
     var time: Double  = 24
-    var startDate: Date = Date(timeIntervalSinceNow: .zero)
+    var startDate: Date = Date()
     
 }

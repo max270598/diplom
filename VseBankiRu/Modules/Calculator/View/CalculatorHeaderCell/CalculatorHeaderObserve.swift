@@ -29,7 +29,7 @@ final class CalculatorHeaderObserved: NSObject, CalculatorHeaderModelType {
     private lazy var calculatorService  = CreditCalculator()
     private(set) var calculatorParams   = CreditCalculatorParams()
     
-    func update(type: SliderType, newValue: Double, date: Date) {
+    func update(type: SliderType, newValue: Double) {
         
         switch type {
         case .sumSilder:
@@ -40,6 +40,10 @@ final class CalculatorHeaderObserved: NSObject, CalculatorHeaderModelType {
             self.calculatorParams.time    = newValue
         default: break
         }
+        self.update()
+    }
+    
+    func updateDate(date: Date) {
         self.calculatorParams.startDate = date
         self.update()
     }

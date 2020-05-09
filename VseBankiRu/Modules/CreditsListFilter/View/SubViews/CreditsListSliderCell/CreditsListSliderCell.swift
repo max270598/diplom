@@ -129,7 +129,7 @@ extension CreditsListSliderCell: UITextFieldDelegate {
         guard let textString = textField.text, let newValue = Float(textString) else {
             print("guard")
 
-            upperValueTextField.text = self.formattedValue(value: self.slider.maximumValue)
+            upperValueTextField.text = self.formattedValue(value: self.slider.value)
             return
         }
         self.slider.value = newValue
