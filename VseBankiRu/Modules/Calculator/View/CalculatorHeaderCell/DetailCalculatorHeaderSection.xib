@@ -17,12 +17,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailCalculatorHeaderSection" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
-                <outlet property="annualRiseLabel" destination="e2Z-dH-ftG" id="59m-K2-f6d"/>
-                <outlet property="carPriceLabel" destination="Uqd-MW-cpT" id="ljD-GC-llx"/>
                 <outlet property="cornerRadiusView" destination="n3g-ZO-JdF" id="WSt-4F-zEa"/>
+                <outlet property="creditAmountLabel" destination="Uqd-MW-cpT" id="qNW-Yh-d3s"/>
+                <outlet property="dateEndLabel" destination="e2Z-dH-ftG" id="jWn-b7-Z68"/>
                 <outlet property="heightConstraint" destination="TGf-Gf-3LJ" id="wi0-Md-dN8"/>
-                <outlet property="leaseAmountLabel" destination="eUm-cB-h7J" id="F68-bk-NAm"/>
-                <outlet property="monthlyPaymentLabel" destination="r6Y-eE-YLq" id="hC7-B2-Sii"/>
+                <outlet property="monthlyPaymentLabel" destination="r6Y-eE-YLq" id="WJd-ZD-jUh"/>
+                <outlet property="overPaymentLabel" destination="eUm-cB-h7J" id="g47-zp-CZK"/>
                 <outlet property="shadowView" destination="ciX-vY-LQN" id="w4l-k7-bgE"/>
             </connections>
         </placeholder>
@@ -49,7 +49,7 @@
                                                     <color key="textColor" red="0.0039215686274509803" green="0.0" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Переплата по кредиту" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7L-tz-qcI">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выплаты за весь срок" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7L-tz-qcI">
                                                     <rect key="frame" x="0.0" y="25.5" width="302.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                     <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -66,7 +66,7 @@
                                                     <color key="textColor" red="0.0039215686274509803" green="0.0" blue="0.090196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выплаты за весь срок кредита" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkf-Wb-Nfi">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Переплата по кредиту" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xkf-Wb-Nfi">
                                                     <rect key="frame" x="0.0" y="25.5" width="302.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
                                                     <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

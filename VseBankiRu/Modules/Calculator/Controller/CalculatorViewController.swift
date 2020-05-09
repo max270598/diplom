@@ -11,7 +11,7 @@ import UIKit
 class CalculatorViewController: UIViewController {
 
     
-    private(set) lazy var calculatorHeaderModel = DetailCalculatorHeaderObserved()
+    private(set) lazy var calculatorHeaderModel = CalculatorHeaderObserved()
 
     
     
@@ -27,6 +27,31 @@ class CalculatorViewController: UIViewController {
 }
 
 extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+            
+            let calculatorHeaderView = DetailCalculatorHeaderSection()
+            calculatorHeaderView.addShadow()
+        calculatorHeaderView.configure(observed: self.calculatorHeaderModel)
+            
+            
+            return calculatorHeaderView
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+       
+            var height: CGFloat = 156
+           
+            return height
+        
+    }
+
    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -39,6 +64,7 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CalculatorSliderTableViewCell", for: indexPath) as! CalculatorSliderTableViewCell
+        cell.delegate = self
         cell.configure(sliderType: self.sliredArray[indexPath.row])
         return cell
     }
@@ -62,7 +88,8 @@ extension CalculatorViewController {
 
 extension CalculatorViewController: CalculatorSliderDelegate{
     func sliderValueDidChange(sliderType: SliderType, value: Float) {
-        <#code#>
+        let dateCur = Date()
+        self.calculatorHeaderModel.update(type: sliderType, newValue: Double(value), date: dateCur)
     }
     
     

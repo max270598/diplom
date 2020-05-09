@@ -16,17 +16,20 @@ final class DetailCalculatorHeaderSection: UIView {
     // FIXME: Исправить шрифт
     
   
+    @IBOutlet weak var creditAmountLabel: UILabel!
     
-    @IBOutlet private weak var carPriceLabel: UILabel!
-    @IBOutlet private weak var leaseAmountLabel: UILabel!
-    @IBOutlet private weak var monthlyPaymentLabel: UILabel!
-    @IBOutlet private weak var annualRiseLabel: UILabel!
+    @IBOutlet weak var overPaymentLabel: UILabel!
     
-    @objc private var objectToObserve: DetailCalculatorHeaderObserved?
+    @IBOutlet weak var monthlyPaymentLabel: UILabel!
+    @IBOutlet weak var dateEndLabel: UILabel!
     
-    private var leaseAmountObservation: NSKeyValueObservation?
+    @objc private var objectToObserve: CalculatorHeaderObserved?
+    
+    private var creditAmountObservation: NSKeyValueObservation?
     private var monthlyPaymentObservation: NSKeyValueObservation?
-    private var annualRiseObservation: NSKeyValueObservation?
+    private var overPaymentObservation: NSKeyValueObservation?
+    private var dateEndObservation: NSKeyValueObservation?
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,35 +41,20 @@ final class DetailCalculatorHeaderSection: UIView {
         self.commonInit()
     }
     
-    func configure(price: Int?,
-                   oldPrice: Int?,
-                   calcParams: AutoMallItemDetailCalcParams?,
-                   observed model: DetailCalculatorHeaderObserved
-    ) {
+    func configure(observed model: CalculatorHeaderObserved) {
         
         self.objectToObserve = model
         
-        if let price = price {
-            self.carPriceLabel.text = price.formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
-        }
-        
-        if let oldPrice = oldPrice, oldPrice > 0 {
-            let oldCarPriceString = oldPrice.formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: oldCarPriceString)
-            attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-            self.oldCarPriceLabel.attributedText = attributeString
-            self.oldCarPriceLabel.isHidden = false
-            self.heightConstraint.constant = 138
-        }
+       
         
         // MARK: Calculator Model Observers
         
-        self.leaseAmountObservation = observe(
-            \.objectToObserve?.leaseAmount,
+        self.creditAmountObservation = observe(
+            \.objectToObserve?.creditAmount,
             options: [.new]
         ) { price, change in
             if let newValue = change.newValue, let newValueInt = newValue {
-                self.leaseAmountLabel.text = newValueInt.formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
+                self.creditAmountLabel.text = newValueInt.formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
             }
         }
         
@@ -79,22 +67,21 @@ final class DetailCalculatorHeaderSection: UIView {
             }
         }
         
-        self.annualRiseObservation = observe(
-            \.objectToObserve?.annualRise,
+        self.overPaymentObservation = observe(
+            \.objectToObserve?.overPayment,
             options: [.new]
         ) { price, change in
             if let newValue = change.newValue, let newValueDouble = newValue {
-                self.annualRiseLabel.text = "\(newValueDouble.formattedWithSeparator)" + " " + "%"
+                self.overPaymentLabel.text = "\(newValueDouble.formattedWithSeparator)" + " " + CurrencySymbols.rubles.rawValue
             }
         }
         
-        if let calcParams = calcParams {
-            self.objectToObserve?.set(params: calcParams)
+        self.dateEndObservation = observe(\.objectToObserve?.dateEnd, options: .new) { price, change in
+            if let newValue = change.newValue, let newValueDate = newValue {
+                self.dateEndLabel.text = Formatter.dateFormatter(date: newValueDate)
+            }
         }
         
-        if let price = price {
-            self.objectToObserve?.set(price: Double(price))
-        }
     }
 }
 
@@ -104,7 +91,7 @@ private extension DetailCalculatorHeaderSection {
         
         self.backgroundColor = .clear
         
-        self.contentView = .firstView(owner: self)
+        self.contentView = UINib(nibName: "DetailCalculatorHeaderSection", bundle: nil).instantiate(withOwner: self, options: nil).first as! UIView
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.contentView.translatesAutoresizingMaskIntoConstraints = true
@@ -117,7 +104,7 @@ private extension DetailCalculatorHeaderSection {
     func setupShadow() {
         
         shadowView.backgroundColor          = .clear
-        shadowView.layer.shadowColor        = UIColor(dRed: 229, dGreen: 233, dBlue: 237, alpha: 1).cgColor
+        shadowView.layer.shadowColor        = UIColor(red: 229.0/255.0, green: 233.0/255.0, blue: 237.0/255.0, alpha: 1.0).cgColor
         shadowView.layer.shadowOffset       = CGSize(width: 5, height: 5)
         shadowView.layer.shadowOpacity      = 0.25
         shadowView.layer.shadowRadius       = 8

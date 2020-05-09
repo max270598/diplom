@@ -15,7 +15,7 @@ protocol CalculatorHeaderModelType: NSObjectProtocol {
     var dateEnd: Date { get }
 }
 
-final class DetailCalculatorHeaderObserved: NSObject, CalculatorHeaderModelType {
+final class CalculatorHeaderObserved: NSObject, CalculatorHeaderModelType {
    
     
     
@@ -26,42 +26,31 @@ final class DetailCalculatorHeaderObserved: NSObject, CalculatorHeaderModelType 
     @objc private(set) dynamic var monthlyPayment: Int  = 0
 
     
-    @objc private(set) dynamic var leaseAmount: Int     = 0
-    @objc private(set) dynamic var annualRise: Double   = 0
-    
     private lazy var calculatorService  = CreditCalculator()
     private(set) var calculatorParams   = CreditCalculatorParams()
     
-    func update(type: CalculatorSliderType, newValue: Double) {
+    func update(type: SliderType, newValue: Double, date: Date) {
         
         switch type {
-        case .advance:
-            self.calculatorParams.advancePercent        = newValue
-        case .term:
-            self.calculatorParams.month                 = newValue
-        case .lastPayment:
-            self.calculatorParams.lastPaymentPercent    = newValue
+        case .sumSilder:
+            self.calculatorParams.sum        = newValue
+        case .rateSlider:
+            self.calculatorParams.ratePercent                 = newValue
+        case .timeSlider:
+            self.calculatorParams.time    = newValue
         default: break
         }
-        
+        self.calculatorParams.startDate = date
         self.update()
     }
     
-    func set(params: AutoMallItemDetailCalcParams) {
-        self.calculatorParams.advancePercent    = Double(params.minAdvice)
-        self.calculatorParams.month             = Double(params.maxMonth)
-    }
-    
-    func set(price: Double) {
-        self.calculatorService.changePrice(price: price)
-        self.update()
-    }
     
     // TODO: Устанавливать значения сразу после инициализации
     private func update() {
         self.calculatorService.set(params: self.calculatorParams)
-        self.leaseAmount    = Int(round(calculatorService.leasing))
-        self.monthlyPayment = Int(round(calculatorService.payment))
-        self.annualRise     = calculatorService.appreciation
+        self.creditAmount    = Int(round(calculatorService.creditAmount))
+        self.monthlyPayment = Int(round(calculatorService.monthlyPayment))
+        self.overPayment     = Int(round(calculatorService.overPayment))
+        self.dateEnd = calculatorService.endDate
     }
 }

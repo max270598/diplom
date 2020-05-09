@@ -17,6 +17,12 @@ class Formatter {
         return formatter
     }()
     
+    static func dateFormatter(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        return dateFormatter.string(from: date)
+    }
+    
     static func repalceWithStringSpace(text: String?) -> String {
         var i = text?.replacingOccurrences(of: "*", with: "\n\n- ") ?? ""
         i = i.replacingOccurrences(of: "|", with: "\n\n")
