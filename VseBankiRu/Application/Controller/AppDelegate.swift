@@ -24,15 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         FirebaseApp.configure()
         IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 20
+
+        IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Готово"
+        IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(PrivateOfficeViewController.self)
+        IQKeyboardManager.shared.disabledToolbarClasses.append(PrivateOfficeViewController.self)
+//        CalculatorViewController
         
         UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
         
         
-//        UINavigationBar.appearance().barTintColor = UIColor.systemIndigo
-//        UINavigationBar.appearance().backgroundColor = UIColor.systemIndigo
+        UINavigationBar.appearance().barTintColor = .white
+        
+        UITabBar.appearance().barTintColor = .white
+        UITabBar.appearance().tintColor = UIColor.systemIndigo
         //102 100 210 цвет бара настоящий
 
         if #available(iOS 10, *) { //Регистрируем push уведомления

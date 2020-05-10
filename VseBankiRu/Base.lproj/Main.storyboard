@@ -30,11 +30,11 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Item-->
+        <!--Калькулятор-->
         <scene sceneID="Enx-Kk-eTD">
             <objects>
                 <navigationController id="RBc-7q-dDv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="eKZ-9X-KJR"/>
+                    <tabBarItem key="tabBarItem" title="Калькулятор" image="tabbar_calculator" id="eKZ-9X-KJR"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E7c-6t-07y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -47,7 +47,7 @@
             </objects>
             <point key="canvasLocation" x="-482" y="294"/>
         </scene>
-        <!--Калькулятор-->
+        <!--Calculator View Controller-->
         <scene sceneID="aPl-MB-SKT">
             <objects>
                 <viewController id="zwc-Fx-ui8" customClass="CalculatorViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
@@ -77,7 +77,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Калькулятор" id="cjV-Rb-SqP"/>
+                    <tabBarItem key="tabBarItem" title="" id="cjV-Rb-SqP"/>
                     <navigationItem key="navigationItem" id="pp9-sI-KtZ"/>
                     <connections>
                         <outlet property="listTableView" destination="l5K-oA-Ch6" id="JDB-g8-mwN"/>
@@ -87,11 +87,112 @@
             </objects>
             <point key="canvasLocation" x="390" y="294"/>
         </scene>
-        <!--Item-->
+        <!--Кабинет-->
+        <scene sceneID="HbB-Eo-kCY">
+            <objects>
+                <navigationController id="E4M-Cj-U56" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Кабинет" image="tabbar_user" id="QZF-PF-NCt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rTQ-bm-O7s">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RvT-FB-31b" kind="relationship" relationship="rootViewController" id="kiJ-A1-lDc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ykx-fQ-gEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-512" y="1025"/>
+        </scene>
+        <!--Private Office View Controller-->
+        <scene sceneID="1tD-vV-lzd">
+            <objects>
+                <viewController id="RvT-FB-31b" customClass="PrivateOfficeViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="21v-vh-uP7" customClass="TwoGradientView" customModule="VseBankiRu" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call" translatesAutoresizingMaskIntoConstraints="NO" id="fIc-Lp-dWW">
+                                <rect key="frame" x="150" y="64" width="75" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="RpB-9c-m28"/>
+                                    <constraint firstAttribute="height" constant="50" id="kOK-Nb-dfm"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Олюшкин Максим" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imr-R0-9ZJ">
+                                <rect key="frame" x="20" y="134" width="335" height="27.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="23"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6Z-rD-sxX">
+                                <rect key="frame" x="20" y="181.5" width="335" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <connections>
+                                    <action selector="infoSegmentControlChanged:" destination="RvT-FB-31b" eventType="valueChanged" id="C6y-o5-EjV"/>
+                                </connections>
+                            </segmentedControl>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-CX-55Q">
+                                <rect key="frame" x="1" y="232.5" width="373" height="385.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fL-7S-HaD">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M6Z-rD-sxX" firstAttribute="top" secondItem="imr-R0-9ZJ" secondAttribute="bottom" constant="20" id="Eg8-sK-jkt"/>
+                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="bottom" secondItem="7Yd-CX-55Q" secondAttribute="bottom" id="Eou-05-4EI"/>
+                            <constraint firstItem="7Yd-CX-55Q" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="1" id="FD8-sK-hpr"/>
+                            <constraint firstItem="imr-R0-9ZJ" firstAttribute="top" secondItem="fIc-Lp-dWW" secondAttribute="bottom" constant="20" id="S7W-PW-si3"/>
+                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="7Yd-CX-55Q" secondAttribute="trailing" constant="1" id="UbT-MI-7tE"/>
+                            <constraint firstItem="M6Z-rD-sxX" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="20" id="UlX-RD-hBB"/>
+                            <constraint firstItem="fIc-Lp-dWW" firstAttribute="top" secondItem="cta-Zf-5Uh" secondAttribute="top" constant="20" id="ewd-rQ-HXa"/>
+                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="imr-R0-9ZJ" secondAttribute="trailing" constant="20" id="inX-5a-ESE"/>
+                            <constraint firstItem="fIc-Lp-dWW" firstAttribute="centerX" secondItem="21v-vh-uP7" secondAttribute="centerX" id="mWA-XT-sji"/>
+                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="M6Z-rD-sxX" secondAttribute="trailing" constant="20" id="nEd-SB-XbI"/>
+                            <constraint firstItem="imr-R0-9ZJ" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="20" id="ndy-jH-1jd"/>
+                            <constraint firstItem="7Yd-CX-55Q" firstAttribute="top" secondItem="M6Z-rD-sxX" secondAttribute="bottom" constant="20" id="wyw-1y-h5b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="cta-Zf-5Uh"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.90588235289999997" green="0.92941176469999998" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <navigationItem key="navigationItem" id="Up2-xh-sLI">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_settings_colored" id="XcV-r8-RwZ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="avatarImage" destination="fIc-Lp-dWW" id="q5i-v4-fDo"/>
+                        <outlet property="infoCollectionView" destination="7Yd-CX-55Q" id="hLa-yU-UAz"/>
+                        <outlet property="infoSegmentControl" destination="M6Z-rD-sxX" id="L2a-7I-hMS"/>
+                        <outlet property="settingsBarButtonItem" destination="XcV-r8-RwZ" id="9Dg-XZ-sxu"/>
+                        <outlet property="userNameLabel" destination="imr-R0-9ZJ" id="LRX-4j-mVT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KZp-pm-RIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410.39999999999998" y="1024.1379310344828"/>
+        </scene>
+        <!--Главная-->
         <scene sceneID="kjk-Cg-2hS">
             <objects>
                 <navigationController id="GPp-eK-CYR" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="icon_share" id="Pav-d5-mE3"/>
+                    <tabBarItem key="tabBarItem" title="Главная" image="tabbar_credit" id="Pav-d5-mE3"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xrg-gT-lc9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -104,7 +205,7 @@
             </objects>
             <point key="canvasLocation" x="-482" y="-477"/>
         </scene>
-        <!--Каталог-->
+        <!--Catalog View Controller-->
         <scene sceneID="bRj-hK-HtT">
             <objects>
                 <viewController id="eV9-f7-kx7" customClass="CatalogViewController" customModule="VseBankiRu" customModuleProvider="target" sceneMemberID="viewController">
@@ -113,28 +214,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wcN-ar-hGT">
-                                <rect key="frame" x="0.0" y="44" width="375" height="53"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="54"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Курсы валют" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-Ol-JRv">
-                                        <rect key="frame" x="0.0" y="4" width="375" height="20"/>
+                                        <rect key="frame" x="0.0" y="4" width="375" height="20.5"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="17"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.0" blue="0.090196078430000007" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="11v-Gf-qHQ">
-                                        <rect key="frame" x="114.5" y="34" width="146.5" height="19"/>
+                                        <rect key="frame" x="115.5" y="34.5" width="144" height="19.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="vyX-5H-9H6">
-                                                <rect key="frame" x="0.0" y="0.0" width="72" height="19"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="71" height="19.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доллар:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rjj-to-oOm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="61.5" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="60" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="16"/>
                                                         <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OIE-AX-yHZ">
-                                                        <rect key="frame" x="65.5" y="0.0" width="6.5" height="19"/>
+                                                        <rect key="frame" x="64" y="0.0" width="7" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="16"/>
                                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -142,16 +243,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="t1O-6w-Nu7">
-                                                <rect key="frame" x="94" y="0.0" width="52.5" height="19"/>
+                                                <rect key="frame" x="93" y="0.0" width="51" height="19.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Евро:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="157-sR-Hft">
-                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="19"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="16"/>
                                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TvF-9X-Wph">
-                                                        <rect key="frame" x="46" y="0.0" width="6.5" height="19"/>
+                                                        <rect key="frame" x="44" y="0.0" width="7" height="19.5"/>
                                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="16"/>
                                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -172,13 +273,13 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Данный сервис предоставляет пользователям возможность в удобной форме подобрать кредит на основе заданных параметров." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfY-lJ-zl7">
-                                <rect key="frame" x="40" y="177" width="295" height="79.5"/>
+                                <rect key="frame" x="40" y="178" width="295" height="81.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="17"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0w5-yu-67e">
-                                <rect key="frame" x="82.5" y="376.5" width="210" height="30"/>
+                                <rect key="frame" x="82.5" y="379.5" width="210" height="30"/>
                                 <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title=" Перейти к подбору кредита ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,9 +312,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Каталог" landscapeImage="icon_share" selectedImage="icon_share" id="kAo-Tx-dDf">
-                        <color key="badgeColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" id="kAo-Tx-dDf"/>
                     <navigationItem key="navigationItem" id="ntS-oh-nvY">
                         <barButtonItem key="leftBarButtonItem" title="Выйти" id="Es5-3o-GLf">
                             <connections>
@@ -358,17 +457,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-k8-I4h">
-                                <rect key="frame" x="112.5" y="64" width="150" height="159"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8h9-JV-od3">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="2Cm-9h-pzO"/>
                                             <constraint firstAttribute="height" constant="120" id="fLZ-Ag-HD3"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Авторизация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-Mz-x5k">
-                                        <rect key="frame" x="26.5" y="140" width="97.5" height="19"/>
+                                        <rect key="frame" x="23" y="140" width="104.5" height="19.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -376,10 +475,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6gV-6p-nCj">
-                                <rect key="frame" x="87.5" y="493" width="200" height="98"/>
+                                <rect key="frame" x="87.5" y="491" width="200" height="100"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB6-Md-6Ld">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="38"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="D3f-3K-KK5"/>
@@ -398,7 +497,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyL-4H-WFD">
-                                        <rect key="frame" x="11.5" y="65" width="177" height="33"/>
+                                        <rect key="frame" x="17" y="66" width="166" height="34"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                         <state key="normal" title="Зарегистрироваться">
                                             <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -410,10 +509,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-S1-APg">
-                                <rect key="frame" x="0.0" y="223" width="375" height="270"/>
+                                <rect key="frame" x="0.0" y="223.5" width="375" height="267.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dBg-MC-ZK6">
-                                        <rect key="frame" x="62.5" y="86" width="250" height="98"/>
+                                        <rect key="frame" x="62.5" y="85" width="250" height="98"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AmF-BF-Wh7">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="29"/>
@@ -454,8 +553,8 @@
                                             <constraint firstAttribute="width" constant="250" id="yFi-Ei-djP"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-FI-oYz">
-                                        <rect key="frame" x="20" y="204" width="335" height="0.0"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-FI-oYz">
+                                        <rect key="frame" x="20" y="203" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -538,14 +637,14 @@
                                 <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="6pJ-0i-ZXq">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="0vb-mH-tIa"/>
                                             <constraint firstAttribute="width" constant="150" id="TAB-Gb-dfZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h0-oR-l88">
-                                        <rect key="frame" x="27" y="140" width="96" height="19.5"/>
+                                        <rect key="frame" x="23.5" y="140" width="103" height="19.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -642,9 +741,9 @@
                                             <constraint firstItem="7E5-SK-Sz3" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="v1C-8S-xHY"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7R-Ls-k2l">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7R-Ls-k2l">
                                         <rect key="frame" x="20" y="267" width="335" height="0.0"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="16"/>
+                                        <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="14"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -659,7 +758,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtS-6c-aE9">
-                                <rect key="frame" x="87.5" y="541" width="200" height="44"/>
+                                <rect key="frame" x="87.5" y="561" width="200" height="44"/>
                                 <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="IA0-5K-pgf"/>
@@ -686,8 +785,8 @@
                             <constraint firstItem="rm9-nH-Ibz" firstAttribute="leading" secondItem="OX1-8b-N9h" secondAttribute="leading" id="X6m-gm-kVb"/>
                             <constraint firstItem="wtS-6c-aE9" firstAttribute="centerX" secondItem="OX1-8b-N9h" secondAttribute="centerX" id="ghO-YQ-vF8"/>
                             <constraint firstItem="X5b-3F-gTN" firstAttribute="centerX" secondItem="OX1-8b-N9h" secondAttribute="centerX" id="iQO-b5-hhW"/>
-                            <constraint firstItem="fgb-oL-8Ce" firstAttribute="bottom" secondItem="wtS-6c-aE9" secondAttribute="bottom" constant="82" id="mxK-Sc-OIi"/>
-                            <constraint firstItem="wtS-6c-aE9" firstAttribute="top" secondItem="rm9-nH-Ibz" secondAttribute="bottom" id="t4Y-oC-I8x"/>
+                            <constraint firstItem="fgb-oL-8Ce" firstAttribute="bottom" secondItem="wtS-6c-aE9" secondAttribute="bottom" constant="62" id="mxK-Sc-OIi"/>
+                            <constraint firstItem="wtS-6c-aE9" firstAttribute="top" secondItem="rm9-nH-Ibz" secondAttribute="bottom" constant="20" id="t4Y-oC-I8x"/>
                             <constraint firstItem="rm9-nH-Ibz" firstAttribute="top" secondItem="X5b-3F-gTN" secondAttribute="bottom" id="wpZ-J5-6Tv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fgb-oL-8Ce"/>
@@ -726,26 +825,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-Mo-3vo">
-                                <rect key="frame" x="112.5" y="64" width="150" height="120"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="120.00000000000011"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7gr-sg-a5g"/>
                                     <constraint firstAttribute="height" constant="120" id="mAi-dv-06w"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На указанный Вами адрес элетронной почты было отправлено письмо" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLL-bS-M6c">
-                                <rect key="frame" x="20" y="244" width="335" height="37.5"/>
+                                <rect key="frame" x="20" y="244" width="335" height="38.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8C-eg-tVl">
-                                <rect key="frame" x="71.5" y="361.5" width="232" height="21"/>
+                                <rect key="frame" x="58.5" y="362.5" width="258.5" height="21"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y9j-cH-GYB">
-                                <rect key="frame" x="157.5" y="442.5" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="443.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="DDH-yT-ftK"/>
                                     <constraint firstAttribute="height" constant="60" id="LJz-Bm-TaQ"/>
@@ -885,11 +984,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="GPp-eK-CYR" kind="relationship" relationship="viewControllers" id="I28-jE-jl6"/>
                         <segue destination="RBc-7q-dDv" kind="relationship" relationship="viewControllers" id="1NR-BW-KgG"/>
+                        <segue destination="E4M-Cj-U56" kind="relationship" relationship="viewControllers" id="gmT-mY-TUV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iho-kj-SAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -899,7 +998,11 @@
     </scenes>
     <resources>
         <image name="VseBankRu_Logo" width="486" height="506"/>
-        <image name="icon_share" width="20" height="20"/>
+        <image name="call" width="15" height="15"/>
+        <image name="icon_settings_colored" width="48" height="48"/>
+        <image name="tabbar_calculator" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="tabbar_credit" width="33.333332061767578" height="33.333332061767578"/>
+        <image name="tabbar_user" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="chI-oZ-Dxb"/>

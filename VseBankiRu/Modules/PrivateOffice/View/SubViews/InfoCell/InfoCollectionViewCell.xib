@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Compact-Text-Regular.otf">
+            <string>SFCompactText-Regular</string>
+        </array>
+        <array key="SF-Pro-Display-Medium.otf">
+            <string>SFProDisplay-Medium</string>
+        </array>
+        <array key="SF-Pro-Text-Medium.otf">
+            <string>SFProText-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="InfoCollectionViewCell" id="gTV-IL-0wX" customClass="InfoCollectionViewCell" customModule="VseBankiRu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="407" height="374"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="407" height="374"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Lfx-lB-RTn">
+                        <rect key="frame" x="128.5" y="20" width="150" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="kXz-IY-T7v"/>
+                            <constraint firstAttribute="width" constant="150" id="yJ8-oj-M0W"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s2a-55-acR">
+                        <rect key="frame" x="20" y="140" width="367" height="51"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VseBankiRu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXI-s1-dKo">
+                                <rect key="frame" x="0.0" y="0.0" width="367" height="24.5"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Версия 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1Y-jb-2Kx">
+                                <rect key="frame" x="0.0" y="34.5" width="367" height="16.5"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="uqB-k1-vt8">
+                        <rect key="frame" x="20" y="251" width="367" height="90"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQ6-6B-kT2">
+                                <rect key="frame" x="108.5" y="0.0" width="150" height="36"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="7Sv-P2-Sa2"/>
+                                    <constraint firstAttribute="width" constant="150" id="tDx-Zq-GzO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                                <state key="normal" title="О Приложении">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="aboutAppButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="aKw-Uf-i0A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dlY-AZ-HYh">
+                                <rect key="frame" x="108.5" y="54" width="150" height="36"/>
+                                <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="bTS-ho-qsh"/>
+                                    <constraint firstAttribute="height" constant="36" id="woI-BP-Pn3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="13"/>
+                                <state key="normal" title="Поддержка">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="helpButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Xmj-hR-yrt"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="uqB-k1-vt8" secondAttribute="trailing" constant="20" id="4yc-74-JJD"/>
+                <constraint firstAttribute="trailing" secondItem="s2a-55-acR" secondAttribute="trailing" constant="20" id="6cn-OX-cm5"/>
+                <constraint firstItem="s2a-55-acR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="Dcl-8O-gTc"/>
+                <constraint firstItem="uqB-k1-vt8" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="F1k-2u-Rus"/>
+                <constraint firstItem="uqB-k1-vt8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="IWo-Bx-sBG"/>
+                <constraint firstItem="Lfx-lB-RTn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IfB-YL-eGA"/>
+                <constraint firstItem="s2a-55-acR" firstAttribute="top" secondItem="Lfx-lB-RTn" secondAttribute="bottom" constant="20" id="L1l-V9-Zur"/>
+                <constraint firstItem="uqB-k1-vt8" firstAttribute="top" secondItem="s2a-55-acR" secondAttribute="bottom" constant="60" id="Tgj-eX-VQz"/>
+                <constraint firstItem="Lfx-lB-RTn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="xB7-Rt-UHY"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="407" height="374"/>
+            <connections>
+                <outlet property="aboutAppButton" destination="fQ6-6B-kT2" id="ZfP-bC-Jw1"/>
+                <outlet property="helpButton" destination="dlY-AZ-HYh" id="Vdo-1x-Ilq"/>
+            </connections>
+            <point key="canvasLocation" x="396.37681159420293" y="216.29464285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="VseBankRu_Logo" width="486" height="506"/>
+    </resources>
+</document>

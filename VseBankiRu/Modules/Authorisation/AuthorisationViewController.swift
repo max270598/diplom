@@ -21,7 +21,6 @@ class AuthorisationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
 
         
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in // если пользователь зарегистрирован то переходит на сразу на другой экран
@@ -37,30 +36,40 @@ class AuthorisationViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         self.errorLabel.alpha = 0
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+//        IQKeyboardManager.shared.enable = false
     }
     
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         guard let email = self.emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
-            showErrorLabel(with: "Info is incorrect")
+            showErrorLabel(with: "Введены неверные данные пользователя")
             return
         }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self](user, error) in
-            if error != nil {
-                self?.showErrorLabel(with: "Error occured")
-                return
-            }
+            
            
             guard user != nil else {
-                self?.showErrorLabel(with: "No such user")
+                self?.showErrorLabel(with: "Такого пользователя не существует")
                 return
                 
             }
             
-            guard (user?.user.isEmailVerified)! else {
-                self?.showErrorLabel(with: "User email is not verified")
+            if error != nil {
+                self?.showErrorLabel(with: "Ошибка")
                 return
             }
+            
+            guard (user?.user.isEmailVerified)! else {
+                self?.showErrorLabel(with: "Пользователь не верифицирован")
+                return
+            }
+            
             self?.performSegue(withIdentifier: "logged", sender: nil)
 
             

@@ -47,12 +47,17 @@ class RegisterViewController: UIViewController {
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
         guard let name = self.firstNameTextField.text, let email = self.emailTextField.text, let password = passwordTextField.text, name != "", email != "", password != "", let confirmPassword = confirmPasswordTextField.text, confirmPassword != "" else {
-                showErrorLabel(with: "Info is incorrect")
+                showErrorLabel(with: "Заполните все поля")
                 return
             }
         
+        guard password.count > 5 else {
+            showErrorLabel(with: "Пароль должен содержать не менее 6 символов")
+            return
+        }
+        
         guard confirmPassword == password else {
-            showErrorLabel(with: "Passwords don't match")
+            showErrorLabel(with: "Пароли не совпадают")
             return
         }
          
@@ -92,7 +97,7 @@ extension RegisterViewController {
         })
     }
     
-    func createUser(email: String, password: String) {
+    func createUser( email: String,  password: String) {
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self](user, error) in
             
@@ -105,9 +110,24 @@ extension RegisterViewController {
                 return
             }
          
+//            let changesReques = Auth.auth().currentUser?.createProfileChangeRequest()
+//            changesReques?.displayName =
+//
+//
+            
+            
+            
+            
+            
+            
+            
+            
+            
             let userRef = self?.ref.child((user?.user.uid)!)
             userRef?.setValue(["email": user?.user.email])
+//            userRef?.setValue(["name": user?.user.displayName])
             
+            let defaults = UserDefaults.standard.set("\(user?.user.email)", forKey: "UserEmail")
             
             self?.sendEmailVerification()
             

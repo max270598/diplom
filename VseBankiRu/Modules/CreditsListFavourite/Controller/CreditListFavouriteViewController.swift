@@ -129,6 +129,7 @@ extension CreditListFavouriteViewController {
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "CreditCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditCollectionViewCell")
         
+        self.collectionView.backgroundColor = .clear
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 355, height: 138)
         layout.minimumLineSpacing = 20

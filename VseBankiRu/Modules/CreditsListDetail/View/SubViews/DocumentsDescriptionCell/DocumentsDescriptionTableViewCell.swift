@@ -17,6 +17,7 @@ class DocumentsDescriptionTableViewCell: UITableViewCell {
         self.descriptionTextView.isScrollEnabled = false
         self.descriptionTextView.isEditable = false
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
