@@ -14,6 +14,7 @@ class CreditListFavouriteViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var goToCreditsListButton: UIButton!
     
+    @IBOutlet weak var backView: UIView!
     private var favoritesItems:[String] = []//CreditListFavouriteService.favourites
           
     private var Credits: Array<CreditModel> = []
@@ -54,6 +55,7 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
         guard !self.Credits.isEmpty else {
                 
             self.collectionView.alpha = 0
+            self.backView.isHidden = false
                   return cell
               }
                   cell.configure(with: Credits[indexPath.row])
@@ -67,6 +69,7 @@ extension CreditListFavouriteViewController: UICollectionViewDataSource, UIColle
                               
                               if (self?.Credits.count ?? 0) == 0 {
                                 self?.collectionView.alpha = 0
+                                self?.backView.isHidden = false
                               } else {
                                   collectionView.reloadItems(at: collectionView.indexPathsForVisibleItems)
                               }
@@ -115,6 +118,7 @@ extension CreditListFavouriteViewController {
     
     func setupUI() {
         self.title = "Избранное"
+        self.backView.backgroundColor = .clear
     }
     
     func setupGoButton() {
@@ -141,7 +145,9 @@ extension CreditListFavouriteViewController {
     func loadFavouriteCredits() {
         CreditListFavouriteNetwork.shared.getFavouriteCredits(idArray: self.favoritesItems) { (favouriteCredits) in
             guard !favouriteCredits.isEmpty else { self.collectionView.alpha = 0
+                self.backView.isHidden = false
                 return }
+            self.backView.isHidden = true
             self.Credits = favouriteCredits
             self.collectionView.reloadData()
             print("LOADFAVORUTE", self.Credits.count)

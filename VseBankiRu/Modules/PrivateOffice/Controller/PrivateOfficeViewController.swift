@@ -9,29 +9,41 @@
 import UIKit
 import Firebase
 import MessageUI
+import DropDown
 
 class PrivateOfficeViewController: UIViewController {
 
-    @IBOutlet weak var settingsBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var infoSegmentControl: UISegmentedControl!
     
+    let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+    let dropDown = DropDown()
     
+    var test: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
+        
         self.title = "Кабинет"
-
         self.setupCollectionView()
+
+        self.setupNavigation()
+        self.setupDropDown()
+        
         
         // Do any additional setup after loading the view.
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     @IBAction func infoSegmentControlChanged(_ sender: UISegmentedControl) {
     }
@@ -54,6 +66,9 @@ extension PrivateOfficeViewController: UICollectionViewDelegate, UICollectionVie
         
         switch indexPath.row {
         case 0:
+            let phone = UserDefaults.standard.string(forKey: "UserPhone")
+            let email = UserDefaults.standard.string(forKey: "UserEmail")
+            profileCell.configure(phoneNumber: phone ?? "", email: email ?? "")
             return profileCell
         default:
             return infoCell
@@ -79,19 +94,112 @@ extension PrivateOfficeViewController {
         layout.itemSize = CGSize(width: self.infoCollectionView.bounds.width, height: self.infoCollectionView.bounds.height)
         
         self.infoCollectionView.collectionViewLayout = layout
+    }
+    
+    func setupDropDown() {
+        self.dropDown.anchorView = self.navigationItem.rightBarButtonItem
+        dropDown.direction = .bottom
+        dropDown.width = 150
+        dropDown.bottomOffset = CGPoint(x: 0, y:(dropDown.anchorView?.plainView.bounds.height)!)
+        dropDown.dataSource = ["Сменить пароль", "Выйти"]
+        dropDown.textFont = UIFont(name: "SFProText-Light", size: 16)!
+        dropDown.backgroundColor = .white
         
         
+        dropDown.cancelAction = { [unowned self] in
+            self.settingsButton.isSelected.toggle()
+            self.rotateAction(nil)
+        }
+
+            dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
+                switch index {
+                case 0:
+                    <#code#>
+                default:
+                    do {
+                       try Auth.auth().signOut()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    
+                    let storyB = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, animated: true, completion: nil)
+                }
+          print("Selected item: \(item) at index: \(index)")
+        }
+    }
+    
+//    func rotate(in: Bool) {
+//        UIView.animate(withDuration: 5, delay: 0, options: .curveEaseInOut, animations: {
+//            self.avatarImage.transfo
+//        }, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+//    }
+    
+    func setupNavigation() {
+        self.settingsButton.backgroundColor = .clear
+        self.settingsButton.setImage(UIImage(named: "icon_settings_colored"), for: .normal)
+        self.settingsButton.addTarget(self, action: #selector(rotateAction(_:)), for: .touchUpInside)
+        let item1: UIBarButtonItem = UIBarButtonItem(customView: self.settingsButton)
         
+        self.navigationItem.setRightBarButton(item1, animated: true)
+        
+    }
+    
+    
+    @objc func rotateAction(_ sender: UIButton?) {
+//
+        print("Selected", self.settingsButton.isSelected)
+        let transform: CGAffineTransform =  self.settingsButton.isSelected ? .identity : CGAffineTransform(rotationAngle: 179 * .pi / 180)
+        
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
+                self.navigationItem.rightBarButtonItem?.customView?.transform = transform
+            }) { _ in
+//                self.settingsButton.isSelected.toggle()
+            }
+        }
+        
+        self.dropDown.show()
+
+       
     }
 }
 
 extension PrivateOfficeViewController: emailPhoneChanged {
     func changeEmail(email: String) {
+        print("chengeEmail")
+        guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         
+        
+//        let user = Auth.auth().currentUser
+//        var credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail"), password: )
+//
+//        // Prompt the user to re-provide their sign-in credentials
+//
+//        user?.reauthenticate(with: credential, completion: { (result, error) in
+//            if let error = error {
+//
+//            } else {
+//
+//            }
+//        })
+//
+        
+        
+        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+            guard error != nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            
+        }
     }
     
     func changePhone(phoneNumber: String) {
-        
+        UserDefaults.standard.set(phoneNumber, forKey: "UserPhone")
     }
     
     
@@ -99,6 +207,10 @@ extension PrivateOfficeViewController: emailPhoneChanged {
 
 extension PrivateOfficeViewController: aboutHelpDelegate {
     func showAboutApp() {
+        let aboutVC = AboutAppViewController(nibName: "AboutAppViewController", bundle: nil)
+        aboutVC.hidesBottomBarWhenPushed = true
+
+        self.navigationController?.pushViewController(aboutVC, animated: true)
         
     }
     
@@ -119,7 +231,7 @@ extension PrivateOfficeViewController: MFMailComposeViewControllerDelegate {
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(["vsebankiru@gmail.com"])
         mailComposeVC.setSubject("Тех. Поддержка")
-        mailComposeVC.setMessageBody("Добрый день! \n\n Мне нужна помощь по впросам:\n\n", isHTML: false)
+        mailComposeVC.setMessageBody("Добрый день! \n\n", isHTML: false)
         return mailComposeVC
     }
     

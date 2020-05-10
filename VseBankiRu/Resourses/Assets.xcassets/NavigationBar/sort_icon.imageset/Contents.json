@@ -1,8 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "group.pdf",
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "invalidName.pdf"
     }
   ],
   "info" : {

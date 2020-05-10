@@ -42,19 +42,7 @@ class CatalogViewController: UIViewController {
     }
 
  
-     @IBAction func signOutButtonTapped(_ sender: Any) {
-        do {
-           try Auth.auth().signOut()
-            } catch {
-                print(error.localizedDescription)
-            }
-        
-        let storyB = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true, completion: nil)
-//            dismiss(animated: true, completion: nil)
-        }
+    
      
      
 

@@ -12,6 +12,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
 
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -46,7 +47,7 @@ class RegisterViewController: UIViewController {
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
-        guard let name = self.firstNameTextField.text, let email = self.emailTextField.text, let password = passwordTextField.text, name != "", email != "", password != "", let confirmPassword = confirmPasswordTextField.text, confirmPassword != "" else {
+        guard let name = self.firstNameTextField.text, let phone = self.phoneTextField.text, let email = self.emailTextField.text, let password = passwordTextField.text, name != "", phone != "", email != "", password != "", let confirmPassword = confirmPasswordTextField.text, confirmPassword != "" else {
                 showErrorLabel(with: "Заполните все поля")
                 return
             }
@@ -62,7 +63,7 @@ class RegisterViewController: UIViewController {
         }
          
 
-        self.createUser(email: email, password: password)
+        self.createUser(name: name, email: email, phone: phone, password: password)
         
 
     }
@@ -84,20 +85,9 @@ class RegisterViewController: UIViewController {
 }
 
 extension RegisterViewController {
-    func showErrorLabel(with text: String) {
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
-            self?.errorLabel.text = text
-                       self?.errorLabel.alpha = 1
-                   }, completion: nil)
-    }
     
-    func sendEmailVerification(_ callback: ((Error?) -> ())? = nil){
-        Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-            callback?(error)
-        })
-    }
     
-    func createUser( email: String,  password: String) {
+    func createUser( name:String, email: String, phone: String,  password: String) {
         
         Auth.auth().createUser(withEmail: email, password: password) { [weak self](user, error) in
             
@@ -110,10 +100,36 @@ extension RegisterViewController {
                 return
             }
          
-//            let changesReques = Auth.auth().currentUser?.createProfileChangeRequest()
-//            changesReques?.displayName =
-//
-//
+            let changesReques = Auth.auth().currentUser?.createProfileChangeRequest()
+            changesReques?.displayName = name
+            changesReques?.commitChanges(completion: { [weak self] (error) in
+                guard error == nil else {
+                    print(error?.localizedDescription)
+                    return
+                }
+                
+                
+                            let userRef = self?.ref.child((user?.user.uid)!)
+//                            userRef?.setValue(["email": user?.user.email])
+                            userRef?.setValue(["name": user?.user.displayName])
+//                            userRef?.setValue(["phone": phone])
+                
+                //            userRef?.setValue(["name": user?.user.displayName])
+                            
+                            UserDefaults.standard.set(user?.user.email, forKey: "UserEmail")
+                            UserDefaults.standard.set(user?.user.displayName, forKey: "UserName")
+                            UserDefaults.standard.set(phone, forKey: "UserPhone")
+                                                       
+                
+                            self?.sendEmailVerification()
+                            
+                            self?.disableCreateButton()
+                            
+                            self?.performSegue(withIdentifier: "emailVerification", sender: nil)
+                print("COMMITED")
+            })
+            
+
             
             
             
@@ -123,18 +139,23 @@ extension RegisterViewController {
             
             
             
-            let userRef = self?.ref.child((user?.user.uid)!)
-            userRef?.setValue(["email": user?.user.email])
-//            userRef?.setValue(["name": user?.user.displayName])
-            
-            let defaults = UserDefaults.standard.set("\(user?.user.email)", forKey: "UserEmail")
-            
-            self?.sendEmailVerification()
-            
-            self?.disableCreateButton()
-            
-            self?.performSegue(withIdentifier: "emailVerification", sender: nil)
+
         }
+    }
+    
+    func showErrorLabel(with text: String) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+            self?.errorLabel.text = text
+                       self?.errorLabel.alpha = 1
+                   }, completion: nil)
+    }
+    
+    func sendEmailVerification(_ callback: ((Error?) -> ())? = nil){
+        Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+            callback?(error)
+            print("ERROR", error?.localizedDescription)
+        })
+        print("ОТПРАВИЛИ")
     }
     
     func disableCreateButton() {

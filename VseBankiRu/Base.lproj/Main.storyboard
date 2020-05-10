@@ -173,14 +173,11 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <navigationItem key="navigationItem" id="Up2-xh-sLI">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="icon_settings_colored" id="XcV-r8-RwZ"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="Up2-xh-sLI"/>
                     <connections>
                         <outlet property="avatarImage" destination="fIc-Lp-dWW" id="q5i-v4-fDo"/>
                         <outlet property="infoCollectionView" destination="7Yd-CX-55Q" id="hLa-yU-UAz"/>
                         <outlet property="infoSegmentControl" destination="M6Z-rD-sxX" id="L2a-7I-hMS"/>
-                        <outlet property="settingsBarButtonItem" destination="XcV-r8-RwZ" id="9Dg-XZ-sxu"/>
                         <outlet property="userNameLabel" destination="imr-R0-9ZJ" id="LRX-4j-mVT"/>
                     </connections>
                 </viewController>
@@ -457,17 +454,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iaV-k8-I4h">
-                                <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="159"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="8h9-JV-od3">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="2Cm-9h-pzO"/>
                                             <constraint firstAttribute="height" constant="120" id="fLZ-Ag-HD3"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Авторизация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ol1-Mz-x5k">
-                                        <rect key="frame" x="23" y="140" width="104.5" height="19.5"/>
+                                        <rect key="frame" x="26.5" y="140" width="97.5" height="19"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -475,10 +472,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="6gV-6p-nCj">
-                                <rect key="frame" x="87.5" y="491" width="200" height="100"/>
+                                <rect key="frame" x="87.5" y="493" width="200" height="98"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AB6-Md-6Ld">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="38"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="37"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="D3f-3K-KK5"/>
@@ -497,7 +494,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TyL-4H-WFD">
-                                        <rect key="frame" x="17" y="66" width="166" height="34"/>
+                                        <rect key="frame" x="11.5" y="65" width="177" height="33"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
                                         <state key="normal" title="Зарегистрироваться">
                                             <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -509,10 +506,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NKd-S1-APg">
-                                <rect key="frame" x="0.0" y="223.5" width="375" height="267.5"/>
+                                <rect key="frame" x="0.0" y="223" width="375" height="270"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="dBg-MC-ZK6">
-                                        <rect key="frame" x="62.5" y="85" width="250" height="98"/>
+                                        <rect key="frame" x="62.5" y="86" width="250" height="98"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="AmF-BF-Wh7">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="29"/>
@@ -554,7 +551,7 @@
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uqd-FI-oYz">
-                                        <rect key="frame" x="20" y="203" width="335" height="0.0"/>
+                                        <rect key="frame" x="20" y="204" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -637,14 +634,14 @@
                                 <rect key="frame" x="112.5" y="64" width="150" height="159.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="6pJ-0i-ZXq">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120.00000000000011"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="0vb-mH-tIa"/>
                                             <constraint firstAttribute="width" constant="150" id="TAB-Gb-dfZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h0-oR-l88">
-                                        <rect key="frame" x="23.5" y="140" width="103" height="19.5"/>
+                                        <rect key="frame" x="27" y="140" width="96" height="19.5"/>
                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                         <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -658,15 +655,32 @@
                                 <rect key="frame" x="0.0" y="223.5" width="375" height="317.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rB0-6L-afL">
-                                        <rect key="frame" x="62.5" y="71" width="250" height="176"/>
+                                        <rect key="frame" x="62.5" y="46.5" width="250" height="225"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JM9-aN-0Dw">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="j10-Uo-Q41">
                                                 <rect key="frame" x="0.0" y="0.0" width="250" height="29"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-SZ-VnU">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBK-TQ-XaV">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
                                                         <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
                                                         <textInputTraits key="textInputTraits" textContentType="tel"/>
+                                                    </textField>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b4F-vd-9Rk">
+                                                        <rect key="frame" x="0.0" y="28" width="250" height="1"/>
+                                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="1" id="XhW-nK-jJz"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="JM9-aN-0Dw">
+                                                <rect key="frame" x="0.0" y="49" width="250" height="29"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aOl-SZ-VnU">
+                                                        <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
+                                                        <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="20"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWs-it-Zwj">
                                                         <rect key="frame" x="0.0" y="28" width="250" height="1"/>
@@ -678,7 +692,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="7E5-SK-Sz3">
-                                                <rect key="frame" x="0.0" y="49" width="250" height="29"/>
+                                                <rect key="frame" x="0.0" y="98" width="250" height="29"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pvs-uR-UuV">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
@@ -695,7 +709,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aQh-zf-jay">
-                                                <rect key="frame" x="0.0" y="98" width="250" height="29"/>
+                                                <rect key="frame" x="0.0" y="147" width="250" height="29"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itd-cG-sQ5">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
@@ -712,7 +726,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Rrq-rH-9IA">
-                                                <rect key="frame" x="0.0" y="147" width="250" height="29"/>
+                                                <rect key="frame" x="0.0" y="196" width="250" height="29"/>
                                                 <subviews>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Подтвердите пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJY-7X-iPQ">
                                                         <rect key="frame" x="0.0" y="0.0" width="250" height="24"/>
@@ -733,16 +747,18 @@
                                             <constraint firstItem="Rrq-rH-9IA" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="3O1-Qb-fGw"/>
                                             <constraint firstAttribute="trailing" secondItem="JM9-aN-0Dw" secondAttribute="trailing" id="46x-FO-TM5"/>
                                             <constraint firstItem="JM9-aN-0Dw" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="K16-aA-1vp"/>
+                                            <constraint firstAttribute="trailing" secondItem="j10-Uo-Q41" secondAttribute="trailing" id="MPE-9L-vWV"/>
                                             <constraint firstAttribute="trailing" secondItem="aQh-zf-jay" secondAttribute="trailing" id="OtO-dw-B3r"/>
                                             <constraint firstAttribute="trailing" secondItem="Rrq-rH-9IA" secondAttribute="trailing" id="WUd-LR-bp8"/>
                                             <constraint firstAttribute="trailing" secondItem="7E5-SK-Sz3" secondAttribute="trailing" id="Zpw-ZM-K9x"/>
                                             <constraint firstAttribute="width" constant="250" id="j1f-aM-fX3"/>
                                             <constraint firstItem="aQh-zf-jay" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="t9g-OC-pL6"/>
+                                            <constraint firstItem="j10-Uo-Q41" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="uJT-vH-SfV"/>
                                             <constraint firstItem="7E5-SK-Sz3" firstAttribute="leading" secondItem="rB0-6L-afL" secondAttribute="leading" id="v1C-8S-xHY"/>
                                         </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d7R-Ls-k2l">
-                                        <rect key="frame" x="20" y="267" width="335" height="0.0"/>
+                                        <rect key="frame" x="20" y="291.5" width="335" height="0.0"/>
                                         <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="14"/>
                                         <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -807,8 +823,9 @@
                         <outlet property="createAccountButton" destination="wtS-6c-aE9" id="nb2-GB-W6h"/>
                         <outlet property="emailTextField" destination="pvs-uR-UuV" id="Onx-rR-piP"/>
                         <outlet property="errorLabel" destination="d7R-Ls-k2l" id="e3L-PA-3wk"/>
-                        <outlet property="firstNameTextField" destination="aOl-SZ-VnU" id="cde-V0-uxz"/>
+                        <outlet property="firstNameTextField" destination="UBK-TQ-XaV" id="Tzb-c1-RLj"/>
                         <outlet property="passwordTextField" destination="Itd-cG-sQ5" id="aa2-EF-Jm6"/>
+                        <outlet property="phoneTextField" destination="aOl-SZ-VnU" id="ZWW-Tz-BFn"/>
                         <segue destination="yRg-4V-X66" kind="show" identifier="emailVerification" id="hpA-ll-TPb"/>
                     </connections>
                 </viewController>
@@ -825,26 +842,26 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-Mo-3vo">
-                                <rect key="frame" x="112.5" y="64" width="150" height="120.00000000000011"/>
+                                <rect key="frame" x="112.5" y="64" width="150" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7gr-sg-a5g"/>
                                     <constraint firstAttribute="height" constant="120" id="mAi-dv-06w"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На указанный Вами адрес элетронной почты было отправлено письмо" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLL-bS-M6c">
-                                <rect key="frame" x="20" y="244" width="335" height="38.5"/>
+                                <rect key="frame" x="20" y="244" width="335" height="37.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8C-eg-tVl">
-                                <rect key="frame" x="58.5" y="362.5" width="258.5" height="21"/>
+                                <rect key="frame" x="71.5" y="361.5" width="232" height="21"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y9j-cH-GYB">
-                                <rect key="frame" x="157.5" y="443.5" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="442.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="DDH-yT-ftK"/>
                                     <constraint firstAttribute="height" constant="60" id="LJz-Bm-TaQ"/>
@@ -999,7 +1016,6 @@
     <resources>
         <image name="VseBankRu_Logo" width="486" height="506"/>
         <image name="call" width="15" height="15"/>
-        <image name="icon_settings_colored" width="48" height="48"/>
         <image name="tabbar_calculator" width="33.333332061767578" height="33.333332061767578"/>
         <image name="tabbar_credit" width="33.333332061767578" height="33.333332061767578"/>
         <image name="tabbar_user" width="33.333332061767578" height="33.333332061767578"/>

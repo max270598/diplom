@@ -94,6 +94,8 @@
 		A779D842246337C9001B6647 /* CreditsListSortingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A779D840246337C9001B6647 /* CreditsListSortingTableViewCell.swift */; };
 		A779D843246337C9001B6647 /* CreditsListSortingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A779D841246337C9001B6647 /* CreditsListSortingTableViewCell.xib */; };
 		A78157402468226100DE67FE /* PrivateOfficeDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = A781573F2468226100DE67FE /* PrivateOfficeDelegates.swift */; };
+		A78157452468665D00DE67FE /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78157432468665D00DE67FE /* AboutAppViewController.swift */; };
+		A78157462468665D00DE67FE /* AboutAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A78157442468665D00DE67FE /* AboutAppViewController.xib */; };
 		A796782623ED812600CE4E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796782523ED812600CE4E94 /* AppDelegate.swift */; };
 		A796782D23ED812600CE4E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A796782B23ED812600CE4E94 /* Main.storyboard */; };
 		A796783023ED812600CE4E94 /* VseBankiRu.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A796782E23ED812600CE4E94 /* VseBankiRu.xcdatamodeld */; };
@@ -123,7 +125,7 @@
 		A7CBA49F243FC846009CB3E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7CBA49E243FC845009CB3E0 /* GoogleService-Info.plist */; };
 		A7CBA4A1243FD834009CB3E0 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA4A0243FD833009CB3E0 /* UIView+Extensions.swift */; };
 		A7CBA4A4243FDF68009CB3E0 /* AuthorisationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA4A3243FDF68009CB3E0 /* AuthorisationViewController.swift */; };
-		A7CBA4A6243FDF7A009CB3E0 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA4A5243FDF7A009CB3E0 /* VerificationViewController.swift */; };
+		A7CBA4A6243FDF7A009CB3E0 /* VerificationCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA4A5243FDF7A009CB3E0 /* VerificationCodeViewController.swift */; };
 		A7F1343C2450B8F5000FF164 /* UICollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F1343B2450B8F5000FF164 /* UICollectionCell.swift */; };
 		A7F134412450D4BD000FF164 /* ShareOpenLinkDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F134402450D4BD000FF164 /* ShareOpenLinkDelegate.swift */; };
 		A7F134482450DBFD000FF164 /* CreditListFavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F134462450DBFD000FF164 /* CreditListFavouriteViewController.swift */; };
@@ -224,6 +226,8 @@
 		A779D840246337C9001B6647 /* CreditsListSortingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsListSortingTableViewCell.swift; sourceTree = "<group>"; };
 		A779D841246337C9001B6647 /* CreditsListSortingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsListSortingTableViewCell.xib; sourceTree = "<group>"; };
 		A781573F2468226100DE67FE /* PrivateOfficeDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateOfficeDelegates.swift; sourceTree = "<group>"; };
+		A78157432468665D00DE67FE /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		A78157442468665D00DE67FE /* AboutAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AboutAppViewController.xib; sourceTree = "<group>"; };
 		A796782223ED812600CE4E94 /* VseBankiRu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VseBankiRu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A796782523ED812600CE4E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A796782C23ED812600CE4E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -256,7 +260,7 @@
 		A7CBA49E243FC845009CB3E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7CBA4A0243FD833009CB3E0 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		A7CBA4A3243FDF68009CB3E0 /* AuthorisationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorisationViewController.swift; sourceTree = "<group>"; };
-		A7CBA4A5243FDF7A009CB3E0 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		A7CBA4A5243FDF7A009CB3E0 /* VerificationCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeViewController.swift; sourceTree = "<group>"; };
 		A7F1343B2450B8F5000FF164 /* UICollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionCell.swift; sourceTree = "<group>"; };
 		A7F134402450D4BD000FF164 /* ShareOpenLinkDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareOpenLinkDelegate.swift; sourceTree = "<group>"; };
 		A7F134462450DBFD000FF164 /* CreditListFavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditListFavouriteViewController.swift; sourceTree = "<group>"; };
@@ -973,6 +977,39 @@
 			path = PrivateOfficeDelegates;
 			sourceTree = "<group>";
 		};
+		A78157422468662F00DE67FE /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				A78157492468667300DE67FE /* Model */,
+				A78157482468666D00DE67FE /* Controller */,
+				A78157472468666200DE67FE /* View */,
+			);
+			path = AboutApp;
+			sourceTree = "<group>";
+		};
+		A78157472468666200DE67FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A78157442468665D00DE67FE /* AboutAppViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A78157482468666D00DE67FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A78157432468665D00DE67FE /* AboutAppViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A78157492468667300DE67FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A78DF57923FDB52D0060F5A2 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -1097,6 +1134,7 @@
 		A7CBA41D2438D7B4009CB3E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				A78157422468662F00DE67FE /* AboutApp */,
 				A7C133C4246702640001F0F5 /* PrivateOffice */,
 				A78DF57923FDB52D0060F5A2 /* Catalog */,
 				A742A21B243286330008AEEF /* CreditsList */,
@@ -1173,7 +1211,7 @@
 			isa = PBXGroup;
 			children = (
 				A7CBA4A3243FDF68009CB3E0 /* AuthorisationViewController.swift */,
-				A7CBA4A5243FDF7A009CB3E0 /* VerificationViewController.swift */,
+				A7CBA4A5243FDF7A009CB3E0 /* VerificationCodeViewController.swift */,
 				A744AAE3244064BF009B5404 /* RegisterViewController.swift */,
 				A744AAE524409469009B5404 /* EmailVerificationViewController.swift */,
 			);
@@ -1346,6 +1384,7 @@
 				A7359E50245F1CBD0091E673 /* CreditsListDetailViewController.xib in Resources */,
 				A75B698D2465B8FE00032CA6 /* CalculatorHeaderSection.xib in Resources */,
 				A7304D4C245889DF00F0AECF /* CreditsListFilterDrawerViewController.xib in Resources */,
+				A78157462468665D00DE67FE /* AboutAppViewController.xib in Resources */,
 				A7CBA49F243FC846009CB3E0 /* GoogleService-Info.plist in Resources */,
 				A7304D442457400600F0AECF /* CreditsListFilterSwitchCell.xib in Resources */,
 				A7304D272456446700F0AECF /* CreditsListFilterItemCell.xib in Resources */,
@@ -1415,7 +1454,7 @@
 				A7359E68245F833E0091E673 /* SegmentControllTableViewCell.swift in Sources */,
 				A7304D562458D3F600F0AECF /* CreditsListFilterDrawerCell.swift in Sources */,
 				A779D842246337C9001B6647 /* CreditsListSortingTableViewCell.swift in Sources */,
-				A7CBA4A6243FDF7A009CB3E0 /* VerificationViewController.swift in Sources */,
+				A7CBA4A6243FDF7A009CB3E0 /* VerificationCodeViewController.swift in Sources */,
 				A7C133C22466C7C30001F0F5 /* CalculatorDateTableViewCell.swift in Sources */,
 				A7F1344C24523604000FF164 /* CreditListFavouriteService.swift in Sources */,
 				A796783D23ED81D000CE4E94 /* CatalogViewController.swift in Sources */,
@@ -1472,6 +1511,7 @@
 				A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */,
 				A744AAF12440F57C009B5404 /* CreditModel.swift in Sources */,
 				A7304D322457125F00F0AECF /* FilterItemModel.swift in Sources */,
+				A78157452468665D00DE67FE /* AboutAppViewController.swift in Sources */,
 				A7304D122455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.swift in Sources */,
 				A74480452444922800FD251C /* CreditCollectionViewCell.swift in Sources */,
 				A76A12A624674F3E009273BD /* InfoCollectionViewCell.swift in Sources */,

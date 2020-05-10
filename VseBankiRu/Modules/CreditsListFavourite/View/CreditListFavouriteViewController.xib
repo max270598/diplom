@@ -20,6 +20,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CreditListFavouriteViewController" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
+                <outlet property="backView" destination="2cZ-5l-oRx" id="yJh-c7-bxe"/>
                 <outlet property="collectionView" destination="xHv-DC-1XO" id="OZc-Cl-Ldt"/>
                 <outlet property="goToCreditsListButton" destination="Uet-96-p40" id="KUu-RT-mfp"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,44 +31,63 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="izbrannoe" translatesAutoresizingMaskIntoConstraints="NO" id="SEY-CW-tBf">
-                    <rect key="frame" x="90" y="150" width="195" height="120"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="SEY-CW-tBf" secondAttribute="height" multiplier="13:8" id="WGb-gm-AEI"/>
-                        <constraint firstAttribute="width" constant="195" id="bE1-On-U2S"/>
-                    </constraints>
-                </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lLf-oa-9Me">
-                    <rect key="frame" x="65.5" y="310" width="244" height="46"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2cZ-5l-oRx">
+                    <rect key="frame" x="1" y="100" width="373" height="467"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В Изранном пока ничего нет " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RH-PX-RIW">
-                            <rect key="frame" x="0.0" y="0.0" width="244" height="19.5"/>
-                            <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте любой кредит из списка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-hp-p3A">
-                            <rect key="frame" x="20.5" y="31.5" width="203" height="14.5"/>
-                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
-                            <color key="textColor" red="0.2784313725" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="izbrannoe" translatesAutoresizingMaskIntoConstraints="NO" id="SEY-CW-tBf">
+                            <rect key="frame" x="89" y="50" width="195" height="120"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="SEY-CW-tBf" secondAttribute="height" multiplier="13:8" id="WGb-gm-AEI"/>
+                                <constraint firstAttribute="width" constant="195" id="bE1-On-U2S"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lLf-oa-9Me">
+                            <rect key="frame" x="64.5" y="210.5" width="244" height="46"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="В Изранном пока ничего нет " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1RH-PX-RIW">
+                                    <rect key="frame" x="0.0" y="0.0" width="244" height="19.5"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="16"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте любой кредит из списка" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhH-hp-p3A">
+                                    <rect key="frame" x="20.5" y="31.5" width="203" height="14.5"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                                    <color key="textColor" red="0.2784313725" green="0.30196078430000001" blue="0.33725490200000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="46" id="l8G-yr-lYo"/>
+                            </constraints>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uet-96-p40">
+                            <rect key="frame" x="84" y="307" width="205" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="6yP-ik-ofw"/>
+                                <constraint firstAttribute="width" constant="205" id="igX-lo-YqQ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
+                            <state key="normal" title="Перейти к кредитам">
+                                <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="goToCreditsListButtonTapped:" destination="-1" eventType="touchUpInside" id="XFJ-hs-iKJ"/>
+                            </connections>
+                        </button>
                     </subviews>
-                </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uet-96-p40">
-                    <rect key="frame" x="85" y="396" width="205" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="6yP-ik-ofw"/>
-                        <constraint firstAttribute="width" constant="205" id="igX-lo-YqQ"/>
+                        <constraint firstItem="lLf-oa-9Me" firstAttribute="centerX" secondItem="2cZ-5l-oRx" secondAttribute="centerX" id="21w-RW-Lmx"/>
+                        <constraint firstItem="Uet-96-p40" firstAttribute="centerX" secondItem="2cZ-5l-oRx" secondAttribute="centerX" id="ACY-tH-bPD"/>
+                        <constraint firstAttribute="bottom" secondItem="Uet-96-p40" secondAttribute="bottom" priority="750" constant="110" id="OmI-3n-o57"/>
+                        <constraint firstItem="lLf-oa-9Me" firstAttribute="top" relation="greaterThanOrEqual" secondItem="SEY-CW-tBf" secondAttribute="bottom" constant="40.5" id="UBL-14-hc1"/>
+                        <constraint firstItem="lLf-oa-9Me" firstAttribute="centerY" secondItem="2cZ-5l-oRx" secondAttribute="centerY" id="bH8-UK-hMh"/>
+                        <constraint firstItem="SEY-CW-tBf" firstAttribute="top" secondItem="2cZ-5l-oRx" secondAttribute="top" priority="750" constant="50" id="dWK-jH-e4Z"/>
+                        <constraint firstItem="SEY-CW-tBf" firstAttribute="centerX" secondItem="2cZ-5l-oRx" secondAttribute="centerX" id="mTB-bo-lOX"/>
+                        <constraint firstItem="Uet-96-p40" firstAttribute="top" relation="greaterThanOrEqual" secondItem="lLf-oa-9Me" secondAttribute="bottom" constant="50.5" id="ntg-5P-aIw"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
-                    <state key="normal" title="Перейти к кредитам">
-                        <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="goToCreditsListButtonTapped:" destination="-1" eventType="touchUpInside" id="XFJ-hs-iKJ"/>
-                    </connections>
-                </button>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="xHv-DC-1XO">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -81,15 +101,14 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-                <constraint firstItem="SEY-CW-tBf" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="150" id="987-Mg-43Y"/>
-                <constraint firstItem="SEY-CW-tBf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Neh-6w-aPN"/>
+                <constraint firstItem="2cZ-5l-oRx" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="37G-gl-jfy"/>
+                <constraint firstItem="2cZ-5l-oRx" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="100" id="9sZ-Md-sSW"/>
+                <constraint firstItem="2cZ-5l-oRx" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Iqg-qh-fBD"/>
                 <constraint firstAttribute="bottom" secondItem="xHv-DC-1XO" secondAttribute="bottom" id="QwJ-nx-Ijd"/>
                 <constraint firstItem="xHv-DC-1XO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="War-Ky-21B"/>
                 <constraint firstItem="xHv-DC-1XO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="X44-pD-Lqn"/>
-                <constraint firstItem="lLf-oa-9Me" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dDe-SL-gvY"/>
-                <constraint firstItem="Uet-96-p40" firstAttribute="top" secondItem="lLf-oa-9Me" secondAttribute="bottom" constant="40" id="hPN-dR-n89"/>
-                <constraint firstItem="lLf-oa-9Me" firstAttribute="top" secondItem="SEY-CW-tBf" secondAttribute="bottom" constant="40" id="rai-1G-EP3"/>
-                <constraint firstItem="Uet-96-p40" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="tUN-Sx-HYB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2cZ-5l-oRx" secondAttribute="trailing" constant="1" id="bEy-PB-y7Y"/>
+                <constraint firstItem="2cZ-5l-oRx" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="1" id="kiU-LB-9Ou"/>
                 <constraint firstAttribute="trailing" secondItem="xHv-DC-1XO" secondAttribute="trailing" id="yL4-fk-Ouk"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

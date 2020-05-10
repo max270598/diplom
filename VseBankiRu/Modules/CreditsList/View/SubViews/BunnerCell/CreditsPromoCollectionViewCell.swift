@@ -43,10 +43,10 @@ class CreditsPromoCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func arrangeButtonTapped(_ sender: Any) {
-        guard self.creditURL != nil else {
+        guard let url = self.creditURL else {
             return
         }
-        self.delegate?.openCredit(url: creditURL!, sender: self)
+        self.delegate?.openCredit(url: url, sender: self)
     }
     override func layoutSubviews() {
         super.layoutSubviews()

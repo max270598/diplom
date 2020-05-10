@@ -205,7 +205,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
 
 
         let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "CreditsPromoCollectionViewCell", for: indexPath) as! CreditsPromoCollectionViewCell
-
+        cell.delegate = self
         if let model = data as? CreditModel {
             cell.configure(with: model)
             

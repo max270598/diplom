@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import IQKeyboardManagerSwift
 import UserNotifications
+import DropDown
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,13 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
        
         FirebaseApp.configure()
+        
         IQKeyboardManager.shared.enable = true
-
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Готово"
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(PrivateOfficeViewController.self)
         IQKeyboardManager.shared.disabledToolbarClasses.append(PrivateOfficeViewController.self)
 //        CalculatorViewController
         
+        DropDown.startListeningToKeyboard()
         UINavigationBar.appearance().tintColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
         
         
