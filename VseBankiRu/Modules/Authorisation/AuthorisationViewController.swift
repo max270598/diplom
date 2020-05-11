@@ -70,6 +70,8 @@ class AuthorisationViewController: UIViewController {
                 return
             }
             
+            UserDefaults.standard.set(email, forKey: "UserEmail")
+            UserDefaults.standard.set(password, forKey: "UserPassword")
             self?.performSegue(withIdentifier: "logged", sender: nil)
 
             

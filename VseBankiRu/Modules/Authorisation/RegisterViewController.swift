@@ -109,9 +109,17 @@ extension RegisterViewController {
                 }
                 
                 
+                
+                
                             let userRef = self?.ref.child((user?.user.uid)!)
+                let id = user?.user.uid
+                let userData = ["id": user?.user.uid,
+                            "email": user?.user.email,
+                            "phone": phone,
+                            "name": user?.user.displayName]
+                userRef?.setValue(userData)
 //                            userRef?.setValue(["email": user?.user.email])
-                            userRef?.setValue(["name": user?.user.displayName])
+//                            userRef?.setValue(["name": user?.user.displayName])
 //                            userRef?.setValue(["phone": phone])
                 
                 //            userRef?.setValue(["name": user?.user.displayName])

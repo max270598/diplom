@@ -24,11 +24,11 @@ class PrivateOfficeViewController: UIViewController {
     
     let user = Auth.auth().currentUser
     let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
-
+    let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
-        
         self.title = "Кабинет"
         self.setupCollectionView()
 
@@ -43,6 +43,9 @@ class PrivateOfficeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+      
+
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -95,7 +98,8 @@ extension PrivateOfficeViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: self.infoCollectionView.bounds.width, height: self.infoCollectionView.bounds.height)
-        
+        self.infoCollectionView.showsVerticalScrollIndicator = false
+        self.infoCollectionView.showsHorizontalScrollIndicator = false
         self.infoCollectionView.collectionViewLayout = layout
     }
     
@@ -143,11 +147,11 @@ extension PrivateOfficeViewController {
                 self.user?.updatePassword(to: "321321", completion: { (error) in
                     guard  error == nil else { print(error?.localizedDescription); return }
                     print("USEREMAIL", self.user?.email)
-                    Auth.auth().sendPasswordReset(withEmail: self.user?.email ?? "") { (error) in
-                        guard error == nil else { return }
-                                    
-                                    print("SUccess")
-                                    }
+//                    Auth.auth().sendPasswordReset(withEmail: self.user?.email ?? "") { (error) in
+//                        guard error == nil else { return }
+//                                    
+//                                    print("SUccess")
+//                                    }
                         })
                         
             })
@@ -202,27 +206,37 @@ extension PrivateOfficeViewController: emailPhoneChanged {
         guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         
         //Change Email
-        user?.reauthenticate(with: credential, completion: { [weak self] (result, error) in
-            if let error = error {
-                print("Error", error.localizedDescription)
-            } else {
+        
+            let alertVC = VerifyNewEmailAlertViewController(nibName: "VerifyNewEmailAlertViewController", bundle: nil)
+                                      alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                                      alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                                      self.present(alertVC, animated: true, completion: nil)
+        
+            self.user?.reauthenticate(with: self.credential, completion: { [weak self] (result, error) in
+            guard error == nil else { print("Error", error?.localizedDescription); return }
                 self?.user?.updateEmail(to: email) { (error) in
-                    guard error != nil else {
-                        print("Error", error?.localizedDescription)
-                        return
-                    }
-                    
-                }
+                    guard error == nil else { print("Error", error?.localizedDescription) ; return }
+                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
+                        guard error == nil else { print("ERROR", error?.localizedDescription); return }
+                    })
+                   
+                    UserDefaults.standard.set(email, forKey: "UserEmail")
+                    self?.userRef.child((self?.user!.uid)!).child("email").setValue(email)
+
+                
             }
         })
 //
         
         
+       
         
     }
     
     func changePhone(phoneNumber: String) {
+        guard UserDefaults.standard.string(forKey: "UserPhone") != phoneNumber else {return}
         UserDefaults.standard.set(phoneNumber, forKey: "UserPhone")
+        self.userRef.child(user!.uid).child("phone").setValue(phoneNumber)
     }
     
     

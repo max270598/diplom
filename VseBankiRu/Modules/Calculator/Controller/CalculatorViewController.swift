@@ -18,6 +18,7 @@ class CalculatorViewController: UIViewController {
    
     @IBOutlet weak var listTableView: UITableView!
     
+    var test = false
     
     var changedSum: Float = 5000000
     var changedRate: Float = 7.5
@@ -67,23 +68,41 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         
         return UITableView.automaticDimension
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sliredArray.count + 1
+        return self.sliredArray.count + 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sliderCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorSliderTableViewCell", for: indexPath) as! CalculatorSliderTableViewCell
         let dateCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorDateTableViewCell", for: indexPath) as! CalculatorDateTableViewCell
+        let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
         
-        guard indexPath.row != 3 else {
+        
+        
+       
+        
+
+
+        
+        if indexPath.row == 3 {
             dateCell.configure(date: self.changedDate)
             dateCell.delegate = self
             return dateCell
         }
-
+            
+        if indexPath.row == 4 {
+            return emptyCell
+        }
+       
+        
         sliderCell.delegate = self
         sliderCell.configure(sliderType: self.sliredArray[indexPath.row], value: self.sliderArrayRaws[indexPath.row])
         return sliderCell
@@ -96,6 +115,8 @@ extension CalculatorViewController {
     func setupTableView() {
         self.listTableView.register(UINib(nibName: "CalculatorSliderTableViewCell", bundle: nil), forCellReuseIdentifier: "CalculatorSliderTableViewCell")
         self.listTableView.register(UINib(nibName: "CalculatorDateTableViewCell", bundle: nil), forCellReuseIdentifier: "CalculatorDateTableViewCell")
+        self.listTableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyTableViewCell")
+        
         self.listTableView.dataSource = self
         self.listTableView.delegate = self
         

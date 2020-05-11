@@ -105,6 +105,8 @@
 		A796783F23ED820400CE4E94 /* ServiceTypeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796783E23ED820400CE4E94 /* ServiceTypeModel.swift */; };
 		A796784223ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A796784023ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift */; };
 		A796784323ED82A700CE4E94 /* ServiceTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A796784123ED82A700CE4E94 /* ServiceTypeCollectionViewCell.xib */; };
+		A7AFAE2724698978002E8857 /* VerifyNewEmailAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AFAE2524698978002E8857 /* VerifyNewEmailAlertViewController.swift */; };
+		A7AFAE2824698978002E8857 /* VerifyNewEmailAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7AFAE2624698978002E8857 /* VerifyNewEmailAlertViewController.xib */; };
 		A7C133C22466C7C30001F0F5 /* CalculatorDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C133C02466C7C30001F0F5 /* CalculatorDateTableViewCell.swift */; };
 		A7C133C32466C7C30001F0F5 /* CalculatorDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C133C12466C7C30001F0F5 /* CalculatorDateTableViewCell.xib */; };
 		A7C133C62467028A0001F0F5 /* PrivateOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C133C52467028A0001F0F5 /* PrivateOfficeViewController.swift */; };
@@ -239,6 +241,8 @@
 		A796783E23ED820400CE4E94 /* ServiceTypeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypeModel.swift; sourceTree = "<group>"; };
 		A796784023ED82A700CE4E94 /* ServiceTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A796784123ED82A700CE4E94 /* ServiceTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		A7AFAE2524698978002E8857 /* VerifyNewEmailAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNewEmailAlertViewController.swift; sourceTree = "<group>"; };
+		A7AFAE2624698978002E8857 /* VerifyNewEmailAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VerifyNewEmailAlertViewController.xib; sourceTree = "<group>"; };
 		A7C133C02466C7C30001F0F5 /* CalculatorDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorDateTableViewCell.swift; sourceTree = "<group>"; };
 		A7C133C12466C7C30001F0F5 /* CalculatorDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculatorDateTableViewCell.xib; sourceTree = "<group>"; };
 		A7C133C52467028A0001F0F5 /* PrivateOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateOfficeViewController.swift; sourceTree = "<group>"; };
@@ -1059,6 +1063,15 @@
 			path = VseBankiRu;
 			sourceTree = "<group>";
 		};
+		A7AFAE2424698956002E8857 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				A7AFAE2524698978002E8857 /* VerifyNewEmailAlertViewController.swift */,
+				A7AFAE2624698978002E8857 /* VerifyNewEmailAlertViewController.xib */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
 		A7C133BF2466C76E0001F0F5 /* CalculatorDateCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1122,6 +1135,7 @@
 		A7C3CB7F23FEDD5100F5DB01 /* ReUsable */ = {
 			isa = PBXGroup;
 			children = (
+				A7AFAE2424698956002E8857 /* AlertController */,
 				A779D8372463345E001B6647 /* SlideInPresnter */,
 				A7304D2024563FB300F0AECF /* LoadingButton */,
 				A744AAE72440B0C4009B5404 /* Gradient */,
@@ -1356,6 +1370,7 @@
 				A7304D1F2456343700F0AECF /* CreditsListFilterViewController.xib in Resources */,
 				A7304D30245708C200F0AECF /* CreditsListSliderCell.xib in Resources */,
 				A7359E55245F27250091E673 /* LogoNameTableViewCell.xib in Resources */,
+				A7AFAE2824698978002E8857 /* VerifyNewEmailAlertViewController.xib in Resources */,
 				A7C3CB7923FEAEF500F5DB01 /* SF-Pro-Display-Regular.otf in Resources */,
 				A7C3CB7623FEAEF500F5DB01 /* SF-Compact-Text-Regular.otf in Resources */,
 				A7359E7D2461C8D00091E673 /* ButtonTableViewCell.xib in Resources */,
@@ -1496,6 +1511,7 @@
 				A7F134542452504F000FF164 /* CreditListFavouriteNetwork.swift in Sources */,
 				A796783F23ED820400CE4E94 /* ServiceTypeModel.swift in Sources */,
 				A7304D262456446700F0AECF /* CreditsListFilterItemCell.swift in Sources */,
+				A7AFAE2724698978002E8857 /* VerifyNewEmailAlertViewController.swift in Sources */,
 				A7304D3724572ECA00F0AECF /* CurrencySymbols.swift in Sources */,
 				A7359E6B246044820091E673 /* ScrollableSegmentControll.swift in Sources */,
 				A75D758924092F0400A20824 /* QuotationNetworkService.swift in Sources */,
