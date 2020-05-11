@@ -55,7 +55,7 @@ class AuthorisationViewController: UIViewController {
             
            
             guard user != nil else {
-                self?.showErrorLabel(with: "Такого пользователя не существует")
+                self?.showErrorLabel(with: "Не правильно набрал email или пароль")
                 return
                 
             }

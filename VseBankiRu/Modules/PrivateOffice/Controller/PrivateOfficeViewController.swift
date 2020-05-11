@@ -21,7 +21,10 @@ class PrivateOfficeViewController: UIViewController {
     let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
     let dropDown = DropDown()
     
-    var test: Bool = false
+    
+    let user = Auth.auth().currentUser
+    let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
@@ -112,30 +115,12 @@ extension PrivateOfficeViewController {
         }
 
             dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
-                switch index {
-                case 0:
-                    <#code#>
-                default:
-                    do {
-                       try Auth.auth().signOut()
-                        } catch {
-                            print(error.localizedDescription)
-                        }
-                    
-                    let storyB = UIStoryboard(name: "Main", bundle: nil)
-                    let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                    vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
-                }
+                self.dropDownCellTapped(index: index, item: item)
           print("Selected item: \(item) at index: \(index)")
         }
     }
     
-//    func rotate(in: Bool) {
-//        UIView.animate(withDuration: 5, delay: 0, options: .curveEaseInOut, animations: {
-//            self.avatarImage.transfo
-//        }, completion: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
-//    }
+
     
     func setupNavigation() {
         self.settingsButton.backgroundColor = .clear
@@ -145,6 +130,49 @@ extension PrivateOfficeViewController {
         
         self.navigationItem.setRightBarButton(item1, animated: true)
         
+    }
+    
+    func dropDownCellTapped(index: Int, item: String) {
+        
+        switch index {
+            case 0:
+                        //Смена пароля
+            user?.reauthenticate(with: credential, completion: { (result, error) in
+                guard  error == nil else { print(error?.localizedDescription); return }
+                
+                self.user?.updatePassword(to: "321321", completion: { (error) in
+                    guard  error == nil else { print(error?.localizedDescription); return }
+                    print("USEREMAIL", self.user?.email)
+                    Auth.auth().sendPasswordReset(withEmail: self.user?.email ?? "") { (error) in
+                        guard error == nil else { return }
+                                    
+                                    print("SUccess")
+                                    }
+                        })
+                        
+            })
+                        
+                        
+    
+                        
+                         
+                    
+            
+            
+            
+            //Выход
+                     default:
+                         do {
+                            try Auth.auth().signOut()
+                             } catch {
+                                 print(error.localizedDescription)
+                             }
+                         
+                         let storyB = UIStoryboard(name: "Main", bundle: nil)
+                         let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
+                         vc.modalPresentationStyle = .fullScreen
+                         self.present(vc, animated: true, completion: nil)
+                     }
     }
     
     
@@ -173,29 +201,24 @@ extension PrivateOfficeViewController: emailPhoneChanged {
         print("chengeEmail")
         guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         
-        
-//        let user = Auth.auth().currentUser
-//        var credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail"), password: )
-//
-//        // Prompt the user to re-provide their sign-in credentials
-//
-//        user?.reauthenticate(with: credential, completion: { (result, error) in
-//            if let error = error {
-//
-//            } else {
-//
-//            }
-//        })
-//
-        
-        
-        Auth.auth().currentUser?.updateEmail(to: email) { (error) in
-            guard error != nil else {
-                print(error?.localizedDescription)
-                return
+        //Change Email
+        user?.reauthenticate(with: credential, completion: { [weak self] (result, error) in
+            if let error = error {
+                print("Error", error.localizedDescription)
+            } else {
+                self?.user?.updateEmail(to: email) { (error) in
+                    guard error != nil else {
+                        print("Error", error?.localizedDescription)
+                        return
+                    }
+                    
+                }
             }
-            
-        }
+        })
+//
+        
+        
+        
     }
     
     func changePhone(phoneNumber: String) {

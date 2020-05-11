@@ -119,14 +119,15 @@ extension RegisterViewController {
                             UserDefaults.standard.set(user?.user.email, forKey: "UserEmail")
                             UserDefaults.standard.set(user?.user.displayName, forKey: "UserName")
                             UserDefaults.standard.set(phone, forKey: "UserPhone")
-                                                       
+                            UserDefaults.standard.set(password, forKey: "UserPassword")
+
+                                                    
                 
                             self?.sendEmailVerification()
                             
                             self?.disableCreateButton()
                             
                             self?.performSegue(withIdentifier: "emailVerification", sender: nil)
-                print("COMMITED")
             })
             
 

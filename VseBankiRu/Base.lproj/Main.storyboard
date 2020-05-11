@@ -310,13 +310,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <tabBarItem key="tabBarItem" title="" id="kAo-Tx-dDf"/>
-                    <navigationItem key="navigationItem" id="ntS-oh-nvY">
-                        <barButtonItem key="leftBarButtonItem" title="Выйти" id="Es5-3o-GLf">
-                            <connections>
-                                <action selector="signOutButtonTapped:" destination="eV9-f7-kx7" id="Aov-Qj-rjc"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="ntS-oh-nvY"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="qfY-lJ-zl7" id="NPx-Yp-KsG"/>
                         <outlet property="eurLabel" destination="TvF-9X-Wph" id="FMQ-gJ-ne3"/>
