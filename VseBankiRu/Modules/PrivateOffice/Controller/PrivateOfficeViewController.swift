@@ -21,18 +21,27 @@ class PrivateOfficeViewController: UIViewController {
     let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
     let dropDown = DropDown()
     
+    let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+
     
     let user = Auth.auth().currentUser
-    let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+   
     let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+    
+    
+    var segmentChangedByButton: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
         self.title = "Кабинет"
         self.setupCollectionView()
-
-        self.setupNavigation()
+     var defaultAttributes = [
+         .font: UIFont.systemFont(ofSize: 16, weight: .regular),
+         .foregroundColor: UIColor.blue
+     ] as [NSAttributedString.Key : Any]
+        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.systemIndigo]
+        self.infoSegmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected);        self.setupNavigation()
         self.setupDropDown()
         
         
@@ -52,6 +61,8 @@ class PrivateOfficeViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     @IBAction func infoSegmentControlChanged(_ sender: UISegmentedControl) {
+        self.segmentChangedByButton = true
+        self.infoCollectionView.scrollToItem(at: [0,sender.selectedSegmentIndex], at: .centeredHorizontally, animated: true)
     }
    
     
@@ -66,7 +77,7 @@ extension PrivateOfficeViewController: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let profileCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionViewCell", for: indexPath) as! ProfileCollectionViewCell
         let infoCell = collectionView.dequeueReusableCell(withReuseIdentifier: "InfoCollectionViewCell", for: indexPath) as! InfoCollectionViewCell
-        
+        print("indexPath", indexPath)
         profileCell.delegate = self
         infoCell.delegate = self
         
@@ -83,6 +94,21 @@ extension PrivateOfficeViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     
+}
+
+extension PrivateOfficeViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if self.segmentChangedByButton == false {
+        self.infoSegmentControl.selectedSegmentIndex = infoCollectionView.visibleIndexPath?.row ?? 0
+        
+        }
+    }
+    
+   
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        self.segmentChangedByButton = false
+
+    }
 }
 
 extension PrivateOfficeViewController {
@@ -140,21 +166,16 @@ extension PrivateOfficeViewController {
         
         switch index {
             case 0:
-                        //Смена пароля
-            user?.reauthenticate(with: credential, completion: { (result, error) in
-                guard  error == nil else { print(error?.localizedDescription); return }
                 
-                self.user?.updatePassword(to: "321321", completion: { (error) in
-                    guard  error == nil else { print(error?.localizedDescription); return }
-                    print("USEREMAIL", self.user?.email)
-//                    Auth.auth().sendPasswordReset(withEmail: self.user?.email ?? "") { (error) in
-//                        guard error == nil else { return }
-//                                    
-//                                    print("SUccess")
-//                                    }
-                        })
-                        
-            })
+                //Смена пароля
+                
+                let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
+                alertVC.alertType = .changePassword
+                alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                self.present(alertVC, animated: true, completion: nil)
+                
+
                         
                         
     
@@ -207,7 +228,8 @@ extension PrivateOfficeViewController: emailPhoneChanged {
         
         //Change Email
         
-            let alertVC = VerifyNewEmailAlertViewController(nibName: "VerifyNewEmailAlertViewController", bundle: nil)
+            let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
+        alertVC.alertType = .changeEmail
                                       alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                                       alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                                       self.present(alertVC, animated: true, completion: nil)

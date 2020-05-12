@@ -19,10 +19,22 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VerifyNewEmailAlertViewController" customModule="VseBankiRu" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlertViewController" customModule="VseBankiRu" customModuleProvider="target">
             <connections>
                 <outlet property="activityController" destination="mue-CX-acP" id="qZH-8t-Acp"/>
-                <outlet property="alertView" destination="Flb-Fg-tZc" id="eh3-iV-11y"/>
+                <outlet property="changeCancelButton" destination="ER4-SR-hUp" id="JpD-vL-YMG"/>
+                <outlet property="changeConfirmPasswordTextField" destination="Jr2-7V-6re" id="1hR-5Y-p8i"/>
+                <outlet property="changeDoneButton" destination="GBe-G1-FR7" id="fLm-Vy-mLN"/>
+                <outlet property="changeErrorLabel" destination="rxX-s4-2D6" id="30M-NY-Dd9"/>
+                <outlet property="changeNewPasswordTextField" destination="8Ey-JT-hc2" id="PCR-Gb-fxK"/>
+                <outlet property="changeOldPasswordTextField" destination="pq1-qe-Uhb" id="6H4-ac-3Hg"/>
+                <outlet property="emailChangeAlertView" destination="Flb-Fg-tZc" id="uJk-5m-vPx"/>
+                <outlet property="passwordChangeView" destination="aDH-6k-6FQ" id="INV-g4-xoY"/>
+                <outlet property="passwordResetView" destination="xeK-Yx-iOP" id="zGG-gR-KyA"/>
+                <outlet property="resetCancelButton" destination="kK4-jO-iNl" id="IgE-qU-sEG"/>
+                <outlet property="resetDoneButton" destination="Swi-SI-CYK" id="mDo-m8-tYg"/>
+                <outlet property="resetEmailTextField" destination="wgG-5c-eMR" id="OrY-fO-cni"/>
+                <outlet property="resetErrorLabel" destination="JxE-n2-lb1" id="1FJ-aP-2VC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -31,51 +43,141 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flb-Fg-tZc">
-                    <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Yx-iOP">
+                    <rect key="frame" x="67.5" y="258.5" width="240" height="150"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подтвердите новый Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-gw-wkJ">
-                            <rect key="frame" x="20" y="10" width="200" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановление пароля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YU-Oo-VdJ">
+                            <rect key="frame" x="40" y="10" width="160" height="16.5"/>
                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-pS-7Qz">
-                            <rect key="frame" x="20" y="37" width="200" height="12"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите адрес электронной почты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-qZ-EYh">
+                            <rect key="frame" x="38" y="36.5" width="164.5" height="12"/>
                             <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
                             <color key="textColor" name="SubTitle"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-JU-2u9">
+                            <rect key="frame" x="20" y="58.5" width="200" height="19"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-5c-eMR">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
+                                    <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvK-57-4nW">
+                                    <rect key="frame" x="0.0" y="18" width="200" height="1"/>
+                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="Ek5-Lb-exe"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="DNL-na-buc">
+                            <rect key="frame" x="15" y="109" width="210" height="31"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swi-SI-CYK">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="31"/>
+                                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="wTa-1j-14G"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                    <state key="normal" title="Готово">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resetDoneButtonTapped:" destination="-1" eventType="touchUpInside" id="5J6-YZ-DnS"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kK4-jO-iNl">
+                                    <rect key="frame" x="130" y="0.0" width="80" height="31"/>
+                                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="P7v-nd-Kij"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
+                                    <state key="normal" title="Отмена">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="resetCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="ak1-HB-he9"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxE-n2-lb1">
+                            <rect key="frame" x="20" y="87.5" width="200" height="0.0"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
+                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstItem="Cjc-qZ-EYh" firstAttribute="top" secondItem="4YU-Oo-VdJ" secondAttribute="bottom" constant="10" id="2jb-yE-cNP"/>
+                        <constraint firstItem="4YU-Oo-VdJ" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="2oi-TE-P0P"/>
+                        <constraint firstItem="JxE-n2-lb1" firstAttribute="top" secondItem="n6e-JU-2u9" secondAttribute="bottom" constant="10" id="4L2-vp-deL"/>
+                        <constraint firstItem="4YU-Oo-VdJ" firstAttribute="top" secondItem="xeK-Yx-iOP" secondAttribute="top" constant="10" id="FQP-0y-Djq"/>
+                        <constraint firstItem="n6e-JU-2u9" firstAttribute="top" secondItem="Cjc-qZ-EYh" secondAttribute="bottom" constant="10" id="LpX-oe-QIO"/>
+                        <constraint firstAttribute="trailing" secondItem="JxE-n2-lb1" secondAttribute="trailing" constant="20" id="WAs-am-wkC"/>
+                        <constraint firstAttribute="width" constant="240" id="ZAJ-6A-TLI"/>
+                        <constraint firstItem="JxE-n2-lb1" firstAttribute="leading" secondItem="xeK-Yx-iOP" secondAttribute="leading" constant="20" id="tNz-7z-wrd"/>
+                        <constraint firstAttribute="height" constant="150" id="wrS-me-rX2"/>
+                        <constraint firstAttribute="bottom" secondItem="DNL-na-buc" secondAttribute="bottom" constant="10" id="xJJ-Df-Zft"/>
+                        <constraint firstItem="DNL-na-buc" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="xXb-dZ-KIe"/>
+                        <constraint firstItem="n6e-JU-2u9" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="yNF-hX-xUA"/>
+                        <constraint firstItem="Cjc-qZ-EYh" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="zYT-Mr-WiN"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flb-Fg-tZc">
+                    <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подтвердите новый Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-gw-wkJ">
+                            <rect key="frame" x="20" y="10" width="200" height="16.5"/>
+                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-pS-7Qz">
+                            <rect key="frame" x="20" y="36.5" width="200" height="12"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
+                            <color key="textColor" name="SubTitle"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mue-CX-acP">
+                            <rect key="frame" x="101.5" y="68.5" width="37" height="37"/>
+                            <color key="color" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
                         <constraint firstItem="7Ge-pS-7Qz" firstAttribute="leading" secondItem="Flb-Fg-tZc" secondAttribute="leading" constant="20" id="1aP-87-1Xp"/>
                         <constraint firstAttribute="width" constant="240" id="9T2-LV-z0e"/>
+                        <constraint firstItem="mue-CX-acP" firstAttribute="top" secondItem="7Ge-pS-7Qz" secondAttribute="bottom" constant="20" id="9q8-xp-YeP"/>
                         <constraint firstItem="GBd-gw-wkJ" firstAttribute="top" secondItem="Flb-Fg-tZc" secondAttribute="top" constant="10" id="9wh-Ow-Z9R"/>
                         <constraint firstAttribute="height" constant="128" id="AzV-dL-lOF"/>
                         <constraint firstItem="7Ge-pS-7Qz" firstAttribute="top" secondItem="GBd-gw-wkJ" secondAttribute="bottom" constant="10" id="H9n-pB-n4f"/>
                         <constraint firstAttribute="trailing" secondItem="GBd-gw-wkJ" secondAttribute="trailing" constant="20" id="OkE-Jb-Sq7"/>
                         <constraint firstAttribute="trailing" secondItem="7Ge-pS-7Qz" secondAttribute="trailing" constant="20" id="P7L-E1-7gZ"/>
                         <constraint firstItem="GBd-gw-wkJ" firstAttribute="leading" secondItem="Flb-Fg-tZc" secondAttribute="leading" constant="20" id="beN-Fc-Sc1"/>
+                        <constraint firstItem="mue-CX-acP" firstAttribute="centerX" secondItem="Flb-Fg-tZc" secondAttribute="centerX" id="fYk-hb-aR0"/>
                         <constraint firstItem="GBd-gw-wkJ" firstAttribute="centerX" secondItem="Flb-Fg-tZc" secondAttribute="centerX" id="sNl-b7-eiK"/>
                     </constraints>
                 </view>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mue-CX-acP">
-                    <rect key="frame" x="177" y="342" width="20" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="color" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aDH-6k-6FQ">
-                    <rect key="frame" x="67.5" y="493" width="240" height="174"/>
+                    <rect key="frame" x="67.5" y="238.5" width="240" height="190"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Изменение пароля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYc-p9-Mch">
-                            <rect key="frame" x="20" y="10" width="200" height="17"/>
+                            <rect key="frame" x="20" y="10" width="200" height="16.5"/>
                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="fQo-lI-3jk">
-                            <rect key="frame" x="20" y="35" width="200" height="91"/>
+                            <rect key="frame" x="20" y="34.5" width="200" height="91"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Kmo-TX-qaP">
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="19"/>
@@ -136,117 +238,71 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="7cd-6T-uEw">
-                            <rect key="frame" x="38" y="136" width="164" height="32"/>
+                            <rect key="frame" x="15" y="153" width="210" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBe-G1-FR7">
-                                    <rect key="frame" x="0.0" y="0.0" width="53" height="32"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="31"/>
                                     <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="IQe-pt-lSv"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                     <state key="normal" title="Готово">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeDoneButtonTapped:" destination="-1" eventType="touchUpInside" id="S0f-Jz-GzV"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ER4-SR-hUp">
-                                    <rect key="frame" x="103" y="0.0" width="61" height="32"/>
+                                    <rect key="frame" x="130" y="0.0" width="80" height="31"/>
                                     <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="CB8-as-mKA"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
                                     <state key="normal" title="Отмена">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="changeCancelButtonTapped:" destination="-1" eventType="touchUpInside" id="Wz1-K5-GXu"/>
+                                    </connections>
                                 </button>
                             </subviews>
                         </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxX-s4-2D6">
+                            <rect key="frame" x="20" y="135.5" width="200" height="0.0"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
+                            <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
+                        <constraint firstItem="rxX-s4-2D6" firstAttribute="leading" secondItem="aDH-6k-6FQ" secondAttribute="leading" constant="20" id="3JM-Bk-Glr"/>
                         <constraint firstItem="FYc-p9-Mch" firstAttribute="leading" secondItem="aDH-6k-6FQ" secondAttribute="leading" constant="20" id="CBD-yO-Pxv"/>
+                        <constraint firstAttribute="height" constant="190" id="FVU-CJ-z5M"/>
                         <constraint firstItem="FYc-p9-Mch" firstAttribute="centerX" secondItem="aDH-6k-6FQ" secondAttribute="centerX" id="Faz-58-oIr"/>
-                        <constraint firstItem="7cd-6T-uEw" firstAttribute="top" secondItem="fQo-lI-3jk" secondAttribute="bottom" constant="10" id="HE7-Rt-ojZ"/>
                         <constraint firstItem="fQo-lI-3jk" firstAttribute="centerX" secondItem="aDH-6k-6FQ" secondAttribute="centerX" id="KUv-yD-5UN"/>
                         <constraint firstItem="7cd-6T-uEw" firstAttribute="centerX" secondItem="aDH-6k-6FQ" secondAttribute="centerX" id="Kwv-Ni-neD"/>
                         <constraint firstItem="fQo-lI-3jk" firstAttribute="top" secondItem="FYc-p9-Mch" secondAttribute="bottom" constant="8" id="X6t-nf-s3h"/>
+                        <constraint firstAttribute="trailing" secondItem="rxX-s4-2D6" secondAttribute="trailing" constant="20" id="YYC-8v-IzH"/>
                         <constraint firstAttribute="trailing" secondItem="FYc-p9-Mch" secondAttribute="trailing" constant="20" id="ZVL-AB-cWY"/>
+                        <constraint firstItem="rxX-s4-2D6" firstAttribute="top" secondItem="fQo-lI-3jk" secondAttribute="bottom" constant="10" id="a1X-zs-Rxz"/>
                         <constraint firstItem="FYc-p9-Mch" firstAttribute="top" secondItem="aDH-6k-6FQ" secondAttribute="top" constant="10" id="let-S1-8w8"/>
+                        <constraint firstItem="rxX-s4-2D6" firstAttribute="centerX" secondItem="aDH-6k-6FQ" secondAttribute="centerX" id="ole-kg-Q2E"/>
                         <constraint firstAttribute="bottom" secondItem="7cd-6T-uEw" secondAttribute="bottom" constant="6" id="pBu-GH-lfB"/>
                         <constraint firstAttribute="width" constant="240" id="vN3-VA-4D2"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Yx-iOP">
-                    <rect key="frame" x="67.5" y="20" width="240" height="128"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановление пароля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YU-Oo-VdJ">
-                            <rect key="frame" x="43" y="10" width="154.5" height="17"/>
-                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите адрес электронной почты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-qZ-EYh">
-                            <rect key="frame" x="38" y="37" width="164.5" height="12"/>
-                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
-                            <color key="textColor" name="SubTitle"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-JU-2u9">
-                            <rect key="frame" x="20" y="59" width="200" height="19"/>
-                            <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-5c-eMR">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
-                                    <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvK-57-4nW">
-                                    <rect key="frame" x="0.0" y="18" width="200" height="1"/>
-                                    <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="Ek5-Lb-exe"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                        </stackView>
-                        <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="DNL-na-buc">
-                            <rect key="frame" x="38" y="88" width="164" height="32"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swi-SI-CYK">
-                                    <rect key="frame" x="0.0" y="0.0" width="53" height="32"/>
-                                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
-                                    <state key="normal" title="Готово">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kK4-jO-iNl">
-                                    <rect key="frame" x="103" y="0.0" width="61" height="32"/>
-                                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="16"/>
-                                    <state key="normal" title="Отмена">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                        </stackView>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                    <constraints>
-                        <constraint firstItem="Cjc-qZ-EYh" firstAttribute="top" secondItem="4YU-Oo-VdJ" secondAttribute="bottom" constant="10" id="2jb-yE-cNP"/>
-                        <constraint firstItem="4YU-Oo-VdJ" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="2oi-TE-P0P"/>
-                        <constraint firstItem="4YU-Oo-VdJ" firstAttribute="top" secondItem="xeK-Yx-iOP" secondAttribute="top" constant="10" id="FQP-0y-Djq"/>
-                        <constraint firstItem="n6e-JU-2u9" firstAttribute="top" secondItem="Cjc-qZ-EYh" secondAttribute="bottom" constant="10" id="LpX-oe-QIO"/>
-                        <constraint firstItem="DNL-na-buc" firstAttribute="top" secondItem="n6e-JU-2u9" secondAttribute="bottom" constant="10" id="Ppx-Nc-svy"/>
-                        <constraint firstAttribute="width" constant="240" id="ZAJ-6A-TLI"/>
-                        <constraint firstAttribute="height" constant="128" id="wrS-me-rX2"/>
-                        <constraint firstItem="DNL-na-buc" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="xXb-dZ-KIe"/>
-                        <constraint firstItem="n6e-JU-2u9" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="yNF-hX-xUA"/>
-                        <constraint firstItem="Cjc-qZ-EYh" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="zYT-Mr-WiN"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="xeK-Yx-iOP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="8Or-A5-a5d"/>
                 <constraint firstItem="Flb-Fg-tZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Apb-6J-MJP"/>
                 <constraint firstItem="xeK-Yx-iOP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KPe-SE-uzi"/>
+                <constraint firstItem="xeK-Yx-iOP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="NB7-q9-duE"/>
                 <constraint firstItem="Flb-Fg-tZc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZbU-3O-PWM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="aDH-6k-6FQ" secondAttribute="bottom" id="d4s-5U-g4i"/>
+                <constraint firstItem="aDH-6k-6FQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fO0-ag-asD"/>
                 <constraint firstItem="aDH-6k-6FQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zgh-jZ-BZo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

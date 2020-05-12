@@ -57,19 +57,19 @@
                             <rect key="frame" x="168" y="213" width="39" height="37"/>
                         </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшие предложения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-0w-Y06">
-                            <rect key="frame" x="62.5" y="0.0" width="250" height="19.5"/>
+                            <rect key="frame" x="62.5" y="14" width="250" height="21.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="BMX-g0-dcf"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="16"/>
-                            <color key="textColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="18"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
-                        <constraint firstItem="JqE-0w-Y06" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="top" id="15j-yB-Iv3"/>
+                        <constraint firstItem="JqE-0w-Y06" firstAttribute="top" secondItem="Wzi-fv-pzC" secondAttribute="top" constant="14" id="15j-yB-Iv3"/>
                         <constraint firstAttribute="trailing" secondItem="wYb-EO-fda" secondAttribute="trailing" id="6fn-jF-wi9"/>
                         <constraint firstItem="wYb-EO-fda" firstAttribute="leading" secondItem="Wzi-fv-pzC" secondAttribute="leading" id="7Kc-M9-rIv"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5RH-7p-k3U" secondAttribute="trailing" id="AYT-bP-MOc"/>

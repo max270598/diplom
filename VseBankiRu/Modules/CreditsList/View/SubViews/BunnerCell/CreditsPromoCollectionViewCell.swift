@@ -39,6 +39,13 @@ class CreditsPromoCollectionViewCell: UICollectionViewCell {
         self.creditView.clipsToBounds = true
         self.creditView.layer.cornerRadius = 10
         self.hideAllViews()
+        
+         let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                self.insertSubview(blurEffectView, at: 0)
+        
         // Initialization code
     }
 
