@@ -23,7 +23,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3RG-Ea-fEP">
-                        <rect key="frame" x="48" y="30" width="266" height="120"/>
+                        <rect key="frame" x="48" y="20" width="266" height="120"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="bottom" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="muo-zl-nMC">
                                 <rect key="frame" x="20" y="6" width="226" height="43.5"/>
@@ -129,7 +129,7 @@
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="3RG-Ea-fEP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="30" id="Vs9-sI-QBc"/>
+                <constraint firstItem="3RG-Ea-fEP" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="Vs9-sI-QBc"/>
                 <constraint firstItem="3RG-Ea-fEP" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="YZY-2I-t6t"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -146,7 +146,7 @@
     </objects>
     <resources>
         <namedColor name="SubTitle">
-            <color red="0.73333333333333328" green="0.75686274509803919" blue="0.77254901960784317" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.73299998044967651" green="0.75700002908706665" blue="0.77300000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

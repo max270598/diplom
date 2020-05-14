@@ -478,7 +478,6 @@ public enum ScrollableSegmentedControlSegmentStyle: Int {
             
             segmentCell.showUnderline = segmentedControl.underlineSelected
             if segmentedControl.underlineSelected {
-                print("under selected")
                 segmentCell.tintColor = segmentedControl.tintColor
             }
             
@@ -553,7 +552,6 @@ public enum ScrollableSegmentedControlSegmentStyle: Int {
                         underlineView!.tag = 999
                         underlineView!.backgroundColor = .brown
                         underlineView!.isHidden = false
-                        print("in under")
                         contentView.insertSubview(underlineView!, at: contentView.subviews.count)
                     
                     

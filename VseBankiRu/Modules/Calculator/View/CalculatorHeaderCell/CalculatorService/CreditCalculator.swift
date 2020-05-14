@@ -18,7 +18,6 @@ final class CreditCalculator {
         let b = pow(1 + c, self.calcParams.time)
         guard b != 1 else {return 0}
         let a = self.calcParams.sum * ((c * b) / (b - 1))
-        print("c", c , "b", b, "a", a)
         return a
     }
     
@@ -45,7 +44,6 @@ final class CreditCalculator {
     
     func set(params calcParams: CreditCalculatorParams) {
         self.calcParams = calcParams
-        print(calcParams)
     }
 }
 

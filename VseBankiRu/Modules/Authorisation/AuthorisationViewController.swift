@@ -17,27 +17,19 @@ class AuthorisationViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet weak var forgetPasswordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
+        setupUILoad()
         
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in // если пользователь зарегистрирован то переходит на сразу на другой экран
-            if user != nil && user!.isEmailVerified {
-                self?.performSegue(withIdentifier: "logged", sender: nil)
-            }
-        }
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = true
-        self.errorLabel.alpha = 0
-        IQKeyboardManager.shared.enable = true
-        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
+        setupUIAppear()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -45,6 +37,13 @@ class AuthorisationViewController: UIViewController {
 //        IQKeyboardManager.shared.enable = false
     }
     
+    @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
+        let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
+        alertVC.alertType = .resetPassword
+                                      alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                                      alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                                      self.present(alertVC, animated: true, completion: nil)
+            }
     @IBAction func loginButtonTapped(_ sender: Any) {
         
         guard let email = self.emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
@@ -98,6 +97,36 @@ class AuthorisationViewController: UIViewController {
 }
 
 extension AuthorisationViewController {
+    
+    func setupUILoad() {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+
+        var attrs = [
+            NSAttributedString.Key.font : UIFont(name: "SFProText-Light", size: 12),
+            NSAttributedString.Key.foregroundColor : UIColor.systemIndigo.withAlphaComponent(0.8),
+            NSAttributedString.Key.underlineStyle : 1] as [NSAttributedString.Key : Any]
+        let buttonTitleStr = NSMutableAttributedString(string:"Забыли пароль?", attributes:attrs)
+        
+        self.forgetPasswordButton.setAttributedTitle(buttonTitleStr, for: .normal)
+        
+        
+        
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in // если пользователь зарегистрирован то переходит на сразу на другой экран
+            if user != nil && user!.isEmailVerified {
+                self?.performSegue(withIdentifier: "logged", sender: nil)
+            }
+        }
+    }
+    
+    func setupUIAppear() {
+        
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+        self.errorLabel.alpha = 0
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.keyboardDistanceFromTextField = 100
+    }
+    
     func showErrorLabel(with text: String) {
         self.errorLabel.text = text
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in

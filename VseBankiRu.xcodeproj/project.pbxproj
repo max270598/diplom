@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7238FD0246B523E0086672C /* ScrollUISegmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7238FCF246B523E0086672C /* ScrollUISegmentController.swift */; };
 		A7304D0324545F5100F0AECF /* CreditsPromoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */; };
 		A7304D0424545F5100F0AECF /* CreditsPromoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */; };
 		A7304D122455CF6D00F0AECF /* CreditSkeletonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7304D102455CF6C00F0AECF /* CreditSkeletonCollectionViewCell.swift */; };
@@ -141,6 +142,7 @@
 		299A7C7C20C649BB99026F55 /* Pods-VseBankiRu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.release.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.release.xcconfig"; sourceTree = "<group>"; };
 		4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VseBankiRu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		784D20937057BBD2AC0B4F01 /* Pods-VseBankiRu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VseBankiRu.debug.xcconfig"; path = "Target Support Files/Pods-VseBankiRu/Pods-VseBankiRu.debug.xcconfig"; sourceTree = "<group>"; };
+		A7238FCF246B523E0086672C /* ScrollUISegmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollUISegmentController.swift; sourceTree = "<group>"; };
 		A7304D0124545F5100F0AECF /* CreditsPromoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsPromoCollectionViewCell.swift; sourceTree = "<group>"; };
 		A7304D0224545F5100F0AECF /* CreditsPromoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditsPromoCollectionViewCell.xib; sourceTree = "<group>"; };
 		A7304D102455CF6C00F0AECF /* CreditSkeletonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditSkeletonCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -300,6 +302,14 @@
 				4199BABEF26A93EF38138288 /* Pods_VseBankiRu.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A7238FCE246B52320086672C /* ScrollUISegmentController */ = {
+			isa = PBXGroup;
+			children = (
+				A7238FCF246B523E0086672C /* ScrollUISegmentController.swift */,
+			);
+			path = ScrollUISegmentController;
 			sourceTree = "<group>";
 		};
 		A7304D052454DC9000F0AECF /* SubViews */ = {
@@ -1135,6 +1145,7 @@
 		A7C3CB7F23FEDD5100F5DB01 /* ReUsable */ = {
 			isa = PBXGroup;
 			children = (
+				A7238FCE246B52320086672C /* ScrollUISegmentController */,
 				A7AFAE2424698956002E8857 /* AlertController */,
 				A779D8372463345E001B6647 /* SlideInPresnter */,
 				A7304D2024563FB300F0AECF /* LoadingButton */,
@@ -1148,8 +1159,7 @@
 		A7CBA41D2438D7B4009CB3E0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A78157422468662F00DE67FE /* AboutApp */,
-				A7C133C4246702640001F0F5 /* PrivateOffice */,
+				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,
 				A78DF57923FDB52D0060F5A2 /* Catalog */,
 				A742A21B243286330008AEEF /* CreditsList */,
 				A7304D18245633E600F0AECF /* CreditsListFilter */,
@@ -1158,7 +1168,8 @@
 				A7F134422450DBB1000FF164 /* CreditsListFavourite */,
 				A7359E49245F0FEC0091E673 /* CreditsListDetail */,
 				A731A7F42464CFBD00E53265 /* Calculator */,
-				A7CBA4A7243FDF83009CB3E0 /* Authorisation */,
+				A7C133C4246702640001F0F5 /* PrivateOffice */,
+				A78157422468662F00DE67FE /* AboutApp */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1465,6 +1476,7 @@
 				A7F134412450D4BD000FF164 /* ShareOpenLinkDelegate.swift in Sources */,
 				A75B69972466061300032CA6 /* CalculatorHeaderObserve.swift in Sources */,
 				A7359E5E245F73460091E673 /* DescriptionCell.swift in Sources */,
+				A7238FD0246B523E0086672C /* ScrollUISegmentController.swift in Sources */,
 				A744AAE4244064BF009B5404 /* RegisterViewController.swift in Sources */,
 				A7359E68245F833E0091E673 /* SegmentControllTableViewCell.swift in Sources */,
 				A7304D562458D3F600F0AECF /* CreditsListFilterDrawerCell.swift in Sources */,

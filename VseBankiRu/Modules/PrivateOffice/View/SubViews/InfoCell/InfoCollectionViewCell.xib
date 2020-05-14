@@ -34,8 +34,8 @@
                             <constraint firstAttribute="width" constant="150" id="yJ8-oj-M0W"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="s2a-55-acR">
-                        <rect key="frame" x="20" y="140" width="367" height="51"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="s2a-55-acR">
+                        <rect key="frame" x="20" y="140" width="367" height="40.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VseBankiRu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXI-s1-dKo">
                                 <rect key="frame" x="0.0" y="0.0" width="367" height="24.5"/>
@@ -44,15 +44,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Версия 1.0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o1Y-jb-2Kx">
-                                <rect key="frame" x="0.0" y="34.5" width="367" height="16.5"/>
-                                <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="14"/>
+                                <rect key="frame" x="0.0" y="26.5" width="367" height="14"/>
+                                <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="12"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="uqB-k1-vt8">
-                        <rect key="frame" x="20" y="251" width="367" height="90"/>
+                        <rect key="frame" x="20" y="220.5" width="367" height="90"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fQ6-6B-kT2">
                                 <rect key="frame" x="108.5" y="0.0" width="150" height="36"/>
@@ -97,7 +97,7 @@
                 <constraint firstItem="uqB-k1-vt8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="IWo-Bx-sBG"/>
                 <constraint firstItem="Lfx-lB-RTn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="IfB-YL-eGA"/>
                 <constraint firstItem="s2a-55-acR" firstAttribute="top" secondItem="Lfx-lB-RTn" secondAttribute="bottom" constant="20" id="L1l-V9-Zur"/>
-                <constraint firstItem="uqB-k1-vt8" firstAttribute="top" secondItem="s2a-55-acR" secondAttribute="bottom" constant="60" id="Tgj-eX-VQz"/>
+                <constraint firstItem="uqB-k1-vt8" firstAttribute="top" secondItem="s2a-55-acR" secondAttribute="bottom" constant="40" id="Tgj-eX-VQz"/>
                 <constraint firstItem="Lfx-lB-RTn" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="xB7-Rt-UHY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

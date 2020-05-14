@@ -58,23 +58,14 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.emailChangeAlertView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
-        self.passwordChangeView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
-        self.passwordResetView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
-
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view.addSubview(blurEffectView)
-        view.insertSubview(blurEffectView, at: 0)
+       setupUILoad()
         // Do any additional setup after loading the view.
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setupUI()
+        setupUIAppear()
 
     }
     
@@ -85,7 +76,28 @@ class AlertViewController: UIViewController {
 
 extension AlertViewController {
     
-    func setupUI() {
+    func setupUILoad() {
+        
+        let butArr: [UIButton] = [self.resetCancelButton, self.changeCancelButton, self.resetDoneButton, self.changeDoneButton]
+        
+        butArr.forEach { (button) in
+            button.clipsToBounds = true
+            button.layer.cornerRadius = 6
+        }
+        
+         self.emailChangeAlertView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
+                self.passwordChangeView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
+                self.passwordResetView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
+
+                let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+                let blurEffectView = UIVisualEffectView(effect: blurEffect)
+                blurEffectView.frame = view.bounds
+                blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        //        view.addSubview(blurEffectView)
+                view.insertSubview(blurEffectView, at: 0)
+    }
+    
+    func setupUIAppear() {
         
       
         
@@ -177,6 +189,11 @@ extension AlertViewController {
     
     func resetPassword() {
         guard let emailText = self.resetEmailTextField.text, emailText != "" else {self.showError(errorText: "Заполните все поля"); return}
+        Auth.auth().sendPasswordReset(withEmail: emailText) {[weak self] (error) in
+            guard error == nil else {print("ErrorRESET", error?.localizedDescription); self?.showError(errorText: "Такого пользователя не существует"); return }
+            
+            print("Отправлено")
+        }
         
     }
     
@@ -243,6 +260,15 @@ extension AlertViewController {
                             self.present(vc, animated: true, completion: nil)
 
                      })
+        case .resetPassword:
+            
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+                self?.changeErrorLabel.alpha = 1
+                }, completion: { _ in
+                
+                        self.dismiss(animated: true, completion: nil)
+            })
+            
         default:
             print("")
         }

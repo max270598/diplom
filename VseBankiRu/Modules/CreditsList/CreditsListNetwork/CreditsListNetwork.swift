@@ -18,7 +18,6 @@ class CreditsListNetwork {
     
     
     func getCredits( completion: @escaping (_ creditsArray: [CreditModel]) -> Void ) {
-        print("ref", ref)
 
         var credits = Array<CreditModel>()
         ref.observe(.value) { (snapshot) in //получаем данные по ref

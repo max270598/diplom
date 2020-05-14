@@ -26,9 +26,16 @@ class CreditsListDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+//        self.listTableView.deleteRows(at: [[0, 1]], with: .automatic)
+    }
 
 
 }
+
+
+
 
 extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,62 +53,68 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             return UITableViewCell()
         }
         
-        let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
-        
-        let logoCell = tableView.dequeueReusableCell(withIdentifier: "LogoNameTableViewCell", for: indexPath) as! LogoNameTableViewCell
-        let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
-        let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCell
-        let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
-        segmentControllCell.delegate = self
-        
-        let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
-        let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
-        
-        let buttonCell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
-        buttonCell.delegate = self
+
         
         switch indexPath.row {
         case 0:
+              let logoCell = tableView.dequeueReusableCell(withIdentifier: "LogoNameTableViewCell", for: indexPath) as! LogoNameTableViewCell
             logoCell.configure(model: credit)
             return logoCell
         case 1:
+             let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
             titleTitleCell.configure(title: "Сумма", value: self.formattedValue(value: credit.min_sum_value) + "-" + self.formattedValue(value: credit.max_sum_value))
             return titleTitleCell
         case 2:
+             let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
             titleTitleCell.configure(title: "Ставка", value: String(credit.min_rate!) + "%")
                        return titleTitleCell
         case 3:
+             let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
             titleTitleCell.configure(title: "Срок", value: credit.full_time)
                        return titleTitleCell
         case 4:
+             let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
             titleTitleCell.configure(title: "Цель", value: credit.goal)
            return titleTitleCell
 
         case 5:
+             let titleTitleCell = tableView.dequeueReusableCell(withIdentifier: "TitleTitleTableViewCell", for: indexPath) as! TitleTitleTableViewCell
             titleTitleCell.configure(title: "Возраст заемщика", value: credit.debtor_age)
             return titleTitleCell
             
         case 6:
+             let descriptionCell = tableView.dequeueReusableCell(withIdentifier: "DescriptionCell", for: indexPath) as! DescriptionCell
             descriptionCell.configure(text: credit.description ?? "")
             return descriptionCell
         case 7:
+            let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
+                   segmentControllCell.delegate = self
             segmentControllCell.configure()
             return segmentControllCell
         case 8:
+            let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
             documentsCell.configure(model: credit, type: self.documentType, height: 20)
             return documentsCell
         case 9:
+            let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
             documentsDescriptionCell.configure(model: credit, type: self.documentType)
             return documentsDescriptionCell
         case 10:
-            return emptyCell
+             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+             return emptyCell
         case 11:
+            let buttonCell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
+                   buttonCell.delegate = self
             buttonCell.configure(url: credit.credit_url)
             return buttonCell
         case 12:
+             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            
             return emptyCell
         
         default:
+             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+            return emptyCell
             print("")
         }
         
@@ -133,6 +146,12 @@ extension CreditsListDetailViewController {
 
 
 extension CreditsListDetailViewController: CreditsDetailDelegate {
+    func removeCell(at index: Int) {
+        print("DELETE")
+//        self.listTableView.deleteRows(at: [[0, index]], with: .automatic)
+//        self.listTableView.reloadData()
+    }
+    
     func reloadTableView() {
         self.listTableView.reloadData()
     }

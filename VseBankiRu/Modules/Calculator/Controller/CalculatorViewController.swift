@@ -81,9 +81,9 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let sliderCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorSliderTableViewCell", for: indexPath) as! CalculatorSliderTableViewCell
-        let dateCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorDateTableViewCell", for: indexPath) as! CalculatorDateTableViewCell
-        let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+       
+        
+       
         
         
         
@@ -93,15 +93,17 @@ extension CalculatorViewController: UITableViewDelegate, UITableViewDataSource {
 
         
         if indexPath.row == 3 {
+            let dateCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorDateTableViewCell", for: indexPath) as! CalculatorDateTableViewCell
             dateCell.configure(date: self.changedDate)
             dateCell.delegate = self
             return dateCell
         }
             
         if indexPath.row == 4 {
+             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
             return emptyCell
         }
-       
+        let sliderCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorSliderTableViewCell", for: indexPath) as! CalculatorSliderTableViewCell
         
         sliderCell.delegate = self
         sliderCell.configure(sliderType: self.sliredArray[indexPath.row], value: self.sliderArrayRaws[indexPath.row])

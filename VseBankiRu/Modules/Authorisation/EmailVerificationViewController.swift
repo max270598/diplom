@@ -30,7 +30,6 @@ class EmailVerificationViewController: UIViewController {
                     print(error.localizedDescription)
                  } else {
                          if Auth.auth().currentUser != nil && Auth.auth().currentUser!.isEmailVerified {
-                        print("user verified")
                             self?.activityIndicator.stopAnimating()
                             timer.invalidate()
                             self?.performSegue(withIdentifier: "emailVerified", sender: nil)

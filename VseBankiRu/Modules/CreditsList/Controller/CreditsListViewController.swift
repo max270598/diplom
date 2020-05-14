@@ -86,10 +86,7 @@ class CreditsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//print("ВСЕ КРЕДИТЫ", allCredits)
-//        print("FILTERITEM", filterItem)
-//        print("ОТФИЛЬТРОВАННЫЕ КРЕДИТЫ", filteredCredits)
-        
+
         setupPinView()
         
         updateData()
@@ -106,7 +103,6 @@ class CreditsListViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-       print("UNsORTEDDCREDITS", self.filteredCredits)
         
     }
     

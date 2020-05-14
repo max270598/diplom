@@ -150,7 +150,6 @@ extension CreditListFavouriteViewController {
             self.backView.isHidden = true
             self.Credits = favouriteCredits
             self.collectionView.reloadData()
-            print("LOADFAVORUTE", self.Credits.count)
             
             
         }

@@ -31,7 +31,6 @@ class CreditsListSortingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.selectedSortItem, "SELECTEDSORTITem")
         self.setupUI()
         self.setupListTableView()
         self.setupNavBar()
@@ -68,7 +67,6 @@ extension CreditsListSortingViewController: UITableViewDelegate, UITableViewData
         if (self.selectedSortItemIndexPath != indexPath) && (self.selectedSortItemIndexPath != nil) {
             tableView.cellForRow(at: self.selectedSortItemIndexPath!)?.accessoryType = .none
         }
-        print("selfctROEAT", indexPath)
 
         tableView.cellForRow(at: indexPath)?.tintColor = .systemIndigo
         if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {

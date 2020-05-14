@@ -44,39 +44,45 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Yx-iOP">
-                    <rect key="frame" x="67.5" y="258.5" width="240" height="150"/>
+                    <rect key="frame" x="67.5" y="448.5" width="240" height="170"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восстановление пароля" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YU-Oo-VdJ">
-                            <rect key="frame" x="40" y="10" width="160" height="16.5"/>
-                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
+                            <rect key="frame" x="34.5" y="10" width="171.5" height="17.5"/>
+                            <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="15"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите адрес электронной почты" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cjc-qZ-EYh">
-                            <rect key="frame" x="38" y="36.5" width="164.5" height="12"/>
-                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
+                            <rect key="frame" x="29.5" y="37.5" width="181" height="13"/>
+                            <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="11"/>
                             <color key="textColor" name="SubTitle"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n6e-JU-2u9">
-                            <rect key="frame" x="20" y="58.5" width="200" height="19"/>
+                            <rect key="frame" x="20" y="60.5" width="200" height="20"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wgG-5c-eMR">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
-                                    <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="19"/>
+                                    <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="16"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 </textField>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvK-57-4nW">
-                                    <rect key="frame" x="0.0" y="18" width="200" height="1"/>
+                                    <rect key="frame" x="0.0" y="19" width="200" height="1"/>
                                     <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="Ek5-Lb-exe"/>
                                     </constraints>
                                 </view>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="wgG-5c-eMR" firstAttribute="leading" secondItem="n6e-JU-2u9" secondAttribute="leading" id="Ohj-N4-AaH"/>
+                                <constraint firstAttribute="trailing" secondItem="wgG-5c-eMR" secondAttribute="trailing" id="Z5o-Q9-cc0"/>
+                                <constraint firstAttribute="trailing" secondItem="gvK-57-4nW" secondAttribute="trailing" id="Zmw-cB-y3h"/>
+                                <constraint firstItem="gvK-57-4nW" firstAttribute="leading" secondItem="n6e-JU-2u9" secondAttribute="leading" id="aEP-HF-QkU"/>
+                            </constraints>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="DNL-na-buc">
-                            <rect key="frame" x="15" y="109" width="210" height="31"/>
+                            <rect key="frame" x="15" y="129" width="210" height="31"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Swi-SI-CYK">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="31"/>
@@ -108,8 +114,8 @@
                                 </button>
                             </subviews>
                         </stackView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxE-n2-lb1">
-                            <rect key="frame" x="20" y="87.5" width="200" height="0.0"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JxE-n2-lb1">
+                            <rect key="frame" x="20" y="90.5" width="200" height="0.0"/>
                             <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
                             <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -122,10 +128,12 @@
                         <constraint firstItem="JxE-n2-lb1" firstAttribute="top" secondItem="n6e-JU-2u9" secondAttribute="bottom" constant="10" id="4L2-vp-deL"/>
                         <constraint firstItem="4YU-Oo-VdJ" firstAttribute="top" secondItem="xeK-Yx-iOP" secondAttribute="top" constant="10" id="FQP-0y-Djq"/>
                         <constraint firstItem="n6e-JU-2u9" firstAttribute="top" secondItem="Cjc-qZ-EYh" secondAttribute="bottom" constant="10" id="LpX-oe-QIO"/>
+                        <constraint firstItem="n6e-JU-2u9" firstAttribute="leading" secondItem="xeK-Yx-iOP" secondAttribute="leading" constant="20" id="Lyd-Wi-P97"/>
                         <constraint firstAttribute="trailing" secondItem="JxE-n2-lb1" secondAttribute="trailing" constant="20" id="WAs-am-wkC"/>
                         <constraint firstAttribute="width" constant="240" id="ZAJ-6A-TLI"/>
+                        <constraint firstAttribute="trailing" secondItem="n6e-JU-2u9" secondAttribute="trailing" constant="20" id="pXM-VK-8sk"/>
                         <constraint firstItem="JxE-n2-lb1" firstAttribute="leading" secondItem="xeK-Yx-iOP" secondAttribute="leading" constant="20" id="tNz-7z-wrd"/>
-                        <constraint firstAttribute="height" constant="150" id="wrS-me-rX2"/>
+                        <constraint firstAttribute="height" constant="170" id="wrS-me-rX2"/>
                         <constraint firstAttribute="bottom" secondItem="DNL-na-buc" secondAttribute="bottom" constant="10" id="xJJ-Df-Zft"/>
                         <constraint firstItem="DNL-na-buc" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="xXb-dZ-KIe"/>
                         <constraint firstItem="n6e-JU-2u9" firstAttribute="centerX" secondItem="xeK-Yx-iOP" secondAttribute="centerX" id="yNF-hX-xUA"/>
@@ -133,22 +141,22 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Flb-Fg-tZc">
-                    <rect key="frame" x="67.5" y="269.5" width="240" height="128"/>
+                    <rect key="frame" x="67.5" y="69.5" width="240" height="128"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Подтвердите новый Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-gw-wkJ">
-                            <rect key="frame" x="20" y="10" width="200" height="16.5"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На указанный Вами Email было отправлено письмо с подтверждением" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GBd-gw-wkJ">
+                            <rect key="frame" x="20" y="10" width="200" height="49"/>
                             <fontDescription key="fontDescription" name="SFCompactDisplay-Regular" family="SF Compact Display" pointSize="14"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ge-pS-7Qz">
-                            <rect key="frame" x="20" y="36.5" width="200" height="12"/>
+                            <rect key="frame" x="20" y="69" width="200" height="12"/>
                             <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="10"/>
                             <color key="textColor" name="SubTitle"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="mue-CX-acP">
-                            <rect key="frame" x="101.5" y="68.5" width="37" height="37"/>
+                            <rect key="frame" x="101.5" y="101" width="37" height="37"/>
                             <color key="color" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </activityIndicatorView>
                     </subviews>
@@ -185,7 +193,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Старый пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pq1-qe-Uhb">
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                                             <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKX-fK-vrF">
                                             <rect key="frame" x="0.0" y="18" width="200" height="1"/>
@@ -205,7 +213,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Новый пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Ey-JT-hc2">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                                                     <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Il1-ID-ls0">
                                                     <rect key="frame" x="0.0" y="18" width="200" height="1"/>
@@ -222,7 +230,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Подтвердите новый пароль" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jr2-7V-6re">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="18"/>
                                                     <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="18x-3c-nLq">
                                                     <rect key="frame" x="0.0" y="18" width="200" height="1"/>
@@ -298,9 +306,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Flb-Fg-tZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Apb-6J-MJP"/>
+                <constraint firstItem="Flb-Fg-tZc" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-200" id="Apb-6J-MJP"/>
                 <constraint firstItem="xeK-Yx-iOP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KPe-SE-uzi"/>
-                <constraint firstItem="xeK-Yx-iOP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="NB7-q9-duE"/>
+                <constraint firstItem="xeK-Yx-iOP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="200" id="NB7-q9-duE"/>
                 <constraint firstItem="Flb-Fg-tZc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="ZbU-3O-PWM"/>
                 <constraint firstItem="aDH-6k-6FQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="fO0-ag-asD"/>
                 <constraint firstItem="aDH-6k-6FQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zgh-jZ-BZo"/>

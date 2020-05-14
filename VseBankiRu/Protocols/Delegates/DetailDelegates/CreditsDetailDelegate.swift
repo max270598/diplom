@@ -10,4 +10,7 @@ import Foundation
 
 protocol CreditsDetailDelegate {
     func segmentDidChange(index: Int)
+    func removeCell(at index: Int)
 }
+
+

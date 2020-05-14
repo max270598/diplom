@@ -24,7 +24,8 @@ class Formatter {
     }
     
     static func repalceWithStringSpace(text: String?) -> String {
-        var i = text?.replacingOccurrences(of: "*", with: "\n\n- ") ?? ""
+        let poitInCenter: Character = "\u{00B7}"
+        var i = text?.replacingOccurrences(of: "*", with: "\n\n    " + String(poitInCenter)) ?? ""
         i = i.replacingOccurrences(of: "|", with: "\n\n")
         return i
 

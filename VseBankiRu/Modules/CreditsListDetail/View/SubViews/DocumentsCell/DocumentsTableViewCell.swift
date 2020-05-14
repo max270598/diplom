@@ -40,7 +40,6 @@ class DocumentsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print("Layout", self.itemTableView.contentSize.height)
 
     }
     override func prepareForReuse() {

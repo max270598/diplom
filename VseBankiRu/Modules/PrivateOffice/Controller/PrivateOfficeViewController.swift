@@ -17,31 +17,26 @@ class PrivateOfficeViewController: UIViewController {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var infoSegmentControl: UISegmentedControl!
-    
+   
+    //Setting
     let settingsButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
     let dropDown = DropDown()
-    
+    //Avatar
+    var avatarsArray: [UIImage] = [UIImage(named: "avatar1")!, UIImage(named: "avatar2")!, UIImage(named: "avatar3")!, UIImage(named: "avatar4")!]
+    var avatarIndex = 1
+    //Auth
     let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
-
-    
     let user = Auth.auth().currentUser
-   
     let userRef: DatabaseReference = Database.database().reference(withPath: "users")
-    
-    
+    //Segment
     var segmentChangedByButton: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
-        self.title = "Кабинет"
+       
+        self.setupUI()
         self.setupCollectionView()
-     var defaultAttributes = [
-         .font: UIFont.systemFont(ofSize: 16, weight: .regular),
-         .foregroundColor: UIColor.blue
-     ] as [NSAttributedString.Key : Any]
-        let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.systemIndigo]
-        self.infoSegmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected);        self.setupNavigation()
+        self.setupNavigation()
         self.setupDropDown()
         
         
@@ -112,6 +107,27 @@ extension PrivateOfficeViewController: UIScrollViewDelegate {
 }
 
 extension PrivateOfficeViewController {
+    
+    func setupUI() {
+        self.avatarImage.image = self.avatarsArray[0]
+        self.avatarImage.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(avatarToched))
+        tapGesture.numberOfTouchesRequired = 1
+        tapGesture.numberOfTapsRequired = 1
+        self.avatarImage.addGestureRecognizer(tapGesture)
+        self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
+               self.title = "Кабинет"
+               let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.systemIndigo]
+               self.infoSegmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
+    }
+    
+    @objc func avatarToched() {
+        print("TOUCH")
+        self.avatarImage.image = self.avatarsArray[avatarIndex]
+        self.avatarIndex += 1
+        if self.avatarIndex == 4 { self.avatarIndex = 0 }
+    }
+    
     func setupCollectionView() {
         self.infoCollectionView.register(UINib(nibName: "InfoCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "InfoCollectionViewCell")
          self.infoCollectionView.register(UINib(nibName: "ProfileCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProfileCollectionViewCell")
@@ -146,7 +162,6 @@ extension PrivateOfficeViewController {
 
             dropDown.selectionAction = { [unowned self] (index: Int, item: String) in
                 self.dropDownCellTapped(index: index, item: item)
-          print("Selected item: \(item) at index: \(index)")
         }
     }
     
@@ -203,7 +218,6 @@ extension PrivateOfficeViewController {
     
     @objc func rotateAction(_ sender: UIButton?) {
 //
-        print("Selected", self.settingsButton.isSelected)
         let transform: CGAffineTransform =  self.settingsButton.isSelected ? .identity : CGAffineTransform(rotationAngle: 179 * .pi / 180)
         
         
@@ -223,7 +237,6 @@ extension PrivateOfficeViewController {
 
 extension PrivateOfficeViewController: emailPhoneChanged {
     func changeEmail(email: String) {
-        print("chengeEmail")
         guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         
         //Change Email
