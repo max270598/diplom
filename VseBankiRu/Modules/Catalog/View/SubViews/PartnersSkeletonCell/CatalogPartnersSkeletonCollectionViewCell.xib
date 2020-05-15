@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Compact-Text-Regular.otf">
+            <string>SFCompactText-Regular</string>
+        </array>
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="CatalogPartnersSkeletonCollectionViewCell" id="Bke-s4-KoD" customClass="CatalogPartnersSkeletonCollectionViewCell" customModule="VseBankiRu" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="175" height="87"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="175" height="87"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lbw.# 2222" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nXC-JM-SnW">
+                        <rect key="frame" x="47.5" y="60" width="80" height="8"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="bSb-Rd-u2J"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="mm7-nq-BI6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFCompactText-Regular" family="SF Compact Text" pointSize="9"/>
+                        <color key="textColor" name="SubTitle"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sberbank" translatesAutoresizingMaskIntoConstraints="NO" id="yaF-6u-MyH">
+                        <rect key="frame" x="50" y="0.0" width="75" height="56"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="56" id="GW8-Mj-MOh"/>
+                            <constraint firstAttribute="width" constant="75" id="hkj-O5-8hC"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Восточный банк" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d54-9U-8XW">
+                        <rect key="frame" x="20" y="72" width="135.5" height="10"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="03y-LF-FiY"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="135.5" id="DKZ-6I-9Ly"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="12"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d54-9U-8XW" secondAttribute="trailing" constant="4" id="IAm-X1-O7M"/>
+                <constraint firstItem="yaF-6u-MyH" firstAttribute="top" secondItem="Bke-s4-KoD" secondAttribute="top" id="K6y-mu-AfF"/>
+                <constraint firstItem="nXC-JM-SnW" firstAttribute="top" secondItem="yaF-6u-MyH" secondAttribute="bottom" constant="4" id="LT0-U6-9WE"/>
+                <constraint firstItem="nXC-JM-SnW" firstAttribute="centerX" secondItem="Bke-s4-KoD" secondAttribute="centerX" id="LiF-Bc-HKq"/>
+                <constraint firstItem="yaF-6u-MyH" firstAttribute="centerX" secondItem="Bke-s4-KoD" secondAttribute="centerX" id="MW1-Gj-Pyy"/>
+                <constraint firstItem="d54-9U-8XW" firstAttribute="top" secondItem="nXC-JM-SnW" secondAttribute="bottom" constant="4" id="SbG-7u-lgK"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nXC-JM-SnW" secondAttribute="trailing" constant="4" id="aus-Sd-xrU"/>
+                <constraint firstItem="d54-9U-8XW" firstAttribute="centerX" secondItem="Bke-s4-KoD" secondAttribute="centerX" id="et5-gQ-TtR"/>
+                <constraint firstAttribute="bottom" secondItem="d54-9U-8XW" secondAttribute="bottom" constant="5" id="hhG-sG-NXQ"/>
+                <constraint firstItem="nXC-JM-SnW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bke-s4-KoD" secondAttribute="leading" constant="4" id="kEM-bY-0m3"/>
+                <constraint firstItem="d54-9U-8XW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bke-s4-KoD" secondAttribute="leading" constant="4" id="wYa-ye-0C5"/>
+            </constraints>
+            <size key="customSize" width="375" height="93"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="60" y="203"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="sberbank" width="1932" height="1345"/>
+        <namedColor name="SubTitle">
+            <color red="0.73299998044967651" green="0.75700002908706665" blue="0.77300000190734863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

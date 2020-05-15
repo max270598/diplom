@@ -15,7 +15,7 @@ class AuthorisationViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: LoadingButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var forgetPasswordButton: UIButton!
     
@@ -40,14 +40,18 @@ class AuthorisationViewController: UIViewController {
     @IBAction func forgetPasswordButtonTapped(_ sender: Any) {
         let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
         alertVC.alertType = .resetPassword
+        alertVC.hidesBottomBarWhenPushed = true
+
                                       alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                                       alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                                       self.present(alertVC, animated: true, completion: nil)
             }
     @IBAction func loginButtonTapped(_ sender: Any) {
-        
+        self.loginButton.showLoading()
         guard let email = self.emailTextField.text, let password = passwordTextField.text, email != "", password != "" else {
             showErrorLabel(with: "Введены неверные данные пользователя")
+            self.loginButton.hideLoading()
+
             return
         }
         Auth.auth().signIn(withEmail: email, password: password) { [weak self](user, error) in
@@ -55,17 +59,23 @@ class AuthorisationViewController: UIViewController {
            
             guard user != nil else {
                 self?.showErrorLabel(with: "Не правильно набрал email или пароль")
+                self?.loginButton.hideLoading()
+
                 return
                 
             }
             
             if error != nil {
                 self?.showErrorLabel(with: "Ошибка")
+                self?.loginButton.hideLoading()
+
                 return
             }
             
             guard (user?.user.isEmailVerified)! else {
                 self?.showErrorLabel(with: "Пользователь не верифицирован")
+                self?.loginButton.hideLoading()
+
                 return
             }
             

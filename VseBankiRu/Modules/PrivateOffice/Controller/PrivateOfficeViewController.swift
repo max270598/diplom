@@ -25,9 +25,9 @@ class PrivateOfficeViewController: UIViewController {
     var avatarsArray: [UIImage] = [UIImage(named: "avatar1")!, UIImage(named: "avatar2")!, UIImage(named: "avatar3")!, UIImage(named: "avatar4")!]
     var avatarIndex = 1
     //Auth
-    let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
-    let user = Auth.auth().currentUser
-    let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+//    let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+//    let user = Auth.auth().currentUser
+//    let userRef: DatabaseReference = Database.database().reference(withPath: "users")
     //Segment
     var segmentChangedByButton: Bool = false
     
@@ -46,9 +46,6 @@ class PrivateOfficeViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-      
-
         
     }
     
@@ -186,6 +183,8 @@ extension PrivateOfficeViewController {
                 
                 let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
                 alertVC.alertType = .changePassword
+                alertVC.delegate = self
+                self.tabBarController?.tabBar.isHidden = true
                 alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                 alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 self.present(alertVC, animated: true, completion: nil)
@@ -235,32 +234,31 @@ extension PrivateOfficeViewController {
     }
 }
 
-extension PrivateOfficeViewController: emailPhoneChanged {
+extension PrivateOfficeViewController: reloadCellDelagate {
+    func reloadCell(at index: Int) {
+        self.infoCollectionView.reloadItems(at: [[0, index]])
+    }
+    
+    
+}
+
+
+extension PrivateOfficeViewController: emailPhoneChangedDelegate {
     func changeEmail(email: String) {
         guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         
         //Change Email
         
             let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
+        alertVC.emailToChange = email
         alertVC.alertType = .changeEmail
-                                      alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                                      alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                                      self.present(alertVC, animated: true, completion: nil)
+        alertVC.delegate = self
+        self.tabBarController?.tabBar.isHidden = true
+        alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(alertVC, animated: true, completion: nil)
         
-            self.user?.reauthenticate(with: self.credential, completion: { [weak self] (result, error) in
-            guard error == nil else { print("Error", error?.localizedDescription); return }
-                self?.user?.updateEmail(to: email) { (error) in
-                    guard error == nil else { print("Error", error?.localizedDescription) ; return }
-                    Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in
-                        guard error == nil else { print("ERROR", error?.localizedDescription); return }
-                    })
-                   
-                    UserDefaults.standard.set(email, forKey: "UserEmail")
-                    self?.userRef.child((self?.user!.uid)!).child("email").setValue(email)
-
-                
-            }
-        })
+     
 //
         
         
@@ -271,7 +269,8 @@ extension PrivateOfficeViewController: emailPhoneChanged {
     func changePhone(phoneNumber: String) {
         guard UserDefaults.standard.string(forKey: "UserPhone") != phoneNumber else {return}
         UserDefaults.standard.set(phoneNumber, forKey: "UserPhone")
-        self.userRef.child(user!.uid).child("phone").setValue(phoneNumber)
+        let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+        userRef.child(Auth.auth().currentUser?.uid ?? "").child("phone").setValue(phoneNumber)
     }
     
     
@@ -279,10 +278,13 @@ extension PrivateOfficeViewController: emailPhoneChanged {
 
 extension PrivateOfficeViewController: aboutHelpDelegate {
     func showAboutApp() {
-        let aboutVC = AboutAppViewController(nibName: "AboutAppViewController", bundle: nil)
-        aboutVC.hidesBottomBarWhenPushed = true
-
-        self.navigationController?.pushViewController(aboutVC, animated: true)
+        let alertVC = AlertViewController(nibName: "AlertViewController", bundle: nil)
+        alertVC.alertType = .aboutApp
+        alertVC.delegate = self
+        self.tabBarController?.tabBar.isHidden = true
+        alertVC.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        alertVC.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(alertVC, animated: true, completion: nil)
         
     }
     
@@ -303,11 +305,20 @@ extension PrivateOfficeViewController: MFMailComposeViewControllerDelegate {
         mailComposeVC.mailComposeDelegate = self
         mailComposeVC.setToRecipients(["vsebankiru@gmail.com"])
         mailComposeVC.setSubject("Тех. Поддержка")
-        mailComposeVC.setMessageBody("Добрый день! \n\n", isHTML: false)
+        mailComposeVC.setMessageBody("Добрый день! \n\n", isHTML: true)
         return mailComposeVC
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
+}
+
+
+extension PrivateOfficeViewController: dissmissDelegate {
+    func showTabBar() {
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    
 }

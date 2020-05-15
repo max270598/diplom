@@ -15,19 +15,20 @@ extension UICollectionViewCell {
     
     // TODO: Сделать Inspectable
     
-    func setShadow() {
+    func setShadow(cornerRadius: CGFloat, backgroundColor: UIColor, shadowColor: UIColor, shadowOffset: CGSize, shadowOpacity: Float, shadowRadius: CGFloat) {
         // Set Border Radius
         var shadowLayer: CAShapeLayer!
         if shadowLayer == nil {
+            
                  shadowLayer = CAShapeLayer()
-                 shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
-                 shadowLayer.fillColor = UIColor.white.cgColor
+                 shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius).cgPath //12
+                 shadowLayer.fillColor = backgroundColor.cgColor //whire
             self.contentView.layer.masksToBounds = true
-                 shadowLayer.shadowColor = UIColor.darkGray.cgColor
+                 shadowLayer.shadowColor = shadowColor.cgColor //darkgrey
                  shadowLayer.shadowPath = shadowLayer.path
-                 shadowLayer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-                 shadowLayer.shadowOpacity = 0.6
-                 shadowLayer.shadowRadius = 3
+                 shadowLayer.shadowOffset = shadowOffset // 2.0 2.0
+                 shadowLayer.shadowOpacity = shadowOpacity //0.6
+                 shadowLayer.shadowRadius = shadowRadius // 3
             self.layer.masksToBounds = false
                  layer.insertSublayer(shadowLayer, at: 0)
                  //layer.insertSublayer(shadowLayer, below: nil) // also works

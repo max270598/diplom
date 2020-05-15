@@ -18,7 +18,7 @@ class CreditSkeletonCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.setShadow()
+        self.setShadow(cornerRadius: 12, backgroundColor: .white, shadowColor: .darkGray, shadowOffset: CGSize(width: 2.0, height: 2.0), shadowOpacity: 0.6, shadowRadius: 3)
     }
     
 }

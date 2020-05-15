@@ -17,7 +17,7 @@ class ProfileCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var emailEditButton: UIButton!
     
     
-    var delegate: emailPhoneChanged?
+    var delegate: emailPhoneChangedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

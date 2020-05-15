@@ -7,19 +7,98 @@
 //
 
 import UIKit
+import MessageUI
+
 import Firebase
 
 enum AlertType {
     case changeEmail
     case changePassword
     case resetPassword
+    case aboutApp
 }
 
 class AlertViewController: UIViewController {
-
-    let user = Auth.auth().currentUser
-
-     let credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+     var credential: AuthCredential = EmailAuthProvider.credential(withEmail: UserDefaults.standard.string(forKey: "UserEmail") ?? "", password: UserDefaults.standard.string(forKey: "UserPassword") ?? "" )
+        let currentUser = Auth.auth().currentUser
+        let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+    
+    var delegate: dissmissDelegate?
+    
+    @IBOutlet weak var aboutAppUnderstandButton: UIButton!
+    @IBOutlet weak var aboutAppView: UIView!
+    @IBOutlet weak var aboutAppTextView: UITextView!
+    @IBAction func aboutAppVKButtonTapped(_ sender: Any) {
+        let url = URL(string: "vk://vk.com/public195368419")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        } else {
+          //redirect to safari because the user doesn't have Instagram
+             UIApplication.shared.openURL(NSURL(string: "https://vk.com/public195368419")! as URL)
+        }
+    }
+    @IBAction func aboutAppInstButtonTapped(_ sender: Any) {
+        let url = URL(string: "https://www.instagram.com/vsebankiru.official/")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        } else {
+          //redirect to safari because the user doesn't have Instagram
+             UIApplication.shared.openURL(NSURL(string: "https://www.instagram.com/")! as URL)
+        }
+    }
+    @IBAction func aboutAppMailButtonTapped(_ sender: Any) {
+        let mailComposeViewController = configureMailComposer(recepients: ["vsebankiru@gmail.com"])
+              if MFMailComposeViewController.canSendMail(){
+                  self.present(mailComposeViewController, animated: true, completion: nil)
+              }else{
+                  print("Can't send email")
+              }
+    }
+    
+    @IBAction func aboutAppUnderstandButtonTapped(_ sender: Any) {
+        self.cancelButtonAction()
+    }
+    
+    
+    @IBOutlet weak var developerView: UIView!
+    @IBOutlet weak var devloperNameLabel: UILabel!
+    @IBAction func developerVKButtonTapped(_ sender: Any) {
+//        https://vk.com/m.olyushkin
+        let url = URL(string: "vk://vk.com/m.olyushkin")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        } else {
+          //redirect to safari because the user doesn't have Instagram
+             UIApplication.shared.openURL(NSURL(string: "https://vk.com/m.olyushkin")! as URL)
+        }
+        
+    }
+    @IBAction func developerInstButtonTapped(_ sender: Any) {
+        let url = URL(string: "https://www.instagram.com/maximka2705/")
+        if UIApplication.shared.canOpenURL(url!) {
+            UIApplication.shared.openURL(url!)
+        } else {
+          //redirect to safari because the user doesn't have Instagram
+             UIApplication.shared.openURL(NSURL(string: "https://www.instagram.com/")! as URL)
+        }
+    }
+    @IBAction func developerMailButtonTapped(_ sender: Any) {
+        let mailComposeViewController = configureMailComposer(recepients: ["8102892@gmail.com"])
+                     if MFMailComposeViewController.canSendMail(){
+                         self.present(mailComposeViewController, animated: true, completion: nil)
+                     }else{
+                         print("Can't send email")
+                     }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     @IBOutlet weak var passwordResetView: UIView!
     @IBOutlet weak var resetDoneButton: UIButton!
@@ -35,9 +114,29 @@ class AlertViewController: UIViewController {
     }
     
     
+//    @IBOutlet weak var emailChangeCancelButton: UIButton!
+    
     @IBOutlet weak var emailChangeAlertView: UIView!
     @IBOutlet weak var activityController: UIActivityIndicatorView!
-    
+    var emailToChange: String?
+//    @IBAction func emailChangeCancelButtonTapped(_ sender: Any) {
+//        print("Credentioal", self.credential, "\n\n\n\n\n\n")
+//        Auth.auth().signIn(with: self.credential) { (result, error) in
+//            guard error == nil else {print("Error", error?.localizedDescription); return}
+//            self.currentUser?.reauthenticate(with: self.credential, completion: { [weak self] (result, error) in
+//                    guard error == nil else { print("Error", error?.localizedDescription); return }
+//                       print("RESULT", result, "\n\n\n\n\n\n\n")
+//                       print("curentUser", self?.currentUser, "\n\n\n\n\n\n\n")
+//                   self?.currentUser?.updateEmail(to: UserDefaults.standard.string(forKey: "UserEmail") ?? "") { (error) in
+//                            guard error == nil else { print("Error", error?.localizedDescription) ; return }
+//
+//                       }
+//                       })
+//                   self.delegate?.reloadCell(at: 0)
+//                   self.cancelButtonAction()
+//        }
+//
+//    }
     
     @IBOutlet weak var passwordChangeView: UIView!
     @IBOutlet weak var changeOldPasswordTextField: UITextField!
@@ -59,6 +158,7 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        setupUILoad()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -77,17 +177,21 @@ class AlertViewController: UIViewController {
 extension AlertViewController {
     
     func setupUILoad() {
-        
         let butArr: [UIButton] = [self.resetCancelButton, self.changeCancelButton, self.resetDoneButton, self.changeDoneButton]
+        let viewsArr: [UIView] = [self.emailChangeAlertView, self.passwordResetView, self.passwordChangeView, self.aboutAppView, self.developerView]
         
         butArr.forEach { (button) in
             button.clipsToBounds = true
             button.layer.cornerRadius = 6
         }
         
-         self.emailChangeAlertView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
-                self.passwordChangeView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
-                self.passwordResetView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
+        viewsArr.forEach { (view) in
+            view.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
+        }
+        
+        self.aboutAppUnderstandButton.clipsToBounds = true
+        self.aboutAppUnderstandButton.cornerRadius = self.aboutAppUnderstandButton.frame.height / 2
+        
 
                 let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
                 let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -106,17 +210,36 @@ extension AlertViewController {
             self.emailChangeAlertView.isHidden = false
             self.passwordResetView.isHidden = true
             self.passwordChangeView.isHidden = true
+            self.aboutAppView.isHidden = true
+            self.developerView.isHidden = true
+            self.aboutAppUnderstandButton.isHidden = true
             self.changeEmail()
         case .changePassword:
             self.passwordChangeView.isHidden = false
             self.emailChangeAlertView.isHidden = true
             self.passwordResetView.isHidden = true
+            self.aboutAppView.isHidden = true
+            self.developerView.isHidden = true
+            self.aboutAppUnderstandButton.isHidden = true
+
             self.changePassword()
         case .resetPassword:
             self.passwordResetView.isHidden = false
             self.emailChangeAlertView.isHidden = true
             self.passwordChangeView.isHidden = true
+            self.aboutAppView.isHidden = true
+            self.developerView.isHidden = true
+            self.aboutAppUnderstandButton.isHidden = true
+
             self.resetPassword()
+            
+        case .aboutApp:
+            self.aboutAppUnderstandButton.isHidden = false
+            self.aboutAppView.isHidden = false
+            self.developerView.isHidden = false
+            self.passwordResetView.isHidden = true
+            self.emailChangeAlertView.isHidden = true
+            self.passwordChangeView.isHidden = true
         default:
             print("")
         }
@@ -129,33 +252,51 @@ extension AlertViewController {
     func changeEmail(){
         self.activityController.startAnimating()
         
-        let timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] (timer) in
-                   
-            self?.user?.reload(completion: { (error) in
-                if let error = error {
-                    print(error.localizedDescription)
-                 } else {
-                    if self?.user != nil && (self?.user!.isEmailVerified)! {
-                        print("user verified")
-                            self?.activityController.stopAnimating()
-                            timer.invalidate()
-                            do {
-                                                       try Auth.auth().signOut()
-                                                        } catch {
-                                                            print(error.localizedDescription)
-                                                        }
-                                                    
-                                                    let storyB = UIStoryboard(name: "Main", bundle: nil)
-                                                    let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                                                    vc.modalPresentationStyle = .fullScreen
-                            self?.present(vc, animated: true, completion: nil)
-                         } else {
-                            print("user isnt verified")
-                            
-                    }
-                        }
-                })
-        }
+        self.currentUser?.reauthenticate(with: self.credential, completion: { [weak self] (result, error) in
+             guard error == nil else { print("Error", error?.localizedDescription); return }
+            self?.currentUser?.updateEmail(to: self?.emailToChange ?? "") { (error) in
+                     guard error == nil else { print("Error", error?.localizedDescription) ; return }
+
+                     self?.currentUser?.sendEmailVerification(completion: { (error) in
+                         guard error == nil else { print("ERROR", error?.localizedDescription); return }
+                        
+                                let timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] (timer) in
+                                           
+                                    self?.currentUser?.reload(completion: { (error) in
+                                        guard error == nil else {print("Error", error?.localizedDescription); return}
+                                        
+                                        guard self?.currentUser != nil && (self?.currentUser!.isEmailVerified)! else {return}
+                        //                    if self?.user != nil && (self?.user!.isEmailVerified)! {
+                                                print("user verified")
+                                        UserDefaults.standard.set(self?.emailToChange, forKey: "UserEmail")
+                                        self?.userRef.child((self?.currentUser?.uid)!).child("email").setValue(self?.emailToChange)
+                                                    self?.activityController.stopAnimating()
+                                                    timer.invalidate()
+                                                    do {
+                                                                               try Auth.auth().signOut()
+                                                                                } catch {
+                                                                                    print(error.localizedDescription)
+                                                                                }
+                                                                            
+                                                                            let storyB = UIStoryboard(name: "Main", bundle: nil)
+                                                                            let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
+                                                                            vc.modalPresentationStyle = .fullScreen
+                                                    self?.present(vc, animated: true, completion: nil)
+                        //                         } else {
+                        //                            print("user isnt verified")
+                        //
+                        //                    }
+                                                
+                                        })
+                                }
+
+                        
+                        
+                        
+                     })
+             }
+         })
+        
     }
     
     
@@ -169,10 +310,10 @@ extension AlertViewController {
         guard newPasswordText == confirmPasswordText else { showError(errorText: "Пароли не совпадают"); return}
         
                                 //Смена пароля
-                    user?.reauthenticate(with: credential, completion: { [weak self] (result, error) in
+                    currentUser?.reauthenticate(with: credential, completion: { [weak self] (result, error) in
                         guard  error == nil else { print(error?.localizedDescription); return }
                         
-                        self?.user?.updatePassword(to: newPasswordText, completion: {[weak self] (error) in
+                        self?.currentUser?.updatePassword(to: newPasswordText, completion: {[weak self] (error) in
                             guard  error == nil else { print(error?.localizedDescription); return }
                             
                             self?.showSuccessAndDissmiss()
@@ -192,13 +333,19 @@ extension AlertViewController {
         Auth.auth().sendPasswordReset(withEmail: emailText) {[weak self] (error) in
             guard error == nil else {print("ErrorRESET", error?.localizedDescription); self?.showError(errorText: "Такого пользователя не существует"); return }
             
-            print("Отправлено")
+            self?.showSuccessAndDissmiss()
+            
         }
+        
+    }
+    
+    func aboutApp() {
         
     }
     
     
     func cancelButtonAction() {
+        self.delegate?.showTabBar()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -230,7 +377,7 @@ extension AlertViewController {
         switch self.alertType {
         case .changeEmail:
 
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+            UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
                 self?.changeErrorLabel.alpha = 1
                 }, completion: { _ in
                     do {
@@ -246,7 +393,7 @@ extension AlertViewController {
             })
             
         case .changePassword:
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+            UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
                          self?.changeErrorLabel.alpha = 1
                          }, completion: { _ in
                              do {
@@ -262,7 +409,7 @@ extension AlertViewController {
                      })
         case .resetPassword:
             
-            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
+            UIView.animate(withDuration: 1.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
                 self?.changeErrorLabel.alpha = 1
                 }, completion: { _ in
                 
@@ -275,3 +422,20 @@ extension AlertViewController {
     }
     
 }
+
+
+extension AlertViewController: MFMailComposeViewControllerDelegate {
+    func configureMailComposer(recepients: [String]) -> MFMailComposeViewController{
+        let mailComposeVC = MFMailComposeViewController()
+        mailComposeVC.mailComposeDelegate = self
+        mailComposeVC.setToRecipients(recepients)
+        mailComposeVC.setSubject("")
+        mailComposeVC.setMessageBody("Добрый день! \n\n", isHTML: false)
+        return mailComposeVC
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+}
+

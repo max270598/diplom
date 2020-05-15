@@ -20,7 +20,10 @@ class QuotationNetworkService {
             
                 do {
                                 let quotation = try JSONDecoder().decode(Array<QuotationModel>.self, from: data)
-                                complition(quotation)
+                    DispatchQueue.main.async {
+                                                        complition(quotation)
+
+                    }
                                
                             } catch let jsonError {
                                 print("someError happend", jsonError)

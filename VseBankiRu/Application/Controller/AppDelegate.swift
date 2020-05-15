@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.toolbarDoneBarButtonItemText = "Готово"
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         IQKeyboardManager.shared.disabledDistanceHandlingClasses.append(PrivateOfficeViewController.self)
+        IQKeyboardManager.shared.disabledTouchResignedClasses.append(PrivateOfficeViewController.self)
         IQKeyboardManager.shared.disabledToolbarClasses.append(PrivateOfficeViewController.self)
 //        CalculatorViewController
         

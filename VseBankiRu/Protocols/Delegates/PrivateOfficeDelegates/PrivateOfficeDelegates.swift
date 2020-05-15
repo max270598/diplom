@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol emailPhoneChanged {
+protocol emailPhoneChangedDelegate {
     func changeEmail(email: String)
     func changePhone(phoneNumber: String)
 }
@@ -16,4 +16,12 @@ protocol emailPhoneChanged {
 protocol aboutHelpDelegate {
     func showAboutApp()
     func showHelp()
+}
+
+protocol dissmissDelegate {
+    func showTabBar()
+}
+
+protocol reloadCellDelagate {
+    func reloadCell(at index: Int)
 }

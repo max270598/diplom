@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     
-    @IBOutlet weak var createAccountButton: UIButton!
+    @IBOutlet weak var createAccountButton: LoadingButton!
     var ref: DatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +47,25 @@ class RegisterViewController: UIViewController {
     }
 
     @IBAction func createAccountButtonTapped(_ sender: Any) {
+        self.createAccountButton.showLoading()
+        
         guard let name = self.firstNameTextField.text, let phone = self.phoneTextField.text, let email = self.emailTextField.text, let password = passwordTextField.text, name != "", phone != "", email != "", password != "", let confirmPassword = confirmPasswordTextField.text, confirmPassword != "" else {
                 showErrorLabel(with: "Заполните все поля")
+            self.createAccountButton.hideLoading()
                 return
             }
         
         guard password.count > 5 else {
             showErrorLabel(with: "Пароль должен содержать не менее 6 символов")
+            self.createAccountButton.hideLoading()
+
             return
         }
         
         guard confirmPassword == password else {
             showErrorLabel(with: "Пароли не совпадают")
+            self.createAccountButton.hideLoading()
+
             return
         }
          
@@ -95,8 +102,10 @@ extension RegisterViewController {
             guard user != nil, error == nil else {
                 print(error?.localizedDescription)
                 if (error?.localizedDescription)! == "The email address is already in use by another account." {
-                    self?.showErrorLabel(with: "The email address is already exist")
+                    self?.showErrorLabel(with: "Пользователь с таким Email уже существует")
                 }
+                self?.createAccountButton.hideLoading()
+
                 return
             }
          
