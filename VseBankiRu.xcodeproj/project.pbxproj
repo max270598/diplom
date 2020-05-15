@@ -125,6 +125,7 @@
 		A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A7C3CB7323FEAEF500F5DB01 /* SF-Pro-Text-Light.otf */; };
 		A7C3CB7E23FECFB600F5DB01 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A7C3CB7D23FECFB600F5DB01 /* SF-Pro-Display-Bold.otf */; };
 		A7C3CB8123FEDD7000F5DB01 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C3CB8023FEDD7000F5DB01 /* Gradient.swift */; };
+		A7C47C5D246F00EE00156212 /* LastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7C47C5C246F00EE00156212 /* LastViewController.swift */; };
 		A7CBA4252439132C009CB3E0 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA4242439132C009CB3E0 /* UIViewController+Extension.swift */; };
 		A7CBA428243B4936009CB3E0 /* BannersSubModuleProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA427243B4936009CB3E0 /* BannersSubModuleProtocol.swift */; };
 		A7CBA42B243BDAD3009CB3E0 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CBA42A243BDAD3009CB3E0 /* UICollectionView+Extension.swift */; };
@@ -265,6 +266,7 @@
 		A7C3CB7323FEAEF500F5DB01 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		A7C3CB7D23FECFB600F5DB01 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		A7C3CB8023FEDD7000F5DB01 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		A7C47C5C246F00EE00156212 /* LastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastViewController.swift; sourceTree = "<group>"; };
 		A7CBA4242439132C009CB3E0 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		A7CBA427243B4936009CB3E0 /* BannersSubModuleProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersSubModuleProtocol.swift; sourceTree = "<group>"; };
 		A7CBA42A243BDAD3009CB3E0 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
@@ -1089,6 +1091,7 @@
 		A796782423ED812600CE4E94 /* VseBankiRu */ = {
 			isa = PBXGroup;
 			children = (
+				A7C47C5B246F00D500156212 /* tarsh */,
 				A7CBA499243F98E7009CB3E0 /* VseBankiRu.entitlements */,
 				A7F1343E2450D49F000FF164 /* Protocols */,
 				A7CBA426243B491C009CB3E0 /* SubModules */,
@@ -1187,6 +1190,14 @@
 				A7359E852461E8160091E673 /* EmptyTableViewCell */,
 			);
 			path = ReUsable;
+			sourceTree = "<group>";
+		};
+		A7C47C5B246F00D500156212 /* tarsh */ = {
+			isa = PBXGroup;
+			children = (
+				A7C47C5C246F00EE00156212 /* LastViewController.swift */,
+			);
+			path = tarsh;
 			sourceTree = "<group>";
 		};
 		A7CBA41D2438D7B4009CB3E0 /* Modules */ = {
@@ -1550,6 +1561,7 @@
 				A7359E71246059FD0091E673 /* DocumentsTableViewCell.swift in Sources */,
 				A76D77B124658758006BBC65 /* CalculatorModel.swift in Sources */,
 				A75B69952466031E00032CA6 /* CalculatorDelegates.swift in Sources */,
+				A7C47C5D246F00EE00156212 /* LastViewController.swift in Sources */,
 				A7359E58245F27380091E673 /* TitleTitleTableViewCell.swift in Sources */,
 				A7304D7E245901F300F0AECF /* SceneDelegate.swift in Sources */,
 				A742A21E243287750008AEEF /* CreditsListViewController.swift in Sources */,

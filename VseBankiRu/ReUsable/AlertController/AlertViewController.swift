@@ -278,10 +278,8 @@ extension AlertViewController {
                                                                                     print(error.localizedDescription)
                                                                                 }
                                                                             
-                                                                            let storyB = UIStoryboard(name: "Main", bundle: nil)
-                                                                            let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                                                                            vc.modalPresentationStyle = .fullScreen
-                                                    self?.present(vc, animated: true, completion: nil)
+                                        self?.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
                         //                         } else {
                         //                            print("user isnt verified")
                         //
@@ -371,7 +369,7 @@ extension AlertViewController {
     }
     
     func showSuccessAndDissmiss() {
-        self.changeErrorLabel.textColor = .green
+        self.changeErrorLabel.textColor = .systemGreen
         self.changeErrorLabel.text = "Успешно"
         
         switch self.alertType {
@@ -385,10 +383,8 @@ extension AlertViewController {
                                                 } catch {
                                                     print(error.localizedDescription)
                                                 }
-                    let storyB = UIStoryboard(name: "Main", bundle: nil)
-                                            let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                                            vc.modalPresentationStyle = .fullScreen
-                    self.present(vc, animated: true, completion: nil)
+                                                self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
                         
             })
             
@@ -401,10 +397,7 @@ extension AlertViewController {
                                                          } catch {
                                                              print(error.localizedDescription)
                                                          }
-                            let storyB = UIStoryboard(name: "Main", bundle: nil)
-                                                    let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                                                    vc.modalPresentationStyle = .fullScreen
-                            self.present(vc, animated: true, completion: nil)
+                            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
 
                      })
         case .resetPassword:

@@ -16,7 +16,7 @@ class CreditsListFilterViewController: UIViewController {
        
     var allCredits: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
-    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 10000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
     
     var delegate: PassDataFromFilterToListDelegate?
@@ -247,7 +247,7 @@ private extension CreditsListFilterViewController {
     }
     
     @objc func resetButton() {
-        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 10000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
                self.reloadWithFilter()
 
     }
@@ -277,7 +277,7 @@ private extension CreditsListFilterViewController {
         }
     
     func addResultButtonShadow() {
-        self.resultButton.backgroundColor = UIColor.systemGreen
+        self.resultButton.backgroundColor = UIColor.systemIndigo
 
         self.resultButton.addShadowCorner(cornerRadius: self.resultButton.frame.height / 2, offset: CGSize(width: 0, height: 3), color: .black, radius: 10, opacity: 0.3)
             

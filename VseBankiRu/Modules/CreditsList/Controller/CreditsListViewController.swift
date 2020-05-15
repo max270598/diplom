@@ -37,7 +37,7 @@ class CreditsListViewController: UIViewController {
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var filteredCredits: [CreditModel]? = []
-    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
+    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
     var isFiltered: Bool = false
     
     var sortedItem: SortingType? = nil
@@ -47,7 +47,11 @@ class CreditsListViewController: UIViewController {
             self.filteredCredits = self.allCredits
         }
     }
-    var bannersArray: [CreditModel] = [CreditModel()]
+    var bannersArray: [CreditModel] = [CreditModel()] {
+        didSet {
+            print("BANNERSARRAY", bannersArray)
+        }
+    }
     private var currentPage: Int = 0 {
           didSet {
               if self.currentPage >= 0 && self.currentPage <= self.bannersArray.count-1 {
@@ -185,7 +189,18 @@ extension CreditsListViewController: UIScrollViewDelegate {
             self.hideSlider()
 
         }
-
+    }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == self.mainCollectionView {
+            self.showFilterButton()
+        }
+    }
+    
+    func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == self.mainCollectionView {
+            self.hideFilterButton()
+        }
     }
 
 }
@@ -220,7 +235,7 @@ extension CreditsListViewController: InfiniteScrollingBehaviourDelegate {
         guard let bannerModel = self.bannersArray[originalIndex] as? CreditModel else { return }
       
         let detailVC = CreditsListDetailViewController(nibName: "CreditsListDetailViewController", bundle: nil)
-        detailVC.detailCredit = self.filteredCredits![indexPath.row - 1]
+        detailVC.detailCredit = self.bannersArray[indexPath.row - 1]
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -299,6 +314,7 @@ extension CreditsListViewController: ShareOpenLinkDelegate {
             layout.itemSize = CGSize(width: 355, height: 138)
             layout.minimumLineSpacing = 20
             layout.minimumInteritemSpacing = 20
+            layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
             self.mainCollectionView.collectionViewLayout = layout
             
             self.addTableViewCorners()
@@ -419,6 +435,19 @@ private extension CreditsListViewController {
 
           }
       }
+    
+    func showFilterButton() {
+        UIView.animate(withDuration: 0.3) {
+            self.filterButton.alpha = 1
+        }
+        
+    }
+    
+    func hideFilterButton() {
+        UIView.animate(withDuration: 0.3) {
+                   self.filterButton.alpha = 0
+               }
+    }
     
     
     

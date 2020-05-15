@@ -135,7 +135,6 @@ extension CalculatorViewController {
 
 extension CalculatorViewController: CalculatorSliderDelegate{
     func sliderValueDidChange(sliderType: SliderType, value: Float) {
-       print("FIRSTINdex",  self.sliredArray.firstIndex(of: sliderType) )
         let index = self.sliredArray.firstIndex(of: sliderType)
         self.sliderArrayRaws[index ?? 0] = value
         self.calculatorHeaderModel.update(type: sliderType, newValue: Double(value))

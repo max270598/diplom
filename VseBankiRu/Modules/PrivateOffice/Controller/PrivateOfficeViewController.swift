@@ -190,14 +190,7 @@ extension PrivateOfficeViewController {
                 self.present(alertVC, animated: true, completion: nil)
                 
 
-                        
-                        
-    
-                        
-                         
                     
-            
-            
             
             //Выход
                      default:
@@ -207,10 +200,8 @@ extension PrivateOfficeViewController {
                                  print(error.localizedDescription)
                              }
                          
-                         let storyB = UIStoryboard(name: "Main", bundle: nil)
-                         let vc = storyB.instantiateViewController(identifier: "AuthorisationViewController")
-                         vc.modalPresentationStyle = .fullScreen
-                         self.present(vc, animated: true, completion: nil)
+                                                     self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+
                      }
     }
     
