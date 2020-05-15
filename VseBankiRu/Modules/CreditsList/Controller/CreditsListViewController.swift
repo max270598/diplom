@@ -37,7 +37,7 @@ class CreditsListViewController: UIViewController {
     private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
     
     var filteredCredits: [CreditModel]? = []
-    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
+    var filterItem: FilterItemModel = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 0, noInsurance: false, noDeposit: false, noIncomeProof: false , reviewUpThreeDays: false)
     var isFiltered: Bool = false
     
     var sortedItem: SortingType? = nil
@@ -308,7 +308,7 @@ extension CreditsListViewController: ShareOpenLinkDelegate {
             self.mainCollectionView.register(UINib(nibName: "CreditSkeletonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CreditSkeletonCollectionViewCell")
             self.mainCollectionView.isSkeletonable = true
             
-
+            self.mainCollectionView.alwaysBounceVertical = true
             
             let layout = UICollectionViewFlowLayout()
             layout.itemSize = CGSize(width: 355, height: 138)

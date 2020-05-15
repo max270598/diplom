@@ -16,7 +16,7 @@ class CreditsListFilterViewController: UIViewController {
        
     var allCredits: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
-    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 0, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
     
     var delegate: PassDataFromFilterToListDelegate?
@@ -115,7 +115,7 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
         case 0:
             return 4
         case 1:
-            return 6
+            return 7
         default:
             return 0
         }
@@ -123,28 +123,36 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let sliderCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListSliderCell", for: indexPath) as? CreditsListSliderCell)!
-        let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
-        let switchCell = tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterSwitchCell", for: indexPath) as? CreditsListFilterSwitchCell
         
-        sliderCell.delegate = self
-        itemCell.delegate = self
-        switchCell?.delegate = self
+        
+       
 
         
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
+                let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
+                itemCell.delegate = self
+
                 ((self.filterItem.bankName != nil) && self.filterItem.bankName != "") ? itemCell.set(selectedItem: self.filterItem.bankName!, indexPathRow: indexPath.row) : itemCell.set(title: "Банк")
                 return itemCell
             case 1:
+                let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
+                itemCell.delegate = self
+
                 (self.filterItem.goal != nil) ? itemCell.set(selectedItem: self.filterItem.goal!, indexPathRow: indexPath.row) : itemCell.set(title: "Цель кредита")
                 return itemCell
             case 2:
+                let itemCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterItemCell", for: indexPath) as? CreditsListFilterItemCell)!
+                itemCell.delegate = self
+
                 ((self.filterItem.time != nil) && Formatter.formatTimeDoubleToString(num:self.filterItem.time!) != "" ) ? itemCell.set(selectedItem: Formatter.formatTimeDoubleToString(num:self.filterItem.time!), indexPathRow: indexPath.row) : itemCell.set(title: "Срок")
                 return itemCell
             case 3:
+                let sliderCell = (tableView.dequeueReusableCell(withIdentifier: "CreditsListSliderCell", for: indexPath) as? CreditsListSliderCell)!
+                sliderCell.delegate = self
+
                 sliderCell.configure(with: self.filterItem)
                 
                 return sliderCell
@@ -153,7 +161,9 @@ extension CreditsListFilterViewController: UITableViewDelegate, UITableViewDataS
 
             }
         case 1:
-            
+            let switchCell = tableView.dequeueReusableCell(withIdentifier: "CreditsListFilterSwitchCell", for: indexPath) as? CreditsListFilterSwitchCell
+                   
+                   switchCell?.delegate = self
             switch indexPath.row {
             case 0:
                 switchCell?.set(title: "Без страховки", state: self.filterItem.noInsurance)
@@ -247,7 +257,7 @@ private extension CreditsListFilterViewController {
     }
     
     @objc func resetButton() {
-        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 1000000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 0, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
                self.reloadWithFilter()
 
     }

@@ -57,7 +57,7 @@
                             <rect key="frame" x="168" y="213" width="39" height="37"/>
                         </pageControl>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Лучшие предложения" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JqE-0w-Y06">
-                            <rect key="frame" x="62.5" y="14" width="250" height="21.5"/>
+                            <rect key="frame" x="62.5" y="14" width="250" height="21"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="250" id="BMX-g0-dcf"/>
@@ -102,7 +102,7 @@
                 </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeh-gk-G2h">
                     <rect key="frame" x="67.5" y="583" width="240" height="44"/>
-                    <color key="backgroundColor" red="0.40000000000000002" green="0.3921568627" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.26840224847560978" green="0.31088780782195119" blue="0.43378569990975624" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="G14-dB-2rp"/>
                         <constraint firstAttribute="height" constant="44" id="sLa-DO-p8m"/>
