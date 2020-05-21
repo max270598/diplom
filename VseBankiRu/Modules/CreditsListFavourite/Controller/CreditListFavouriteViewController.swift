@@ -138,6 +138,7 @@ extension CreditListFavouriteViewController {
         layout.itemSize = CGSize(width: 355, height: 138)
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
         self.collectionView.collectionViewLayout = layout
         
     }

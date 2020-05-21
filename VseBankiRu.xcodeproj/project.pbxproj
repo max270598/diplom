@@ -83,6 +83,8 @@
 		A75D758C2409337300A20824 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758B2409337300A20824 /* NetworkService.swift */; };
 		A75D758F240933B500A20824 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D758E240933B500A20824 /* NetworkError.swift */; };
 		A75D75942409386000A20824 /* QuotationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75D75932409386000A20824 /* QuotationModel.swift */; };
+		A767543124745F31001B1BEE /* CalculatorCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A767542F24745F31001B1BEE /* CalculatorCellTableViewCell.swift */; };
+		A767543224745F31001B1BEE /* CalculatorCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A767543024745F31001B1BEE /* CalculatorCellTableViewCell.xib */; };
 		A76A12A124674F18009273BD /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A129F24674F18009273BD /* ProfileCollectionViewCell.swift */; };
 		A76A12A224674F18009273BD /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A76A12A024674F18009273BD /* ProfileCollectionViewCell.xib */; };
 		A76A12A624674F3E009273BD /* InfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76A12A424674F3E009273BD /* InfoCollectionViewCell.swift */; };
@@ -220,6 +222,8 @@
 		A75D758B2409337300A20824 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		A75D758E240933B500A20824 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A75D75932409386000A20824 /* QuotationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotationModel.swift; sourceTree = "<group>"; };
+		A767542F24745F31001B1BEE /* CalculatorCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorCellTableViewCell.swift; sourceTree = "<group>"; };
+		A767543024745F31001B1BEE /* CalculatorCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculatorCellTableViewCell.xib; sourceTree = "<group>"; };
 		A76A129F24674F18009273BD /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 		A76A12A024674F18009273BD /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
 		A76A12A424674F3E009273BD /* InfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -605,6 +609,7 @@
 				A7359E65245F7E880091E673 /* SegmentControllCell */,
 				A7359E6E246059D60091E673 /* DocumentsCell */,
 				A743BEA024649E78005DF287 /* DocumentsDescriptionCell */,
+				A76754332476A53B001B1BEE /* CalculatorCell */,
 				A7359E802461DB420091E673 /* ButtonCell */,
 			);
 			path = SubViews;
@@ -891,6 +896,15 @@
 				A7304D7D245901F300F0AECF /* SceneDelegate.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		A76754332476A53B001B1BEE /* CalculatorCell */ = {
+			isa = PBXGroup;
+			children = (
+				A767542F24745F31001B1BEE /* CalculatorCellTableViewCell.swift */,
+				A767543024745F31001B1BEE /* CalculatorCellTableViewCell.xib */,
+			);
+			path = CalculatorCell;
 			sourceTree = "<group>";
 		};
 		A76A129D24674E97009273BD /* View */ = {
@@ -1408,6 +1422,7 @@
 				A7C3CB7C23FEAEF500F5DB01 /* SF-Pro-Text-Light.otf in Resources */,
 				A7C133C32466C7C30001F0F5 /* CalculatorDateTableViewCell.xib in Resources */,
 				A796783223ED812900CE4E94 /* Assets.xcassets in Resources */,
+				A767543224745F31001B1BEE /* CalculatorCellTableViewCell.xib in Resources */,
 				A7359E842461E80D0091E673 /* EmptyTableViewCell.xib in Resources */,
 				A7359E69245F833E0091E673 /* SegmentControllTableViewCell.xib in Resources */,
 				A796782D23ED812600CE4E94 /* Main.storyboard in Resources */,
@@ -1559,6 +1574,7 @@
 				A7238FFE246DD5D90086672C /* PartnersNetworkService.swift in Sources */,
 				A7359E4F245F1CBD0091E673 /* CreditsListDetailViewController.swift in Sources */,
 				A75D758C2409337300A20824 /* NetworkService.swift in Sources */,
+				A767543124745F31001B1BEE /* CalculatorCellTableViewCell.swift in Sources */,
 				A78157402468226100DE67FE /* PrivateOfficeDelegates.swift in Sources */,
 				A75D758F240933B500A20824 /* NetworkError.swift in Sources */,
 				A731A7F22464CFB500E53265 /* CalculatorViewController.swift in Sources */,

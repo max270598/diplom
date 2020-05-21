@@ -41,9 +41,9 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sberbank" translatesAutoresizingMaskIntoConstraints="NO" id="yaF-6u-MyH">
-                        <rect key="frame" x="50" y="0.0" width="75" height="56"/>
+                        <rect key="frame" x="50" y="4" width="75" height="52"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="56" id="GW8-Mj-MOh"/>
+                            <constraint firstAttribute="height" constant="52" id="GW8-Mj-MOh"/>
                             <constraint firstAttribute="width" constant="75" id="hkj-O5-8hC"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -74,7 +74,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d54-9U-8XW" secondAttribute="trailing" constant="4" id="IAm-X1-O7M"/>
-                <constraint firstItem="yaF-6u-MyH" firstAttribute="top" secondItem="Bke-s4-KoD" secondAttribute="top" id="K6y-mu-AfF"/>
+                <constraint firstItem="yaF-6u-MyH" firstAttribute="top" secondItem="Bke-s4-KoD" secondAttribute="top" constant="4" id="K6y-mu-AfF"/>
                 <constraint firstItem="nXC-JM-SnW" firstAttribute="top" secondItem="yaF-6u-MyH" secondAttribute="bottom" constant="4" id="LT0-U6-9WE"/>
                 <constraint firstItem="nXC-JM-SnW" firstAttribute="centerX" secondItem="Bke-s4-KoD" secondAttribute="centerX" id="LiF-Bc-HKq"/>
                 <constraint firstItem="yaF-6u-MyH" firstAttribute="centerX" secondItem="Bke-s4-KoD" secondAttribute="centerX" id="MW1-Gj-Pyy"/>

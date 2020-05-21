@@ -94,6 +94,7 @@ extension CatalogViewController {
         
         self.partnersCollectionView.register(UINib(nibName: "CatalogPartnersSkeletonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CatalogPartnersSkeletonCollectionViewCell")
         
+        self.partnersCollectionView.showsHorizontalScrollIndicator = false
         self.partnersCollectionView.delegate = self
         self.partnersCollectionView.dataSource = self
         

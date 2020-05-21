@@ -20,6 +20,7 @@ class CreditsListDetailViewController: UIViewController {
     @IBOutlet weak var listTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Детали"
         setupTableView()
         setupNavigationBar()
         
@@ -41,11 +42,17 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 
     return UITableView.automaticDimension
-        
-        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 13
+        return 14
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+        if indexPath == [0,10] {
+            let calcVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
+        self.navigationController?.pushViewController(calcVC, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,19 +102,29 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
             documentsCell.configure(model: credit, type: self.documentType, height: 20)
             return documentsCell
+            
+            
+            
+            
         case 9:
             let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
             documentsDescriptionCell.configure(model: credit, type: self.documentType)
             return documentsDescriptionCell
         case 10:
-             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
-             return emptyCell
+            let calcCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCellTableViewCell", for: indexPath) as! CalculatorCellTableViewCell
+                       return calcCell
+            
+            
         case 11:
+           
+            let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
+                        return emptyCell
+        case 12:
             let buttonCell = tableView.dequeueReusableCell(withIdentifier: "ButtonTableViewCell", for: indexPath) as! ButtonTableViewCell
                    buttonCell.delegate = self
             buttonCell.configure(url: credit.credit_url)
             return buttonCell
-        case 12:
+        case 13:
              let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
             
             return emptyCell
@@ -133,13 +150,14 @@ extension CreditsListDetailViewController {
         self.listTableView.register(UINib(nibName: "DocumentsDescriptionTableViewCell", bundle: nil), forCellReuseIdentifier: "DocumentsDescriptionTableViewCell")
         self.listTableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonTableViewCell")
         self.listTableView.register(UINib(nibName: "EmptyTableViewCell", bundle: nil), forCellReuseIdentifier: "EmptyTableViewCell")
+         self.listTableView.register(UINib(nibName: "CalculatorCellTableViewCell", bundle: nil), forCellReuseIdentifier: "CalculatorCellTableViewCell")
         
         
         self.listTableView.dataSource = self
         self.listTableView.delegate = self
         
         self.listTableView.separatorStyle = .none
-        self.listTableView.allowsSelection = false
+//        self.listTableView.allowsSelection = false
     }
 }
 
