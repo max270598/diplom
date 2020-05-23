@@ -16,6 +16,10 @@ class CatalogPartnersCollectionViewCell: UICollectionViewCell {
     var shadowLayer = CAShapeLayer()
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.backgroundColor = UIColor.white
+
+            self.addShadowCorner(cornerRadius: 12, offset: CGSize(width: 0, height: 0), color: .darkGray, radius: 5, opacity: 0.2)
+//         self.setShadow(cornerRadius: 12, backgroundColor: .white, shadowColor: .darkGray, shadowOffset: CGSize(width: 0, height: 0), shadowOpacity: 0.2, shadowRadius: 5)
         self.isUserInteractionEnabled = false
 //        self.backView.addShadowCorner(cornerRadius: 10, offset: CGSize(width: 0, height: 0), color: .black, radius: 10, opacity: 0.6)
         // Initialization code
@@ -24,7 +28,7 @@ class CatalogPartnersCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.setShadow(cornerRadius: 12, backgroundColor: .white, shadowColor: .darkGray, shadowOffset: CGSize(width: 0, height: 0), shadowOpacity: 0.2, shadowRadius: 5)
+       
     }
 
 }

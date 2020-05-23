@@ -15,6 +15,8 @@ class CreditsListDetailViewController: UIViewController {
     var documentType: DocumentType = .rates
     var lastDocumentIndex = 0
     
+    let imageView = UIImageView()
+                    
     
     
     @IBOutlet weak var listTableView: UITableView!
@@ -24,8 +26,14 @@ class CreditsListDetailViewController: UIViewController {
         setupTableView()
         setupNavigationBar()
         
-        // Do any additional setup after loading the view.
+        
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+    }
+    
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -34,7 +42,6 @@ class CreditsListDetailViewController: UIViewController {
 
 
 }
-
 
 
 
@@ -49,7 +56,7 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath)
-        if indexPath == [0,10] {
+        if indexPath == [0,7] {
             let calcVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CalculatorViewController") as! CalculatorViewController
         self.navigationController?.pushViewController(calcVC, animated: true)
         }
@@ -94,29 +101,35 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             descriptionCell.configure(text: credit.description ?? "")
             return descriptionCell
         case 7:
+            let calcCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCellTableViewCell", for: indexPath) as! CalculatorCellTableViewCell
+
+                    return calcCell
+        case 8:
+            
             let segmentControllCell = tableView.dequeueReusableCell(withIdentifier: "SegmentControllTableViewCell", for: indexPath) as! SegmentControllTableViewCell
                    segmentControllCell.delegate = self
             segmentControllCell.configure()
             return segmentControllCell
-        case 8:
+            
+            
+        
+        case 9:
+            
             let documentsCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsTableViewCell", for: indexPath) as! DocumentsTableViewCell
             documentsCell.configure(model: credit, type: self.documentType, height: 20)
             return documentsCell
             
-            
-            
-            
-        case 9:
-            let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
-            documentsDescriptionCell.configure(model: credit, type: self.documentType)
-            return documentsDescriptionCell
-        case 10:
-            let calcCell = tableView.dequeueReusableCell(withIdentifier: "CalculatorCellTableViewCell", for: indexPath) as! CalculatorCellTableViewCell
-                       return calcCell
-            
-            
-        case 11:
+                   
            
+        case 10:
+           
+     let documentsDescriptionCell = tableView.dequeueReusableCell(withIdentifier: "DocumentsDescriptionTableViewCell", for: indexPath) as! DocumentsDescriptionTableViewCell
+     documentsDescriptionCell.configure(model: credit, type: self.documentType)
+     return documentsDescriptionCell
+
+
+        case 11:
+
             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
                         return emptyCell
         case 12:
@@ -126,15 +139,12 @@ extension CreditsListDetailViewController: UITableViewDataSource, UITableViewDel
             return buttonCell
         case 13:
              let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
-            
+
             return emptyCell
-        
         default:
-             let emptyCell = tableView.dequeueReusableCell(withIdentifier: "EmptyTableViewCell", for: indexPath) as! EmptyTableViewCell
-            return emptyCell
             print("")
-        }
         
+        }
         return UITableViewCell()
     }
     
@@ -190,10 +200,10 @@ extension CreditsListDetailViewController: CreditsDetailDelegate {
         
         if index > lastDocumentIndex {
             self.lastDocumentIndex = index
-            self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0), IndexPath(row: 9, section: 0)], with: .left)
+            self.listTableView.reloadRows(at: [IndexPath(row: 9, section: 0), IndexPath(row: 10, section: 0)], with: .left)
         } else {
             self.lastDocumentIndex = index
-        self.listTableView.reloadRows(at: [IndexPath(row: 8, section: 0), IndexPath(row: 9, section: 0)], with: .right)
+        self.listTableView.reloadRows(at: [IndexPath(row: 9, section: 0), IndexPath(row: 10, section: 0)], with: .right)
         }
     }
     
@@ -266,5 +276,4 @@ extension CreditsListDetailViewController {
 
     }
 }
-
 

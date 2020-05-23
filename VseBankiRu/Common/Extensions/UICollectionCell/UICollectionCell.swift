@@ -30,7 +30,10 @@ extension UICollectionViewCell {
                  shadowLayer.shadowOpacity = shadowOpacity //0.6
                  shadowLayer.shadowRadius = shadowRadius // 3
             self.layer.masksToBounds = false
-                 layer.insertSublayer(shadowLayer, at: 0)
+            if layer.sublayers?[0] != shadowLayer {
+                layer.insertSublayer(shadowLayer, at: 0)
+
+            }
                  //layer.insertSublayer(shadowLayer, below: nil) // also works
              }    }
     

@@ -12,6 +12,7 @@ class DocumentsDescriptionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var descriptionTextView: UITextView!
 
+    @IBOutlet weak var textViewHeight: NSLayoutConstraint!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.descriptionTextView.isScrollEnabled = false
@@ -22,7 +23,6 @@ class DocumentsDescriptionTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
         func configure(model: CreditModel, type: DocumentType) {
@@ -40,7 +40,8 @@ class DocumentsDescriptionTableViewCell: UITableViewCell {
                default:
                    print("default")
                }
-               
+            
+            
                
                
                
@@ -49,6 +50,19 @@ class DocumentsDescriptionTableViewCell: UITableViewCell {
                
                           
                self.descriptionTextView.translatesAutoresizingMaskIntoConstraints = false
-            self.descriptionTextView.sizeToFit()
+            let leadingAnchor = descriptionTextView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 20)
+                      let trailingAnchor = descriptionTextView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -20)
+                      let topAnchor = descriptionTextView.topAnchor.constraint(equalTo: self.contentView.topAnchor)
+                      let bottomAnchor = descriptionTextView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 10)
+            let heightAnchor = self.contentView.heightAnchor.constraint(equalToConstant: 0.5)
+            if self.descriptionTextView.text.isEmpty {
+                NSLayoutConstraint.activate([leadingAnchor, trailingAnchor, bottomAnchor, topAnchor, heightAnchor])
+
+            } else {
+                NSLayoutConstraint.activate([leadingAnchor, trailingAnchor, bottomAnchor, topAnchor])
+                self.descriptionTextView.sizeToFit()
+
+            }
+          
     }
 }

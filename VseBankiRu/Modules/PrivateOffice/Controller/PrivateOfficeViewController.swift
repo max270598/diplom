@@ -13,6 +13,8 @@ import DropDown
 
 class PrivateOfficeViewController: UIViewController {
 
+    @IBOutlet weak var changeUserNameButton: UIButton!
+    @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var infoCollectionView: UICollectionView!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -57,6 +59,24 @@ class PrivateOfficeViewController: UIViewController {
         self.infoCollectionView.scrollToItem(at: [0,sender.selectedSegmentIndex], at: .centeredHorizontally, animated: true)
     }
    
+    @IBAction func changeUserNameButtonTapped(_ sender: Any) {
+        
+        if self.changeUserNameButton.isSelected == true {
+               self.changeUserNameButton.isSelected = false
+                self.userNameTextField.isEnabled = false
+                self.userNameTextField.resignFirstResponder()
+                
+                guard let name = self.userNameTextField.text else {return}
+                           self.changeUserName(name: name)
+             }else {
+                
+                
+               self.changeUserNameButton.isSelected = true
+                self.userNameTextField.isEnabled = true
+                self.userNameTextField.becomeFirstResponder()
+             }
+        
+    }
     
 
 }
@@ -112,7 +132,11 @@ extension PrivateOfficeViewController {
         tapGesture.numberOfTouchesRequired = 1
         tapGesture.numberOfTapsRequired = 1
         self.avatarImage.addGestureRecognizer(tapGesture)
-        self.userNameLabel.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
+        
+        self.userNameTextField.text = UserDefaults.standard.string(forKey: "UserName") ?? "Пользователь"
+        self.userNameTextField.isEnabled = false
+        self.changeUserNameButton.setImage(UIImage(named: "icon_checkMark"), for: .selected)
+        self.changeUserNameButton.setImage(UIImage(named: "icon_edit"), for: .normal)
                self.title = "Кабинет"
                let titleTextAttributes1 = [NSAttributedString.Key.foregroundColor: UIColor.systemIndigo]
                self.infoSegmentControl.setTitleTextAttributes(titleTextAttributes1, for:.selected)
@@ -235,6 +259,15 @@ extension PrivateOfficeViewController: reloadCellDelagate {
 
 
 extension PrivateOfficeViewController: emailPhoneChangedDelegate {
+    
+    func changeUserName(name: String) {
+        guard name != UserDefaults.standard.string(forKey: "UserName") else {return}
+        UserDefaults.standard.set(name, forKey: "UserName")
+        let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+        userRef.child(Auth.auth().currentUser?.uid ?? "").child("name").setValue(name)
+        //Change UserName
+    }
+    
     func changeEmail(email: String) {
         guard email != UserDefaults.standard.string(forKey: "UserEmail") else {return}
         

@@ -117,14 +117,8 @@
                                     <constraint firstAttribute="height" constant="100" id="kOK-Nb-dfm"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Олюшкин Максим" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="imr-R0-9ZJ">
-                                <rect key="frame" x="20" y="184" width="335" height="27"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="23"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="M6Z-rD-sxX">
-                                <rect key="frame" x="20" y="231" width="335" height="32"/>
+                                <rect key="frame" x="20" y="232" width="335" height="32"/>
                                 <segments>
                                     <segment title="Профиль"/>
                                     <segment title="Инфо"/>
@@ -134,7 +128,7 @@
                                 </connections>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7Yd-CX-55Q">
-                                <rect key="frame" x="1" y="282" width="373" height="336"/>
+                                <rect key="frame" x="1" y="283" width="373" height="335"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1fL-7S-HaD">
                                     <size key="itemSize" width="50" height="50"/>
@@ -144,20 +138,40 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя пользователя" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rb0-OM-k4Z">
+                                <rect key="frame" x="94.5" y="184" width="186" height="28"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="23"/>
+                                <textInputTraits key="textInputTraits" textContentType="name"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Wt-hf-IGH">
+                                <rect key="frame" x="290.5" y="188" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="XnK-Yk-zZK"/>
+                                    <constraint firstAttribute="height" constant="20" id="t3L-Ed-alT"/>
+                                </constraints>
+                                <state key="normal" image="icon_edit"/>
+                                <connections>
+                                    <action selector="changeUserNameButtonTapped:" destination="RvT-FB-31b" eventType="touchUpInside" id="Mez-Lm-Pob"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="M6Z-rD-sxX" firstAttribute="top" secondItem="imr-R0-9ZJ" secondAttribute="bottom" constant="20" id="Eg8-sK-jkt"/>
+                            <constraint firstItem="6Wt-hf-IGH" firstAttribute="centerY" secondItem="Rb0-OM-k4Z" secondAttribute="centerY" id="A4R-Ry-4FZ"/>
+                            <constraint firstItem="6Wt-hf-IGH" firstAttribute="leading" secondItem="Rb0-OM-k4Z" secondAttribute="trailing" constant="10" id="EHi-H6-ohq"/>
                             <constraint firstItem="cta-Zf-5Uh" firstAttribute="bottom" secondItem="7Yd-CX-55Q" secondAttribute="bottom" id="Eou-05-4EI"/>
                             <constraint firstItem="7Yd-CX-55Q" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="1" id="FD8-sK-hpr"/>
-                            <constraint firstItem="imr-R0-9ZJ" firstAttribute="top" secondItem="fIc-Lp-dWW" secondAttribute="bottom" constant="20" id="S7W-PW-si3"/>
+                            <constraint firstItem="Rb0-OM-k4Z" firstAttribute="centerX" secondItem="21v-vh-uP7" secondAttribute="centerX" id="Mmt-ft-8Dz"/>
+                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6Wt-hf-IGH" secondAttribute="trailing" constant="20" id="Neu-fG-0n5"/>
+                            <constraint firstItem="Rb0-OM-k4Z" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="20" id="SKB-uZ-uKf"/>
+                            <constraint firstItem="Rb0-OM-k4Z" firstAttribute="top" secondItem="fIc-Lp-dWW" secondAttribute="bottom" constant="20" id="U5h-gc-WCx"/>
                             <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="7Yd-CX-55Q" secondAttribute="trailing" constant="1" id="UbT-MI-7tE"/>
                             <constraint firstItem="M6Z-rD-sxX" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="20" id="UlX-RD-hBB"/>
+                            <constraint firstItem="M6Z-rD-sxX" firstAttribute="top" secondItem="Rb0-OM-k4Z" secondAttribute="bottom" constant="20" id="Yzi-dC-ZPl"/>
                             <constraint firstItem="fIc-Lp-dWW" firstAttribute="top" secondItem="cta-Zf-5Uh" secondAttribute="top" constant="20" id="ewd-rQ-HXa"/>
-                            <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="imr-R0-9ZJ" secondAttribute="trailing" constant="20" id="inX-5a-ESE"/>
                             <constraint firstItem="fIc-Lp-dWW" firstAttribute="centerX" secondItem="21v-vh-uP7" secondAttribute="centerX" id="mWA-XT-sji"/>
                             <constraint firstItem="cta-Zf-5Uh" firstAttribute="trailing" secondItem="M6Z-rD-sxX" secondAttribute="trailing" constant="20" id="nEd-SB-XbI"/>
-                            <constraint firstItem="imr-R0-9ZJ" firstAttribute="leading" secondItem="cta-Zf-5Uh" secondAttribute="leading" constant="20" id="ndy-jH-1jd"/>
                             <constraint firstItem="7Yd-CX-55Q" firstAttribute="top" secondItem="M6Z-rD-sxX" secondAttribute="bottom" constant="20" id="wyw-1y-h5b"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cta-Zf-5Uh"/>
@@ -173,9 +187,10 @@
                     <navigationItem key="navigationItem" id="Up2-xh-sLI"/>
                     <connections>
                         <outlet property="avatarImage" destination="fIc-Lp-dWW" id="q5i-v4-fDo"/>
+                        <outlet property="changeUserNameButton" destination="6Wt-hf-IGH" id="KlJ-5j-dfs"/>
                         <outlet property="infoCollectionView" destination="7Yd-CX-55Q" id="hLa-yU-UAz"/>
                         <outlet property="infoSegmentControl" destination="M6Z-rD-sxX" id="L2a-7I-hMS"/>
-                        <outlet property="userNameLabel" destination="imr-R0-9ZJ" id="LRX-4j-mVT"/>
+                        <outlet property="userNameTextField" destination="Rb0-OM-k4Z" id="W3R-Ju-TIB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZp-pm-RIO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -932,7 +947,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VseBankRu_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="YIz-Mo-3vo">
-                                <rect key="frame" x="112.5" y="20" width="150" height="120"/>
+                                <rect key="frame" x="112.5" y="20" width="150" height="120.00000000000011"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="7gr-sg-a5g"/>
                                     <constraint firstAttribute="height" constant="120" id="mAi-dv-06w"/>
@@ -1323,6 +1338,7 @@
     <resources>
         <image name="VseBankRu_Logo" width="486" height="506"/>
         <image name="call" width="15" height="15"/>
+        <image name="icon_edit" width="33.333332061767578" height="33.333332061767578"/>
         <image name="tabbar_calculator" width="33.333332061767578" height="33.333332061767578"/>
         <image name="tabbar_credit" width="33.333332061767578" height="33.333332061767578"/>
         <image name="tabbar_user" width="33.333332061767578" height="33.333332061767578"/>

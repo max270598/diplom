@@ -37,8 +37,8 @@
                                                 <color key="textColor" name="SubTitle"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asda" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWR-qS-msg">
-                                                <rect key="frame" x="0.0" y="23.5" width="37" height="20"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asda" placeholder="+7 (000) 000-00-00" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KWR-qS-msg">
+                                                <rect key="frame" x="0.0" y="23.5" width="146" height="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
@@ -76,8 +76,8 @@
                                                 <color key="textColor" name="SubTitle"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asda" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXq-ls-v37">
-                                                <rect key="frame" x="0.0" y="23.5" width="37" height="20"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="asda" placeholder="Email@mail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXq-ls-v37">
+                                                <rect key="frame" x="0.0" y="23.5" width="124.5" height="20"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Light" family="SF Pro Text" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="tel"/>

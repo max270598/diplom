@@ -110,7 +110,7 @@ extension CalculatorSliderTableViewCell {
         case .sumSilder:
             return Int(value).formattedWithSeparator + " " + CurrencySymbols.rubles.rawValue
         case .rateSlider:
-            return String(format: "%.1f",value) + " " + "%"
+            return String(format: "%.2f",value) + " " + "%"
         case .timeSlider:
             return String(Int(value)) + " " + "мес"
         default:
@@ -131,7 +131,7 @@ extension CalculatorSliderTableViewCell: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let aSet = NSCharacterSet(charactersIn:"0123456789.,").inverted
         let compSepByCharInSet = string.components(separatedBy: aSet)
         let numberFiltered = compSepByCharInSet.joined(separator: "")
         return string == numberFiltered
@@ -143,7 +143,7 @@ extension CalculatorSliderTableViewCell: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
     
-        guard let textString = textField.text, let newValue = Float(textString) else {
+        guard let textString = textField.text?.replacingOccurrences(of: ",", with: "."), let newValue = Float(textString) else {
             print("guard")
             
             
@@ -151,6 +151,7 @@ extension CalculatorSliderTableViewCell: UITextFieldDelegate {
             
             return
         }
+        
         self.slider.value = newValue
         
         

@@ -21,6 +21,7 @@ class DocumentsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupTableView()
+        self.selectionStyle = .none
         self.hiddenLabel.alpha = 0
 //        self.itemTableViewHeightConstr.constant = self.itemTableView.contentSize.height
         // Initialization code

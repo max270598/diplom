@@ -45,7 +45,11 @@ class CreditCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        print("AWAKE")
+        self.backgroundColor = UIColor.white
+
+        self.addShadowCorner(cornerRadius: 12, offset: CGSize(width: 2, height: 2), color: .darkGray, radius: 3, opacity: 0.6)
+
     }
    
     
@@ -63,7 +67,8 @@ class CreditCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-                self.setShadow(cornerRadius: 12, backgroundColor: .white, shadowColor: .darkGray, shadowOffset: CGSize(width: 2.0, height: 2.0), shadowOpacity: 0.6, shadowRadius: 3)
+                
+//        self.setShadow(cornerRadius: 12, backgroundColor: .white, shadowColor: .darkGray, shadowOffset: CGSize(width: 2.0, height: 2.0), shadowOpacity: 0.6, shadowRadius: 3)
 
     }
     }
@@ -112,6 +117,7 @@ extension CreditCollectionViewCell {
     }
 
     func configure(with model: CreditModel) {
+        print("CONFIGURE")
         if let minRate = model.min_rate {
             self.rateLabel.text = String(minRate) + "%"
         }
