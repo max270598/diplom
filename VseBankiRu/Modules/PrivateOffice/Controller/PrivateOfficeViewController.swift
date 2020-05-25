@@ -263,8 +263,18 @@ extension PrivateOfficeViewController: emailPhoneChangedDelegate {
     func changeUserName(name: String) {
         guard name != UserDefaults.standard.string(forKey: "UserName") else {return}
         UserDefaults.standard.set(name, forKey: "UserName")
-        let userRef: DatabaseReference = Database.database().reference(withPath: "users")
-        userRef.child(Auth.auth().currentUser?.uid ?? "").child("name").setValue(name)
+        
+        let changesReques = Auth.auth().currentUser?.createProfileChangeRequest()
+                   changesReques?.displayName = name
+                   changesReques?.commitChanges(completion: { [weak self] (error) in
+                       guard error == nil else {
+                           print(error?.localizedDescription)
+                           return
+                       }
+        })
+        
+    let userRef: DatabaseReference = Database.database().reference(withPath: "users")
+           userRef.child(Auth.auth().currentUser?.uid ?? "").child("name").setValue(name)
         //Change UserName
     }
     

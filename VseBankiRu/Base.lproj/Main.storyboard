@@ -722,7 +722,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fw2-vd-B3h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4018" y="-477"/>
+            <point key="canvasLocation" x="-4398" y="-477"/>
         </scene>
         <!--Регистрация-->
         <scene sceneID="bh1-NF-7Xf">
@@ -936,7 +936,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRL-eq-GGA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2863.1999999999998" y="365.66716641679164"/>
+            <point key="canvasLocation" x="-2951" y="194"/>
         </scene>
         <!--Регистрация-->
         <scene sceneID="6Z1-31-qBh">
@@ -954,19 +954,19 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На указанный Вами адрес элетронной почты было отправлено письмо" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kLL-bS-M6c">
-                                <rect key="frame" x="20" y="200" width="335" height="37.5"/>
+                                <rect key="frame" x="20" y="200" width="335" height="38.5"/>
                                 <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="16"/>
                                 <color key="textColor" red="0.73333333329999995" green="0.75686274509999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ожидание подтверждения " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8C-eg-tVl">
-                                <rect key="frame" x="71.5" y="317.5" width="232" height="21"/>
+                                <rect key="frame" x="58.5" y="318.5" width="258.5" height="21"/>
                                 <fontDescription key="fontDescription" name="SFProText-Bold" family="SF Pro Text" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y9j-cH-GYB">
-                                <rect key="frame" x="157.5" y="398.5" width="60" height="60"/>
+                                <rect key="frame" x="157.5" y="399.5" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="DDH-yT-ftK"/>
                                     <constraint firstAttribute="height" constant="60" id="LJz-Bm-TaQ"/>
@@ -1005,7 +1005,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lS0-hT-WHT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2087.1999999999998" y="365.66716641679164"/>
+            <point key="canvasLocation" x="-2266" y="194"/>
         </scene>
         <!--Verification View Controller-->
         <scene sceneID="5YE-wJ-bi5">
@@ -1344,6 +1344,6 @@
         <image name="tabbar_user" width="33.333332061767578" height="33.333332061767578"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="chI-oZ-Dxb"/>
+        <segue reference="ffJ-Z0-6hr"/>
     </inferredMetricsTieBreakers>
 </document>

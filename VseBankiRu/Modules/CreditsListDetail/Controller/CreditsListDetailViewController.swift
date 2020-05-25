@@ -25,7 +25,8 @@ class CreditsListDetailViewController: UIViewController {
         self.title = "Детали"
         setupTableView()
         setupNavigationBar()
-        
+        print(detailCredit?.condition_description)
+        print(detailCredit?.rate_description)
         
     }
     
