@@ -34,6 +34,9 @@ class AuthorisationViewController: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        self.emailTextField.text = ""
+        self.passwordTextField.text = ""
+        self.loginButton.hideLoading()
 //        IQKeyboardManager.shared.enable = false
     }
     
@@ -57,6 +60,28 @@ class AuthorisationViewController: UIViewController {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self](user, error) in
             
            
+            if error != nil {
+                print(error?.localizedDescription)
+
+                guard error?.localizedDescription != "The user account has been disabled by an administrator." else {
+                    self?.showErrorLabel(with: "Ваш аккаунт заблокирован.")
+                    self?.loginButton.hideLoading()
+                    return
+                }
+                
+                guard error?.localizedDescription != "The email address is badly formatted." else {
+                    self?.showErrorLabel(with: "Непарвильно набран Email")
+                    self?.loginButton.hideLoading()
+
+                    return
+                }
+                          self?.showErrorLabel(with: "Ошибка")
+                          self?.loginButton.hideLoading()
+
+                          return
+                      }
+            
+            
             guard user != nil else {
                 self?.showErrorLabel(with: "Не правильно набрал email или пароль")
                 self?.loginButton.hideLoading()
@@ -65,12 +90,7 @@ class AuthorisationViewController: UIViewController {
                 
             }
             
-            if error != nil {
-                self?.showErrorLabel(with: "Ошибка")
-                self?.loginButton.hideLoading()
-
-                return
-            }
+          
             
             guard (user?.user.isEmailVerified)! else {
                 self?.showErrorLabel(with: "Пользователь не верифицирован")

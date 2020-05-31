@@ -16,7 +16,7 @@ class CreditsListFilterViewController: UIViewController {
        
     var allCredits: [CreditModel] = []
     var filteredCredits = Array<CreditModel>()
-    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 0, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+    var filterItem = FilterItemModel(bankName: nil, goal: nil, time: nil, value: 200000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
     
     
     var delegate: PassDataFromFilterToListDelegate?
@@ -257,7 +257,7 @@ private extension CreditsListFilterViewController {
     }
     
     @objc func resetButton() {
-        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 0, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
+        self.filterItem = FilterItemModel(bankName: nil, goal: nil, time: -1, value: 200000, noInsurance: false, noDeposit: false, noIncomeProof: false, reviewUpThreeDays: false)
                self.reloadWithFilter()
 
     }
@@ -414,7 +414,7 @@ extension CreditsListFilterViewController {
               }
 
         
-        self.filteredCredits = filterArr.filter{  $0.max_sum_value >= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
+        self.filteredCredits = filterArr.filter{  $0.max_sum_value >= self.filterItem.value &&  $0.min_sum_value <= self.filterItem.value && $0.max_time_value >= self.filterItem.time ?? -1
         }
         
         self.set(itemsCount: String(self.filteredCredits.count))
